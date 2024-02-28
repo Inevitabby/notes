@@ -1,4 +1,4 @@
-# von Neumann
+# Von Neumann (Princeton Architecture)
 
 ## Design
 
@@ -29,6 +29,7 @@
 		+ (To send data to the MDR you need to send a read signal)
 - **MDR**: Memory Data Register
 	* Where read data is stored.
+- **GP**: General Purpose Registers
 
 > **Note**: MAR and MDR can be referred to as the BIU (Bus Interface Unit)
 
@@ -39,6 +40,23 @@
 
 **Buses**: Means by which data is transmitted from one part to another
 
+> **Note**: Registers used in the fetch-decode-execute cycle.
+> 1. **Fetch**
+> - PC
+> - IR
+> 2. **Decode**
+> - IR
+> 3. **Execute**
+> - REGS
+> - IR
+> - PC
+>	- (If there is a jump command)
+> ```rtn
+> # 1. Fetch Cycle
+> MAR <- PC # Move program counter into Memory Address Register
+> MR # Signal read through address bus, then data bus sends data to MDR
+> IR <- MDR # (Control unit executes off the IR, not the MDR)
+> ```
 
 > **Example**: $C = A + B$
 > 
@@ -80,5 +98,5 @@
 
 # Harvard Architecture
 
-**Biggest Difference**: Instruction and data memory are separate.
+**Biggest Difference**: Instruction and data memory are separate (two memory units).
 - Used for digital signal processing where the bandwidth and speed are needed.
