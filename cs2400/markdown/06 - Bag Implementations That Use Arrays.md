@@ -47,7 +47,7 @@ interface BagInterface{
 
 
 ```java
-private final class ArrayBag<T> implements BagInterface<T> {
+public final class ArrayBag<T> implements BagInterface<T> {
 	private final T[] bag; // Remember, this is an array of Object!
 	private int numberOfEntries;
 	private static final int DEFAULT_CAPACITY = 25;
@@ -114,3 +114,16 @@ Practice fail-safe programming by including checks for anticipated errors.
 > 	// TODO
 > }
 > ```
+
+# Resizing an Array
+
+To resize an array you'll need to create a new array, copy by value, and change the references.
+- The difficult part of the problem is designing *how much* to resize.
+
+# Pros and Cons of Using Array
+
+- Fast addition
+- Fast unspecified removal
+- Removing a particular entry is slow because of searching
+	* (Linear search is $O(n)$)
+- Resizing the array takes time to copy its entries.

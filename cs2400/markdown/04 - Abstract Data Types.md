@@ -29,7 +29,7 @@
 - *Independent* of any programming language.
 
 $$
-\text{EDT in Java} = \text{Interface} + \text{Class}
+\text{ADT in Java} = \text{Interface} + \text{Class}
 $$
 
 **Data Structure**: 

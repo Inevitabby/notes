@@ -15,6 +15,7 @@
 > **`new T`{.java} is always wrong.**
 
 > **Type-Erasure**: The generic type gets removed when being returned.
+> - This happens at the bytecode level.
 
 > **Why**: Generics let us escape casting hell.
 > - It also looks nicer.
@@ -56,3 +57,22 @@
 > 	return counter;
 > }
 > ```
+
+> **Note/Example**: When implementing a method in the client to do something with an interface, make sure you take the interface as a parameter rather than the implementation.
+> - Remember to use `static`
+> - If you don't care about the data/type, then you have an algorithm.
+> ```java
+> // Algorithm
+> static void displayBag(BagInterface<String> key) {
+> 	for (Object item : bag.toArray())
+> 		System.out.println(item);
+> }
+> // Generic Method of the Algorithm
+> static<T> void displayBag(BagInterface<T> key) {
+> 	for (T item : bag.toArray())
+> 		System.out.println(item);
+> ```
+
+<!--
+Instanceof syntax?
+-->
