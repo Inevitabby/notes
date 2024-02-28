@@ -1,7 +1,9 @@
-# vim: ft=markdown
 ---
 title: Midterm I Review
 ---
+<!--
+# vim: ft=markdown
+-->
 
 <noscript>
 	<h1 style="color:red">THIS PAGE USES JAVASCRIPT TO GENERATE QUESTIONS, PLEASE TURN ON JAVASCRIPT!</h1>
