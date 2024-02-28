@@ -791,8 +791,9 @@ $$
 \boxed{
 	\text{Center of Mass (2D Plane): } 
 	x = \frac{ My }{ m }
+	\qquad
+	y = \frac{M_x}{m}
 } \\~\\
-y = \frac{M_x}{m} \qquad
 M_y = \sum_{i=1}^n m_i x_i \qquad
 M_x = \sum_{i=1}^n m_i Y_i \qquad
 m = \sum_{i-1}^n m_i
@@ -841,6 +842,19 @@ $$
 	\text{Center of Mass (Lamina): }
 	x = \frac{My}{m} \qquad y = \frac{M_x}{m}
 } \\~\\
+M_y = \int_a^b x f(x) dx
+\qquad
+M_x = \int_a^b \frac{[f(x_i^*)]^2}{2} dx
+\\
+m = \int_a^b f(x) dx
+$$
+
+<!--
+$$
+\boxed{
+	\text{Center of Mass (Lamina): }
+	x = \frac{My}{m} \qquad y = \frac{M_x}{m}
+} \\~\\
 M_y = \int_a^b \rho x f(x) dx
 \qquad
 M_x = \int_a^b \rho \frac{[f(x_i^*)]^2}{2} dx
@@ -849,6 +863,7 @@ m = \int_a^b \rho f(x) dx
 $$
 
 > **Tip**: When calculating, you can take $\rho = 1$ as they're going to cancel anyway.
+-->
 
 <details><summary>Why?</summary>
 Now, what if mass is evenly spread continuously throughout a 2D sheet of metal, called a [lamina]{.underline}?
