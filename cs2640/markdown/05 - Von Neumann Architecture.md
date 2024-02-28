@@ -47,9 +47,12 @@
 > 2. **Decode**
 > - IR
 > 3. **Execute**
+> - Every single register gets used!
 > - REGS
 > - IR
 > - PC
+> - MDR
+> - MAR
 >	- (If there is a jump command)
 > ```rtn
 > # 1. Fetch Cycle

@@ -65,8 +65,3 @@ To perform a task, an appropriate program (list of instructions) is store in the
 > 	- Can be stored in a general-purpose register or memory.
 > 11. PC incremented to next step
 > 	- Hardware-wise, this is conditional (doesn't execute on jump instructions)
-
-# Interrupt
-
-Normal execution of programs may be preempted if some device requires urgent servicing.
-- Example: Taking user input without being stuck polling for input.
