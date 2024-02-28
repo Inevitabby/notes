@@ -1,10 +1,12 @@
 # Intro
 
-**Decimal Number System**: 10 digits (0—9)
+1. **Decimal Number System**: 10 digits (0—9)
+2. **Binary Number System**: 2 digits (0—1)
+	- Physical voltage-based switches
+3. **Octal**
+4. **Hexadecimal**
 
-**Binary Number System**: 2 digits (0—1)
-- Physical switches
-- There is a physical limitation to size of number stored.
+> **Note**: These number systems can represent any value, their hardware can't.
 	* 32-bit, 64-bit
 
 # Number Systems
@@ -13,41 +15,52 @@
 
 - **Base**: 10
 	* aka: radix
-- **Digits**: 0, 1, 2, 3, 4, 5, ..., 9
+- **Digits**: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 - **Positional Notation**: $1234 = 1\times10^3 + 2\times10^2 + 3\times10^1 + 4\times10^0$
+	* The position of digits relative to each other determines value.
+		- e.g., the "2" in "1234" represents "$2\times10^2$" (200) because of its position relative to the decimal point
 
-> **Note on Positional Notation**:
-> - Positional notation is important for converting ASCII input into a numeric value.
+> **More on Positional Notation**:
+> - Positional notation is important for converting ASCII input into a numeric value, among other things.
+> 
 > > **Example**: Converting "123" into a decimal number, digit-by-digit
 > > $$
-> > ((1\times10) + 2)\times10+3
+> > ((1 \times 10) + 2) \times 10 + 3
 > > $$
 
-> **Note on ASCII:**
-> - ASCII is 8 bits.
+<!--
+> **Note:** Each character in ASCII is 8 bits.
+-->
+
+> **Example**: Positional notation with decimal points
+> $$
+1234.567 = 1 \times 10^3 + 2 \times 10^2 + 3 \times 10^1 + 4 \times 10^0 + 5 \times 10^{-1} + 6 \times 10^{-2} + 7 \times 10^{-3}
+> $$
 
 ## Binary
 
 - **Base**: 2
 - **Digits**: 0, 1
-- **Bit (Binary Digit)**: Smallest unit of information/
+- **Bit (Binary Digit)**: Smallest unit of information.
 - **Byte**: Group of 8 [consecutive]{.underline} bits.
 	* Smallest addressable unit of information in most computers
 	* Every byte has an address
-	* $b_7 , b_6 , b_5 , b_4 , b_3 , b_2 , b_1 , b_0$
-		+ **MSBit**: Most significant byte.
-			+ $b_7$
-		+ **LSBit**: Least significant byte.
-			+ $b_0$
 	* **Groupings**:
 		+ **Word**: 4 consecutive bytes
 		+ **Half-Word:** 2 consecutive bytes
 		+ **Double-Word**: 8 consecutive bytes
 
+> **More on Bytes**:
+> * Anatomy: $b_7 , b_6 , b_5 , b_4 , b_3 , b_2 , b_1 , b_0$
+> 	+ **MSBit**: Most significant byte.
+> 		+ $b_7$
+> 	+ **LSBit**: Least significant byte.
+> 		+ $b_0$
+
 ## Octal
 
 - **Base**: 8
-- **Digits**: 0, 1, 2, ..., 7
+- **Digits**: 0, 1, 2, 3, 4, 5, 6, 7
 - **Octal Digit**: Group of 3 consecutive bits.
 
 ## Hexadecimal
@@ -111,10 +124,13 @@
 	- Pad any trailing starting group with 0s.
 
 **Example**:
-- $1010$ $0010_2$ $\to A2_16$
+- $1010$ $0010_2$ $\to A2_{16}$
 
 # Exercise
 
-| Decimal | Binary | Octal | Hexadecimal |
-|---------|--------|-------|-------------|
-|         |        |       |             |
+| Decimal | Binary  | Octal | Hexadecimal |
+|---------|---------|-------|-------------|
+| $33$      |         |       |             |
+|         | $1110101$ |       |             |
+|         |           | $703$ |             |
+|         |           |       | $1AF$         |
