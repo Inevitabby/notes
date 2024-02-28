@@ -471,7 +471,7 @@ $$
 \small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
 $$
 
-# Surface Area
+# Surface Area of Solid of Revolution
 
 $$
 \boxed{
@@ -481,3 +481,5 @@ $$
 \small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
 $$
 
+> **Rotating About the Y-Axis**: 
+> - If given a problem to solve a $y$-function from $y=a$ to $y=b$, simply solve for $x$ and $x'$, and plug it into the above formula, replacing $f(x)$ with $x$, $f'(x)$ with $x'$, and $dx$ with $dy$.
