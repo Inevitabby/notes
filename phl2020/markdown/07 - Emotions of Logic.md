@@ -23,11 +23,11 @@
 1. **Name the Emotion**
 2. **Universal Evaluation**
 3. **Personal Evaluation**
-4. **Assess the truth of U and P
-5**. **Reasons in the person's psychological history for why this is false**
-6. **Correct the thinking (include specific, actionable steps)
+4. **Assess the truth of U (Universal Evalutation) and P (Personal Evaluation)**
+5. **Reasons in the person's psychological history for why this is false**
+6. **Correct the thinking (include specific, actionable steps)**
 
->** **NUPARC Example**:
+> **NUPARC Example**:
 > 1. **N**ame: Anxiety
 > 2. **U**niversal Evaluation: I'm incapable of being in a romantic relationship.
 > 3. **P**ersonal Evaluation: I'll never give a woman what she wants. I'll never find happiness in romance.
