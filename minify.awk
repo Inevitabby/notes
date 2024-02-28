@@ -26,8 +26,17 @@ next;
 }
 # Minify HTML
 {
-	gsub(/<!--.*-->/, ""); # Remove HTML comments
-	gsub(/[ \t]+/, " "); # Remove multiple spaces and tabs
-	printf "%s", $0 " "; # Print without newline, but include an extra space to avoid breaking LaTeX
+	if (/<pre/ || /<\/pre>/) {
+		print $0; # <pre>: Print with newline
+		inPre = !inPre;
+		next;
+	}
+	if (inPre) { # Special Case: Don't minify <pre> tags
+		print $0; # <pre>: Print with newline
+	} else { # Normal Case: Minify HTML
+		gsub(/<!--.*-->/, ""); # Remove HTML comments
+		gsub(/[ \t]+/, " "); # Remove multiple spaces and tabs
+		printf "%s", $0 " "; # HTML: Print without newline, but include an extra space to avoid breaking LaTeX
+	}
 	next;
 } 1
