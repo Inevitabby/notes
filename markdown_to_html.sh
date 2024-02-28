@@ -12,3 +12,4 @@ function convert_directory {
 }
 convert_directory "cs1300"
 convert_directory "cs1400"
+eval pandoc "-i \"README.md\" ${PANDOC_ARGS} -o \"index.html\""
