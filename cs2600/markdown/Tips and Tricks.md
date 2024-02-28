@@ -7,7 +7,7 @@ Are the privacy and security concerns of installing a system-wide VPN preventing
 Do you have the almost-primordial spine-tingling sense that Respondus is still looking through you through your webcam 2 years after you uninstalled it after graduating from high school?
 
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4zH9Zca1vRM?si=9KdfCt2iEOHJwN2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="75%" src="https://www.youtube.com/embed/4zH9Zca1vRM?si=9KdfCt2iEOHJwN2P" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
 Although you might not need to FTP or SSH into a server behind GlobalConnect VPN for this class, you *might* need to in the future. This is bad news if you're a little paranoid about student surveillance.[^fn1]
@@ -29,7 +29,7 @@ You can plug it into your VM's init system to start on boot, maybe even automate
 
 Some people are very good lecturers, others... not so much. Regardless, there's not many people you can listen to above 1.5x speed without losing some understanding.
 
-Your professor is human, and humans can leave pauses in their sentences, silently struggle to switch the Zoom screen share every time they share their screen, get way too close or way too far from the microphone, et cetera.
+Your professors are human, and humans can leave pauses in their sentences, silently struggle to switch the Zoom screen share every time they share their screen, get way too close or way too far from the microphone, et cetera.
 
 So while you can download videos and speed them up, it really doesn't solve some of the fundamental issues making lectures difficult-to-parse or way-too-long.
 
@@ -111,4 +111,3 @@ I cycle-values vf "sub,lavfi=negate" ""
 ```
 
 Now you can toggle a readable dark mode with `I` in MPV in any video!
-
