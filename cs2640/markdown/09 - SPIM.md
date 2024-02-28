@@ -122,11 +122,37 @@ title: MIPS Assembly
 | sh       | rt,imm(rs)             | Store Half                           | M2[rs + imm±] = rt                              | I    | 29       |
 | sw       | rt,imm(rs)             | Store Word                           | M4[rs + imm±] = rt                              | I    | 2b       |
 
+> **Note**: Using `mult`
+> - Multiplying two number requires two instructions, one to multiply (`mult`), another to read the multiplication result from the `HI` or `LO` register (`mfhi` *or* `mflo`).
+>	- If the resulting number doesn't overflow (is less than 32-bits), you can use `mflo` to get it from the `LO` register.
+> 
+> **What `hi` and `lo` contain**:
+> - `lo`: Contains `rs / rt`
+> - `hi`: Contains `rs % rt`
+> 
+> ```mips
+> 	li 	$t1, 2
+> 	# A: Multiplies t0 and t1
+> 	mult	$t0, $t1
+> 	mflo	$t0
+> 	# B: Same thing, using mul
+> 	mul	$t0, $t0, $t1
+> ```
+
 <!--
 TODO
 | Pseudo | Operands | Instruction | Register Transfer |
 |--------|----------|-------------|-------------------|
 |        |          |             |                   |
+
+## Pseudo-Instructions
+
+<!--
+TODO
+-->
+
+> **Note**: `move` v.s. `li`
+> - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.
 -->
 
 ## Instruction Formats
@@ -360,11 +386,60 @@ main:	li	$t0,10
 > - **sbrk**: returns a pointer to a block of memory containing $n$ additional bytes
 > - **exit**:  stops program execution
 
-## Pseudo-Instructions
+> **Example**: Using some syscalls
+> ```mips
+>       .data
+> str:  .asciiz	"Enter an integer to double: "
+> 
+>       .text
+> main:
+>       # Print a string (syscall 4)
+>       la	$a0, str # Put address to the string in $a0
+>       li	$v0, 4
+>       syscall
+>       # Read an integer (syscall 5)
+>       li 	$v0, 5
+>       syscall
+>       move	$t0, $v0 # Now move the number from $v0 to $t0 
+>       # Double user's integer
+>       li 	$t1, 2
+>       mult	$t0, $t1
+>       mflo	$t0
+>       # Print the resulting integer (syscall 5)
+>       move	$a0, $t0
+>       li	$v0, 1
+>       syscall
+>       # Exit Program
+>       li	$v0, 10
+>       syscall
+> # End of program
+> ```
+
+# Template 
+
+```mips
+# This program does nothing and exits gracefully.
+	.text
+main:
+	li	$v0, 10
+	syscall
+# The end
+```
 
 <!--
-TODO
--->
+Pseudo-Code for Project 1
 
-> **Note**: `move` v.s. `li`
-> - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.
+Part I: Subtracting two numbers
+1. read int (SYSCALl 5)
+	- t0 <- v0 (MOVE)
+2. read int
+	- t0 <- v0 - t0 (SUBTRACT)
+3. t0 now stores the change, in cents.
+
+Part II: Remainder
+1. Take modulu of t0 and use HI and LO (use div rs, rt)
+	- Quarters: 25
+	- Dimes: 10
+	- Nickels: 5
+	- Pennines: Whatever is left
+-->
