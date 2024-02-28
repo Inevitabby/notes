@@ -44,7 +44,7 @@
 - **Bit (Binary Digit)**: Smallest unit of information.
 	* **Nibble**: 4 bits.
 - **Byte**: Group of 8 [consecutive]{.underline} bits.
-	* Smallest addressable unit of information in most computers
+	* [Smallest addressable unit of information]{.underline} in most computers
 	* Every byte has an address
 	* **Groupings**:
 		+ **Word**: 4 consecutive bytes
@@ -57,6 +57,12 @@
 > 		+ $b_7$
 > 	+ **LSBit**: Least significant byte.
 > 		+ $b_0$
+
+> **Range**:
+> $$
+> \text{Range: } 2^n - 1
+> $$
+> - e.g., Range of values a byte can store is 0—255 ($2^8 - 1 = 255$)
 
 ## Octal
 

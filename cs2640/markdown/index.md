@@ -4,3 +4,4 @@
 2. [Number Systems and Conversions](02 - Number Systems and Conversions.html)
 3. [Binary Operations and Sign](03 - Binary Operations and Sign.html)
 4. [Computer Systems](04 - Computer Systems.html)
+5. [Von Neumann Architecture](05 - Von Neumann Architecture.html)
