@@ -23,7 +23,7 @@
 1. **Name the Emotion**
 2. **Universal Evaluation**
 3. **Personal Evaluation**
-4. **Assess the truth of U (Universal Evalutation) and P (Personal Evaluation)**
+4. **Assess the truth of U (Universal Evaluation) and P (Personal Evaluation)**
 5. **Reasons in the person's psychological history for why this is false**
 6. **Correct the thinking (include specific, actionable steps)**
 

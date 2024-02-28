@@ -19,7 +19,7 @@
 	- Aka: Must not be *too broad* or *too narrow*.
 3. Must be *essential*
 	- aka: Must name characteristics that cause or explain most of the other characteristics.
-	- Example: "Heart is an organ that goes lub dub" (nonessential) v.s. "Heart is an organ that pumps blood around the body" (essential, explains the lub dub sound)
+	- Example: "Heart is an organ that goes lub dub" (nonessential) v.s. "Heart is an organ that pumps blood around the body" (essential, and explains the lub dub sound)
 4. Must not be circular.
 5. Must not use negative terms unnecessarily.
 	- Example: "A cat is not a dog"

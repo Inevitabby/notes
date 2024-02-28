@@ -104,6 +104,6 @@ Diagram:
 
 The implicit premise...
 1. ... should narrow the logical gap between the stated premise and the conclusion.
-2. ... shouldn't commit to more than is necessaru.
+2. ... shouldn't commit to more than is necessary.
 	- e.g., "Sally can't go hiking because she has a broken leg" doesn't mean that "someone with a broken leg can't move".
 
