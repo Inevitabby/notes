@@ -355,9 +355,10 @@ $2^n$ bytes
 <script>
 // === General-Purpose Utility Functions ===
 // Group digits into n-digit groups
-function formatGroup(num, n = 4) {
+function formatGroup(num, n = 4, signExtension = false) {
+	const MSBIT = signExtension ? num[0] : '0';
 	while (num.length % n != 0) {
-		num = "0" + num;
+		num = MSBIT + num;
 	}
 	return num.match(new RegExp(`.{1,${n}}`, 'g')).join(" ");
 };
@@ -548,18 +549,28 @@ const Solution = {
 	},
 	twosComplementSubtraction: function (decimalA, decimalB, elem) {
 		const BINARY_A = formatGroup(decimalA.toString(2));
-		const BINARY_B = formatGroup(twosComplement(decimalB.toString(2)));
+		const BINARY_B = formatGroup(twosComplement(decimalB.toString(2)), 4, true);
+		// Get answers
+		const ANSWER_DECIMAL = decimalA - decimalB;
+		let ANSWER_BINARY = "";
+		if (ANSWER_DECIMAL == 0) {
+			ANSWER_BINARY = "0";
+		} else if (ANSWER_DECIMAL < 0) {
+			ANSWER_BINARY = formatGroup(twosComplement(Math.abs(ANSWER_DECIMAL).toString(2)), 4, true);
+		} else {
+			ANSWER_BINARY = formatGroup(ANSWER_DECIMAL.toString(2));
+		}
 		// Write TeX
 		let solution = "";
-		const ANSWER = formatGroup((decimalA + decimalB).toString(2));
+		const ANSWER = formatGroup((decimalA - decimalB).toString(2), 4, true);
 		this.renderTex(String.raw`
 			\text{
-				${decimalA} - ${decimalB} = ${ANSWER}
+				${decimalA} - ${decimalB} = ${ANSWER_BINARY} = ${ANSWER_DECIMAL}
 			} \\~\\ 
 			\begin{aligned}
 				${BINARY_A}& \\
 				+${BINARY_B}& \\
-				=${ANSWER}&
+				=${ANSWER_BINARY}&
 				${solution}
 			\end{aligned}
 		`, elem);
