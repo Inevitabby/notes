@@ -16,9 +16,6 @@
 	* Other names: RAM, RWM (Read Write Memory), Main Memory
 	* e.g., x86 has 5—6 ways to access memory while MIPS has one.
 
-> Q: Why "Random" in RAM?
-> + A: Because it takes the same amount of time to access any block of memory.
-
 - **Assembly**
 - **Arrays and Records**
 	* Arrays are homogeneous
