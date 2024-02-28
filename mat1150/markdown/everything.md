@@ -9,18 +9,131 @@ $$
 	\text{Integration by Parts: } \int u dv = uv - \int v du
 }
 $$
-- **Usage**: Find $u$ and $dv$ in the problem, then solve for $du$ and $v$, assemble other side of equation, then solve the simpler equation.
-	* What to choose for $u$: L.I.A.T.E. (pick the one higher on the list as $u$)
-		1. **L**ogarithms (e.g., $\ln x$)
-		2. **I**nverse trig (e.g., $arctan(x)$)
-		3. **A**lgebraic (e.g., $x^2$)
-		4. **T**rig (e.g., $\sin(x)$)
-		5. **E**xponential (e.g., $e^x$)
+- **Usage**: Find $u$ and $dv$ in the problem, then solve for $du$ and $v$. Assemble other side of equation, then solve this simpler equation.
+
+<details><summary>Tip: Choosing $u$ (L.I.AT.E.)</summary>
+* What to choose for $u$: L.I.A.T.E. (pick the one higher on the list)
+	1. **L**ogarithms (e.g., $\ln x$)
+	2. **I**nverse trig (e.g., $arctan(x)$)
+	3. **A**lgebraic (e.g., $x^2$)
+	4. **T**rig (e.g., $\sin(x)$)
+	5. **E**xponential (e.g., $e^x$)
+</details>
+
+<details><summary>Why?</summary>
+**Deriving the Integration by Parts Formula**:
+
+$$
+\text{Product Rule: } \frac{d}{dx} [ f(x)g(x) ] = f(x)g'(x) + f'(x)g(x)
+$$
+
+Now, let $u = f(x)$ and $v = g(x)$.
+
+Therefore:
+$$
+\frac{d}{dx} (uv) = uv' + u'v \\~\\
+\text{(Integrate both sides)} \\~\\
+\begin{aligned}
+	\int \frac{d}{dx} (uv) dx &= \int ( uv' + u'v ) dx \\
+	uv &= \int ( uv' + u'v ) dx \\
+	uv &= \int u dv + \int v du \\
+	uv - \int v du &= \int u dv \\
+	\int u dv &= uv - \int v du 
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example</summary>
+$$
+\text{Solve: }
+\int x \sin x dx
+$$
+
+Let $u = x$ and $dv = \sin x dx$.
+- *(Now we want to find $v$ and $du$ to use Integration by Parts.)*
+
+1. To find $v$ we can take the integral of both sides of the $dv$ equation:
+
+$$
+dv = \sin x dx \\
+\int dv = \int \sin x dx \\
+v = -\cos x
+$$
+
+2. To find $du$ we can take the derivative of both sides of the $u$ equation:
+
+$$
+u = x \\
+u' = x' \\
+du = 1
+$$
+
+3. Now we can plug into Integration by Parts:
+
+$$
+\begin{aligned}
+\int u dv &= uv - \int v du \\
+\int x \sin x dx &= x ( - \cos x ) - \int - \cos x dx
+\end{aligned}
+$$
+
+4. Now, solve the last integral on the right to get the final answer:
+
+$$
+\int x \sin x dx = - x \cos x  + \sin x + c
+$$
+
+> **Tip**: You can verify the answer seeing if $(- x \cos x  + \sin x)' = x \sin x$
+</details>
 
 > **Important**: $\int v du$ might end up being the term you started with. In that case, you can move it across the $=$ to break the loop.
-> - This isn't unique to integration by parts!
+> - This strategy isn't unique to integration by parts!
 
 # Trigonometric Integrals
+
+<details><summary>Introduction Problem</summary>
+$$
+\text{Solve: } \int (\cos x)^3 dx
+$$
+
+> **Notes**:
+> - U-sub doesn't simplify this because there isn't a $\sin x$ to cancel out the $\frac{du}{dx}$
+> - Integration by parts make the problem more difficult in every step.
+> - Because of this, we must resort to trigonometric substitution.
+
+Recall the following identity:
+$$
+\begin{aligned}
+\boxed{
+	\text{Pythagorean Identity: }
+	\cos^2 x + \sin^2 x = 1
+}
+\end{aligned}
+$$
+
+It logically follows that:
+$$
+\begin{aligned}
+	\cos^2 x &= 1 - \sin^2 x \\
+	\sin^2 x &= 1 - \cos^2  x
+\end{aligned}
+$$
+
+> **Note**: For this problem, we only need to use the $\cos^2 x$ identity, but I'm listing both for demonstration.
+
+
+$$
+\begin{aligned}
+\int (\cos x)^3 dx &= \int 1 - (\sin x)^2 \cos x dx \\~\\
+u &= \sin x \to du = \cos x dx \to dx = \frac{du}{\cos x} \\~\\
+&= \int (1 - u^2) du \\
+&= \int du - \int u^2 du \\
+&= u - \frac{u^3}{3} \\~\\
+&\text{Therefore, } \\~\\
+\int (\cos x)^3 dx &= \sin x - \frac{(\sin x)^3}{3} \\
+\end{aligned}
+$$
+</details>
 
 $$
 \large\text{I. Strategy for Powers of $\sin$ and $\cos$}
@@ -48,6 +161,19 @@ Rewrite $\cos^j x = \cos^{j-1}x \cos x$
 
 Use half-angle identities.
 - ($0$ counts as an even)
+
+<details><summary>Example: The importance of half-angle identities</summary>
+$$
+\begin{aligned}
+\int \sin^2 x dx &= \int ( \frac{1}{2} - \frac{1}{2} \cos 2x ) dx \\
+&= \frac{1}{2} - \frac{1}{2} \cos 2x dx \\
+&= \frac{1}{2} x - \frac{1}{4} \sin 2x + C
+\end{aligned}
+$$
+
+> **Note**: Half-angle identities are also-known-as power-reduction formulas.
+> - If you don't know them, you might end up stuck!
+</details>
 
 ---
 
@@ -129,15 +255,16 @@ Use $\tan^2 x = \sec^2 x - 1$ to express $\tan^k x$ in terms of $\sec x$
 
 # Trigonometric Substitution
 
-**Steps**:
-1. Substitute $x$ for trigonometry: <!--($x \to \text{ trig }$$(\theta)$)-->
-<!--
+<details><summary>Reference: Trig Sub in One Table</summary>
 | Form      | $x$           | $dx$                      | Pythagorean Identity |
 |-----------|---------------|---------------------------|----------------------|
 | $a^2-x^2$ | $a\sin\theta$ | $a \cos \theta$             | $\cos$ and $\sin$    |
 | $x^2+a^2$ | $a\tan\theta$ | $a \sec^2 \theta$           | $\tan$ and $\sec$    |
 | $x^2-a^2$ | $a\sec\theta$ | $a \sec \theta \tan \theta$ | $\sec$ and $\tan$    |
--->
+</details>
+
+**How-To**:
+1. Substitute $x$ for trigonometry: <!--($x \to \text{ trig }$$(\theta)$)-->
 
 > ### Substituting $x$ for Trig
 > $$
@@ -170,20 +297,74 @@ Use $\tan^2 x = \sec^2 x - 1$ to express $\tan^k x$ in terms of $\sec x$
 
 > **Note**: Some problems require you to complete the square.
 
-<!--
-> ### Completing the Square
-> 
-> Some problems requires you to complete the square to get the square root in a form that can be substituted.
-> 
-> $$
-> \text{Completing the Square: }
-> \begin{aligned}
-> 	&\text{1. Rearrange such that lead coefficient is 1} \\
-> 	&\text{2. Add and subtract $(b / 2)^2$} \\
-> 	&\text{3. Factor and solve}
-> \end{aligned}
-> $$
--->
+<details><summary>How-To Complete the Square</summary>
+$$
+\text{Completing the Square: }
+\begin{aligned}
+	&\text{1. Rearrange such that lead coefficient is 1} \\
+	&\text{2. Add and subtract $(b / 2)^2$} \\
+	&\text{3. Factor and solve}
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example</summary>
+$$
+\text{Solve: } \int \sqrt{9-x^2} dx
+$$
+
+**Solving**:
+
+$$
+\text{Identity: } a^2 \cos^2 \theta = a^2 - a^2 \sin^2 \theta \\
+$$
+
+$$
+\text{Let } x = 3 \sin \theta \\
+\text{Then } dx = 3 \cos \theta d \theta
+$$
+
+Now we can substitute our $x$ and $dx$:
+$$
+\int \sqrt{9 - x^2} dx = \int \sqrt{ 9 - (3 \sin \theta )^2 } 3 \cos \theta d \theta \\
+= \int \sqrt{9 - 9 \sin^2 \theta} 3 \cos \theta d \theta \\~\\
+\text{Apply Pythagorean identity: } \\~\\
+= \int \sqrt{9 \cos^2 \theta} 3 \cos \theta d \theta \\
+= \int 3 \cos \theta \times 3 \cos \theta d \theta \\
+= 9 \int \cos^2 \theta d \theta \\~\\
+\text{Half-angle identity: } \\~\\
+= 9 \int \frac{1 + \cos (2 \theta) }{2} d \theta \\
+= 9 ( \frac{1}{2} \theta + \frac{\sin (2 \theta) }{4} \theta ) + C\\
+= \frac{9}{2} \theta + \frac{9}{4} \sin (2 \theta) +C \\~\\
+\text{Map $\theta$ to $x$ with inverse trig: } \\~\\
+x = 3 \sin\theta \to \frac{x}{3} = \sin \theta \to \text{Inverse sine} \to \arcsin \frac{x}{3} = \theta \\~\\
+\text{We need to manipulate $\sin 2 \theta$ to use the mapping: } \\~\\
+\boxed{
+\text{Double-Angle Identitities: }
+\begin{aligned}
+	\sin 2 \theta &= 2 \sin \theta \cos \theta \\
+	\cos 2 \theta &= \cos^2 \theta - \sin^2 \theta
+\end{aligned}
+} \\~\\
+\text{Applying the double-angle identity: } \\~\\
+\frac{9}{2} \theta + \frac{9}{4} \sin (2 \theta) +C 
+= \frac{9}{2} \theta + \frac{9}{4} ( 2 \sin \theta \cos \theta ) \\~\\
+\text{Now we need just to find $\cos \theta$: } \\~\\
+\text{Since $\sin \theta = \frac{x}{3}$}:
+$$
+
+![](./.images/triangle.png)
+
+> **Tip**: The square root you get from solving the missing side of the triangle should match the square root in the original problem.
+> - If it doesn't match, you did something wrong.
+
+$$
+\cos \theta = \frac{ \text{Adjacent} }{ \text{Hypotenus} } = \frac{\sqrt{9-x^2}}{3} \\~\\
+\frac{9}{2} \theta + \frac{9}{4} ( 2 \sin \theta \cos \theta )
+= \frac{9}{2} \arcsin ( \frac{x}{3} ) + \frac{9}{2} ( \frac{x}{3} ) ( \frac{\sqrt{9-x^2}}{3} ) \\~\\
+= \frac{9}{2} \arcsin ( \frac{x}{3} ) + \frac{x \sqrt{9 - x^2}}{2} + C
+$$
+</details>
 
 # Partial Fractions
 
@@ -264,9 +445,7 @@ $$
 3. Solve for unknown constants (algrebra).
 	- Use roots of $x$, systems of equations, etc.
 
-<!--
-**Case 1: Numerator Degree < Denominator Degree with Nonrepeating Linear Factors**
-
+<details><summary>Example: A straightforward example</summary>
 $$
 \text{Solve: } \int \frac{3x+2}{x^3 - x^2 - 2x} dx
 $$
@@ -343,14 +522,100 @@ $$
 =
 - \ln |x| + \frac{4}{3} \ln | x - 2 | - \frac{1}{3} \ln |x + 1| + C
 $$
+</details>
 
-**Case 2: Numerator Degree > Denominator Degree**
+<details><summary>Example: Decomposing with long division</summary>
+$$
+\text{Solve: } \frac{x^2 + 3x + 5}{x + 1} dx
+$$
 
-1. Do long division.
-2. Follow Case 1 or Case 3.
+We can simplify this by using **long division**.
 
-**Case 3: Repeated Linear Terms**
--->
+$$
+x^2 + 3x + 5 \div x + 1 = x + 2 \text{r} 3 \\~\\
+\text{Therefore: } \frac{x^2 + 3x + 5}{x + 1} dx
+= 
+\int x + 2 + \frac{3}{x+1} dx
+$$
+
+Thus, the answer is:
+$$
+\int x + 2 + \frac{3}{x+1} dx
+=
+\frac{x^2}{2} + 2x + 3 \ln |x + 1| + C
+$$
+
+> **Tip**: Remember, when performing long division the result is simply the quotient + remainder / divisor.
+</details>
+
+<details><summary>Example: Repeated linear terms</summary>
+$$
+\text{Solve: } \int \frac{x-2}{(2x-1)^2 (x-1)} dx
+$$
+
+You need to split this in a special way to handle the exponent:
+$$
+\int \frac{x-2}{(2x-1)^2 (x-1)} dx
+=
+\int \frac{A}{2x-1} + \frac{B}{(2x-1)^2} + \frac{C}{x-1} dx
+$$
+
+Now we multiply both sides by the denominator to get the following:
+$$
+\int x-2 dx
+=
+\int A(2x-1)(x-1) + B(x-1) + C(2x-1)^2 dx
+$$
+
+Strategic substitution to find the coefficients:
+$$
+\begin{aligned}
+	x = 1: &
+	\begin{aligned}
+		1-2 &= 0 + 0 + C(2-1)^2 \\
+		-1 &= C
+	\end{aligned} \\~\\
+
+	x = \frac{1}{2}: &
+	\begin{aligned}
+		\frac{1}{2} - 2 &= 0 + B(\frac{1}{2} - 1) + 0 \\
+		- \frac{3}{4} &= -\frac{1}{2} B \\
+		B &= 3
+	\end{aligned} \\~\\
+
+	x = 0: &
+	\begin{aligned}
+		-2 &= A(-1)(-1) + 3(-1) - 1 (-1)^2 \\
+		-2 &= A - 3 - 1 \\
+		A &= 2
+	\end{aligned} \\~\\
+\end{aligned}
+$$
+
+Plug back in coefficients:
+$$
+\int \frac{2}{2x-1} + \frac{3}{(2x-1)^2} - \frac{1}{x-1} dx
+$$
+
+Solve the first two terms with u-sub ($u = 2x - 1$):
+$$
+\begin{aligned}
+&=
+\int \frac{2}{u} \times \frac{1}{2} du
++
+\int \frac{3}{u^2} \times \frac{1}{2} du
+-
+\ln | x - 1 | 
++ C
+\\
+&=
+\ln | u | +  \frac{3}{2} \times \frac{u^{-3}}{-3} - \ln | x - 1 | + C
+\\
+&=
+\ln | 2x - 1 | - \frac{3}{2(2x-1)} - \ln | x - 1 | + C
+\end{aligned}
+$$
+</details>
 
 > ### Memorize This
 > $$
