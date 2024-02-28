@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>06 - Classes</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="objects-and-classes">Objects and Classes</h1>
+<p>An object exists in memory and performs a specific task</p>
+<ul class="incremental">
+<li>Created from a class that contains code describing the object.</li>
+<li>Two general capabilities:
+<ul class="incremental">
+<li>Storing Data
+<ul class="incremental">
+<li>Stored data is known as <strong>fields</strong>.</li>
+</ul></li>
+<li>Performing Operations
+<ul class="incremental">
+<li>Operations an object can perform are <strong>methods</strong></li>
+</ul></li>
+</ul></li>
+<li>When a program needs the services of a particular type of object, it creates that object in memory, and then calls that object’s methods as necessary.</li>
+</ul>
+<p><strong>Class</strong>: Code that describes a particular type of object.</p>
+<ul class="incremental">
+<li>Specifies the data than an object can hold (fields) and actions it can perform (methods).
+<ul class="incremental">
+<li>tl;dr It’s the blueprint for objects.</li>
+</ul></li>
+<li>Each object created from a class is an <strong>instance</strong> of the class.
+<ul class="incremental">
+<li>Many objects of the same type can be created at runtime.</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>Remember</strong>:</p>
+<ul class="incremental">
+<li>Data is stored immediately within the variable (memory location) in primitive variables.</li>
+<li>A pointer to another memory location is stored in reference variables.</li>
+</ul>
+</blockquote>
+<p>Creating a Typical Object:</p>
+<ol class="incremental" type="1">
+<li>Declare reference variable
+<ul class="incremental">
+<li>e.g., <code>Random rand</code></li>
+</ul></li>
+<li>Create object in memory and assign memory address to reference variable.
+<ul class="incremental">
+<li>e.g., <code>= new Random();</code></li>
+</ul></li>
+</ol>
+<h1 id="writing-a-class">Writing a Class</h1>
+<p>Suppose we want a <code>Rectangle</code> object to store <code>length</code> and <code>width</code> (fields)</p>
+<ul class="incremental">
+<li>We then and also want these methods:
+<ul class="incremental">
+<li><code>setLength</code>, <code>setWidth</code>, <code>getLength</code>, <code>getWidth</code>, <code>getArea</code></li>
+</ul></li>
+</ul>
+<h2 id="uml-diagram">UML Diagram</h2>
+<p>Unified Modeling Language (UML): Set of standard diagrams for graphically depicting object-oriented systems.</p>
+<ul class="incremental">
+<li><code>+</code> and <code>-</code> determine private and public data</li>
+<li>Return type and input variables are included.</li>
+</ul>
+<p>General Structure:
+<span class="citation" data-cites="startuml">@startuml</span>
+class ClassName {
+Fields
+Methods()
+}
+<span class="citation" data-cites="enduml">@enduml</span></p>
+<p>For our <code>Rectangle</code> example:
+<span class="citation" data-cites="startuml">@startuml</span>
+class Rectangle {
+-length : double
+-width : double
++setLength(l : double) : void
++setWidth(w : double) : void
++getLength() : double
++getWidth() : double
++getArea() : double
+}
+<span class="citation" data-cites="enduml">@enduml</span></p>
+<hr />
+<h2 id="access-specifiers">Access Specifiers</h2>
+<p><strong>Access Specifier</strong>: Java keyword that indicates how a field or method can be accessed.</p>
+<ul class="incremental">
+<li><code>public</code>: Can be accessed by code outside of class.</li>
+<li><code>private</code>: Can only be accessed by method that are members of the same class.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Rectangle</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// These variables can only be accessed by methods in the class</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// == Mutators ==</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Note how this isn&#39;t static b/c we want each instance to have their own setLength method</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// - We only use static for methods that don&#39;t depend on specific instances</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setLength</span> <span class="op">(</span><span class="dt">double</span> l<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setWidth</span> <span class="op">(</span><span class="dt">double</span> w<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        width <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">// == Accessors ==</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getLength</span> <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> length<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getWidth</span> <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> width<span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// == Other ==</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getArea</span><span class="op">()</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> length <span class="op">*</span> width<span class="op">;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h2 id="accessors-and-mutators-setters-and-getters">Accessors and Mutators (Setters and Getters)</h2>
+<p>Because of data hiding, we interact with fields with:</p>
+<ul class="incremental">
+<li><strong>Accessors</strong>: Methods that retrieve the data of fields.</li>
+<li><strong>Mutators</strong>: Methods that modify the data of fields.</li>
+</ul>
+<h1 id="data-hiding">Data Hiding</h1>
+<blockquote>
+<p>Note: Important concept in OOP!</p>
+</blockquote>
+<ul class="incremental">
+<li>Object hides it internal fields
+<ul class="incremental">
+<li>Code outside class must use the class’s public methods to operate on its private fields.</li>
+</ul></li>
+<li>Important for enforcing integrity of an object internal data, especially in large software systems.</li>
+</ul>
+<h1 id="stale-data">Stale Data</h1>
+<p>Data that requires calculation has the potential to become stale.</p>
+<ul class="incremental">
+<li>For example, <code>double area = length * width</code> v.s. <code>public getArea() { return length * width }</code>)</li>
+</ul>
+<h1 id="class-layout-conventions">Class Layout Conventions</h1>
+<p>Common layout:</p>
+<ul class="incremental">
+<li>Fields listed first</li>
+<li>Method listed second
+<ul class="incremental">
+<li>Setters and getter typically groups</li>
+</ul></li>
+<li>Specific layout varies by employer and/or source</li>
+<li>There are tools to help formatting</li>
+</ul>
+<h1 id="instance-fields-and-methods">Instance Fields and Methods</h1>
+<p><strong>Instance Methods</strong>: Methods that are not declared with the <code>static</code> keyword.
+<strong>Instance Fields</strong>: Fields that each instanced object has their own version of.</p>
+<blockquote>
+<p>Note: Both require an object to be created to be used!</p>
+</blockquote>
+<h2 id="using-same-variable-names-in-setters">Using Same Variable Names in Setters</h2>
+<p>Suppose the following setter:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Rectangle</span><span class="op">(</span><span class="dt">double</span> l<span class="op">,</span> <span class="dt">double</span> w<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    width <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>We can use the <code>this</code> keyword to refer to instance fields with the same names as the arguments:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Rectangle</span><span class="op">(</span><span class="dt">double</span> length<span class="op">,</span> <span class="dt">double</span> width<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">length</span> <span class="op">=</span> length<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">width</span> <span class="op">=</span> width<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h1 id="constructors">Constructors</h1>
+<p><strong>Constructor</strong>: Method that’s automatically called when an object is created.</p>
+<ul class="incremental">
+<li>Typically used to initialize instance fields and perform other object initialization tasks.</li>
+<li>Special properties:
+<ul class="incremental">
+<li>Have same name as the class</li>
+<li>No return type (not even <code>void</code>)
+<ul class="incremental">
+<li>May not return any values</li>
+<li>This is because they aren’t executed by explicit method calls.</li>
+</ul></li>
+<li>Typically public
+<ul class="incremental">
+<li>(If it isn’t public you won’t be able to instantiate your object)</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="constructors-in-uml">Constructors in UML</h2>
+<p>Constructors don’t have their return type listed.</p>
+<p>For our <code>Rectangle</code> example:
+<span class="citation" data-cites="startuml">@startuml</span>
+class Rectangle {
+-length : double
+-width : double
++Rectangle(len:double, w:double)
++setLength(l : double) : void
++setWidth(w : double) : void
++getLength() : double
++getWidth() : double
++getArea() : double
+}
+<span class="citation" data-cites="enduml">@enduml</span></p>
+<h1 id="uninitialized-local-reference-variables">Uninitialized Local Reference Variables</h1>
+<p>We can create reference variables without initializing them.</p>
+<p>e.g.,</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Rectangle</span> box<span class="op">;</span></span></code></pre></div>
+<p>If you try to use an uninitialized local reference variable a compiler error will occur.</p>
+<h1 id="the-default-constructor">The Default Constructor</h1>
+<p>If you don’t write a constructor, Java will provide a default constructor that:</p>
+<ul class="incremental">
+<li>Sets all object’s numeric fields to 0.</li>
+<li>Sets all <code>boolean</code> fields to <code>false</code>.</li>
+<li>Sets all object’s reference variables to <code>null</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: The default constructor exists only when you don’t write a constructor and takes no parameters.</p>
+</blockquote>
+<h1 id="no-arg-constructor">No-Arg Constructor</h1>
+<p><strong>No-Arg Constructor</strong>: A constructor that doesn’t accept arguments.</p>
+<ul class="incremental">
+<li>Often used with other overloaded constructors.</li>
+</ul>
+<blockquote>
+<p>Note: A No-Arg constructor <span class="math inline">\ne</span> the default constructor.</p>
+</blockquote>
+<h1 id="passing-objects-as-arguments">Passing Objects as Arguments</h1>
+<p>When passing an argument, the object;s memory address is what’s actually passed into the parameter variable.</p>
+<ul class="incremental">
+<li>The receiving method thus has access to the object through the reference variable.</li>
+</ul>
+<h1 id="overloading-methods-and-constructors">Overloading Methods and Constructors</h1>
+<p><strong>Method Overloading</strong>: When two or more methods have the same name but different argument lists.</p>
+<ul class="incremental">
+<li>Also applies to constructors.</li>
+<li>Useful for providing multiple ways to perform the same operation.</li>
+</ul>
+<p>e.g.,</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Rectangle</span><span class="op">(</span><span class="dt">double</span> length<span class="op">,</span> <span class="dt">double</span> width<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">length</span> <span class="op">=</span> length<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">width</span> <span class="op">=</span> width<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Rectangle</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">length</span> <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">width</span> <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h1 id="method-signature-and-binding">Method Signature and Binding</h1>
+<p><strong>Method Signature</strong>:</p>
+<ul class="incremental">
+<li>Consists of the method’s name and the data types of the method’s parameters
+<ul class="incremental">
+<li>Method parameter order matters (e.g., <code>add(int,string)</code> <span class="math inline">\ne</span> <code>add(string,int)</code>)</li>
+</ul></li>
+<li>Return type is not part of the signature.</li>
+</ul>
+<p>For example, here are the method signatures of the <code>Rectangle</code> examples in the previous section:</p>
+<pre><code>Rectangle(double,double)
+Rectangle()</code></pre>
+<p><strong>Binding</strong>: The process of bathing a method call with the correct method</p>
+<ul class="incremental">
+<li>Compiler uses method signature to determine which overloaded method to bind the call to.</li>
+</ul>
+<h1 id="bankaccount-example"><code>BankAccount</code> Example</h1>
+<p>Here’s a class that demonstrates overloaded methods and constructors.</p>
+<p><span class="citation" data-cites="startuml">@startuml</span>
+class BankAccount {
+-balance : double
++BankAccount()
++BankAccount(startBalance:double)
++BankAccount(str:String)
++deposit(amount:double):void
++deposit(str:String):void
++withdraw(amount:double):void
++widhdraw(str:String):void
++setBalance(b:double):void
++setBalance(str:String):void
++getBalance():double
+}
+<span class="citation" data-cites="enduml">@enduml</span></p>
+<h1 id="scope-of-instance-fields">Scope of Instance Fields</h1>
+<p>Variables declared as instance fields can be accessed by any instance method in the same class as the field.</p>
+<ul class="incremental">
+<li>If it’s declare with <code>public</code> access specifier, it can also be accessed by code outside the class, which should be avoided because it goes against data hiding.</li>
+</ul>
+<h1 id="shadowing">Shadowing</h1>
+<p>A parameter variable, in effect, is a local variable.</p>
+<ul class="incremental">
+<li>Inside a method, variable names must be unique
+<ul class="incremental">
+<li><strong>Shadowing</strong>: When a local variable (parameter variable) override an instance field’s variable of the same name.
+<ul class="incremental">
+<li>Shadowing without using <code>this</code> is discouraged.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="packages-and-import-statements">Packages and <code>import</code> Statements</h1>
+<p><strong>Package</strong>: Group of related classes.</p>
+<ul class="incremental">
+<li>Classes in the Java API are organized into packages.
+<ul class="incremental">
+<li>Can be added through <code>import</code> statements, like so:
+<ol class="incremental" type="1">
+<li>Explicit imports (specific class)</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Scanner</span><span class="op">;</span></span></code></pre></div>
+<ol class="incremental" start="2" type="1">
+<li>Wildcard imports (whole package)</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.*;</span></span></code></pre></div></li>
+</ul></li>
+<li>The <code>java.lang</code> package is automatically made available to any Java class (e.g., <code>System</code>, <code>String</code>)</li>
+</ul>
+<h2 id="some-java-standard-packages">Some Java Standard Packages</h2>
+<ul class="incremental">
+<li><code>java.io</code>: Input/output</li>
+<li><code>java.lang</code>: Java language</li>
+<li><code>java.net</code>: Network communications</li>
+<li><code>java.security</code>: Security</li>
+<li><code>java.sql</code>: SQL databases</li>
+<li><code>java.text</code>: Formatting text</li>
+<li><code>java.util</code>: Various utility classes (e.g., <code>Scanner</code>, <code>random</code>)</li>
+</ul>
+<h1 id="the-tostring-method">The <code>toString</code> Method</h1>
+<ul class="incremental">
+<li>Returns a string representing the state of an object.</li>
+<li>Can be called explicitly or implicitly.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Rectangle</span> box <span class="op">=</span> <span class="kw">new</span> <span class="bu">Rectangle</span><span class="op">();</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Explicitly calling toString()</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>box1<span class="op">.</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Implicitly calling toString()</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>box1<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>toString</code> can also be called implicitly whenever you concatenate the object with a string (e.g., <code>"The rectangle data is: " + box1</code>)</li>
+<li>Default <code>toString</code> method will return class name and hash of memory address of the object.</li>
+</ul>
+<h1 id="static-class-members">Static Class Members</h1>
+<p><strong>Static fields</strong> and <strong>static methods</strong> don’t belong to a single instance of a class.</p>
+<ul class="incremental">
+<li>Class <em>doesn’t</em> have to be instantiated to eve use the class’s static fields.</li>
+<li>Static methods can only operate on static fields.</li>
+</ul>
+<p>To invoke a static method or field, the class name is used instead of an instance name, like so:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Class Name: Math</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Static Method: sqrt()</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> x <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span><span class="fl">25.0</span><span class="op">);</span></span></code></pre></div>
+<h2 id="static-fields">Static Fields</h2>
+<p>To declare a static field, put <code>static</code> keyword between access specifier (<code>private</code>/<code>public</code>) and field type (e.g., <code>int</code>, <code>double</code>), like so:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> instanceCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
+<ul class="incremental">
+<li>The field is initialized only once, every instantiation of the class shares a single copy of the static field.</li>
+</ul>
+<h2 id="static-methods">Static Methods</h2>
+<p>Static methods can be declared by putting <code>static</code> between access specifier and return type, like so:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">double</span> <span class="fu">milesToKilos</span><span class="op">(</span><span class="dt">double</span> miles<span class="op">)</span></span></code></pre></div>
+<ul class="incremental">
+<li>Convenient because they can be called at the class level</li>
+<li>Typically used to create <strong>utility classes</strong> (e.g., <code>Math</code>, Java Standard Library) and have no need to collect and store data.</li>
+<li><strong>Cannot</strong> refer to non-static members of the class</li>
+<li>You can return references to objects like normal functions.</li>
+</ul>
+<h1 id="the-equals-method">The <code>equals</code> Method</h1>
+<p>Like <code>toString</code>, all objects have a default <code>equals</code> method that compares memory addresses of the objects like the <code>==</code> operator.</p>
+<ul class="incremental">
+<li>Default <code>equals</code> doesn’t compare the contents of objects (you can implement it yourself, though)</li>
+</ul>
+<h1 id="methods-that-copy-objects">Methods that Copy Objects</h1>
+<p>Two ways to copy an object:</p>
+<ol class="incremental" type="1">
+<li><strong>Reference-Only Copy</strong>: Copy memory address of object into reference variable.</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Reference-Only Copy</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Stock company1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Stock</span><span class="op">(</span><span class="st">&quot;XYZ&quot;</span><span class="op">,</span> <span class="fl">9.62</span><span class="op">);</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>Stock company2 <span class="op">=</span> company1<span class="op">;</span></span></code></pre></div>
+<ol class="incremental" start="2" type="1">
+<li><strong>Deep Copy</strong>: Copy values into a new instance of the class.</li>
+</ol>
+<h2 id="copy-constructors">Copy Constructors</h2>
+<p>A constructor that accepts an existing object of the same class and clones it.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Copy Constructor</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="fu">Stock</span><span class="op">(</span>Stock orig<span class="op">)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">symbol</span> <span class="op">=</span> orig<span class="op">.</span><span class="fu">getSymbol</span><span class="op">();</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">sharePrice</span> <span class="op">=</span> orig<span class="op">.</span><span class="fu">getSharePrice</span><span class="op">();</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Deep Copy</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Stock company1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Stock</span><span class="op">(</span><span class="st">&quot;XYZ&quot;</span><span class="op">,</span> <span class="fl">9.62</span><span class="op">);</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Stock company2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Stock</span><span class="op">(</span>company1<span class="op">):</span></span></code></pre></div>
+<h1 id="null-references">Null References</h1>
+<p><strong>Null Reference</strong>: Reference variable that points to nothing.</p>
+<ul class="incremental">
+<li>We can’t perform any operations on null references (will cause runtime error).</li>
+<li>We can test for null references before trying to use references, like so:</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">!=</span> nul<span class="op">)</span> <span class="op">{</span> <span class="co">/* (do something with x) */</span> <span class="op">}</span></span></code></pre></div>
+<h1 id="this-reference"><code>this</code> Reference</h1>
+<p><strong><code>this</code> Reference</strong>: Name an object can use to refer to itself.</p>
+<ul class="incremental">
+<li>Can be used to overcome shadowing and allow a parameter to have same name as instance field.</li>
+<li>Can be used to call constructor from another constructor.
+<ul class="incremental">
+<li>Allows for elaborate constructor chaining.</li>
+<li>If used in a constructor, <code>this</code> must be the first statement in the constructor.</li>
+</ul></li>
+</ul>
+<h1 id="garbage-collection">Garbage Collection</h1>
+<p>Unused objects should be destroyed to free the memory they consumed.</p>
+<ul class="incremental">
+<li>Java handles all memory operations for us.
+<ul class="incremental">
+<li>We just have to set the reference to <code>null</code> for Java to garbage collect it.
+<ul class="incremental">
+<li>Remember that <em>all</em> reference variables need to be set to <code>null</code>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h1 id="finalize-method"><code>finalize</code> Method</h1>
+<p>If an object has a method with the signature—</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">finalize</span><span class="op">()</span></span></code></pre></div>
+<p>—It will run prior to the garbage collector reclaiming its memory.
+- Remember that we can’t tell when <code>finalize</code> will actually be run, because the garbage collector is a background thread that runs periodically.</p>
+<h1 id="aggregation">Aggregation</h1>
+<p><strong>Object Aggregation:</strong> Making an instance of one class a field in another class.</p>
+<ul class="incremental">
+<li>Creates a “has a” relationship between objects.</li>
+</ul>
+<p>Example UML Diagram:
+<span class="citation" data-cites="startuml">@startuml</span>
+class BankAccount {
+-balance : double
+-assignedManager : Manager
+-preferredBranch : Branch
++BankAccount()
++BankAccount(startBalance:double)
++BankAccount(str:String)
++deposit(amount:double):void
++deposit(str:String):void
++withdraw(amount:double):void
++widhdraw(str:String):void
++setBalance(b:double):void
++setBalance(str:String):void
++getBalance():double
+}</p>
+<p>class Manager extends BankAccount {
+-lastName : String
+-firstName : String
+-phone : String
++Manager(fullName:String,phone:String):void
++getName():String
++getPhone():String
+}</p>
+<p>class Branch extends BankAccount {
+-location : String
+Branch(location : String):void
+getLocation():String
+}
+<span class="citation" data-cites="enduml">@enduml</span></p>
+</body>
+</html>

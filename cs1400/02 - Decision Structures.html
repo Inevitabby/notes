@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02 - Decision Structures</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="the-if-statement">The <code>if</code> Statement</h1>
+<p>Decides whether or not a section of code executes.</p>
+<ul class="incremental">
+<li>Uses a <code>boolean</code> to decide</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span><span class="dt">boolean</span> expression is <span class="kw">true</span><span class="op">)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    execute next statement</span></code></pre></div>
+<h2 id="flowcharts">Flowcharts</h2>
+<p>If statements can be modeled as a flow chart.</p>
+<h2 id="one-line-style">One-line Style</h2>
+<p>This—</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;</span> <span class="dv">95</span><span class="op">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    grade <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span></code></pre></div>
+<p>—is functionally equivalent to:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>average <span class="op">&gt;</span> <span class="dv">95</span><span class="op">)</span> grade <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span></code></pre></div>
+<h2 id="block-if-statements">Block <code>if</code> Statements</h2>
+<p>Curly braces are used to group conditionally executed statements.</p>
+<p>e.g.,</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>expression<span class="op">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    statement1<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    statement2<span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<blockquote>
+<p><strong>Note</strong>: Some trick questions will leave out the curly braces but indent blocks to look like they are conditionally executed when only the first line is conditional.</p>
+</blockquote>
+<h1 id="relational-operators-and-boolean-expressions">Relational Operators and Boolean Expressions</h1>
+<p><strong>Boolean Expression</strong>: Any variable or calculation that results in a true or false condition.</p>
+<p>Typically, we’ll use relational operators in boolean expressions because they return true or false.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Relational Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&gt;</td>
+<td>is greater than</td>
+</tr>
+<tr class="even">
+<td>&lt;</td>
+<td>is less than</td>
+</tr>
+<tr class="odd">
+<td>&gt;=</td>
+<td>is greater than or equal to</td>
+</tr>
+<tr class="even">
+<td>&lt;=</td>
+<td>is less than or equal to</td>
+</tr>
+<tr class="odd">
+<td>==</td>
+<td>is equal to</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td>is not equal to</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Reminder</strong>: <code>=</code> is the assignment operator, <code>==</code> is the comparison operator!</p>
+</blockquote>
+<h1 id="flag">Flag</h1>
+<p>Flag: <code>boolean</code> variable that monitors some condition in a program</p>
+<ul class="incremental">
+<li>When a condition is true, flag is set to <code>true</code></li>
+<li>e.g.,</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">boolean</span> isPrime <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span><span class="dv">5</span> <span class="op">%</span> <span class="dv">4</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    isPrime <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span><span class="dv">5</span> <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    isPrime <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span><span class="dv">5</span> <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    isPrime <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>isPrime<span class="op">)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;5 is prime&quot;</span><span class="op">);</span></span></code></pre></div>
+<h1 id="comparing-characters">Comparing Characters</h1>
+<p>Characters can be tested with relational operators.</p>
+<ul class="incremental">
+<li>Characters are stored in memory using the Unicode character format
+<ul class="incremental">
+<li>Unicode is stored as a 16-bit number</li>
+</ul></li>
+<li>Characters a <strong>ordinal</strong>, they have an order in the Unicode character set
+<ul class="incremental">
+<li>Because characters are ordinal, they can be compared to each other.
+<ul class="incremental">
+<li>e.g., “A” is represented by 65, “B” is represented by 66, etc. so we don’t even need to reference the Unicode table to compare chars.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span> x <span class="op">=</span> <span class="ch">&#39;A&#39;</span><span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>x <span class="op">&lt;</span> <span class="ch">&#39;B&#39;</span><span class="op">)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;A is less than B&quot;</span><span class="op">);</span></span></code></pre></div>
+<h1 id="if-else-statements">if-else Statements</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>expression<span class="op">)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    statementTrue<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    statementFalse<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<p>Note: Curly braces not required if there is only one statement</p>
+<ul class="incremental">
+<li>But they can help with readability</li>
+</ul>
+</blockquote>
+<h2 id="nested-if-statements">Nested <code>if</code> statements</h2>
+<p><strong>Nested <code>if</code> Statement:</strong> An <code>if</code> statement inside another if statement (single or block, doesn’t matter)</p>
+<ul class="incremental">
+<li>Executed only if the outer <code>if</code> statement is true.</li>
+</ul>
+<p><img src=".images/nested-if-flow.png" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>coldOutside<span class="op">)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>snowing<span class="op">)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">wearParka</span><span class="op">();</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">wearJacket</span><span class="op">();</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">wearShorts</span><span class="op">();</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h1 id="if-else-if-statements"><code>if-else-if</code> Statements</h1>
+<ul class="incremental">
+<li>Makes certain types of nested decision logic simpler to write.</li>
+<li>Nested <code>if</code> can become very complex.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>expression<span class="op">)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// a</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>expression<span class="op">)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// b</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>expression<span class="op">)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">// c</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span><span class="op">{</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">// catch whatever</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Note how only one block can be executed</p>
+<h1 id="logical-operators">Logical Operators</h1>
+<p>Two logical (AND, OR) and one unary (NOT) operators are provided in Java.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&amp;&amp;</code></td>
+<td>AND</td>
+</tr>
+<tr class="even">
+<td><code>||</code></td>
+<td>OR</td>
+</tr>
+<tr class="odd">
+<td><code>!</code></td>
+<td>NOT</td>
+</tr>
+</tbody>
+</table>
+<h1 id="the-system.out.printf-method">The <code>System.out.printf</code> Method</h1>
+<p>Print formatted string.</p>
+<ul class="incremental">
+<li>Format specifier syntax: <code>%[flags][width][.precision]conversion</code>
+<ul class="incremental">
+<li><code>Flags</code>: Padding with zeros, left-justifying, comma separators</li>
+<li><code>Width</code>: Minimum field width for value</li>
+<li><code>.precision:</code> Number of decimal places number should be rounded to</li>
+<li><code>Conversion</code>: <code>f</code> for floating-point, <code>d</code> for decimal integer, <code>s</code> for string</li>
+</ul></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> grossPay <span class="op">=</span> <span class="fl">874.12</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;Your pay is </span><span class="sc">%f</span><span class="st"> </span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> grossPay<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>%f</code>: Format specifier. Indicates that a floating-point value will be used.</li>
+</ul>
+<hr />
+<div class="sourceCode" id="cb11"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> grossPay <span class="op">=</span> <span class="fl">874.12111</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;Your pay is </span><span class="sc">%.2f</span><span class="st"> </span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> grossPay<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>%.2f</code>: Format specifier. Indicates that a floating-point value will be printed, rounded to two decimal placed.</li>
+</ul>
+<hr />
+<div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> grossPay <span class="op">=</span> <span class="fl">5874.12111</span><span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;Your pay is </span><span class="sc">%,.2f</span><span class="st"> </span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> grossPay<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>%,.2f</code>: Format specifier. Indicates that a floating-point value will be printed, rounded to two decimal placed, with commas separating thousands</li>
+</ul>
+<hr />
+<div class="sourceCode" id="cb13"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name <span class="op">=</span> <span class="st">&quot;Ringo&quot;</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;Your name is </span><span class="sc">%s</span><span class="st">&quot;</span><span class="op">,</span> name<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>%s</code>: Format specifier. Indicates that a string will be printed.</li>
+</ul>
+<hr />
+<div class="sourceCode" id="cb14"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> number <span class="op">=</span> <span class="dv">9</span><span class="op">;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">printf</span><span class="op">(</span><span class="st">&quot;The value is </span><span class="sc">%6d</span><span class="st">&quot;</span><span class="op">,</span> number<span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>%6d</code>: Format specifier. Indicates that an integer will appear in a field that is 6 spaces wide.</li>
+</ul>
+<h1 id="string.format"><code>String.format</code></h1>
+<p>Works exactly like <code>System.out.printf</code>, except it returns a reference to the formatted string instead of printing to the console.</p>
+<h1 id="comparing-string-objects">Comparing <code>String</code> Objects</h1>
+<blockquote>
+<p>Common Mistake: Trying to compare two <code>String</code> objects with relational operators (<code>==</code>)</p>
+<ul class="incremental">
+<li>Objects are just pointers to their location in RAM; you need to use object methods to compare strings.</li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name1 <span class="op">=</span> <span class="st">&quot;john&quot;</span><span class="op">,</span> name2 <span class="op">=</span> <span class="st">&quot;John&quot;</span><span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name3 <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;John&quot;</span><span class="op">);</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name4 <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">(</span><span class="st">&quot;John&quot;</span><span class="op">);</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>name1</code> and <code>name2</code> share the same memory address; <code>name3</code> and <code>name4</code> each have their own unique pointers.</li>
+</ul>
+<p>Common methods:</p>
+<ul class="incremental">
+<li><code>equals()</code></li>
+<li><code>equalsIgnoreCase()</code></li>
+<li><code>compareTo()</code>
+<ul class="incremental">
+<li>Compares string lexicographically (character by character)</li>
+</ul></li>
+<li><code>compareToIgnoreCase()</code></li>
+</ul>
+<h1 id="the-conditional-operator">The Conditional Operator</h1>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>BooleanExpression <span class="op">?</span> Value1 <span class="op">:</span> Value2</span></code></pre></div>
+<ul class="incremental">
+<li>Forms a conditional expression
+<ul class="incremental">
+<li>Is a ternary (three operand) operator</li>
+<li>Can be used to simple statements that work like <code>if-else</code></li>
+</ul></li>
+<li>If <code>BooleanExpression</code> is <code>true</code>, value of conditional expression is <code>Value1</code></li>
+<li>If <code>BooleanExpression</code> is <code>false</code>, value of conditional expression is <code>Value2</code></li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x <span class="op">&gt;</span> y <span class="op">?</span> <span class="dv">10</span> <span class="op">:</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">// functional equivalent:</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>x<span class="op">&gt;</span>y<span class="op">)</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span></code></pre></div>
+<h1 id="the-switch-statement">The <code>switch</code> Statement</h1>
+<p>Allows you to use value of variable/expression to determine how a program will branch.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">switch</span> <span class="op">(</span>SwitchExpression<span class="op">)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> CaseExpression<span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> CaseExpression<span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> CaseExpression<span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">default</span><span class="op">:</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">// blah</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul class="incremental">
+<li><code>SwitchExpression</code> can be a <code>char</code>, <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, or <code>String</code></li>
+<li>If <code>SwitchExpressions</code> matched the <code>CaseExpression</code>, the statements between the colon and <code>break</code> will be executed.</li>
+</ul>
+<h2 id="the-case-statement">The <code>case</code> Statement</h2>
+<ul class="incremental">
+<li><code>break</code> ends the <code>case</code>
+<ul class="incremental">
+<li><code>break</code> is optional, this allows the program to “fall through” statements</li>
+</ul></li>
+<li><code>default</code> section is optional, executed if no <code>CaseExpression</code> matches</li>
+</ul>
+</body>
+</html>
