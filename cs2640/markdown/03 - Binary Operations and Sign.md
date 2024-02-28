@@ -41,9 +41,10 @@
 ## Introduction
 
 **Q**: In the decimal system, we can denote sign by using the `+` and `-` symbol (e.g., `+5`, `-5`). How can we do the same for binary?
-	* A: Let the MSBit (aka: signed bit) denote whether the number is positive or negative.
-		+ `0`: Positive number
-		+ `1`: Negative number
+
+**A**: Let the MSBit (aka: signed bit) denote whether the number is positive or negative.
++ `0`: Positive number
++ `1`: Negative number
 
 There are two ways to denote sign extension in binary:
 
@@ -51,6 +52,7 @@ There are two ways to denote sign extension in binary:
 
 **One's Complement**:
 - Older standard.
+- A naive and bad standard.
 
 **How-to Make a Value Negative in One's Complement:**
 - Apply `NOT` to every bit.
@@ -154,10 +156,11 @@ There are two ways to denote sign extension in binary:
 - 1 = Odd
 - 0 = Even
 
-> **How-to Mask the LSBit**
-> - Q: How do we turn `1011` into the LSBit (`0001`)?
->	- A: Use boolean logic ($\land$) to mask the LSBit!
->	$$1011 \land 0001 = 1$$
+> **How-to Mask the LSBit**\
+> **Q**: How do we turn `1011` into the LSBit (`0001`)?
+> 
+> **A**: Use boolean logic ($\land$)!
+> $$1011 \land 0001 = 1$$
 
 # Binary Addition (2's Complement)
 
@@ -187,7 +190,7 @@ Subtraction is just addition two's complement.
 
 In UNIX, time is tracked as the number of milliseconds since 00:00:00 Jan 1, 1970 GMT (Greenwich Mean Time) / UTC (Universal Time Code).
 - The counter increments by one every millisecond.
-- After $2^32$ milliseconds, integer overflow will occur if the time is being stored on 32 bits.
+- After $2^{32}$ milliseconds, integer overflow will occur if the time is being stored on 32 bits.
 	* This is approximately 2038.
 
 ## UNIX File Dates
