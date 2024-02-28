@@ -466,7 +466,17 @@ $$
 $$
 \boxed{
 	\text{Arc Length: }
-	\int_a^b \sqrt{1 + (f'(x))^2} dx
+	\int_a^b \sqrt{1 + f'(x)^2} dx
 } \\
 \small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
 $$
+
+# Surface Area
+
+$$
+\boxed{
+	\text{Surface Area of Solid of Revolution: }
+	\int_a^b 2 \pi f(x) \sqrt{1 + f'(x)^2} dx
+}
+$$
+
