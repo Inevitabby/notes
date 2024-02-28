@@ -459,4 +459,12 @@ $$
 \textit{with $0 \le f(x) \le g(x), \forall x \ge q$} \\~\\
 $$
 
+# Arc Length
 
+$$
+\boxed{
+	\text{Arc Length: }
+	\int_a^b \sqrt{1 + (f'(x))^2} dx
+} \\
+\small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
+$$
