@@ -49,11 +49,13 @@ We count the number of basic operations.
 > **Example**: Counting basic operations
 > ```java
 > int sum = 0;
-> for (int i = 1; i<=n; i++)
-> 	for (int j = 1; i<=n; i++)
+> for (int i = 1; i<=n; i++) {
+> 	for (int j = 1; i<=n; i++) {
 > 		sum++;
+>	}
+> }
 > ```
-> - The basic operation is incrementing `sum`
+> - The basic operation is `sum++;`
 >	- The algorithm is $O(n^2)$
 
 ## Notation
