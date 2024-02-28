@@ -9,7 +9,7 @@ One solution: Linked list.
 
 # Linked Data
 
-> **Related Notes**: <a href="https://inevitabby.codeberg.page/notes/cs2600/18%20-%20Structs.html#linked-list-using-pointers-and-a-structure">Linked List (CS2600)</a>
+> **Related Notes**: <a href="https://inevitabby.gitlab.io/notes/cs2600/18%20-%20Structs.html#linked-list-using-pointers-and-a-structure">Linked List (CS2600)</a>
 > - *(These notes explain it better than the analogy)*
 >	- tl;dr: We're making a singly-linked list, which doesn't have a tail (you can't traverse backwards).
 

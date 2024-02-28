@@ -4,7 +4,7 @@ is_about_page: true
 
 <center>
 	<h1 id="about">About</h1>
-	<h5><a href="https://codeberg.org/inevitabby/notes/">Link to Repository</a></h5>
+	<h5><a href="https://gitlab.com/inevitabby/notes/">Link to Repository</a></h5>
 </center>
 
 
@@ -57,7 +57,7 @@ I take most of my notes in plaintext (Markdown) during lecture.
 
 In unrelated news, the source of the incessant click-clacking keyboard driving you insane during lecture has yet to be found.
 
-When I want to upload my note(s) to [this Codeberg repository](https://codeberg.org/inevitabby/notes/), I just add them to a subfolder named `markdown` inside a parent folder, like so:
+When I want to upload my note(s) to [this GitLab repository](https://gitlab.com/inevitabby/notes/), I just add them to a subfolder named `markdown` inside a parent folder, like so:
 ```
 |-cs1300
 |---markdown
@@ -91,10 +91,10 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 
 - [`pandoc`](https://pandoc.org): Universal document converter. Converts the Markdown to HTML.
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
-- [Codeberg Pages](https://codeberg.page/): Codeberg lets you host static websites from Git repositories on Codeberg.
+- [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): GitLab lets you host static websites from Git repositories on GitLab.
 - [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
 - [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plain text.
-	* A simple Lua filter ([`plantuml.lua`](https://codeberg.org/Inevitabby/notes/src/branch/pages/.util/plantuml.lua)) is used to replace all convert all embedded PlantUML into embedded SVGs. 
+	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to replace all convert all embedded PlantUML into embedded SVGs. 
 
 **Gentoo Packages**
 

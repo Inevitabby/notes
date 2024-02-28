@@ -1027,3 +1027,88 @@ y &= \frac{-27}{10} \times \frac{2}{9} = - \frac{3}{5}
 \end{aligned}
 $$
 </details>
+
+<details><summary>Example: Physical application (mass of rod)</summary>
+We can use these equations to solve for physical problems *(not to be confused with real-world applications)*, like when your project manager gives you this question:
+
+**Q**: From $x = \frac{\pi}{2}$ to $x = \pi$, the density of a rod is given by $\rho (x) = \sin x$. Find the total mass of the rod.
+
+**A**: 
+
+$$
+\begin{aligned}
+	m &= \int_{\frac{\pi}{2}}^\pi \sin x dx \\
+	&= - \cos \pi - + \cos \frac{\pi}{2} \\
+	&= 1
+\end{aligned}
+$$
+</details>
+
+## Physical Applications
+
+$$
+\boxed{
+	\text{Mass of Annulus: } 
+	m \approx 
+	\int 2 \pi x \rho (x) dx
+}
+$$
+
+<details><summary>Example: Annulus</summary>
+**Q**: If $\rho (x) = \sqrt{x}$ is radial density of a disk of radius 4, find its mass.
+
+**A:**
+$$
+\begin{aligned}
+m &= \int_0^4 2 \pi x \sqrt{x} dx \\
+&= \int_0^4 2 \pi x^{3/2} dx \\
+&= 2 \pi \times \frac{2}{5} [ 4^{5/2} ] \\
+&= \frac{128 \pi}{5}
+\end{aligned}
+$$
+</details>
+
+$$
+\boxed{
+	\text{Work: } W = \int_a^b F(x) dx
+} \\~\\
+\boxed{
+	\text{Hooke's Law: } F = kx
+}
+$$
+
+<details><summary>Why?</summary>
+$$
+\text{Work $=$ Force $\times$ Distance} \\~\\
+f = ma
+$$
+
+> **Note**: Hooke's law says that the force required to stretch a spring from equilibrium is proportional to distance from equilibrium $x$.
+</details>
+
+<details><summary>Example: Work on a spring</summary>
+**Q:** It takes 10N of force in negative direction to compress a spring 0.2m from equilibrium.
+- How much work is done to stretch spring 0.5 m from equilibrium?
+
+**A**: 
+$$
+\begin{aligned}
+	F &= 10 \\
+	x &= -0.2
+\end{aligned} \\~\\
+F = kx \\
+-10 = k (-0.2) \\
+k = \frac{10}{0.2} = 50
+$$
+- Thus, $F = 50x$
+
+$$
+\begin{aligned}
+W &= \int_0^{.5} 50 x dx \\
+&= 25 x^2 |_0^{.5} \\
+&= \frac{25}{4}
+\end{aligned}
+$$
+- Or, 6.25 Joules of work
+</details>
+

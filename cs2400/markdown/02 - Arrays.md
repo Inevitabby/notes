@@ -1,6 +1,6 @@
 # Arrays
 
-> **Relevant Notes**: [CS1400 - Arrays](https://inevitabby.codeberg.page/notes/cs1400/07%20-%20Arrays.html)
+> **Relevant Notes**: [CS1400 - Arrays](https://inevitabby.gitlab.io/notes/cs1400/07%20-%20Arrays.html)
 
 ```java
 // Reference variable

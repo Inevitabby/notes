@@ -13,7 +13,7 @@ title: Midterm I Review
 
 # Number Systems & Conversions
 
-> **Notes**: [Number Systems and Conversions (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html)
+> **Notes**: [Number Systems and Conversions (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html)
 
 ## Decimal to Binary
 
@@ -155,7 +155,7 @@ Byte
 
 # Binary Operations
 
-> **Notes**: [Binary Operations (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/03%20-%20Binary%20Operations%20and%20Sign.html)
+> **Notes**: [Binary Operations (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/03%20-%20Binary%20Operations%20and%20Sign.html)
 
 ## Bit Shifts
 
@@ -235,7 +235,7 @@ Byte
 
 # Computer Systems
 
-> **Notes**: [Computer Systems (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/04%20-%20Computer%20Systems.html), [Von Neumann (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/05%20-%20Von%20Neumann%20Architecture.html)
+> **Notes**: [Computer Systems (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/04%20-%20Computer%20Systems.html), [Von Neumann (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/05%20-%20Von%20Neumann%20Architecture.html)
 
 **Q29**: Which is NOT a main functional unit of the CPU?
 a. Register File
@@ -338,19 +338,19 @@ $2^n$ bytes
 
 # MIPS Architecture
 
-> **Notes**: [MIPS Architecture (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/06%20-%20MIPS.html)
+> **Notes**: [MIPS Architecture (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/06%20-%20MIPS.html)
 
 # Instruction Set Architecture
 
-> **Notes**: [ISA (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/07%20-%20ISA.html)
+> **Notes**: [ISA (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/07%20-%20ISA.html)
 
 # Assembler, Linker, Loader
 
-> **Notes**: [Assembler, Linker, Loader (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/08%20-%20Assembler%20Linker%20Loader.html)
+> **Notes**: [Assembler, Linker, Loader (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/08%20-%20Assembler%20Linker%20Loader.html)
 
 # MIPS Assembly
 
-> **Notes**: [MIPS Assembly (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/09%20-%20SPIM.html)
+> **Notes**: [MIPS Assembly (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/09%20-%20SPIM.html)
 
 <script>
 // === General-Purpose Utility Functions ===

@@ -203,7 +203,7 @@ TODO
 
 # Encoding & Decoding Instructions
 
-> **Related Notes**: [Hexadecimal, Number Systems (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html#hexadecimal)
+> **Related Notes**: [Hexadecimal, Number Systems (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html#hexadecimal)
 
 > **Example**: Encoding an assembly instruction into hexadecimal
 > ```mips
