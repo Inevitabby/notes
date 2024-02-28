@@ -1,0 +1,82 @@
+---
+title: Midterm I Review
+---
+
+<noscript>
+	<h1 style="color:red">THIS PAGE USES JAVASCRIPT TO GENERATE QUESTIONS, PLEASE TURN ON JAVASCRIPT!</h1>
+	$$:($$
+	<!--^ An exceedingly silly way to tell Pandoc to include KaTeX in the header-->
+</noscript>
+
+# Intro / Arrays
+
+**Q**: What 
+
+<details><summary>Answer</summary>
+<p id="a1"></p>
+</details>
+
+# Designing Classes
+
+# Abstract Data Types
+
+**Q**: An implementation of an ADT with a programming language is called a/an:
+a. Abstract Data Type
+b. Data Structure
+c. Collection
+d. Primitive
+
+<details><summary>Answer</summary>
+b. Data Structure
+</details>
+
+**Q**: To accommodate entries of any class, the *Bag* interface and implementation use __ in Java.
+a. An inherited type
+b. A generic type
+c. A sub class type
+d. All of the above
+
+<details><summary>Answer</summary>
+b. A generic type
+</details>
+
+**Q**: When using abstraction as a design principle you should focus on:
+a. What you want to do with the data
+b. How the data is stored
+c. How the data is manipulated
+d. All of the above
+
+<details><summary>Answer</summary>
+a. What you want to do with the data
+</details>
+
+**Q**: A language-independent specification for a group of values and operations on those values is called a/an:
+a. Collection
+b. Data Structure
+c. Abstract Data Type
+d. Primitive
+
+<details><summary>Answer</summary>
+b. Data Structure
+</details>
+
+## Bag ADT
+
+- Using array
+- Using SLI
+
+# Generics
+
+- Ability to write complete Java generic interfaces and classes.
+- Remember to use interface when declaring variables?
+	* e.g., `new BagInterface...` (good) v.s. `new ArrayBag...` (bad)
+
+# Iterators
+
+# Algorithm Efficiency
+
+# Stack ADT
+
+- Evaluating algebraic expression
+- Converting Infix -> Postfix, Prefix
+
