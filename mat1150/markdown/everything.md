@@ -1,4 +1,6 @@
-# Calculus II in One Page
+---
+title: "Calculus II in One Page"
+---
 
 # Integration by Parts
 
