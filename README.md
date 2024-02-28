@@ -6,6 +6,7 @@
 
 - [CS1300: Discrete Structures](cs1300)
 - [CS1400: Introduction to Programming and Problem Solving](cs1400)
+- [CS2600: Systems Programming](cs2600)
 
 ## General Education
 
