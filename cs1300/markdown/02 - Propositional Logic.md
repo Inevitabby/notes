@@ -198,19 +198,20 @@ Deduction method allows for the use of $R$ as an additional hypothesis and thus 
 
 > **Professor's Tip**: Turning implications ($\to$) to disjunctions ($\lor$) (implication rule) gives us more blocks to play with.
 
-# Proving Verbal Arguments
+# Exercises: Writing & Proving Verbal Arguments
 
-**Example: Prove the following verbal argument:**
-- "Russia was a superior power, and either France was not strong or Napoleon made an error. Napoleon did not make an error, but if the army did not fail, then France was strong. Hence the army failed and Russia was a superior power."
+> **Instructions**: Rewrite each verbal argument as a wff, then validate the wff.
 
-Propositional Form:
-- A: Russian was a superior power
-- B: France was strong
-- B' : France was not strong
-- C: Napoleon made an error
-- C': Napolean did not make an error
-- D: The army failed
-- D': The army did not fail
+**Problem I**: *"Russia was a superior power, and either France was not strong or Napoleon made an error. Napoleon did not make an error, but if the army did not fail, then France was strong. Hence the army failed and Russia was a superior power."*
+
+Let the statement variables be defined as:
+- $A$: *"Russia was a superior power"*
+- $B$: *"France was strong"*
+- $B'$: *"France was not strong"*
+- $C$: *"Napoleon made an error"*
+- $C'$: *"Napolean did not make an error"*
+- $D$: *"The army failed"*
+- $D'$: *"The army did not fail"*
 
 Translation:
 $[ A \land (B' \lor C)] \land [C' \land (D' \to B)] \to (D \land A)$
@@ -226,4 +227,45 @@ Proof:
 8. $D$, 4, 7, mt
 9. $(D \land A)$, 3, 8, con
 
+---
+
+**Problem II**: *"If the program is efficient, it executes quickly. Either the program is efficient, or it has a bug. However, the program does not execute quickly. Therefore it has a bug. *E, Q ,B*"* 
+
+Let the statement variables be defined as:
+- $E$: *"The program is efficient"*
+- $Q$: *"It executes quickly"*
+- $B$: *"It has a bug"*
+
+Translation:
+$( E \to Q ) \land (E \lor B) \land (\lnot Q \to B)$
+
+By deduction method, prove $( E \to Q ) \land (E \lor B) \land \lnot Q \to B$:
+1. $E \to Q$, hypothesis
+2. $E \lor B$, hypothesis
+3. $\lnot Q$, hypothesis
+4. $\lnot E$, 1,3 modus tollens
+5. $B$ 2,4 disjunctive syllogism
+
+---
+
+**Problem III**: *"The crop is good, but there is not enough water. If there is a lot of rain or not a lot of sun, then there is enough water. Therefore the crop is good and there is a lot of sun. *C, W, R, S*"*
+
+Let the statement variables be defined as:
+- $C$: *"Crop is good"*
+- $W$: *"There is enough water"*
+- $R$: *"There is a lot of rain"*
+- $S$: *"There is a lot of sun"*
+
+Translation:
+$(C \land W') \land [(R \lor S') \to W] \to (C \land S)$
+
+Proof:
+1. $C \land W'$, hypothesis
+2. $(R \lor S') \to W$, hypothesis
+3. $W'$, 1 simplification
+4. $C$, 1 simplification
+5. $(R \lor S')'$ 2,3 disjunctive syllogism
+6. $R' \land S$ 5 de-morgan
+7. $S$ 6 simplification
+8. $C \land S$ 4,7 conjunction
 

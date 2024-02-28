@@ -1,81 +1,45 @@
-# Class Exercises
-
-> **Instructions**: Rewrite each verbal argument as a wff, then validate the wff.
-
-"If the program is efficient, it executes quickly. Either the program is efficient, or it has a bug. However, the program does not execute quickly. Therefore it has a bug. *E, Q ,B*" 
-
-Let the statement variables be defined as:
-- $E$: The program is efficient
-- $Q$: It executes quickly
-- $B$: It has a bug
-
-$( E \to Q ) \land (E \lor B) \land (\lnot Q \to B)$
-
-By deduction method, prove $( E \to Q ) \land (E \lor B) \land \lnot Q \to B$:
-1. $E \to Q$, hypothesis
-2. $E \lor B$, hypothesis
-3. $\lnot Q$, hypothesis
-4. $\lnot E$, 1,3 modus tollens
-5. $B$ 2,4 disjunctive syllogism
-
----
-
-"The crop is good, but there is not enough water. If there is a lot of rain or not a lot of sun, then there is enough water. Therefore the crop is good and there is a lot of sun. *C, W, R, S*"
-
-Let the statement variables be define as:
-- $C$: Crop is good
-- $W$: There is enough water
-- $R$: There is a lot of rain
-- $S$: There is a lot of sun
-
-$(C \land W') \land [(R \lor S') \to W] \to (C \land S)$
-1. $C \land W'$, hypothesis
-2. $(R \lor S') \to W$, hypothesis
-3. $W'$, 1 simplification
-4. $C$, 1 simplification
-5. $(R \lor S')'$ 2,3 disjunctive syllogism
-6. $R' \land S$ 5 de-morgan
-7. $S$ 6 simplification
-8. $C \land S$ 4,7 conjunction
-
-> "Yeah I'm getting a zero on this homework"
-> 
-> — A classmate who has tried nothing, given up, and blames the professor
-
 # Predicate Logic
 
-## Variables, Incomplete Statements, Quantifiers, Predicate, Interpretation Domain
+# Variables in Logic
 
-How do you translate "For every integer x, x>0"?
+> Problem Statement: How do you translate "For every integer $x$, $x>0$"?
 
-Variables in Logic:
-- **Variable**: Lowercase symbol that stands for an individual in a collection or set.
-- e.g., The variable $x$ may stand for one of the days. We may let $x$ = Monday or $x$ = Tuesday, etc.
+**Variable**: Lowercase symbol that stands for an individual in a collection or set.
+* e.g., The variable $x$ may stand for one of the days of the week. We may let $x$ = Monday or $x$ = Tuesday, etc.
 
-**Incomplete Statements**: Sentence containing a variable
+# Incomplete Statements
+
+**Incomplete Statements**: Statement containing one or more variables.
 - Is about the individuals in a definite domain or set.
-- When we replace the variable by the name of an individual in the set we obtain a statement about that individual.
-	* e.g., The truth of the incomplete statement "$x$ has 30 days" isn't known until $x$ gets plugged in (i.e., "April has 30 days")
+- When we replace the variable with an individual in the set, we obtain a statement about that specific individual.
+	* e.g., The truth of the incomplete statement "$x$ has 30 days" isn't known until an $x$ gets plugged in (e.g., "April has 30 days")
 
 > **Tip**: Replace the word "set/domain" with "array/list" if you have a programming background.
 
-**Quantifiers**: Phrases that refer to given quantities, indicating how many objects have a certain property
+# Quantifiers, Predicates, Complete Statements
+
+**Quantifiers**: Phrases that refer to given quantities, indicating how many objects have a certain property.
 - e.g., "for some", "for all", "for every"
 - There are two kinds of quantifiers:
-	1. Universal Quantifier ($\forall$):
+	1. **Universal Quantifier** ($\forall$):
 		- "For all", "given any", "for each", "for every"
-	2. Existential Quantifier ($\exists$):
+	2. **Existential Quantifier** ($\exists$):
 		- "For some", "there exists", "there is a", "for at least one"
 
 **Predicate:** Verbal statement that describes the property of a variable.
 - Usually represented as $P$. Notation $P(x)$ is used to represent some unspecified property of predicate that $x$ may have. e.g.,
 	* $P(x) = x$ has 30 days.
 	* $P($April$)=$ April has 30 days
+- *Note: If we aren't told $x$, $y$, and $Q$ there is no way to evaluate truth!*
 
-Combining the quantifier and predicate, we get a **complete statement** of the form:
+---
+
+Combining the *quantifier* and *predicate*, we get a **complete statement** of the form:
 - $(\forall x) P(x)$ or $(\exists x) P(x)$.
 
-**Interpretation Domain**: Collection of objects that may be chosen.
+## Interpretation Domain
+
+**Interpretation Domain**: Collection of objects that may be chosen in a given predicate WFF.
 - e.g., In homework if we are told "for an integer $x$", we know that we can only plug integers into $x$.
 
 ## Truth Value of Complete Statements
@@ -96,39 +60,24 @@ An interpretation for an expression involving predicates consists of the followi
 - An assignment of a property of the objects in the domain to each predicate in  the expression.
 - An assignment of a particular object to each constant symbol in the expression.
 
-## $n$-ary Predicates
+# $n$-ary Predicates
 
 **Unary Predicates**: Predicates involving properties of single variables
 
 Binary, ternary, and $n$-ary predicates are also possible.
 
-$(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exists a $y$ such that $Q(x,y)$")
-
-# Recap
-
-> **Goal**: Our goal for predicate logic today is to be able to read predicate logic, not solve proofs (yet)
-> - Read left to right
-
-- **Variable**: Lowercase symbol that stands for an individual in a collection or set.
-- **Incomplete Statements**: Sentence containing a variable
-- **Quantifiers**: Phrases that refer to given quantities, indicating how many objects have a certain property
-- There are two kinds of quantifiers:
-	1. **Universal Quantifier ($\forall$):**
-		- "For all", "given any", "for each", "for every"
-	2. **Existential Quantifier ($\exists$):**
-		- "For some", "there exists", "there is a", "for at least one"
-- **Predicate:** Verbal statement that describes the property of a variable.
-	* *Note: If we aren't told $x$, $y$, and $Q$ there is no way to evaluate truth!*
-- **Interpretation Domain**: Collection of objects that may be chosen.
-- **Unary Predicates**: Predicates involving properties of single variables
+> Example: $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. *("For every $x$ there exists a $y$ such that $Q(x,y)$")*
 
 # Predicate Wffs
 
-**Predicate Wffs**: Can be built similar to propositional wffs using logical connectives with predicates and quantifiers.
-- Brackets determine scope of variable
+**Predicate Wffs**: A well-formed formula in predicate logic.
+- Can be built similarly to propositional wffs using logical connectives with predicates and quantifiers.
+- Brackets determine scope of variables
 
 **Free Variable:** Variable without a quantifier
 * Expressions with free variables might not have a truth value.
+
+## Examples: Reading Predicate Wffs
 
 > **Example Predicate Wff:**
 > - $(\forall x)[P(x) \to Q(x)]$
@@ -136,8 +85,8 @@ $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exi
 > - $S(x,y) \land R(x,y)$
 > 
 > Reading the example:
-> - Scope of $(\exists y)$ is $\textcolor{red}{[P(x,y) \lor Q(x,y)]}$
-> - Scope of $\forall x$ is the whole expression ($\textcolor{blue}{((\exists y)... \to R(x))}$)
+> - Scope of $y$ is $\textcolor{red}{[P(x,y) \lor Q(x,y)]}$
+> - Scope of $x$ is $\textcolor{blue}{((\exists y)\textcolor{red}{[P(x,y) \lor Q(x,y)]} \to R(x))}$
 > - We can't tell truth value because we don't have $x$ or $y$ (incomplete wff)
 
 > **Example Predicate Wff:**
@@ -167,7 +116,7 @@ $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exi
 > - $\exist x$ asks us "Is there an $x$ larger than 0 where for all $y$ if x is larger than y, then y is less than or equal to 0"
 > 	* This statement is true for $x=1$, so this statement is true because $\exist$ only needs us to find one case.
 
-# Exercises: Translating Verbal Statements $\leftrightarrow$ Symbolic Form
+# Exercises: Translating Verbal Statements $\to$ Symbolic Form
 
 > **Translate "Every person is nice" to symbolic form:**
 > - Can be rephrased as "for any thing, if it is a person, then it is nice"
@@ -176,7 +125,7 @@ $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exi
 > 	* *Note: "All persons are nice" or "Each person is nice" will have the same symbolic form*
 
 > **Translate "There is a nice person" to symbolic form:**
-> - Can be rephrased is "there exists something that is both a person and nice"
+> - Can be rephrased as "there exists something that is both a person and nice"
 > - Let $\textcolor{red}{P(x)}$ be "$x$ is a person" and $\textcolor{green}{Q(x)}$ be "$x$ is nice":
 > 	* Symbolic form: $(\exist x)[\textcolor{red}{P(x)} \land \textcolor{green}{Q(x)}]$
 > 		+ "For all things, there exists a thing which is a person and nice"
@@ -201,7 +150,7 @@ $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exi
 > 	* $C(x,y)$: "$x$ chases $y$"
 > 
 > Solution: $(\exists x)[D(x) \land (\forall y) [R(y) \to C(x,y)]]$
-> - *Reading the above: There exists an $x$ (where $x$ is a dog) where for all $y$, if $y$ is a rabbit, then the dog will case the rabbit.*
+> - *Reading the above: There exists an $x$ (where $x$ is a dog) where for all $y$, if $y$ is a rabbit, then the dog will chase the rabbit.*
 
 
 > **Write symbolic form for "Only dogs chase rabbits":**
@@ -211,44 +160,46 @@ $(\forall x)(\exists y) Q(x,y)$ is a binary predicate. ("For every $x$ there exi
 > 	* $C(x,y)$: "$x$ chases $y$"
 > 
 > Rephrase: "For anything that chases rabbits, it has to be a dog"
-> - *Since no quantifier is given for rabbits, we assume it to be universal ($\forall$)!>
+> - Since no quantifier is given for rabbits, we assume it is universal ($\forall$)
 > 
 > Solution: $(\forall y)(\forall x)[R(y) \land C(x,y) \to D(x)]$
 > - *Reading the above: For all $y$ and all $x$, if $y$ is a rabbit and it is being chased by $x$, then $x$ is a dog*
 
-## Class Exercise: Writing Various Verbal Arguments as Predicate Wffs
+# Exercises: Translating Verbal Arguments $\to$ Predicate Wffs
 
-Given:
+> Instructions: Rewrite the following statements as predicate wffs using given variables. 
+
+**Given**:
 - $S(x)$: $x$ is a student
 - $l(x)$: $x$ is intelligent
 - $M(x)$: $x$ likes music
 
-Write wffs to expression following statements:
-1. All students are intelligent
-	- $(\forall x)[ S(x) \to l(x) ]$
-2. Some intelligent students like music
-	- $(\exist x)[ S(x) \land l(x) \land M(x) ]$
-3. Everyone who like music is a stupid student
-	- $(\forall x)[ M(x) \to [l(x)' \land S(x)] ]$
-4. Only intelligent students like music
-	- $(\forall x)[[ S(x) \land M(x) ] \to l(x)]$
+**Rewrite**:
+1. Q: All students are intelligent
+	- A: $(\forall x)[ S(x) \to l(x) ]$
+2. Q: Some intelligent students like music
+	- A: $(\exist x)[ S(x) \land l(x) \land M(x) ]$
+3. Q: Everyone who like music is a stupid student
+	- A: $(\forall x)[ M(x) \to [l(x)' \land S(x)] ]$
+4. Q: Only intelligent students like music
+	- A: $(\forall x)[[ S(x) \land M(x) ] \to l(x)]$
 
-# Class Exercises: Translating Verbal Arguments $\to$ Predicate Wffs
+---
 
 **Given:**
 - $C(x)$: $x$ is a chef
 - $F(y)$: $y$ is food
 - $k(x,y)$: $x$ cooks $y$
 
-**"Only chefs can cook food"**
-- $(\forall x)(\forall y)[F(y) \land k(x,y) \to C(x)]$
-
-**"No chefs can cook food"**
-1. Rephrase I: "There isn't any chef who can cook food"
-	- $[(\exists x) C(x) \land (\forall y) [F(y) \to k(x,y,)]]'$
-		* *Note: We're just negating "there is a chef who can cook food"*
-2. Rephrase II: "For anything that cooks food, it cannot be a chef"
-	- $(\forall x)(\forall y)[F(y) \land k(x,y) \to C(x)']$
+**Rewrite**:
+1. Q: "Only chefs can cook food"
+	- A: $(\forall x)(\forall y)[F(y) \land k(x,y) \to C(x)]$
+2. Q: "No chefs can cook food"
+	- A1: $[(\exists x) C(x) \land (\forall y) [F(y) \to k(x,y,)]]'$ 
+		* "There isn't any chef who can cook food"
+			+ *Note: We're just negating "there is a chef who can cook food"*
+	- A2: $(\forall x)(\forall y)[F(y) \land k(x,y) \to C(x)']$
+		* "For anything that cooks food, it cannot be a chef"
 
 ---
 
@@ -259,106 +210,85 @@ Write wffs to expression following statements:
 - $S(x)$: $x$ is sunny
 - $R(x)$: $x$ is rainy
 
-**"Some days are sunny and rainy"**
-- $(\exists x)(D(x) \land S(x) \land R(x))$
+**Rewrite**:
+1. Q: "Some days are sunny and rainy"
+	* A: $(\exists x)(D(x) \land S(x) \land R(x))$
+2. Q: "It is always a sunny day only if it is a rainy day"
+	* A: $(\forall x)[D(x) \land S(x) \to R(x)]$
+		- *Tip: "only if" quantifier translates to $\to$. "only" is a reversed "if" ("$\leftarrow$")*
+3. Q: "It rained on Monday and Tuesday"
+	- A: $R(M) \land R(T)$
+		* *Note: Because $M$ and $T$ are constants, they represent one thing, so there is no need to do $\forall M$*
 
-**"It is always a sunny day only if it is a rainy day"**
-- $(\forall x)[D(x) \land S(x) \to R(x)]$
-- *Tip: "only if" quantifier is $\to$. "only" is reversed "if" ("$\leftarrow$")*
+# Negating Predicate Wffs
 
-**"It rained on Monday and Tuesday"**
-- $R(M) \land R(T)$
-- *Note: Because $M$ and $T$ are constants, they represent one thing, so there is no need to do $\forall M$*
-
-# Negation of Statements (De Morgan)
-
-**De Morgan:**
+**How-to Apply De Morgan to Predicate Wffs:**
 - We flip $\exists$ to $\forall$, and vice versa
-	* "Something us fun" is the opposite of "Nothing is fun"
 
+> **Example**: "Something is fun" ($\exists x$) is the opposite of "Nothing is fun" ($\forall x$)
+>
 > **Given:**
 > - $A(x)$: $x$ is fun
-> - Everything is fun
+> - $(\forall x) A(x)$: Everything is fun 
 > 
-> **The negation will be "it is false that everything is fun"**
-> - i.e., "something is nonfun"
-> 	* $[(\forall x) A(x)]' \equiv (\exists x)[A(x)]'$
+> **Negation**:
+> - $[(\forall x) A(x)]' \equiv (\exists x)[A(x)']$
+>	- "It is false that everything is fun" $\equiv$ "Something is nonfun"
 
-
-## Class Exercises: Negation
+## Exercises: Negating Statements
 
 > Instructions: Negate the following statements.
 
-**"Everybody loves somebody sometime"**
-- "Somebody doesn't anybody all the time"
+Q: **"Everybody loves somebody sometime"**
+- A: "Somebody doesn't love anybody all the time"
 
-**"Some pictures are old and faded."**
-- "No pictures are old and faded"
-- "All pictures are new or vivid"
+Q: **"Some pictures are old and faded."**
+- A: "No pictures are old and faded"
+- A: "All pictures are new or vivid"
 
-**"All people are tall and thin"**
-- "Some people are short or fat"
+Q: **"All people are tall and thin"**
+- A: "Some people are short or fat"
 
-**"Some students eat only pizza"**
-- "All students don't eat pizza"
-- "There isn't any students who eat only pizza"
+Q: **"Some students eat only pizza"**
+- A: "All students don't eat pizza"
+- A: "There isn't any student who eats only pizza"
 
-**"Only students eat pizza"**
-- "There is a non-student who eats pizza"
+Q: **"Only students eat pizza"**
+- A: "There is a non-student who eats pizza"
 
 # Validity
 
-**Validity**: A predicate wff is valid if it's intrinsically true (true in all possible interpretations)
+**Validity**: A predicate wff is valid if it's intrinsically true.
 - Analogous to a tautology in propositional logic
 - *Note: A predicate wff's truth depends on its interpretation (what its variables actually mean)*
 
-**Propositional Tautologies v. Predicate Validity:**
+**Propositional Tautologies versus Predicate Validity:**
 
-| **ADD MISSING TABLE** |
-| --                    |
-| :(                    |
+|                 | Propositional Wffs                                              | Predicate Wffs                                          |
+|-----------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| Truth values    | True or false – depends on the truth value of statement letters | True, false or neither (if the wff has a free variable) |
+| Intrinsic truth | Tautology – true for all truth values of its statements         | Valid wff – true for all interpretations                |
+| Methodology     | Truth table to determine if it is a tautology                   | No algorithm to determine                               |
 
 > **Examples of Valid and Invalid Predicates:**
 > - $(\forall x)P(x) \to (\exists x)P(x)$ *(valid)*
 > - $(\exists x)P(x) \to (\forall x)P(x)$ *(invalid)*
->	- e.g., Suppose $P(x)$ is "$x$ is even". Then "there is an integer that is even" $\ne$ "every integer is even"
+>	- e.g., Suppose $P(x)$ is "$x$ is even". Then "there is an integer that is even" $\not \to$ "every integer is even"
 
-## Class Exercises
-
-> Instructions: Determine whether the following wffs are true. Domain of $x$ is all real integers.
-
-$(\forall x)[L(x) \to (O(x)]$
-- $O(x)$: "$x$ is odd"
-- $L(x)$: "$x$ < 10"
-- False: Not all integers less than 10 are odd
-
-$(\exists y)(\forall x)(x + y = 0)$
-- False: No single integer ($y$) works for all real integers ($x$).
-
-$(\forall x)(\exists y)(x + y = 0)$
-- True: For every integer $x$ we can add $-x$ (as the value $y$) to get zero.
-
-# Recall: Validation of Wffs Exercise (Previous Lecture)
+## Exercises: Determining Validity
 
 > Instructions: Determine whether the following wffs are true. Domain of $x$ is all real integers.
 
-$(\forall x)[L(x) \to (O(x)]$
-- Given:
-	* $O(x)$: "$x$ is odd"
-	* $L(x)$: "$x$ < 10"
-- Answer: False, not all integers less than 10 are odd
+Q: $(\forall x)[L(x) \to (O(x)]$ where $O(x)$: "$x$ is odd" and $L(x)$: "$x$ < 10"
+- A: False, not all integers less than 10 are odd.
 
----
+Q: $(\exists y)(\forall x)(x + y = 0)$
+- A: False, no single integer ($y$) works for all real integers ($x$).
 
-$(\exists y)(\forall x)(x + y = 0)$
-- Answer: False, no single integer ($y$) works for all real integers ($x$).
+Q: $(\forall x)(\exists y)(x + y = 0)$
+- A: True, for every integer $x$ we can add $-x$ (as the value $y$) to get zero.
 
----
-
-$(\forall x)(\exists y)(x + y = 0)$
-- Answer: True, for every integer $x$ we can add $-x$ (as the value $y$) to get zero.
-
-# Class Exercise: Translate to Wff
+# Exercise: Translating Verbal Statement to Predicate Wff (Complex)
 
 **Problem**: "Every ambassador speaks only to diplomats, and some ambassadors speak to someone. Therefore, there is a diplomat."
 - $A(x)$: $x$ is an ambassador
@@ -378,16 +308,16 @@ $(\forall x)(\exists y)(x + y = 0)$
 
 # Predicate Logic
 
-- Can represent more complicated statements than statement/propositional logic.
-	* However, the meaning and structure of the quantifiers and predicates needs to be known to check validity (unlike statement logic, where we could just start drawing tables)
-		+ There are very statements can tell are instrinsically true without knowing what their variables represent (e.g., $(\forall x)P(x) \to (\exists x)P(x)$)
+**Predicate Logic**: Can represent more complicated statements than statement/propositional logic.
+* However, the meaning and structure of the quantifiers and predicates needs to be known to check validity (unlike statement logic, where we could just start drawing tables without knowing what they represent)
+	+ There are very few predicate statements you can tell are intrinsically true without knowing what their variables represent (e.g., $(\forall x)P(x) \to (\exists x)P(x)$)
 
-Basic steps to proving arguments:
+**Basic approach to proving predicate logic arguments**:
 1. Strip quantifiers (using new inference rules)
 2. Manipulate the unquantified wffs (like statement logic)
 3. Reinsert the quantifiers (using new inference rules)
 
-## Inference Rules
+## Predicate Logic Inference Rules
 
 | From              | Can Derive                                                                              | Name                           | Restrictions                                                                                         |
 | ---               | ---                                                                                     | ---                            | ---                                                                                                  |
@@ -399,7 +329,7 @@ Basic steps to proving arguments:
 > **Notes**:
 > - Instantiation basically lets us strip away $\exists$ and $\forall$; generalization lets us add them back.
 
-## Class Exercises on Proving Arguments
+## Exercises: Proving Predicate Logic Arguments
 
 > **Instructions**: Prove the following arguments
 
@@ -408,11 +338,11 @@ Basic steps to proving arguments:
 - $a$: Constant symbol (flower)
 - $P(x)$: "$x$ is a flower"
 
-**Translation**: $(\forall x)[P(x) \to Q(x)] \land P(a) \to Q(a)$
+**Translation**: $(\forall x)[P(x) \to Q(x)] \land [P(a) \to Q(a)]$
 - $(\forall x)[P(x) \to Q(x)]$
 	* "All flowers are plants"
 - $P(a)$
-	* "Sunflower is a flower"
+	* "Sunflower is a flower"...
 - $\to Q(a)$
 	* "... is a plant"
 
