@@ -1,4 +1,4 @@
-# [School Notes](https://inevitabby.codeberg.page/school-notes/)
+# [School Notes](https://inevitabby.codeberg.page/notes)
 
 ## Computer Science
 
