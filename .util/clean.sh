@@ -18,6 +18,11 @@ function clean_orphan {
 # Extract CSS from <style> tags
 function extract_css {
 	HTML_FILE=$1
+	# Return if file doesn't exist (deleted by clean_orphan)
+	if [ ! -f "${HTML_FILE}" ]; then
+		return;
+	fi
+	# Extract CSS
 	CSS=$(awk -v RS='</style>' 'RT{gsub(/.*<style[^>]*>/,"");print}' "$HTML_FILE")
 	# Skip files that have already been processed
 	if [ "$CSS" == "" ]; then
