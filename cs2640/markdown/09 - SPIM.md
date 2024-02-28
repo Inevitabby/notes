@@ -15,30 +15,10 @@
 - Instructions are encoded as 32-bit words
 - Small number of formats encoding operation code, register numbers, ...
 - Regularity
+- Three types of instructions (R, J, I) 
+	* Each type is encoded differently.
 
-**Registers**:
-- `$t0`—`$t7`: Reg's 8—15
-- `$t8`—`$t9`: Reg's 24—25
-- `$s0`—`$s7`: Reg's 16—23
-
-**Notes**:
-- The `$zero` register is a read-only register.
-- `$at` stands for assembler temporary.
-	* In general, we can't/won't be using `$at` 
-- Note how we can only return two values from a function (`$v0`—`$v1`)
-
-<!--
-TODO: MIPS Reference Card
--->
-
-**Three Types of Instructions**:
-- R
-- J 
-- I 
-
-## Reference
-
-### Register Set
+## Register Set
 
 | Name     | Register | Usage                       |
 |----------|----------|-----------------------------|
@@ -55,26 +35,41 @@ TODO: MIPS Reference Card
 | $fp      | $30      | Frame pointer               |
 | $ra      | $31      | Return address              |
 
-### Reference Card
+> **Notes**:
+> - `$zero` is a read-only register.
+> - `$at` stands for "assembler temporary".
+> 	* In general, we can't/won't be using `$at` 
+> - Note how we can only return *two* values from a function (`$v0`—`$v1`)
+
+> **Registers**:
+> - `$t0`—`$t7`: Reg's 8—15
+> - `$t8`—`$t9`: Reg's 24—25
+> - `$s0`—`$s7`: Reg's 16—23
+
+## Reference Card
 
 TODO
 
-# Encoding an Instruction
+## Instruction Formats
 
-## R-Format Instructions
+### R-Format Instructions
 
 | Name | `op` | `rs` | `rt` | `rd` | `shamt` | `funct` |
 |------|------|------|------|------|---------|---------|
-| Bit  | 6    | 5    | 5    | 5    | 5       | 6       |
+| Bits | 6    | 5    | 5    | 5    | 5       | 6       |
 
-- op: Opcode
-- rs : First source register number
-- rt : Second source register number
-- rd : Destination register number
-- shamt : Shift amount 
+- `op`: Opcode
+- `rs`: First source register number
+- `rt`: Second source register number
+- `rd`: Destination register number
+- `shamt`: Shift amount 
 	* `00000` for now
-- funct: Function code
+- `funct`: Function code
 	* extends opcode
+
+# Encoding an Instruction
+
+> **Related Notes**: [Hexadecimal, Number Systems (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html#hexadecimal)
 
 > **Example**: Encoding an assembly instruction into hexadecimal
 > ```mips
