@@ -32,6 +32,7 @@ function extract_css {
 	echo "${CSS}" >> "${STYLE_FILE}"
 	# Replace <style> tags in the HTML with a <link> pointing to the style.min.css
 	NUM_PARENTS=$(tr -cd '/' <<< "${HTML_FILE}" | wc -c)
+	((NUM_PARENTS--))
 	RELATIVE_PATH="${STYLE_FILE}"
 	for ((i = 0; i < NUM_PARENTS; i++)); do
 		RELATIVE_PATH="../${RELATIVE_PATH}"
