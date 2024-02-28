@@ -5,7 +5,7 @@ The following are my class notes for Critical Thinking.
 # Topics
 
 1. [How the Mind Works](01 - How the Mind Works.html)
-2. [Review](02 - Review.html)
+2. [Quiz 1 Review](02 - Quiz 1 Review.html)
 3. [Objectivity and Reliable Testimony](03 - Objectivity and Reliable Testimony.html)
 4. [Argument](04 - Argument.html)
 5. [Fallacies](05 - Fallacies.html)
