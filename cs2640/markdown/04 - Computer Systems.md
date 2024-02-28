@@ -92,8 +92,84 @@ $$
 	* Unicode, ASCII, and other standards assign textual values to binary.
 		+ ASCII is a 1-byte character set, it can store $2^8$ (256)
 			+ Stores Latin characters.
-		+ Unicode is a multibyte character set, it can store $2^{16}$
+		+ Unicode is a multi byte character set, it can store $2^{16}$
 			+ Stores every character.
 
 > **Example**:
 > - When adding two numbers, the two numbers are *data*, the addition is a *machine instruction*.
+
+# Instruction Set Architecture (ISA)
+
+**ISA**: The machine language the CPU implements.
+- Built-in data types (integers, floating points)
+- Fixed set of instructions
+	* MIPS instructions are 4-bytes.
+- Fixed set of registers
+	* MIPS has 32 registers.
+- Interface for accessing memory
+- I/O
+
+**Microarchitecture**: The physical architecture of a CPU.
+- e.g., MIPS, 8086, ARM, etc.
+
+# Program Execution
+
+$$
+\text{Fetch} \to \text{Decode} \to \text{Execute}
+$$
+1. Fetch the next instruction from memory
+	1. Address from program counter $\to$ address bus
+	2. Emit read signal $\to$ control bus
+	3. Capture the address in address bus and go to the location in memory
+	4. Fetch $n$-bytes from the address.
+		* In MIPS, this would be 4 bytes, or 32 bits
+			+ In MIPS, the address will always be a multiple of four.
+			+ In MIPS, the program counter will be incremented by 4 bytes.
+				+ Unless you get a jump instruction (e.g., methods, if statements).
+	5. Bytes are loaded into the data bus.
+2. Decode the instruction
+3. Execute the instruction.
+
+> **Note**: The speed of the CPU is usually determined by the bus.
+> - The speed of the bus is measured in gigahertz.
+>	- Manufacturer determines speed by testing at various speeds (changing clock speed) and finding the one the CPU is most-stable at.
+> - The CPU spends most of its time waiting for the bus to transmit data.
+
+**Instruction Cache**: Memory in the CPU that stores $n$ kilobytes of instructions.
+- e.g., a 4 kb instruction cache in MIPS can store 1024 instructions.
+	- This means you can run 1024 instructions at the speed of the CPU, because you don't need to continuously fetch instructions.
+
+**Data Cache**: Memory in the CPU that stores $n$ kilobytes of data.
+
+> **Note**: More on the Instruction and Data Cache
+> - These used to be external, but are now built-into the CPU.
+> - Instruction cache used to be modifiable, but modern security practices have cracked-down on this.
+
+# CPU
+
+**CPU**: Electronic circuitry within a computer that carries out the instructions of a computer program by performing the basic arithmetic, logic, controlling, and I/O operations specified by the instructions.
+
+> **Example**: Comparing binary values at the low level
+> 
+> 1. Add $a$ to the two's complement of $b$.
+> - If all bits are zero, then $a=b$
+> 	* Set respective status bit
+> - If value is positive (MSBit = 0), $a>b$
+> 	* Set respective status bit
+> - If value is negative (MSBit = 1), $a<b$
+> 	* Set respective status bit
+> 		+ (Actually achieved just by copying the MSBit to the status bit.)
+
+## Functional Components within the CPU
+
+- **Control Unit (CU)**: Controls all activities in the CPU.
+	* Can be controlled by hardware or microcode.
+		+ MIPS is controlled by hardware
+		+ x86 is controlled by microcode.
+- **Arithmetic and Logic Unit (ALU):** Does binary operations.
+- **Registers (REGS):** Memory inside the CPU.
+	- Two Special Registers in MIPS:
+		1. Program Counter
+		2. Instruction Register: Stores current instruction being executed.
+- 
+

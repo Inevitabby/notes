@@ -181,6 +181,8 @@ $$
 - **Signed Add**: Performs addition and catches overflow.
 - **Unsigned Add**: Performs addition and ignores any overflow.
 
+Subtraction is just addition two's complement.
+
 # Tangent: Keeping Track of Time
 
 In UNIX, time is tracked as the number of milliseconds since 00:00:00 Jan 1, 1970 GMT (Greenwich Mean Time) / UTC (Universal Time Code).
