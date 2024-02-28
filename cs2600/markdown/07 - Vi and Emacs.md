@@ -12,13 +12,13 @@ Standard text editors available on most UNIX systems:
 
 Popular editors available on most UNIX platforms:
 - `emacs`: Editor with many other capabilities, or vice versa.
-- `nedit`: GUI-style text editor similar to emacs
+- `nedit`: GUI-style text editor similar to Emacs
 - `pico/nano`: Easy beginner editor
 
 > **History**: `vi`
 > - `ed` was the first editor used by Thompson and Ritchie for many years.
 > - George Coulouris developed an improved version of `ed` on UNIX and called it `em`.
-> - `vi` was developed in 1976 by Bill Joy, a graduate student at UC Berkeley, from the `em`.
+> - `vi` was developed in 1976 by Bill Joy, a graduate student at U.C. Berkeley, from the `em`.
 > - `em` was improved-upon by Bill Joy and called `ex` (extended ed) and included with the first release of BSD in 1978.
 > - Second release of BSD in 1979 introduced an executable called `vi` that did little more than open `ex` in visual mode.
 
@@ -26,7 +26,7 @@ Popular editors available on most UNIX platforms:
 > 
 > `vim`: "Vi Improved" (originally "Vi Imitation")
 > - Written by Bram Moolenaar, a Dutch software engineer.
-> - According to Stack Overflow's 2018 Developer Survey, Vim is the most-popular terminal editor, used by 25.8% of all software developers and 40% of Sysadmin/DevOps people.
+> - According to Stack Overflow's 2018 Developer Survey, Vim is the most-popular terminal editor, used by 25.8% of all software developers and 40% of Sysadmin/Dev Ops people.
 > 
 > Extended (from `vi`) features:
 > - Ported to more OS's
@@ -205,8 +205,8 @@ Emacs uses Emacs Lisp for configuration (and other things).
 - `<CTRL>x b`: create/switch buffers
 - `<CTRL>x <CTRL>b`: show buffer list
 - `<CTRL>x k`: kill buffer
-- `<CTRL>x`: suspend emacs
-- `<CTRL>X <CTRL>c`: close down emacs
+- `<CTRL>x`: suspend Emacs
+- `<CTRL>X <CTRL>c`: close down Emacs
 
 **Basic Movement Commands**:
 - `<CTRL>f`: forward char
@@ -258,10 +258,10 @@ Emacs uses Emacs Lisp for configuration (and other things).
 - `<CTRL>h f`: what does this function do
 - `<CTRL>h v`: what's this variable and what is it's value
 - `<CTRL>h b`: show all key commands for this buffer
-- `<CTRL>h t`: start the emacs tutorial
+- `<CTRL>h t`: start the Emacs tutorial
 - `<CTRL>h i`: start the info reader
 - `<CTRL>h <CTRL>k`: start up info reader and go to a certain key-combo point
-- `<CTRL>h F`: show the emacs FAQ
+- `<CTRL>h F`: show the Emacs FAQ
 - `<CTRL>h p`: show infos about the Elisp package on this machine
 
 **Search/Replace Commands**:
@@ -317,7 +317,7 @@ Emacs uses Emacs Lisp for configuration (and other things).
 
 **Shell Commands**:
 - `<ALT>x`: shell starts shell modus
-- `<CTRL>c <CTRL>c`: same as `<CTRL>c` under unix (stop running job)
+- `<CTRL>c <CTRL>c`: same as `<CTRL>c` under UNIX (stop running job)
 - `<CTRL>d`: delete char forward
 - `<CTRL>c <CTRL>d`: Send EOF
 - `<CTRL>c <CTRL>z`: suspend job (`<CTRL>z` under UNIX)
@@ -344,23 +344,23 @@ Emacs uses Emacs Lisp for configuration (and other things).
 **Programming Commands: More General**
 - `<ALT>x outline-minor-mode`: collapses function definitions in a file to a mere {...}
 - `<ALT>x show-subtree`: If you are in one of the collapsed functions, this un-collapses it In order to achieve some of the feats coming up now you have to run etags `*.c` `*.h` `*.cpp` (or what ever ending you source files have) in the source directory
-- `<ALT>.`: (Thats Meta dot) If you are in a function call, this will take you to it's definition
+- `<ALT>.`: If you are in a function call, this will take you to it's definition
 - `<ALT>x tags-search ENTER`: Searches through all you etaged
 - `<ALT>,`: (Meta comma) jumps to the next occurrence for tags-search
 - `<ALT>x tags-query-replace`: This lets you replace some text in all the tagged files
 
 **Programming Commands: GDB**
-- `<ALT>x gdb`: starts up gdb in an extra window (assuming you have gdb installed on your machine)
+- `<ALT>x gdb`: starts up GDB in an extra window (assuming you have GDB installed on your machine)
 
 **Macro Commands**:
 - `<CTRL>x (`: start macro definition
 - `<CTRL>x )`: end of macro definition
-- `<CTRL>x e`: execute last definied macro
+- `<CTRL>x e`: execute last defined macro
 - `<ALT>n <CTRL>x e`: execute last defined macro n times
 - `<ALT>x name-last-kbd-macro`: give name to macro (for saving)
 - `<ALT>x insert-keyboard-macro`: save named macro into file
 - `<ALT>x load-file`: load macro
-- `<ALT>x macroname`: execute macroname
+- `<ALT>x macroname`: execute `macroname`
 
 **Text Commands**:
 - `<ALT>s`: center line
@@ -368,7 +368,7 @@ Emacs uses Emacs Lisp for configuration (and other things).
 - `<ALT>x`: center-region name says
 
 **Bookmark Commands:**
-- `<CTRL>x r m`: set a bookmark at current cursor pos
+- `<CTRL>x r m`: set a bookmark at current cursor position
 - `<CTRL>x r b`: jump to bookmark
 - `<ALT>x bookmark-rename`: rename bookmark
 - `<ALT>x bookmark-delete`: delete bookmark

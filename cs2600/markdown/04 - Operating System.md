@@ -40,7 +40,7 @@
 8. **Security of Protection Management**: Provides protection from faults (**error control**) and from malicious behaviors (**security**)
 	- **Language based protection system**: One approach to security/protection management, in which the kernel will only execute code produced by a trusted compiler.
 
-## Kernel Subsytems
+## Kernel Subsystems
 
 1. Process Management
 	- Schedules processes to run on CPU

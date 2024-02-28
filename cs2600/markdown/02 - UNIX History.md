@@ -7,7 +7,7 @@
 
 **Birth**: Ken Thompson, a computer scientist at Bell Laboratories made the first version of UNIX because MULTICS wasn't fast enough to run his video game, *"Space Wars"*.
 - Chose "UNI" in opposition to "MULTI", highlighting the "do one thing well" philosophy.
-- 1969: Bell Labs researchers led by Thompson and Ritchie, including Rudd Canaday developed a hierarchical file system, the concepts of computer processes and device files, a cli, and some utility programs.
+- 1969: Bell Labs researchers led by Thompson and Ritchie, including Rudd Canaday developed a hierarchical file system, the concepts of computer processes and device files, a CLI, and some utility programs.
 - First Version of UNIX:
 	- Single-user, no networking, poor memory management, and/but,
 	- Efficient, compact, and fast.
@@ -26,7 +26,7 @@ Bell Laboratories used this prototype version of UNIX in its patent department, 
 
 **Proliferation**: Bell Laboratories licensed UNIX source code to universities free of charge hoping that students would improve UNIX.
 - Bell Laboratories did this because AT&T was prohibited from selling software due to antitrust regulations.
-- Grad students at UC Berkeley made some major improvements like adding good memory management and networking capability.
+- Grad students at U.C. Berkeley made some major improvements like adding good memory management and networking capability.
 	* The university marketed its own version of UNIX as BSD (Berkeley Standard Distribution) UNIX to the public.
 
 **Unix Wars**: AT&T's Bell Laboratories UNIX eventually evolved into System V UNIX. 

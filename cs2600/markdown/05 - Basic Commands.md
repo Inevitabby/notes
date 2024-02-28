@@ -250,7 +250,7 @@ After you log in and the shell startup files have run, the shell will display a 
 
 ## On Viewing Files
 
-- `cat`: Concatenate and print to screen (ctrl-s and ctrl-q to stop/start)
+- `cat`: Concatenate and print to screen (`<CTRL>s` and `<CTRL>q` to stop/start)
 - `head -x`: Display first $x$ lines of file
 - `tail -x`: Display last $x$ lines of file
 - `page`: Page file to the screen
@@ -272,7 +272,7 @@ After you log in and the shell startup files have run, the shell will display a 
 
 > **Tip**: You can use `!` to execute commands from history.
 > ```bash
-> # Execute 6000th command in history
+> # Execute 6,000th command in history
 > !6000
 > # Execute previous command
 > !!
@@ -282,7 +282,7 @@ After you log in and the shell startup files have run, the shell will display a 
 > - ... and much more
 
 > **`bc` Features:**
-> - Arithmatic operators
+> - Arithmetic operators
 > - Increment/decrement operators
 > - Assignment operators
 > - Comparison or relational operators
@@ -397,7 +397,7 @@ Then, run `bg` to continue the process in the background.
 | `||`     | OR conditional                                             |
 | `&&`       | AND conditional                                            |
 | `()`       | Group commands                                             |
-| `&`        | Run command in the backgound                               |
+| `&`        | Run command in the background                              |
 | `#`        | Comment                                                    |
 | `$`        | Expand value of variable                                   |
 | `\`        | Prevent or escape interpretation of next character         |
@@ -428,8 +428,8 @@ Then, run `bg` to continue the process in the background.
 > ```bash
 > cat < file.txt
 > ```
-> - Prints contents of file.txt by running `cat` and using the contents of `file.txt` as stdin.
->	- You could also use `cat file.txt` since `cat` accept files as arguments, not just stdin, but this is an example of the `<` character.
+> - Prints contents of file.txt by running `cat` and using the contents of `file.txt` as `stdin`.
+>	- You could also use `cat file.txt` since `cat` accept files as arguments, not just `stdin`, but this is an example of the `<` character.
 
 > Examples: File substitution wildcards
 > 
@@ -468,7 +468,7 @@ Then, run `bg` to continue the process in the background.
 
 ## On Escaping Metacharacters
 
-> **Warning**: Forgetting to escape certain metacharacters can have disasterous results (e.g., accidentally expanding a `*` in a `rm` command)
+> **Warning**: Forgetting to escape certain metacharacters can have disastrous results (e.g., accidentally expanding a `*` in a `rm` command)
 > - Which is why we double-quote a variable references whenever possible.
 
 There are three ways to pass metacharacters without interpreting them:
@@ -504,7 +504,7 @@ You can expand the value of variables with `$`.
 > **Example**: Variable expansion
 > ```bash
 > $ echo $TERM
-> zterm-256color
+> xterm-256color
 > ```
 > 
 > ```bash

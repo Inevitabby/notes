@@ -52,18 +52,18 @@
 
 # Popular UNIX Filters
 
-- `cat`: Read lines from stdin (and more files), and concatenate them to stdout.
-- `more/less`: Read lines from stdin, and provide a paginated view to stdout.
-- `head`: Read the first few lines from stdin (and more files) and print them to stdout.
-- `tail`: Read the last few lines from stdin (and more files) and print them to stdout.
-- `tee`: Copy stdin to stdout and one or more files
-- `cut`: Cut specified byte, character or field from each line of stdin and print to stdout.
-- `paste`: Read lines from stdin (and more files), and paste them together line-by-line to stdout.
-- `wc`: Read from stdin, and print the number of newlines, words, and bytes to stdout.
-- `tr`: Translate or delete characters read from stdin and print to stdout.
-- `sort`: Sort the lines in stdin, and print the result to stdout.
-- ``uniq``: Read from stdin and print unique (that are different from the adjacent line) to stdout.
-- `grep`: Find lines in stdin that match a pattern and print them to stdout.
+- `cat`: Read lines from `stdin` (and more files), and concatenate them to `stdout`.
+- `more/less`: Read lines from `stdin`, and provide a paginated view to `stdout`.
+- `head`: Read the first few lines from `stdin` (and more files) and print them to `stdout`.
+- `tail`: Read the last few lines from `stdin` (and more files) and print them to `stdout`.
+- `tee`: Copy `stdin` to `stdout` and one or more files
+- `cut`: Cut specified byte, character or field from each line of `stdin` and print to `stdout`.
+- `paste`: Read lines from `stdin` (and more files), and paste them together line-by-line to `stdout`.
+- `wc`: Read from `stdin`, and print the number of newlines, words, and bytes to `stdout`.
+- `tr`: Translate or delete characters read from `stdin` and print to `stdout`.
+- `sort`: Sort the lines in `stdin`, and print the result to `stdout`.
+- ``uniq``: Read from `stdin` and print unique (that are different from the adjacent line) to `stdout`.
+- `grep`: Find lines in `stdin` that match a pattern and print them to `stdout`.
 - `sed`: Streamline Editor used to edit text in non interactive mode.
 - `awk`: Powerful editing tool for files with programming features
 
@@ -264,8 +264,9 @@
 > > tr ‘:’ ‘|’ /etc/passwd
 > > ```
 > > ```bash
-> > # Change text from upper to lower case in two different ways
+> > # Change text from upper to lower case
 > > cat lowercase.txt | tr '[A-Z]' '[a-z]' > uppercase.txt
+> > # Change text from upper to lower case using named character classes
 > > cat lowercase.txt | tr [:upper:] [:lower:]  > uppercase.txt
 > > ```
 > > ```bash
