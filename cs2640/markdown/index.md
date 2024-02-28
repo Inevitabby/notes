@@ -12,4 +12,5 @@ The following are my class notes for Computer Organization and Assembly Programm
 6. [MIPS Architecture](06 - MIPS.html)
 7. [Instruction Set Architecture](07 - ISA.html)
 8. [Assembler, Linker, and Loader](08 - Assembler Linker Loader.html)
-8. [MIPS Assembly](09 - SPIM.html)
+9. [MIPS Assembly](09 - SPIM.html)
+10. [Midterm I Review](10 - Midterm I Review.html)
