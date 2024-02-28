@@ -55,7 +55,7 @@
 > # 1. Fetch Cycle
 > MAR <- PC # Move program counter into Memory Address Register
 > MR # Signal read through address bus, then data bus sends data to MDR
-> IR <- MDR # (Control unit executes off the IR, not the MDR)
+> IR <- MDR # (We need to move instruction to IR for CU to work on it)
 > ```
 
 > **Example**: $C = A + B$
@@ -94,6 +94,24 @@
 > LD A # Put A in the AC
 > ADD B # Add B to the contents of the AC
 > ST A # Store contents of AC in A
+> ```
+
+> **Example**: Micro-stepping through AC <- AC + M1
+> ```rtn
+> # Fetch
+> MAR <- PC
+> MR
+> MDR < MMEM.MDR
+> IR <- MDR
+> # Decode
+> MAR <- @MI
+> MR
+> MDR <- MMEM.MDR
+> # Execute
+> ALU.lhs <- AC
+> ALU.rhs <- MDR
+> ALU.add
+> AC <- ALU.out
 > ```
 
 # Harvard Architecture

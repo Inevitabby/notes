@@ -31,10 +31,42 @@ To perform a task, an appropriate program (list of instructions) is store in the
 - Individual instructions and brought from memory into the processor, which executes them.
 - Data to be used as operands is also stored in the memory.
 
-**A Typical Instruction**:
-```assembly
-ADD R0, M1
-```
-- What it does: `R0 <- R0 + M1`{.rtn}
-	- `M1`'s contents are preserved.
-	- `R0` is overwritten.
+> **Example**: A Typical Instruction
+> ```assembly
+> ADD R0, M1
+> ```
+> - What it does: `R0 <- R0 + M1`{.rtn}
+> 	- `M1`'s contents are preserved.
+> 	- `R0` is overwritten.
+> - Note: The leftmost operand is the destination
+
+> **Note**: In the real world, the BIU is accessible only to the control unit, and the IR and PC are only indirectly accessible through instructions.
+
+> **Example**: Typical Operating Steps:
+> $$
+> 	\text{Program Execution: } \\
+> 	\text{Secondary Storage $\to$ Main Memory $\to$ CPU Registers $\to$ Execution}
+> $$
+> 1. Program loaded from secondary storage into main memory.
+> 	- Done by the **loader**
+> 2. PC set to point to the first instruction.
+> 3. Content of PC is transferred to the MAR
+> 4. Read signal is asserted to main memory
+> 5. Instruction retrieved from memory and loaded into MDR
+> 6. Contents of MDR transferred to IR
+> 	- This is necessary for the decode cycle to start.
+> 7. Instruction get decoded by CU.
+> 8. Get operands for the ALU
+> 	- Exception: Some instructions don't use ALU
+> 		- e.g., Loading & storing memory and interrupt instructions don't use ALU
+> 	- Operands can be in the general-purpose registers or in memory.
+> 9. Perform operations using ALU
+> 10. Store result
+> 	- Can be stored in a general-purpose register or memory.
+> 11. PC incremented to next step
+> 	- Hardware-wise, this is conditional (doesn't execute on jump instructions)
+
+# Interrupt
+
+Normal execution of programs may be preempted if some device requires urgent servicing.
+- Example: Taking user input without being stuck polling for input.
