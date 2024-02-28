@@ -10,8 +10,16 @@ title: MIPS Assembly
 > - Not an IDE, write your assembly in an IDE and execute with SPIM.
 > - **Link**: [https://spimsimulator.sourceforge.net/](https://spimsimulator.sourceforge.net/)
 
-> **Tip**: View Whitespace
-> - `:set list`{.vimscript} to show whitespace in Vim.
+> **Tip**: Vim Configuration for Assembly
+> ```vimscript
+> " Show tabs
+> set list
+> " Never expand tabs to spaces
+> set noexpandtab
+> " Make tabs take up 16 spaces
+> set tabstop=16
+> set shiftwidth=16
+> ```
 
 <!--
 **Note**: Four Columns
@@ -318,6 +326,39 @@ main:	add	$t2,$t0,$t1
 | `.extern` | *sym size* | Declare as global label *sym*     |
 | `.globl`  | *sym*      | Declare as global the label *sym* |
 
+### Using `.word`
+
+Use the `lw` (load word) command to load a value from a word into a register.
+
+Use the `sw` (store word) command to load a value from a register back into a word.
+
+**Example**: Loading a word into a register
+```mips
+	.data
+sumIs:	.asciiz	"The sum is "
+value1:	.word	15
+value2:	.word	25
+sum:	.word	0
+	.text
+main:
+	lw	$t0, value1
+	lw	$t1, value2
+	# Print string
+	la	$a0, sumIs
+	li	$v0, 4
+	syscall
+	# Add integers and store in sum
+	add	$t2, $t0, $t1
+	sw	$t2, sum
+	# Print result
+	lw	$v0, sum
+	li	$v0, 1
+	syscall
+	# Exit
+	li	$v0, 10
+	syscall
+```
+
 ## SPIM Data Directives
 
 **Directives**: Tell the assembler how to organize data.
@@ -426,20 +467,23 @@ main:
 # The end
 ```
 
-<!--
-Pseudo-Code for Project 1
-
-Part I: Subtracting two numbers
-1. read int (SYSCALl 5)
-	- t0 <- v0 (MOVE)
-2. read int
-	- t0 <- v0 - t0 (SUBTRACT)
-3. t0 now stores the change, in cents.
-
-Part II: Remainder
-1. Take modulu of t0 and use HI and LO (use div rs, rt)
-	- Quarters: 25
-	- Dimes: 10
-	- Nickels: 5
-	- Pennines: Whatever is left
--->
+> **Example**: Adding two numbers
+> ```mips
+> 	.data
+> sumIs:	.asciiz	"The sum is "
+> 	.text
+> main:
+> 	li	$t0, 15
+> 	li	$t1, 25
+> 	# Print string
+> 	la	$a0, sumIs
+> 	li	$v0, 4
+> 	syscall
+> 	# Add integers and print to console
+> 	add	$a0, $t0, $t1
+> 	li	$v0, 1
+> 	syscall
+> 	# Exit
+> 	li	$v0, 10
+> 	syscall
+> ```

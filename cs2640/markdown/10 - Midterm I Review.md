@@ -346,6 +346,21 @@ function rand(min = 0, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+// Stores information on MIPS32
+const Mips32 = {
+	"command" = {
+		"add" = {
+			"operands" = [];
+			"type" = "T";
+			"opcode" = 0;
+			"funct" = 0;
+		}
+	},
+	"syscall" = {
+	},
+	"register" = {
+	},
+}
 // === LaTeX Solution Generator Functions ===
 const Solution = {
 	renderTex: function (formula, elem) {
