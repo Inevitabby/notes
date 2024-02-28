@@ -44,7 +44,7 @@
 **Concept**: Idea that grasps an open-ended grouping of similar existents.
 - "Like a mental file folder"
 	* Used for the present, past, and future; knowns and unknowns
-- **Parts of a Concept**:
+- **Four Parts of a Concept**:
 	1. **Referents** of the concept
 	2. **Word**: A spoken/written/signed *symbol* of the concept
 	3. **Mental grasp** of the word in a story
@@ -68,13 +68,6 @@
 	- **Jointly Exhaustive**: Every referent should be able to fit into a species; nothing should be left out (in this class we fix this by adding an "etc.")
 2. Principle(s) should identify *essential attributes* (differentia).
 	- *For most manmade objects, the essential attribute is function.*
-
-## Four Parts of a Concept
-
-1. **Referents** of the concept
-2. **Word**: A spoken/written/signed *symbol* of the concept
-3. **Mental grasp** of the word in a story
-4. **Definition**: A short statement of the essential nature of the referents.
 
 ## Aristotle's Six Top-Level Categories for Existents
 
