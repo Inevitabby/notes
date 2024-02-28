@@ -169,6 +169,8 @@ After you log in and the shell startup files have run, the shell will display a 
 	* `who am i`: Identifies your username and terminal ID.
 		+ rel: `who mom likes`
 - `finger`: Prints more login information than `who`
+- `uname`: Print name of operating system
+- `id`: Displays user id and all group names and ids.
 
 ## On Communicating with Others 
 
@@ -187,6 +189,12 @@ After you log in and the shell startup files have run, the shell will display a 
 - `mkdir`: Make empty directories
 - `rmdir`: Remove empty directory
 - `pwd`: Display name of present working directory:
+- `file`: Display file type
+- `du`: Display disk usage
+- `df`: Display free disk space
+- `wc`: Count lines, word, and bytes in a file
+- `which`: Looks for an executable in your `$PATH`
+- `ln`: Create a link
 
 > **More on `ls` (list files in a directory)**:\
 > 
@@ -203,6 +211,14 @@ After you log in and the shell startup files have run, the shell will display a 
 > > **Format**: `cp [-ir...] <directory> <directory>`
 > - `-i`: Interactive, prompt whenever a file will be overwritten
 > - `-r`: Recursive, copy a whole directory tree
+> 
+> > **Examples**:
+> > ```bash
+> > # Change directory to parent
+> > cd ..
+> > # Change directory to current working directory
+> > cd .
+> > ```
 
 > **More on `mv` (moving/renaming files and directories)**:\
 > 
@@ -215,6 +231,14 @@ After you log in and the shell startup files have run, the shell will display a 
 > > **Format**: `rm <file-list>`\
 > > **Format**: `rm -r <directory>`\
 > > **Format**: `rm i <file>`
+
+> **More on `file` (display file type)**\
+> 
+> > **Example**:
+> > ```bash
+> > # Determine file type
+> > file *
+> > ```
 
 ## On Viewing Files
 
@@ -229,10 +253,13 @@ After you log in and the shell startup files have run, the shell will display a 
 ## On Misc.
 
 - `history`: Prints command history.
-- `touch`: Change file timestamps.
+- `touch`: Update file timestamps (creates empty file if it doesn't exist).
 - `date`: Print date and time.
 - `echo`: Display command line input to screen.
 - `env`: Print all environment variables.
+- `clear`: Clears the terminal
+- `cal`: Prints calendar for any year and month.
+- `bc`: A calculator
 
 > **Tip**: You can use `!` to execute commands from history.
 > ```bash
@@ -244,6 +271,39 @@ After you log in and the shell startup files have run, the shell will display a 
 > !echo
 > ```
 > - ... and much more
+
+> **`bc` Features:**
+> - Arithmatic operators
+> - Increment/decrement operators
+> - Assignment operators
+> - Comparison or relational operators
+> - Logical or boolean operators
+> - Math functions
+> - Conditional statements
+> - Iterative statements
+>
+> > **Example**:
+> > ```bash
+> > $ echo "10-5" | bc
+> > 5
+> > ```
+
+## `tar`
+
+> **Format**: `tar [-cxzvf...] <archive> <file>`\
+
+`tar`: Utility to creates a tape archive and can also compress with gzip.
+- Flags:
+	* `-c`: Create an archive
+	* `-x`: Extract an archive (untar)
+	* `-z`: Compress the archive with gzip
+	* `-v`: Display progress in the terminal (verbose mode)
+	* `-f`: Specify filename of the archive
+
+> **Example**: Creating a compressed archive of your home directory
+> ```bash
+> $ tar -czvf archive.tar.gz ~
+> ```
 
 # Process Subsystem Utilities
 
@@ -334,9 +394,193 @@ Then, run `bg` to continue the process in the background.
 > - Stores "hi" in file.txt
 > 
 > ```bash
+> $ date -u > file.txt
+> ```
+> - Stores current date (UTC) in file.txt
+> 
+> ```bash
 > $ cat >> file.txt
 > Dave: Open the pod bay door, HAL.
 > HAL: I'm sorry Dave. I'm afraid I can't do that.
 > ^D
 > ```
 > - Appends some text to file.txt
+
+> **Example**: Input redirection
+> 
+> ```bash
+> cat < file.txt
+> ```
+> - Prints contents of file.txt by running `cat` and using the contents of `file.txt` as stdin.
+>	- You could also use `cat file.txt` since `cat` accept files as arguments, not just stdin, but this is an example of the `<` character.
+
+> Examples: File substitution wildcards
+> 
+> ```bash
+> $ ls –l foo*
+> ```
+> - List all files that begin with the word "foo" followed by anything else
+>	- e.g., "foo", "foo1", and "foo.txt" will be listed, but not "bar.txt".
+> 
+> ```bash
+> $ ls –l foo?
+> ```
+> - List all files that begin with the word "foo" followed by any single character
+>	- In other words, it lists all files that begin with "foo" and are 4 characters long.
+>		- e.g., "foo1" will be listed, but not "foo.txt".
+> 
+> ```bash
+> $ ls –l foo[1-3]
+> ```
+> - List all files that begin with the word "foo" followed by any single character between number 1 and 3 (inclusive)
+>	- The `-` is specifying range.
+>	- e.g., "foo1" and "foo2" will be listed, but not "foo4".
+> 
+> ```bash
+> $ ls –l foo[23]
+> ```
+> - List all files that begin with the word "foo" followed by any single character which is either 2 or 3
+>	- The `[]` without a range means exclusive or.
+>	- e.g., "foo2" and "foo3" will be listed, but not "foo1".
+> 
+> ```bash
+> $ ls [!f-z]???
+> ```
+> - List all files that begin with the characters a through e and followed by any three characters
+>	- The `!` is a negation, meaning that we're matching everything that's not between f and z/
+
+## On Escaping Metacharacters
+
+> **Warning**: Forgetting to escape certain metacharacters can have disasterous results (e.g., accidentally expanding a `*` in a `rm` command)
+> - Which is why we double-quote a variable references whenever possible.
+
+There are three ways to pass metacharacters without interpreting them:
+1. **Backslash** (`\`): Put a backslash in front of them.
+	- Can get a little inconvenient if you have a lot of metacharacters to escape.
+2. **Single Quotes** (`''`): Surround a string with single quotes to protect all characters except the backslash
+3. **Double Quotes** (`""`): Surround a string with double quotes to protect all characters except the backslash, dollar sign, and grave accent.
+
+> **Remember**: The difference between single and double quotes is that we can do expansion with $ and \` in double quotes.
+
+> **Example**: Escaping metacharacters in three different ways
+> ```bash
+> $ echo 5 \> 3
+> 5 > 3
+> ```
+> 
+> ```bash
+> $ echo '`date`'
+> `date`
+> ```
+> 
+> ```bash
+> $ echo "`date`"
+> Thu Dec 28 04:16:54 PM PST 2023
+> ```
+
+## On Variable Expansion
+
+> **Remember**: You can view environmental variables with `env`
+
+You can expand the value of variables with `$`.
+
+> **Example**: Variable expansion
+> ```bash
+> $ echo $TERM
+> zterm-256color
+> ```
+> 
+> ```bash
+> $ my_variable="hello" && echo $my_variable
+> hello
+> ```
+
+## On Command Sequences
+
+Two ways to control the order commands are executed:\
+1. **Semicolon** (`;`): Executes left-to-right, e.g.,
+```bash
+$ date; pwd; ls
+```
+2. **Parenthesis** (`()`): Groups commands together, e.g.,
+```bash
+$ (date; pwd; ls) > out.txt
+```
+
+## On Conditional Execution
+
+We can use the exit codes of commands to conditionally execute other commands.
+
+> **Examples**: Conditional execution
+> ```bash
+> $ gcc hello.c && ./a.out
+> ```
+> - Run compiled code only if compilation was successful.
+> 
+> ```bash
+> $ gcc hello.c || notify-send "Compilation failed"
+> ```
+> - Send notification only if gcc fails.
+
+## On Command Substitution
+
+&#96;`command`&#96; and `$(command)` gets replaced by the output of `command` in the prompt.
+
+> **Example**: Command substitution
+> 
+> ```bash
+> $ echo `date`
+> Thu Dec 28 01:31:19 PM PST 2023
+> ``` 
+> 
+> ```bash
+> $ echo date # Same as above, but without command substitution
+> date
+> ```
+
+# A Simple UNIX Trick
+
+Running `^x^y` in the terminal will run the previous command with all instances of `x` replaced with `y`.
+- Doesn't have to be single characters.
+
+```bash
+$ ly
+Command not found
+```
+```bash
+$ ^y^s
+foo.txt bar.txt
+```
+
+# Auto Completion in Shells
+
+Most shells can complete a filename, command name, username, or shell variable based on what you've typed when you hit the `<TAB>` key.
+- If nothing appears, hitting `<TAB>` a second time will show a list of possible completions.
+
+# Understanding Links
+
+**Directories** are lists of files and directories.
+- Each directory links to a file on the disk.
+	* Two directories can link to the same file.
+- Moving files doesn't actually move data, it just does the following:
+	1. Creates link in a new location
+	2. Delete link in old location.
+- Each file has a link count.
+
+## Hard v.s. Soft Links
+
+| Hard Links                                      | Soft Link (Symbolic Link)                                     |
+| ---                                             | ---                                                           |
+| Target must exist                               | Target can exist or not exist                                 |
+| Allowed within one file systems only            | Allowed between different file systems                        |
+| Links directly to the place the file is stored  | Links to the entry in the file system table (node)            |
+| Removing the link means removing the whole file | Removing the link only removes the node, not the file itself. |
+
+> **On Soft Links:** Soft links can be thought of as directory entries that merely point to the name of another file.
+> - Soft links don't contribute to the link count.
+> - Soft links also work on directories, unlike hard links. 
+
+> **Example**: Creating soft link with `ln` (making `vi` links to `nvim`)
+> ```bash
+> $ ln -s /usr/bin/vi /usr/bin/nvim
+> ```
