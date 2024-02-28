@@ -11,6 +11,8 @@
 
 # MIPS Instructions
 
+> **Note**: In this class we'll be learning 32-bit MIPS, not 64-bit MIPS.
+
 **MIPS Instructions**:
 - Instructions are encoded as 32-bit words
 - Small number of formats encoding operation code, register numbers, ...
@@ -20,20 +22,20 @@
 
 ## Register Set
 
-| Name     | Register | Usage                       |
-|----------|----------|-----------------------------|
-| $zero    | $0       | Always 0                    |
-| $at      | $1       | Reserved for assembler use  |
-| $v0—$v1  | $2—$3    | Result values of a function |
-| $a0—$a3  | $4—$7    | Arguments of a function     |
-| $t0—$t7  | $8—15    | Temporary values            |
-| $s0—$s7  | $16—$23  | Saved registers             |
-| $t8—$t9  | $24—$25  | More temporaries            |
-| $k0—$k1  | $26—$27  | Reserved for OS kernel      |
-| $gp      | $28      | Global pointer              |
-| $sp      | $29      | Stack pointer               |
-| $fp      | $30      | Frame pointer               |
-| $ra      | $31      | Return address              |
+| Name      | Register  | Usage                       |
+|-----------|-----------|-----------------------------|
+| `$zero`   | `$0`      | Always 0                    |
+| `$at`     | `$1`      | Reserved for assembler use  |
+| `$v0`—`$v1` | `$2`—`$3`   | Result values of a function |
+| `$a0`—`$a3` | `$4`—`$7`   | Arguments of a function     |
+| `$t0`—`$t7` | `$8`—`15`   | Temporary values            |
+| `$s0`—`$s7` | `$16`—`$23` | Saved registers             |
+| `$t8`—`$t9` | `$24`—`$25` | More temporaries            |
+| `$k0`—`$k1` | `$26`—`$27` | Reserved for OS kernel      |
+| `$gp`     | `$28`     | Global pointer              |
+| `$sp`     | `$29`     | Stack pointer               |
+| `$fp`     | `$30`     | Frame pointer               |
+| `$ra`     | `$31`     | Return address              |
 
 > **Notes**:
 > - `$zero` is a read-only register.
@@ -52,7 +54,7 @@ TODO
 
 ## Instruction Formats
 
-### R-Format Instructions
+### R-Format
 
 | Name | `op` | `rs` | `rt` | `rd` | `shamt` | `funct` |
 |------|------|------|------|------|---------|---------|
@@ -67,7 +69,7 @@ TODO
 - `funct`: Function code
 	* extends opcode
 
-# Encoding an Instruction
+# Encoding & Decoding Instructions
 
 > **Related Notes**: [Hexadecimal, Number Systems (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html#hexadecimal)
 
