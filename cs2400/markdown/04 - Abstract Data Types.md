@@ -106,6 +106,7 @@ $$
 
 ## Interface UML
 
+```plantuml
 @startuml
 interface BagInterface{
 	+getCurrentSize() : integer
@@ -119,6 +120,7 @@ interface BagInterface{
 	+toArray() : T[]
 }
 @enduml
+```
 
 ## Example Interface
 

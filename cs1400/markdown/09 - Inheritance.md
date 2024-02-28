@@ -128,6 +128,7 @@ Third access specification: `protected`
 - Access is somewhere between private and public.
 - Denoted by `#` symbol in UML
 
+```plantuml
 @startuml
 class BankAccount {
 	#score : double
@@ -136,12 +137,14 @@ class BankAccount {
 	+getGrade() : char
 }
 @enduml
+```
 
 # Default Access Modifier
 
 If you don't provide an access specifier for a class member, the member is given package access by default, meaning that any method in the same package may access the member.
 - Denoted by `~`
 
+```plantuml
 @startuml
 class BankAccount {
 	~score : double
@@ -150,6 +153,7 @@ class BankAccount {
 	+getGrade() : char
 }
 @enduml
+```
 
 # Chains of Inheritance
 

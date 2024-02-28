@@ -161,6 +161,7 @@ Use an abstract class if you want to:
 Display Course Schedule
 - Change Address
 
+```plantuml
 @startuml
 class CourseSchedule {
 	+courseCount
@@ -172,9 +173,11 @@ class CourseSchedule {
 	+changeAddress()
 }
 @enduml
+```
 
 # UML Interface Example
 
+```plantuml
 @startuml
 interface Measureable {
 	+getPerimeter() : double
@@ -186,6 +189,7 @@ class Circle implements Measureable {
 	+getArea() : double
 }
 @enduml
+```
 
 # Reusing Classes
 

@@ -38,14 +38,17 @@ Unified Modeling Language (UML): Set of standard diagrams for graphically depict
 - Return type and input variables are included.
 
 General Structure:
+```plantuml
 @startuml
 class ClassName {
 	Fields
 	Methods()
 }
 @enduml
+```
 
 For our `Rectangle` example:
+```plantuml
 @startuml
 class Rectangle {
 	-length : double
@@ -57,6 +60,7 @@ class Rectangle {
 	+getArea() : double
 }
 @enduml
+```
 
 ---
 
@@ -173,6 +177,7 @@ public Rectangle(double length, double width) {
 Constructors don't have their return type listed.
 
 For our `Rectangle` example:
+```plantuml
 @startuml
 class Rectangle {
 	-length : double
@@ -185,6 +190,7 @@ class Rectangle {
 	+getArea() : double
 }
 @enduml
+```
 
 # Uninitialized Local Reference Variables
 
@@ -256,6 +262,7 @@ Rectangle()
 
 Here's a class that demonstrates overloaded methods and constructors.
 
+```plantuml
 @startuml
 class BankAccount {
 	-balance : double
@@ -271,6 +278,7 @@ class BankAccount {
 	+getBalance():double
 }
 @enduml
+```
 
 # Scope of Instance Fields
 
@@ -435,6 +443,7 @@ public void finalize()
 - Creates a "has a" relationship between objects.
 
 Example UML Diagram:
+```plantuml
 @startuml
 class BankAccount {
 	-balance : double
@@ -467,4 +476,5 @@ class Branch extends BankAccount {
 	getLocation():String
 }
 @enduml
+```
 

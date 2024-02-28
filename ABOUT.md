@@ -4,7 +4,9 @@ is_about_page: true
 
 <center>
 	<h1 id="about">About</h1>
+	<h5><a href="https://codeberg.org/inevitabby/notes/">Link to Repository</a></h5>
 </center>
+
 
 # Me
 
@@ -91,3 +93,14 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
 - [Codeberg Pages](https://codeberg.page/): Codeberg lets you host static websites from Git repositories on Codeberg.
 - [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
+- [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plain text.
+	* A simple Lua filter ([`plantuml.lua`](https://codeberg.org/Inevitabby/notes/src/branch/pages/.util/plantuml.lua)) is used to replace all convert all embedded PlantUML into embedded SVGs. 
+
+**Gentoo Packages**
+
+```
+app-text/pandoc
+sys-apps/gawk
+media-gfx/plantuml
+```
+

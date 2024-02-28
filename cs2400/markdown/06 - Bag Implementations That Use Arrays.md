@@ -9,6 +9,7 @@ aka: Partially-filled array.
 
 ## UML
 
+```plantuml
 @startuml
 class ArrayBag implements BagInterface {
 -bag : T[]
@@ -37,6 +38,7 @@ interface BagInterface{
 	+toArray() : T[]
 }
 @enduml
+```
 
 ## Code
 
