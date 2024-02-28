@@ -25,7 +25,9 @@ The following are my class notes for Systems Programming.
 14. [C Intro](14 - C Intro.html)
 15. [GDB](15 - GDB.html)
 16. [Pointers](16 - Pointers.html)
+17. [Dynamic Memory Allocation](17 - Dynamic Memory Allocation.html)
+18. [Pointer Drawbacks](18 - Pointer Drawbacks.html)
 
 ## $\emptyset$. Misc
 
-17. [Tips and Tricks](Tips and Tricks.html)
+19. [Tips and Tricks](Tips and Tricks.html)

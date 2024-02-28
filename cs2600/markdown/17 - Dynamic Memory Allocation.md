@@ -244,20 +244,18 @@ A multidimensional array can be thought of as an array of arrays.
 > 	y = (++x) + 1;
 > 	*x = *x + 4;
 > 	// II. 
-> 	printf("%d\t%d\n", *x, *y);
-> 	// III. 
-> 	printf("%d\n", *x);
+> 	printf("%d\t%d\t%d\n", *x, *y, *z);
 > 
 > 	*(--z) = *(y - 1) + *x;
 > 	*(z + 1) = *(x + 1) - 3;
-> 	// IV. 
+> 	// III. 
 > 	printf("%d\n", *z);
 > 
 > 	*y-- = (*++z) - (*&a[2]);
-> 	// V. 
+> 	// IV. 
 > 	printf("%d\n", *y);
 > 
-> 	// VI. 
+> 	// V. 
 > 	printf("%d\n", *x + 2);
 > 
 > 	for (int j = 0; j < 3; j++) {
@@ -287,21 +285,19 @@ A multidimensional array can be thought of as an array of arrays.
 > 	z = &b[2];
 > 	y = (++x) + 1;
 > 	*x = *x + 4;
-> 	// II. 6       3
-> 	printf("%d\t%d\n", *x, *y);
-> 	// III. 6
-> 	printf("%d\n", *x);
+> 	// II. 6       3	-6
+> 	printf("%d\t%d\t%d\n", *x, *y, *z);
 > 
 > 	*(--z) = *(y - 1) + *x;
 > 	*(z + 1) = *(x + 1) - 3;
-> 	// IV. 12
+> 	// III. 12
 > 	printf("%d\n", *z);
 > 
 > 	*y-- = (*++z) - (*&a[2]);
-> 	// V. 6
+> 	// IV. 6
 > 	printf("%d\n", *y);
 > 
-> 	// VI. 8
+> 	// V. 8
 > 	printf("%d\n", *x + 2);
 > 
 > 	for (int j = 0; j < 3; j++) {
