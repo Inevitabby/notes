@@ -105,7 +105,7 @@ wait
 
 Bright-white lecture slides cutting a hole through your dark-theme desktop like the Sun being peeking behind the moon near the moment of totality to launch a sneaky assault your pupils?
 
-Add this line to your MPV configuration (`~/.config/mpv/input.config`):
+Add this line to your MPV configuration (`~/.config/mpv/input.conf`):
 ```
 I cycle-values vf "sub,lavfi=negate" ""
 ```
