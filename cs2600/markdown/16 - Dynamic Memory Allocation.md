@@ -312,3 +312,51 @@ A multidimensional array can be thought of as an array of arrays.
 > 	return 0;
 > }
 > ```
+<!--*-->
+
+# Memory Management Functions
+
+`void *malloc(size_t size);`
+- Allocates memory without initializing it.
+
+> **Example `malloc`**: `int *x = malloc(100);`{.c}
+
+`void *calloc(size_t nmemb, size_t size);`
+- Allocates memory and initializes it.
+- Slightly more computationally expensive than `malloc()`
+
+> **Example `calloc`**: `int *x = calloc(0, sizeof(int));`{.c}
+
+`void free(void *_Nullable ptr);`
+
+> **Example `free`**: `free(x);`{.c}
+
+`void *realloc(void *_Nullable ptr, size_t size);`
+`void *reallocarray(void *_Nullable ptr, size_t nmemb, size_t size);`
+- Attempts to change the size of a previously allocated block of memory.
+	* New size can be larger or smaller.
+- If block is made larger the contents will remain unchanged and memory is added to the end of the block.
+- If the block is shrunk the contents will be truncated starting from the end of the array.
+- If the original block size cannot be resized then `relloc` will attempt to assign a new block of memory and copy the old block contents.
+	* A new pointer of different value will consequently be returned, you **must** use this value.
+- Returns NULL if memory couldn't be reallocated.
+
+> **Example**: `realloc`
+> ```c
+> #include <stdio.h>
+> #include <stdlib.h>
+> int main () {
+> 	char *str;
+> 	str = (char *) malloc(15);
+> 
+> 	strcpy(str, "Hello, How are");
+> 	printf("String = %s, Address = %p\n", str, str);
+> 
+> 	str = realloc(str, 20);
+> 	strcat(str, " you?");
+> 	printf("String = %s, Address = %p\n", str, str);
+> 
+> 	free(str);
+> 	return(0);
+> }
+> ```

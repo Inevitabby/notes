@@ -21,15 +21,21 @@ The following are my class notes for Systems Programming.
 12. [Awk](12 - Awk.html)
 
 ## III. C
-13. [C History](13 - C History.html)
-14. [C Intro](14 - C Intro.html)
-15. [GDB](15 - GDB.html)
-16. [Pointers](16 - Pointers.html)
-17. [Dynamic Memory Allocation](17 - Dynamic Memory Allocation.html)
-18. [Pointer Drawbacks](18 - Pointer Drawbacks.html)
-19. [Command-Line Arguments](19 - Command-Line Arguments.html)
-20. [Structs](20 - Structs.html)
-21. [File IO](21 - File IO.html)
+13. [C Intro](13 - C Intro.html)
+14. [GDB](14 - GDB.html)
+15. [Pointers](15 - Pointers.html)
+16. [Dynamic Memory Allocation](16 - Dynamic Memory Allocation.html)
+17. [Command-Line Arguments](17 - Command-Line Arguments.html)
+18. [Structs](18 - Structs.html)
+19. [File IO](19 - File IO.html)
+20. [C More](20 - C More.html)
+
+## IV. Shells
+21. [Shell Intro](21 - Shell Intro.html)
+22. [Bourne Shell](22 - Bourne Shell.html)
+23. [C Shell](23 - C Shell.html)
+24. [Bash Shell](24 - Bash Shell.html)
+25. [Korn Shell](25 - Korn Shell.html)
 
 ## $\emptyset$. Misc
-22. [Tips and Tricks](Tips and Tricks.html)
+26. [Tips and Tricks](Tips and Tricks.html)

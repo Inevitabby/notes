@@ -251,3 +251,57 @@ Like for `awk`, prefix and postfix only changes what is returned by the operator
 | `*++aPtr` or `*(++aPtr)`                | Pre-increment `aPtr`. Returns `*aPtr` after increment   |
 | `++*aPtr` or `++(*aPtr)`                | Pre-increment `*aPtr`. Returns `*aPtr` after increment  |
 
+# Pointer Drawbacks
+
+> **Note**: Unlike C++, C has no smart pointers.
+
+## Dangling Pointers
+
+**Dangling Pointers**: Pointer that contains the address of a heap-dynamic variable that has been deallocated.
+- This is why you should point pointers to NULL before deallocating a dynamic-heap variable.
+
+> **Example**: Dangling pointer
+> 
+> 1.
+> ```c
+> int *x, *y;
+> x = malloc(sizeof(int));
+> *x = 1;
+> y = x;
+> free(x);
+> printf("%d", *y); // Will print garbage
+> ```
+> 
+> 2.
+> ```c
+> int *x, *y;
+> x = malloc(sizeof(int));
+> *x = 1;
+> y = x;
+> y = NULL;
+> free(x);
+> printf("%d", *y); // Will segfault
+> ```
+<!--*-->
+
+## Memory Leaks
+
+**Memory Leak or Garbage Creation**: Lost-heap dynamic variables.
+- Memory that was allocated but can't be accessed anymore.
+	* The memory cannot be reallocated in the program.
+
+> **Example**: Memory leaks
+> ```c
+> int *x = malloc(100);
+> x = NULL;
+> ```
+> - The 100 bytes of memory we didn't `free()` won't be cleared until the program ends
+> 
+> ```c
+> int *x = { 1, 2, 3 };
+> int *y = { 4, 5, 6 };
+> x = &y;
+> ```
+> - `{ 1, 2, 3 }` is now garbage we no longer have access to.
+<!--*-->
+
