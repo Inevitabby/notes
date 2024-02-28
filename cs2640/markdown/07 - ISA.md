@@ -81,6 +81,25 @@ The more memory accesses you do, the slower your code is.
 3. Each read or write increments data count.
 	- Rewriting the instruction in RTN (register transfer notation) can help visualize reads and writes.
 
+> **tl;dr version**: Counting memory accesses
+> 1. Split instruction into terms delimited by space and/or commas.
+> 2. +1 data access for every non-register value (e.g., A, B, X, T1, T2, etc.) Instruction doesn't count.
+> 3. +1 instruction access for every non-register value. Instruction counts (e.g., MOV, ADD, MUL, etc.)
+> 
+> > **Example**: Counting accesses
+> > ```
+> > ADD R1,A,B
+> > ```
+> > - Instruction Access: ADD, A, B = 3 Accesses
+> > - Data Access: A, B = 2 Data Accesses
+> > 
+> > ```
+> > MUL X,R1,R2
+> > ```
+> > - Instruction Access: MUL, X = 2 Accesses
+> > - Data Access: X = 1 Access
+
+
 > **Note**: Assumptions\
 > We (usually) make the following assumptions when computing the number of memory accesses:
 > 1. Each memory address requires one memory word
@@ -91,7 +110,7 @@ The more memory accesses you do, the slower your code is.
 > | Instruction | RTN          | Data | Instruction |
 > |-------------|--------------|------|-------------|
 > | ADD R1,A,B  | R1 <- A + B  | 2    | 3           |
-> | ADD R2,C,D  | R2 <- C + D  | 2    | 2           |
+> | ADD R2,C,D  | R2 <- C + D  | 2    | 3           |
 > | MUL X,R1,R2 | X <- R1 * R2 | 1    | 2           |
 > 
 > - Total: $5 + 18 = 13$
