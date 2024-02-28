@@ -133,6 +133,9 @@ Usually, computing the number of memory accesses is based on the following assum
 	- (Registers don't count)
 3. Each read or write increments data count.
 
+| Assembly | Register Transfer Notation | Data | Instruction | Memory Accesses |
+|----------|----------------------------|------|-------------|-----------------|
+
 > **Example**: Computing number of memory accesses for a 3-register address machine
 > ```assembly
 > #			Data	Instruction
