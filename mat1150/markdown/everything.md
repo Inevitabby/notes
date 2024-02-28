@@ -840,7 +840,7 @@ $$
 $$
 \boxed{
 	\text{Center of Mass (Lamina): }
-	x = \frac{My}{m} \qquad y = \frac{M_x}{m}
+	x = \frac{M_y}{m} \qquad y = \frac{M_x}{m}
 } \\~\\
 M_y = \int_a^b x f(x) dx
 \qquad
@@ -853,7 +853,7 @@ $$
 $$
 \boxed{
 	\text{Center of Mass (Lamina): }
-	x = \frac{My}{m} \qquad y = \frac{M_x}{m}
+	x = \frac{M_y}{m} \qquad y = \frac{M_x}{m}
 } \\~\\
 M_y = \int_a^b \rho x f(x) dx
 \qquad
