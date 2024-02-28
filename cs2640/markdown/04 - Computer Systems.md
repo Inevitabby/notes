@@ -164,12 +164,15 @@ $$
 
 - **Control Unit (CU)**: Controls all activities in the CPU.
 	* Can be controlled by hardware or microcode.
-		+ MIPS is controlled by hardware
-		+ x86 is controlled by microcode.
+		+ e.g., MIPS is controlled by hardware
+		+ e.g., x86 is controlled by microcode.
 - **Arithmetic and Logic Unit (ALU):** Does binary operations.
 - **Registers (REGS):** Memory inside the CPU.
 	- Two Special Registers in MIPS:
 		1. Program Counter
 		2. Instruction Register: Stores current instruction being executed.
-- 
+	- ex: If you have 32 registers, you need 5 bits to address them.
+- **Program Counter (PC)**: Contains address of the next instruction to be executed.
 
+External: 
+- **Clock**: Keeps everything synchronized (sequenced).
