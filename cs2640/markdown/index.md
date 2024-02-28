@@ -10,4 +10,4 @@ The following are my class notes for Computer Organization and Assembly Programm
 4. [Computer Systems](04 - Computer Systems.html)
 5. [Von Neumann Architecture](05 - Von Neumann Architecture.html)
 6. [MIPS](06 - MIPS.html)
-7. [Instruction Set Architecture](07 - Instruction Set Architecture.html)
+7. [Instruction Set Architecture](07 - ISA.html)
