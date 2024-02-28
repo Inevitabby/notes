@@ -151,6 +151,7 @@ $endif$
     #toggleNavbar {
       display: none;
     }
+    /* Mobile */
     @media (max-width: 1280px) {
       #TOC {
         display: none;
@@ -174,6 +175,17 @@ $endif$
       }
       blockquote {
         margin: 1em 0 1em 0em;
+      }
+    }
+    /* Big Windows */
+    @media (min-width: 1980px) {
+      body {
+        max-width: 40em;
+      }
+    }
+    @media (min-width: 2160px) {
+      body {
+        max-width: 45em;
       }
     }
   </style>
