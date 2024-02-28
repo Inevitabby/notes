@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>02 - Argument</title>
   <style>
     html {
       line-height: 1.5;
@@ -153,24 +153,89 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<p><strong>Argument</strong>: Attempt to give evidence that an idea is true.</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
-</ul>
-<h2 id="general-education">General Education</h2>
+<li>“The form we consider evidence”</li>
+<li>Consists of:
+<ol class="incremental" type="1">
+<li><strong>Conclusion</strong>: What you’re trying to prove</li>
+<li><strong>Premises</strong>: Supporting evidence
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/phl2020/">PHL2020: Critical Thinking</a></li>
-</ul>
-<h2 id="self-study">Self-Study</h2>
+<li>Minimum # to make an argument is 1
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>(an argument with one premise is a syllogism)</li>
+</ul></li>
+</ul></li>
+<li><strong>Inference</strong>: Connects premises
+<ul class="incremental">
+<li>Represented by the word “therefore”</li>
+</ul></li>
+</ol></li>
 </ul>
+<blockquote>
+<p>Example: <em>“All humans eventually die. I am human. Therefore, I will eventually die.”</em></p>
+<ul class="incremental">
+<li>Conclusion: <em>I will eventually die</em></li>
+<li>Inference: <em>Therefore</em></li>
+<li>Premises: <em>All humans eventually die <span class="math inline">\land</span> I am human</em></li>
+</ul>
+<p>Syllogism Example: <em>“I know this student is here because I just saw them”</em></p>
+<ul class="incremental">
+<li>Conclusion: <em>Student is here</em></li>
+<li>Inference: <em>Because</em></li>
+<li>Premises: <em>I just saw them</em></li>
+</ul>
+</blockquote>
+<p><strong>Recognizing Arguments</strong>:</p>
+<ol class="incremental" type="1">
+<li>Indicator Words: Identifies premises and conclusions</li>
+<li>Four (4) kinds of passages (series of sentences)
+<ol class="incremental" type="1">
+<li>Narrative: Series of events</li>
+<li>Description: Give characteristics of something
+<ul class="incremental">
+<li><em>e.g., “Albert Einstein had white hair”</em></li>
+</ul></li>
+<li>Causal Explanation: Gives cause of something
+<ul class="incremental">
+<li><em>“My car stopped because it ran out of gas” only describes cause, it doesn’t try to argue for it.</em></li>
+</ul></li>
+<li>Argument: Gives evidence to prove an idea is true.</li>
+</ol></li>
+<li></li>
+<li></li>
+</ol>
+<blockquote>
+<p><em>Note: Causes are also reasons/evidence for human actions, so the line between causal explanation and argument is blurred.</em></p>
+</blockquote>
+<p><strong>Examples of Indicator Words:</strong>
+| Premise | Conclusion |
+| :—: | :—: |
+| As | So |
+| For | Consequently |
+| Given that | As a result |
+| Assuming that | It follows that |
+| Inasmuch as | Hence |</p>
 </body>
 </html>

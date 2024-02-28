@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>09 - Emotions of Logic</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="introduction">Introduction</h1>
+<blockquote>
+<p><strong>False Dichotomy</strong>: You can either be logical or emotional.</p>
+<ul class="incremental">
+<li>Option 3: We can use our rational thinking to examine our emotions.</li>
+</ul>
+</blockquote>
+<p><strong>Values</strong>: Anything that you act to get/keep.</p>
+<ul class="incremental">
+<li>Our deepest values come from our childhood.</li>
+</ul>
+<p><strong>Packer’s Thesis</strong>: Behind every emotion there’s a (usually implicit) thought that <span class="math inline">X</span> is good or bad for you.</p>
+<p><strong>Packer’s 4 Part of Emotion:</strong></p>
+<ol class="incremental" type="1">
+<li>Inner feeling</li>
+<li>(Usually implicit) thought that something good and/or bad for us</li>
+<li>Bodily changes
+<ul class="incremental">
+<li>This is how we can tell another person’s emotions before they are even aware.</li>
+</ul></li>
+<li>Action tendency.</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Emotion</th>
+<th style="text-align: center;">Universal Evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fear</td>
+<td style="text-align: center;">I’m in danger because <span class="math inline">X</span> is endangering me</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Anger</td>
+<td style="text-align: center;">I’m the victim of an injustice</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Joy</td>
+<td style="text-align: center;">I’m in pleasure because I achieved something I value</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ul class="incremental">
+<li>Note: “I’m” also refers to “Mine” (e.g., we can be angry on behalf of our loved ones)</li>
+</ul>
+<p>Counter + 1:</p>
+<ul class="incremental">
+<li>She said “I wrote my dissertation, which is now a book” again.</li>
+</ul>
+<h1 id="steps-of-introspection-nuparc">Steps of Introspection (NUPARC)</h1>
+<ol class="incremental" type="1">
+<li>Name the Emotion</li>
+<li>Universal Evaluation</li>
+<li>Personal Evaluation</li>
+<li>Assess the truth of U and P</li>
+<li>Reasons in the person’s psychological history for why this is false</li>
+<li>Correct the thinking (include specific, actionable steps)</li>
+</ol>
+<blockquote>
+<p><strong>NUPARC Example</strong>:</p>
+<ol class="incremental" type="1">
+<li><strong>N</strong>ame: Anxiety</li>
+<li><strong>U</strong>niversal Evaluation: I’m incapable of being in a romantic relationship.</li>
+<li><strong>P</strong>ersonal Evaluation: I’ll never give a woman what she wants. I’ll never find happiness in romance.</li>
+<li><strong>A</strong>ssess the truth of U and P: Partly true and partly false. He’ll never find happiness if he keeps behaving like this. If he fixes his behavior, he’ll be capable.</li>
+<li><strong>R</strong>easons in the person’s psychological history for why his false: He was dumped for no reason he could understand, so he wanted to make sure he’s in control in all future relationships (fear of pain).</li>
+<li><strong>C</strong>orrect the thinking: Find the courage to date women he can have a serious relationship with. I’ll eventually find the one.</li>
+</ol>
+</blockquote>
+<h1 id="the-only-philosopher-to-ever-exist">THE ONLY PHILOSOPHER TO EVER EXIST</h1>
+<p><strong>Aristotle said Something or Other About Emotions and Actions</strong>:</p>
+<ul class="incremental">
+<li><strong>Motivation</strong> is the mental process that leads to action.</li>
+<li><strong>Desire</strong> is the inner urge to act, determines what’s worth acting on.</li>
+</ul>
+<h1 id="dr.-packer">Dr. Packer</h1>
+<blockquote>
+<p><strong>Packer’s Thesis</strong>: Behind every emotion there’s a (usually implicit) thought that <span class="math inline">X</span> is good or bad for you.</p>
+</blockquote>
+<p><strong>Packer’s 4 Parts of Emotion:</strong></p>
+<ol class="incremental" type="1">
+<li>Inner feeling</li>
+<li>Usually implicit thought that something’s good/bad</li>
+<li>Bodily changes</li>
+<li>Action tendency.</li>
+</ol>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Emotion</th>
+<th style="text-align: center;">Universal Evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Fear</td>
+<td style="text-align: center;">I’m in danger because <span class="math inline">X</span> is endangering me</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Anger</td>
+<td style="text-align: center;">I’m the victim of an injustice</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Joy</td>
+<td style="text-align: center;">I’m in pleasure because I achieved something I value</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Anxiety</td>
+<td style="text-align: center;">I’m incapable or unworthy</td>
+</tr>
+</tbody>
+</table>
+<ul class="incremental">
+<li>Additional Notes:
+<ul class="incremental">
+<li>Anger often is a mix of hurt and disappointment</li>
+<li>Anxiety feels like a free-floating fear.</li>
+</ul></li>
+<li>Anxiety Defenses:
+<ul class="incremental">
+<li>Repression</li>
+<li>Denial</li>
+<li>Projection</li>
+<li>Withdrawal</li>
+<li>Hostility</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+</body>
+</html>

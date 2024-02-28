@@ -15,5 +15,6 @@ function convert_directory {
 convert_directory "cs1300"&
 convert_directory "cs1400"&
 convert_directory "cs50"&
+convert_directory "phl2020"&
 eval pandoc "-i \"README.md\" ${PANDOC_ARGS} -o \"index.html\""
 wait < <(jobs -p) # Wait for all processes to finish
