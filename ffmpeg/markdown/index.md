@@ -45,6 +45,13 @@ fps=20
 -ac 1
 ```
 
+### Audio Bitrate (`-b:a`)
+
+e.g.,
+```bash
+-b:a 32K
+```
+
 ### Stereo and Mono Audio Rates (`-ar`)
 
 > **Source**: [*Opus Recommended Settings*, xiph.org](https://wiki.xiph.org/Opus_Recommended_Settings)
