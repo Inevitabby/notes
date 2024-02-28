@@ -477,6 +477,7 @@ $$
 \boxed{
 	\text{Surface Area of Solid of Revolution: }
 	\int_a^b 2 \pi f(x) \sqrt{1 + f'(x)^2} dx
-}
+} \\
+\small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
 $$
 
