@@ -44,3 +44,27 @@ fps=20
 ```bash
 -ac 1
 ```
+
+### Stereo and Mono Audio Rates (`-ar`)
+
+> **Source**: [*Opus Recommended Settings*, xiph.org](https://wiki.xiph.org/Opus_Recommended_Settings)
+
+> **Note**: Stereo unless specified otherwise
+
+| Use Case                | Bitrate (Kb/s)         | Notes                                            |
+|-------------------------|------------------------|--------------------------------------------------|
+| VOIP                    | 10—24                  |                                                  |
+| Audiobooks              | 24 (Mono), 32 (Stereo) | Past 24 delivers fullband                        |
+| Music Streaming / Radio | 64—96                  | Superior quality to MP3, AAC, and Vorbis here    |
+| Music Storage           | 96—128                 | 128 is virtually indistinguishable from lossless |
+
+> **Audio Bands in Telephony:**
+> 
+> | Name          | Range (Hz) |
+> |---------------|------------|
+> | Narrowband    | 300—3,400  |
+> | Wideband      | 50—7,000   |
+> | Superwideband | 50—14,000  |
+> | Fullband      | 20—20,000  |
+> 
+> > **Source**: [*Wideband audio*, Wikipedia](https://en.wikipedia.org/wiki/Wideband_audio)
