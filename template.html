@@ -66,7 +66,6 @@ $endif$
     body {
       color: var(--text-color);
       background-color: var(--background-color);
-      min-height: 90vh;
     }
     footer {
       text-align: center;
@@ -75,9 +74,10 @@ $endif$
       margin-bottom: 1em;
       left: 50%;
       transform: translateX(-50%);
+      margin-top: calc(80% - 30px);
     }
     footer p {
-      margin: 0; /* Remove default margin for the paragraph */
+      margin: 0;
     }
     blockquote {
       border-left-color: var(--blockquote-border-color);
@@ -185,76 +185,76 @@ $endif$
   <![endif]-->
 </head>
 <body>
-$for(include-before)$
-$include-before$
-$endfor$
-$if(title)$
-<header id="title-block-header">
-<h1 class="title">$title$</h1>
-$if(subtitle)$
-<p class="subtitle">$subtitle$</p>
-$endif$
-$for(author)$
-<p class="author">$author$</p>
-$endfor$
-$if(date)$
-<p class="date">$date$</p>
-$endif$
-$if(abstract)$
-<div class="abstract">
-<div class="abstract-title">$abstract-title$</div>
-$abstract$
-</div>
-$endif$
-</header>
-$endif$
-$if(toc)$
-<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
-<nav id="$idprefix$TOC" role="doc-toc">
-$if(toc-title)$
-<h2 id="$idprefix$toc-title">$toc-title$</h2>
-$endif$
-$table-of-contents$
-</nav>
-$endif$
-$body$
-$for(include-after)$
-$include-after$
-$endfor$
-$if(is_about_page)$
-    <footer>
-      <p>
-        <i><a href="https://inevitabby.codeberg.page/notes/">Return</a></i>
-      </p>
-    </footer>
-$else$
-    <footer>
-      <p>
-        <i><a href="https://inevitabby.codeberg.page/notes/about.html">About</a></i>
-      </p>
-    </footer>
-$endif$
-<script>
-    // Toggle the navbar (Table of Contents)
-    function toggleNavbar() {
-      const TOC = document.querySelector('#TOC');
-      TOC.style.display = TOC.style.display === "none" ? "block" : "none";
-    }
-    // Don't add anchor links to the history
-    let isFirstAnchorClick = false;
-    document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
-      anchor.addEventListener("click", function (event) {
-        event.preventDefault();
-        const TARGET_HREF = anchor.getAttribute('href');
-        history.replaceState(null, null, TARGET_HREF);
-        window.location.href = TARGET_HREF;
-        if (!isFirstAnchorClick) {
-          // Push anchorless version of page into history
-          history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
-          isFirstAnchorClick = true;
-        }
+  $for(include-before)$
+    $include-before$
+  $endfor$
+  $if(title)$
+    <header id="title-block-header">
+    <h1 class="title">$title$</h1>
+    $if(subtitle)$
+      <p class="subtitle">$subtitle$</p>
+    $endif$
+    $for(author)$
+      <p class="author">$author$</p>
+    $endfor$
+    $if(date)$
+      <p class="date">$date$</p>
+    $endif$
+    $if(abstract)$
+      <div class="abstract">
+      <div class="abstract-title">$abstract-title$</div>
+      $abstract$
+      </div>
+    $endif$
+    </header>
+  $endif$
+  $if(toc)$
+    <button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+    <nav id="$idprefix$TOC" role="doc-toc">
+    $if(toc-title)$
+      <h2 id="$idprefix$toc-title">$toc-title$</h2>
+    $endif$
+    $table-of-contents$
+    </nav>
+  $endif$
+  $body$
+  $for(include-after)$
+    $include-after$
+  $endfor$
+  $if(is_about_page)$
+      <footer>
+        <p>
+          <i><a href="https://inevitabby.codeberg.page/notes/">Return</a></i>
+        </p>
+      </footer>
+  $else$
+      <footer>
+        <p>
+          <i><a href="https://inevitabby.codeberg.page/notes/about.html">About</a></i>
+        </p>
+      </footer>
+  $endif$
+  <script>
+      // Toggle the navbar (Table of Contents)
+      function toggleNavbar() {
+        const TOC = document.querySelector('#TOC');
+        TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+      }
+      // Don't add anchor links to the history
+      let isFirstAnchorClick = false;
+      document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
+        anchor.addEventListener("click", function (event) {
+          event.preventDefault();
+          const TARGET_HREF = anchor.getAttribute('href');
+          history.replaceState(null, null, TARGET_HREF);
+          window.location.href = TARGET_HREF;
+          if (!isFirstAnchorClick) {
+            // Push anchorless version of page into history
+            history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
+            isFirstAnchorClick = true;
+          }
+        });
       });
-    });
-</script>
+  </script>
 </body>
 </html>
