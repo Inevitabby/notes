@@ -1,2 +1,3 @@
-# Don't push build
+# Don't push local builds
 public/
+.md5sums/
