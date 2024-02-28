@@ -105,10 +105,10 @@ Solving counting problems usually involves converting problems to set cardinalit
 
 If $A$ and $B$ are subsets of universal set $S$, then $(A-B),(B-A),$ and $(A \cap B)$ are disjoint sets. So:
 
-> **Principle of Inclusion and Exclusion on 2 Sets**:
-> $$
-> 	| A \cup B | = | A | + | B | - | A \cap B |
-> $$
+**Principle of Inclusion and Exclusion on 2 Sets**:
+$$
+	| A \cup B | = | A | + | B | - | A \cap B |
+$$
 
 > **Example**: How many integers from 1 to 1000 are either multiples of 3 or multiples of 5?
 > 
@@ -125,26 +125,26 @@ If $A$ and $B$ are subsets of universal set $S$, then $(A-B),(B-A),$ and $(A \ca
 
 ## Principle of Inclusion and Exclusion on 3 Sets
 
-> **Principle of Inclusion and Exclusion on 3 Sets**:
-> $$
-> | A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C |
-> $$
-
-**Example**: In a class of students undergoing a computer course the following were observed.
-- Out of a total of 50 students: 30 know Pascal, 18 know Fortran, 26 know COBOL, 9 know both Pascal and Fortran, 16 know both Pascal and COBOL, 8 know both Fortran and COBOL, 47 know at least one of the three languages.
-
-1. How many students know none of the languages?
-	- $50 - 47 = 3$ students.
-2. How many students know all three languages?
-
+**Principle of Inclusion and Exclusion on 3 Sets**:
 $$
-| A \cup B \cup C | = 47 \\~\\
-\text{Recall: }
-| A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C | \\~\\
-47 = 30 + 18 + 26 - 9 - 16 - 8 + |A \cap B \cap C| \\
-\downarrow \\
-|A \cap B \cap C| = 6
+| A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C |
 $$
+
+> **Example**: In a class of students undergoing a computer course the following were observed.
+> - Out of a total of 50 students: 30 know Pascal, 18 know Fortran, 26 know COBOL, 9 know both Pascal and Fortran, 16 know both Pascal and COBOL, 8 know both Fortran and COBOL, 47 know at least one of the three languages.
+> 
+> 1. How many students know none of the languages?
+> 	- $50 - 47 = 3$ students.
+> 2. How many students know all three languages?
+> 
+> $$
+> | A \cup B \cup C | = 47 \\~\\
+> \text{Recall: }
+> | A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C | \\~\\
+> 47 = 30 + 18 + 26 - 9 - 16 - 8 + |A \cap B \cap C| \\
+> \downarrow \\
+> |A \cap B \cap C| = 6
+> $$
 
 # Pigeonhole Principle
 
@@ -152,7 +152,7 @@ $$
 2. How many people must be in a room to guarantee that two people have the last name begin with the same initial?
 	- 26 alphabets, hence 27 people are must be in the room.
 3. How many times must a single die be rolled in order to guarantee getting the same value twice?
-	- 7 times, because there are 6 possible outcomes.Go
+	- 7 times, because there are 6 possible outcomes.
 
 # Permutations
 
@@ -160,23 +160,12 @@ $$
 - If you change the order, it becomes a different permutation.
 
 The number of permutations of $r$ distinct objects chosen from $n$ distinct objects is denoted by $P(n,r)$
-- Example: Suppose we have 10 total pool of students ($n$) and want to know how many ways we can order 5 students ($r$) without repetition.
-	* $P(10,5): 10 \times 9 \times 8 \times 7 \times 6 = 30240$
+
+> Example: Suppose we have total pool of 10 students ($n$) and want to know how many ways we can order 5 students ($r$) without repetition.
+> 	* $P(10,5): 10 \times 9 \times 8 \times 7 \times 6 = 30240$ ways to order 5 students.
 
 Mathematically, for $r \le n$, an $r$-permutation from $n$ objects is defined by:
 
-$$
-\begin{aligned}
-	P(n,r) &= n \times (n-1) \times (n-2) \times ... \times (n-r+1) \\
-	&= \frac{
-		n \times (n-1) \times (n-2) \times ... \times (n-r+1) \times (n-r)!
-	}{
-		(n-r)!
-	}
-\end{aligned}
-$$
-
-So:
 $$
 P(n,r) = \frac{
 	n!
@@ -186,17 +175,28 @@ P(n,r) = \frac{
 $$
 - for $0 \le r \le n$
 
+> **Tangent**: Deriving permutation formula
+> $$
+> \begin{aligned}
+> 	P(n,r) &= n \times (n-1) \times (n-2) \times ... \times (n-r+1) \\
+> 	&= \frac{
+> 		n \times (n-1) \times (n-2) \times ... \times (n-r+1) \times (n-r)!
+> 	}{
+> 		(n-r)!
+> 	}
+> \end{aligned}
+> $$
+
 ## Special Cases
 
 **Empty Set**: $P(n,0)=\frac{n!}{n!}=1$
-- There's only one way to order an arrangement of 0 objects.
-	* Mathematical proof: 
+- "There's only one way to order an arrangement of 0 objects."
 
 **Picking Only One Object**: $P(n,1)=\frac{n!}{(n-1)!}=n$
-- There's only one way to order an arrangement of 1 object.
+- "There's only one way to order an arrangement of 1 object."
 
 **Arranging $n$ objects**: $P(n,n)=\frac{n!}{0!}=n!$
-- This is just the multiplication principle—you can order $n$ objects in $n!$-distinct ways.
+- This is just the multiplication principle: You can order $n$ objects in $n!$-distinct ways.
 
 ## Examples
 
@@ -239,25 +239,44 @@ $$
 \end{aligned}
 $$
 
+## Examples: Eliminating Duplicates
+
+**Problem**: How many distinct permutations can be made from the characters in the word WASHINGTON?
+- Pitfall: We can't do $P(10,10)$ because the letter "N" is used twice
+- Answer: $\frac{10!}{2!}$, because everything gets counted twice by $10!$
+
+**Problem**: How many distinct permutations can be made from the characters in the word YORK?
+- Answer: $P(4,4) = \frac{4!}{0!} = 4!$
+
+**Problem**: How many distinct permutations can be made from the characters in the word ILLINOIS?
+- Answer: $\frac{8!}{2!3!}$
+	* The $2!$ is for double-counting of the two N's
+	* The $3!$ is for triple-counting of the three I's
+
+**Problem**: How many distinct permutations can be made from the characters in the word MISSISSIPPI?
+- Answer: $\frac{11!}{4!4!2!}$
+	* Divisions account for the 4 S's, 4 P's, and 2 I's. 
+
 # Combinations
 
-If we don't care about order in permutations, we're talking about **combinations**, which are denoted by:
+If we don't care about order in permutations, we're talking about **combinations**, which can be calculated with:
 
 $$
 	C(n,r) = \frac{n!}{(n-r)!r!}
 $$
-- After each combination, if you order the chosen $r$ objects, you'll be calculating the permutation again (because there are $r!$ ways to order those $r$ chosen objects).
-$$
-\text{Relationship between Combinations and Permutations: }
-C(n,r) \times r! = P(n,r)
-$$
+
+> Note: Relationship between Combinations and Permutations:
+> - After each combination, if you order the chosen $r$ objects, you'll be calculating the permutation again (because there are $r!$ ways to order those $r$ chosen objects).
+> $$
+> C(n,r) \times r! = P(n,r)
+> $$
 	
 > Note: $C(n,r)$ is much smaller than $P(n,r)$ by definition.
 
 ## Special Cases
 
 **Empty Set**: $C(n,0) = 1$
-- Only one way to choose 0 objects from n objects
+- "Only one way to choose $0$ objects from $n$ objects"
 
 **Choosing One Object**: $C(n,1) = n$
 
@@ -294,31 +313,12 @@ $$
 C(52,5)=2,598,960
 $$
 
-# Examples: Eliminating Duplicates
-
-**Problem**: How many distinct permutations can be made from the characters in the word YORK?
-- Answer: $P(4,4) = \frac{4!}{0!} = 4!$
-
-**Problem**: How many distinct permutations can be made from the characters in the word WASHINGTON?
-- Pitfall: We can't do $P(10,10)$ because the letter "N" is used twice
-- Answer: $\frac{10!}{2!}$, because everything gets counted twice by $10!$
-
-**Problem**: How many distinct permutations can be made from the characters in the word ILLINOIS?
-- Answer: $\frac{8!}{2!3!}$
-	* The $2!$ is for double-counting of the two N's
-	* The $3!$ is for triple-counting of the three I's
-
-**Problem**: How many distinct permutations can be made from the characters in the word MISSISSIPPI?
-- Answer: $\frac{11!}{4!4!2!}$
-	* Divisions account for the 4 S's, 4 P's, and 2 I's. 
-
-# Class Exercises
+# Exercises: Permutations and Combinations
 
 **Problem**: How many permutations of the characters in the word COMPUTER are there? How many of these end in a vowel?
 
 
 $$
-
 \text{Possibilities: C,M,P,T,R,O/U/E (2x),O/U/E (1x)}
 $$
 $$
