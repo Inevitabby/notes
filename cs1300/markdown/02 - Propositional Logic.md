@@ -38,9 +38,9 @@ Derivation rules for propositional logic:
 | Allows individual well-formed formulas to be rewritten | Allows new well-formed formulas to be derived |
 | Truth-preserving rules                                 | Work only in one direction                    |
 
-**Professor's Note**: Knowledge of all of these rules is vital and will become natural through experience.
+> **Professor's Note**: Knowledge of all of these rules is vital and will become natural through experience.
 
-## Equivalence Rules
+## &#9733; Equivalence Rules
 
 *(Let $R$ and $S$ be statement variables)*
 
@@ -59,10 +59,10 @@ Derivation rules for propositional logic:
 > 1. $(A ' \lor B') \lor C$
 > 2. $(A \land B)' \lor C$; 1, De Morgan
 > 2. $(A \land B) \to C$;	2, De Morgan
-> 
+
 > **Professor's Note**: When working on proofs there are no hard-and-fast rules. Trial and error, reason backward and forward, rearrange things to look at them differently, etc.
 
-## Inference Rules
+## &#9733; Inference Rules
 
 *(Let $R$ and $S$ be statement variables)*
 
@@ -118,7 +118,7 @@ Deduction method allows for the use of $R$ as an additional hypothesis and thus 
 > 4. $B$; 1, 3 mp
 > 5. $C$; 2, 4 mp
 
-## More Inference Rules
+## &#9733; More Inference Rules
 
 (These rules can be derived using the previous rules. Memorizing these allow us to solve proofs with fewer steps.)
 
@@ -145,12 +145,16 @@ Deduction method allows for the use of $R$ as an additional hypothesis and thus 
 > Only a couple inference rules are bidirectional, most are one-directional
 > * Why aren't these bidirectional inference rules equivalence rules? Idk.
 
+## Examples: Solving Proofs
+
+<!--(This was a cop-out, I decided to be a smart-ass instead of typing out all the steps on the board)
 > **Example: Proving Contraposition**
 > - Prove that $(P \to Q) \to (Q' \to P')$ is a valid argument.
 > 	- Hence, prove $(P \to Q) \land Q' \to P'$ (deduction method)
 > 1. $(P \to Q)$, hyp
 > 2. $Q'$, hyp
 > 3. $P'$, 1,2, mt
+-->
 
 > **Example: Proving Inconsistency**
 > - Prove $P \land P' \to Q$ (inconsistency rule)
@@ -179,7 +183,7 @@ Deduction method allows for the use of $R$ as an additional hypothesis and thus 
 > 6. $A \land B$, 1, 4, con
 > 7. $D \lor C'$, 3,6, mp
 > 8. $D$, 5,7, ds
->	- $\uparrow$ Disjunction: "We know that $D$ or $C'$ MUST be true, and since we already know that $C$ is true, we know that $D$ must be true." 
+>	- $\uparrow$ Explaining Disjunctive Syllogism (*ds*): "We know that $D$ or $C'$ MUST be true, and since we already know that $C$ is true, we know that $D$ must be true." 
 
 > **Professor's Note**: Stay focused on the result. A longer path is fine so long as it is a correct path.
 
