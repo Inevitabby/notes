@@ -42,6 +42,7 @@
 - **Base**: 2
 - **Digits**: 0, 1
 - **Bit (Binary Digit)**: Smallest unit of information.
+	* **Nibble**: 4 bits.
 - **Byte**: Group of 8 [consecutive]{.underline} bits.
 	* Smallest addressable unit of information in most computers
 	* Every byte has an address
@@ -128,9 +129,76 @@
 
 # Exercise
 
-| Decimal | Binary  | Octal | Hexadecimal |
-|---------|---------|-------|-------------|
-| $33$      |         |       |             |
+| Decimal | Binary    | Octal | Hexadecimal |
+|---------|-----------|-------|-------------|
+| $33$    |           |       |             |
 |         | $1110101$ |       |             |
 |         |           | $703$ |             |
-|         |           |       | $1AF$         |
+|         |           |       | $1AF$       |
+
+# More on Binary
+
+## Odd/Even, Bit Masking
+
+**Odd or Even**: Mask LSBit
+- 1 = Odd
+- 0 = Even
+
+> **How-to Mask the LSBit**
+> - Q: How do we turn `1011` into the LSBit (`0001`)?
+>	- A: Use boolean logic to mask the LSBit!
+>	$$1011 \land 0001 = 1$$
+
+## Multiplication/Division, Bit Shifting
+
+**Multiplication and Division by Power of 2**: Shift left or right.
+- Shifting left $n$-bits multiplies the number by $2n$
+- Shifting right $n$-bits divides the number by $2n$
+	* **Logical Shift**: Puts zero on the left
+		+ e.g., $1000 \to \text{Logical Shift Right} \to 0100$
+		+ For unsigned values
+	* **Arithmetic Shift**: Replicates the MSBit on the left
+		+ e.g., $1000 \to \text{Arithmetic Shift Right} \to 1100$
+		+ For signed values
+
+> **Note**: Shifting bits is much faster than using 
+
+TODO Multiply method?
+
+## 2's Complement
+
+**Introduction**:
+- Q: In the decimal system, we can denote sign by using the `+` and `-` symbol (e.g., `+5`, `-5`). How can we do the same for binary?
+	* A: Let the MSBit (signed bit) denote whether the number is positive or negative.
+
+---
+
+**Sign in Binary Solution I**: One's complement
+- Apply `NOT` on every bit.
+- Older standard.
+
+$$
+0101_2 = +5_{10} \\
+\text{(Flip every bit)} \\
+1010_2 = -5_{10}
+$$
+
+> **Issues with Ones's Complement**: Does $1000_2$ represent $-0_{10}$ or $8_{10}$?
+
+---
+
+**Sign in Binary Solution I**: Two's complement
+- Apply `NOT` on every bit, then `+1`
+- Modern standard.
+
+$$
+0101_2 = +5_{10} \\
+\text{(Flip every bit, +1)} \\
+1011_2 = -5_{10}
+$$
+
+> **Issues with Two's Complement**: We have one more negative value than positive values.
+> - E.g., In nibble (4 bits), the range of possible numbers is $[-8_{10}. 7_{10}]$, you can't represent $8_{10}$ with a nibble in two's complement.
+
+> **Sign Extension**:
+> - 
