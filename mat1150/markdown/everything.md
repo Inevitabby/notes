@@ -481,5 +481,211 @@ $$
 \small\textit{Provided that $f'$ exists and is continuous over $[a,b]$} \\
 $$
 
-> **Rotating About the Y-Axis**: 
-> - If given a problem to solve a $y$-function from $y=a$ to $y=b$, simply solve for $x$ and $x'$, and plug it into the above formula, replacing $f(x)$ with $x$, $f'(x)$ with $x'$, and $dx$ with $dy$.
+<details><summary>Rotating About the Y-Axis</summary>
+- If given a problem to solve a $y$-function from $y=a$ to $y=b$, simply solve for $x$ and $x'$, and plug it into the above formula, replacing $f(x)$ with $x$, $f'(x)$ with $x'$, and $dx$ with $dy$.
+</details>
+
+# Moments and Center of Mass
+
+$$
+\boxed{
+	\text{Center of Mass: } x = \frac{M}{m}
+} \\~\\
+M = \sum_{i-1}^n m_i x_i \qquad
+m = \sum_{i-1}^n m_i
+$$
+
+<details><summary>Why?</summary>
+$$
+\text{Because } x = \frac{m_1 x_1 + m_2 x_2}{m_1 + m_2}
+$$
+- $M$: Moment of system
+- $m$: Total mass
+</details>
+
+<details><summary>Example: 4 Masses on a Line</summary>
+$$
+\begin{aligned}
+m_1 &= 30 \text{kg}, x_1 = -2 \text{m} \\
+m_2 &= 5 \text{kg}, x_1 = 3 \text{m} \\
+m_3 &= 10 \text{kg}, x_1 = 6 \text{m} \\
+m_4 &= 15 \text{kg}, x_1 = -3 \text{m} \\
+\end{aligned} \\~\\
+\begin{aligned}
+x &= \frac{
+	30(-2) + 5(3) + 10(6) + 15(-3)
+}{
+	30  5 + 10 + 15
+} \\
+&= -\frac{1}{2} \text{m}
+\end{aligned}
+$$
+</details>
+
+$$
+\boxed{
+	\text{Center of Mass (2D Plane): } 
+	x = \frac{ My }{ m }
+} \\~\\
+y = \frac{M_x}{m} \qquad
+M_y = \sum_{i=1}^n m_i x_i \qquad
+M_x = \sum_{i=1}^n m_i Y_i \qquad
+m = \sum_{i-1}^n m_i
+$$
+
+<details><summary>Why?</summary>
+If objects are on a 2D plane, we get the center of mass by calculating the center mass in the $x$ and $y$-directions separately.
+- $M_y$: Moment ith respect to y-axis
+- $M_x$: Moment with respect to x-axis
+- $m$: Total mass
+</details>
+
+<details><summary>Example: 3 Masses on a Plane</summary>
+$$
+\begin{aligned}
+m_1 &= 2 \text{kg}, (-1,3) \\
+m_2 &= 6 \text{kg}, (1,1) \\
+m_3 &= 4 \text{kg}, (2,-2) \\
+\end{aligned}
+\\~\\
+\begin{aligned}
+x &= \frac{
+	2(-1) + 6(1) + 4(2)
+}{
+	2 + 6 + 4
+} \\
+&= \frac{-2 + 6 + 8}{12} \\
+&= 1
+\end{aligned} 
+\\~\\
+\begin{aligned}
+y &= \frac{
+	2(3) + 6(1) + 2(-2)
+}{
+	2+6+4
+} \\
+&= \frac{6+6-8}{12} \\
+&= \frac{1}{3}
+\end{aligned}
+$$
+- Therefore, the center of mass is $(1, \frac{1}{3})$
+</details>
+
+$$
+\boxed{
+	\text{Center of Mass (Lamina): }
+	x = \frac{My}{m} \qquad y = \frac{M_x}{m}
+} \\~\\
+M_y = \int_a^b \rho x f(x) dx
+\qquad
+M_x = \int_a^b \rho \frac{[f(x_i^*)]^2}{2} dx
+\\
+m = \int_a^b \rho f(x) dx
+$$
+
+> **Tip**: When calculating, you can take $\rho = 1$ as they're going to cancel anyway.
+
+<details><summary>Why?</summary>
+Now, what if mass is evenly spread continuously throughout a 2D sheet of metal, called a [lamina]{.underline}?
+- *(We'll assume the density is constant throughout, but the sheet can be a nonstandard shape)*
+
+Consider the lamina whose shape is a region bounded by $y=f(x)$ above, x-axis below, and lines $x=a$ and $x=b$.
+
+> **Example**: Deriving center of mass formula for a rectangle
+> - The center of mass is right the middle.
+> - **Symmetry Principle**: If region $R$ is symmetric about a straight line, its geometric center lies on $l$.
+> 
+> 1. First, let's get the center of mass ($x_i^*$ is the center of the rectangle)
+> $$
+> \text{Center of Mass of Rectangle: $(x_i^*, \frac{f(x_i^*}{2})$} \\~\\
+> \text{x-value: } x_i^* = \frac{x_i + x_i + 1}{2} \qquad
+> \text{y-value: } \frac{f(x_i^*}{2}
+> $$
+>
+> 2. Now, let's find the density ($\rho$).
+>	- *(Recall that mass is density $\times$ area.)*
+> $$
+> \text{Mass of Rectangle: }
+> m = \int_a^b \rho f(x) dx
+> $$
+> 
+> 3. Now we need moment with respect to the x-axis and y-axis.
+> $$
+> \text{Moments for One Rectangle: } \\~\\
+> \text{I. W.r.t. y-axis: }
+> \rho f(x_i^*) \Delta x \times x_i^*
+> \\~\\
+> \text{II. W.r.t. x-axis: }
+> \rho \frac{[f(x_i^*)]^2}{2} \Delta x
+> $$
+> 
+> 4. So,
+> $$
+> M_y = \sum \rho f(x_i^*) \Delta x \times x_i^* \\
+> \\~\\
+> M_x = \sum \rho \frac{[f(x_i^*)]^2}{2} \Delta x
+> $$
+>
+> 5. Which can be rewritten as:
+> $$
+> M_y = \int_a^b \rho x f(x) dx
+> \\~\\
+> M_x = \int_a^b \rho \frac{[f(x_i^*)]^2}{2} dx
+> $$
+</details>
+
+<!--*-->
+<details><summary>Example: Center of a lamina</summary>
+**Q**: Find center of mass of a lamina bounded by $f(x)=\sqrt{x}$, x-axis, over $[0,4]$
+
+**A**: 
+1. Let's start by finding the total mass ($m$)
+$$
+\begin{aligned}
+	m &= \int_0^4 \rho \sqrt{x} dx \\
+	&= \rho \int_0^4 \sqrt{x} dx \\
+	&= \rho \frac{2}{3} ( 4^{3/2} - 0 ) \\
+	&= \frac{2 \rho}{3} (2)^3 \\
+	m &= \frac{16 \rho}{3}
+\end{aligned}
+$$
+
+2. Next let's find the moment with respect to the y-axis
+
+$$
+\begin{aligned}
+	M_y &= \int_0^4 \rho x \sqrt{x} dx \\
+	&= \rho \int_0^4 x^{3/2} dx \\
+	&= \rho \times \frac{2}{5} \times (\sqrt{x})^5 \\
+	M_y &= \frac{64 \rho}{5}
+\end{aligned}
+$$
+
+3. And now, $M_x$:
+
+$$
+\begin{aligned}
+	M_x &= \int_0^4 \rho \frac{ \sqrt{x}^2 }{ 2 } dx \\
+	&= \frac{\rho}{2} \int_0^4 x^2 dx \\
+	&= \frac{\rho}{4} (4^0 - 0^2) \\
+	M_x &= 4 \rho
+\end{aligned}
+$$
+
+4. Finally:
+
+$$
+\begin{aligned}
+x &= \frac{\frac{64 \rho}{5}}{\frac{16 \rho}{3}} \\
+&= \frac{12}{5}
+\end{aligned}
+\\~\\
+\begin{aligned}
+y &= \frac{4 \rho}{\frac{16 \rho}{3}} \\
+&= \frac{3}{4}
+\end{aligned}
+$$
+
+5. Therefore, the center of mass is $(2.4, 0.75)$
+</details>
+
