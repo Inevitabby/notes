@@ -1,3 +1,7 @@
+---
+title: "Von Neumann Architecture"
+---
+
 # Von Neumann (Princeton Architecture)
 
 ## Design

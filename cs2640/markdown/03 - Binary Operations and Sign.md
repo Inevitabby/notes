@@ -1,3 +1,7 @@
+---
+title: "Binary Operations and Sign"
+---
+
 # Bit Shifts (Multiplication and Division by $2^n$)
 
 ## A. Left Shift

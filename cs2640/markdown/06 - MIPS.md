@@ -1,6 +1,8 @@
-# MIPS
+---
+title: "MIPS Architecture"
+---
 
-## CPU
+# CPU
 
 **Register File**: 
 - While Von Neumann has only an accumulator, MIPS has 32 registers
@@ -20,7 +22,7 @@
 > 3. Perform operation in ALU
 > 4. Store result in the processor or move back into memory
 
-### Memory Unit
+## Memory Unit
 
 **Memory Unit**: Stores programs and data
 - **Main Memory**: Volatile
@@ -29,7 +31,7 @@
 - **Secondary Storage**: Non-volatile
 	* Larger and cheaper.
 
-## Basic Operational Concepts
+# Basic Operational Concepts
 
 To perform tasks, we use programs (lists of instructions and data), which are stored in memory, which are moved into the processor's registers and/or cache as needed.
 

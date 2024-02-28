@@ -1,3 +1,7 @@
+---
+title: "Instruction Set Architecture"
+---
+
 # Instruction Set Architecture (ISA)
 
 **Instruction Set Architecture**: The machine language the CPU implements.

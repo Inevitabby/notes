@@ -1,3 +1,7 @@
+---
+title: "Numbers Systems and Conversions"
+---
+
 # Intro
 
 1. **Decimal Number System**: 10 digits (0—9)
@@ -6,8 +10,7 @@
 3. **Octal**
 4. **Hexadecimal**
 
-> **Note**: These number systems can represent any value, their hardware can't.
-	* 32-bit, 64-bit
+> **Remember**: Mathematically, number systems can represent *any* value, it is the hardware that has limits.
 
 # Number Systems
 

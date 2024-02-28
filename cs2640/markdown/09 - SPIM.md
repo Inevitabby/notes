@@ -1,5 +1,5 @@
 ---
-title: MIPS Assembly
+title: "MIPS Assembly"
 ---
 
 # SPIM
