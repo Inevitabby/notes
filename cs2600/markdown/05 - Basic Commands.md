@@ -67,7 +67,7 @@ Files can configure the environment upon login, e.g.,
 > >              |#|/
 > >             _+#+_
 > > ```
-<!--~~-->
+<!--~~__-->
 
 ## The UNIX Prompt
 
@@ -108,8 +108,6 @@ After you log in and the shell startup files have run, the shell will display a 
 > 	- Usually files or directories
 > - Stuff in brackets is optional
 > - Boldface words are literals (must be typed as is)
-
-
 
 > **Note**: Commands are case-sensitive, and spaces must be inserted between commands, options, and arguments.
 
@@ -195,6 +193,16 @@ After you log in and the shell startup files have run, the shell will display a 
 - `wc`: Count lines, word, and bytes in a file
 - `which`: Looks for an executable in your `$PATH`
 - `ln`: Create a link
+- `sort`: Sort lines of text files
+- `uniq`: List unique items.
+- `find`: Find files.
+- `diff`: Compare lines among files
+- `cmp`: Test two files for equality, returning location of first differing byte.
+	* Faster than diff, usually used on binary files.
+- `comm`: Reads two already-sorted files and outputs three columns:
+	1. Lines in first file only
+	2. Lines in second file only
+	3. Lines in both files
 
 > **More on `ls` (list files in a directory)**:\
 > 
@@ -260,6 +268,7 @@ After you log in and the shell startup files have run, the shell will display a 
 - `clear`: Clears the terminal
 - `cal`: Prints calendar for any year and month.
 - `bc`: A calculator
+- `xargs`: Run each line of input as an argument to a specified command
 
 > **Tip**: You can use `!` to execute commands from history.
 > ```bash
@@ -287,6 +296,14 @@ After you log in and the shell startup files have run, the shell will display a 
 > > $ echo "10-5" | bc
 > > 5
 > > ```
+
+> **Example**: Using `xargs`
+> ```bash
+> # Remove all pdf files in /tmp
+> find /tmp -name "*.pdf" | xargs rm
+> # Print disk usage of man utility
+> which man | xargs du
+> ```
 
 ## `tar`
 
