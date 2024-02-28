@@ -849,22 +849,6 @@ M_x = \int_a^b \frac{[f(x)]^2}{2} dx
 m = \int_a^b f(x) dx
 $$
 
-<!--
-$$
-\boxed{
-	\text{Center of Mass (Lamina): }
-	x = \frac{M_y}{m} \qquad y = \frac{M_x}{m}
-} \\~\\
-M_y = \int_a^b \rho x f(x) dx
-\qquad
-M_x = \int_a^b \rho \frac{[f(x)]^2}{2} dx
-\\
-m = \int_a^b \rho f(x) dx
-$$
-
-> **Tip**: When calculating, you can take $\rho = 1$ as they're going to cancel anyway.
--->
-
 <details><summary>Why?</summary>
 Now, what if mass is evenly spread continuously throughout a 2D sheet of metal, called a [lamina]{.underline}?
 - *(We'll assume the density is constant throughout, but the sheet can be a nonstandard shape)*
@@ -969,3 +953,77 @@ $$
 5. Therefore, the center of mass is $(2.4, 0.75)$
 </details>
 
+$$
+	\boxed{
+		\text{Center of Mass (Bounded Region): }
+			x = \frac{M_y}{m} \qquad y = \frac{M_x}{m}
+	} \\~\\
+	M_y = \int_a^b x [ f(x) - g(x) ] dx
+	\qquad
+	M_x = \int_a^b \frac{ f(x)^2 - g(x)^2 }{ 2 } dx
+	\\
+	m = \int_a^b [f(x) -g(x)] dx
+$$
+
+<details><summary>Example: Bounded region</summary>
+- **Q**: Find the center of mass of the region bounded between $f(x)=1-x^2$ and $g(x)=x-1$
+
+- **A**:
+
+1. We must find $a$ and $b$, so we'll set the equations equal to each other and solve the roots:
+$$
+\begin{aligned}
+	f(x) &= g(x) \\
+	1 - x^2 &= x-1 \\
+	0 &= x^2 + x -2 \\
+	0 &= (x-1)(x+2) \\
+\end{aligned}
+$$
+	- Thus, the $a$ and $b$ is $[-2, 1]$
+
+2. Now we can solve for $M_y$, $M_x$, and $m$.
+
+$$
+\begin{aligned}
+	m &= \int_{-2}^1 1-x^2 - (x-1) dx \\
+	&= \int_{-2}^1 1-x^2 - x + 1 dx \\
+	&= \int_{-2}^1 -x^2 -x + 2 dx \\
+	&= -\frac{x^3}{3} - \frac{x^2}{2} + 2x |_{-2}^1  \\
+	&= \frac{-9}{3} + \frac{3}{2} + 6 \\
+	&= 3 + \frac{3}{2} \\
+	&= \frac{9}{2}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	M_y &= \int_{-2}^1 x ( -x^2 -x + 2 ) dx \\
+	&= \int_{-2}^1 -x^3 -x^2 + 2x dx \\
+	&= - \frac{x^4}{4} - \frac{x^3}{3} + x^2 |_{-2}^1 \\
+	&= \frac{15}{4} - \frac{9}{3} - 3 \\
+	&= \frac{15}{4} - 6 \\
+	&= \frac{-9}{4}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	M_x &= \int_{-2}^1 \frac{ (1-x^2)^2 - (x-1)^2 }{2} dx \\
+	&= \frac{1}{2} \int_{-2}^1 1 - 2x^2 + x^4 - ( x^2 - 2x + 1 ) dx \\
+	&= \frac{1}{2} \int_{-2}^1 -3x^2 +2x + x^4 dx \\
+	&= \frac{1}{2} ( -x^3 + x^2 + \frac{1}{5} x^5 |_{-2}^1) \\
+	&= \frac{1}{2} ( \frac{1}{5} - 12 + \frac{32}{5} ) \\
+	&= \frac{1}{2} ( \frac{33}{5} - \frac{60}{5} ) \\
+	&= \frac{-27}{10}
+\end{aligned}
+$$
+
+3. Now we solve for $x$ and $y$
+
+$$
+\begin{aligned}
+x &= \frac{-9}{4} \times \frac{2}{9} = - \frac{1}{2} \\
+y &= \frac{-27}{10} \times \frac{2}{9} = - \frac{3}{5}
+\end{aligned}
+$$
+</details>
