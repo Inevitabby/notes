@@ -1112,3 +1112,21 @@ $$
 - Or, 6.25 Joules of work
 </details>
 
+<details><summary>Example: Work to pump water out of a tank</summary>
+**Q**: Suppose a cylindrical tank of radius 4m and height 10m is filled with water to a height of 8m,
+- How much work is done to pump water out of tank?
+	* Assume was raise all water to top.
+- Note: Water has weight density of 9800 $N/m^3$
+
+**A**: 
+$$
+\begin{aligned}
+V &= \pi r^2 h \\
+&= \pi (4)^2 \Delta h
+\end{aligned} \\~\\
+F = 9800 \times 16 \pi \Delta h  \\~\\
+\begin{aligned}
+W &= \int_0^8 9800 \times 16 \pi (10 - h) dh \\
+\end{aligned}
+$$
+</details>
