@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>2 - compiling process</title>
   <style>
     html {
       line-height: 1.5;
@@ -158,15 +158,29 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="compiling-process">Compiling Process</h1>
+<p>Compile is an umbrella term for doing the following steps:</p>
+<ol class="incremental" type="1">
+<li>Preprocessing
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
-</ul>
-<h2 id="self-study">Self-Study</h2>
+<li>Get prototypes, find and replace <code>#include</code>’s</li>
+</ul></li>
+<li>Compiling
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
-</ul>
+<li>Translate to Assembly language; the closest you can get to actual binary.</li>
+<li>Each CPU has its on instruction set
+<ul class="incremental">
+<li>This is why you can’t take software compiled for Windows and run it on Mac</li>
+</ul></li>
+</ul></li>
+<li>Assembling
+<ul class="incremental">
+<li>Turning the Assembly into 0s and 1s</li>
+</ul></li>
+<li>Linking
+<ul class="incremental">
+<li>Stitch stdio, cs50, whatever into one file.</li>
+</ul></li>
+</ol>
 </body>
 </html>

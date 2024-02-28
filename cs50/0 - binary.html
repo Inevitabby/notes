@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>0 - binary</title>
   <style>
     html {
       line-height: 1.5;
@@ -153,20 +153,90 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="binary-bits-bytes">Binary, Bits, &amp; Bytes</h1>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
-</ul>
-<h2 id="self-study">Self-Study</h2>
+<li>Computers speak in binary</li>
+<li>Bits: 0s and 1s
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>etym: “binary digits”</li>
+</ul></li>
+<li>Example: Counting past 0 (binary <span class="math inline">\to</span> decimal)
+<ul class="incremental">
+<li><code>000</code> <span class="math inline">\to</span> 0</li>
+<li><code>001</code> <span class="math inline">\to</span> 1</li>
+<li><code>010</code> <span class="math inline">\to</span> 2</li>
+<li><code>011</code> <span class="math inline">\to</span> 3</li>
+<li><code>100</code> <span class="math inline">\to</span> 4</li>
+<li><code>101</code> <span class="math inline">\to</span> 5</li>
+<li>etc.</li>
+</ul></li>
+<li>Most computers use 8 bits at a time.</li>
 </ul>
+<h2 id="why-binary">Why Binary?</h2>
+<p>Physically, it’s easier to either store some electricity or not store some electricity in some switches or transistors, so binary bits are a natural solution</p>
+<h2 id="example-representing-123-in-binary-decimal">Example: Representing <code>123</code> in Binary &amp; Decimal</h2>
+<p>In decimal form, representing <code>123</code> can be done by splitting it into the hundreds, tens, and one’s place; like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">100</th>
+<th style="text-align: center;">10</th>
+<th style="text-align: center;">1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+</tr>
+</tbody>
+</table>
+<p>In binary, representing <code>123</code> can be done by splitting it into <span class="math inline">2^n</span> bits; like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">2^6</span></th>
+<th style="text-align: center;"><span class="math inline">2^5</span></th>
+<th style="text-align: center;"><span class="math inline">2^4</span></th>
+<th style="text-align: center;"><span class="math inline">2^3</span></th>
+<th style="text-align: center;"><span class="math inline">2^2</span></th>
+<th style="text-align: center;"><span class="math inline">2^1</span></th>
+<th style="text-align: center;"><span class="math inline">2^0</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>

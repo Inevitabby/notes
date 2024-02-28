@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>3 - determining efficiency</title>
   <style>
     html {
       line-height: 1.5;
@@ -153,20 +153,59 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="determining-efficiency">Determining Efficiency</h1>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
+<li>Running Time:
+<ul class="incremental">
+<li>Measured in <span class="math inline">n</span> steps</li>
+<li>“How many steps an algorithm might take”</li>
+</ul></li>
 </ul>
-<h2 id="self-study">Self-Study</h2>
+<h2 id="big-o-notation">Big O Notation</h2>
+<p>The upper bound on an algorithm’s running time.</p>
+<p>Instead of saying “this algorithm takes <span class="math inline">n</span> steps”, we can measure things in the order of <span class="math inline">n</span>s (“this algorithm takes <span class="math inline">O(n)</span> steps”).</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>This is because <span class="math inline">n</span> and <span class="math inline">n/2</span> end up being nearly the same when we observe <span class="math inline">n</span> getting orders of magnitudes larger.</li>
+</ul>
+<h2 id="big-omega-notation">Big <span class="math inline">\Omega</span> Notation</h2>
+<p>The lower bound on an algorithm’s running time.</p>
+<ul class="incremental">
+<li>We generally only talk about Big O notation</li>
+</ul>
+<h2 id="big-theta-notation">Big <span class="math inline">\Theta</span> Notation</h2>
+<p>Used when the upper and lower bound of an algorithm’s running time is the same.</p>
+<ul class="incremental">
+<li>So that we can describe <span class="math inline">\Omega</span> and <span class="math inline">O</span> succinctly.</li>
+</ul>
+<h2 id="common-real-world-o-omega-and-theta-values">Common Real-World <span class="math inline">O</span>, <span class="math inline">\Omega</span>, and <span class="math inline">\Theta</span> Values</h2>
+<p>Most algorithms will boil down to these (replace <span class="math inline">O</span> with <span class="math inline">\Omega</span> or <span class="math inline">\Theta</span>):</p>
+<ul class="incremental">
+<li><span class="math inline">O(n^2)</span>, <span class="math inline">\Omega(n^2)</span>, <span class="math inline">\Theta(n^2)</span></li>
+<li><span class="math inline">O(n\log n)</span>, <span class="math inline">\Omega(n\log n)</span>, <span class="math inline">\Theta(n\log n)</span></li>
+<li><span class="math inline">O(n)</span>, <span class="math inline">\Omega(n)</span>, <span class="math inline">\Theta(n)</span></li>
+<li><span class="math inline">O(\log n)</span>, <span class="math inline">\Omega(\log n)</span>, <span class="math inline">\Theta(\log n)</span></li>
+<li><span class="math inline">O(1)</span>, <span class="math inline">\Omega(1)</span>, <span class="math inline">\Theta(1)</span></li>
 </ul>
 </body>
 </html>

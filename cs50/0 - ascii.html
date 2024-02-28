@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>0 - ascii</title>
   <style>
     html {
       line-height: 1.5;
@@ -158,15 +158,41 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="representing-letters-in-binary-ascii">Representing Letters in Binary (ASCII)</h1>
+<p>Because everything is represented in bits, global agreed-upon standards are needed for representing letters and characters.</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
+<li>Ex: <code>65</code> in decimal is equal to the letter <code>A</code>; or <code>01000001 = A</code></li>
 </ul>
-<h2 id="self-study">Self-Study</h2>
+<p>Question: How does the computer know when we mean <code>65</code> or <code>A</code>?</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>We determine the context with things like prefixes and file formats.</li>
+</ul>
+<p>Problem: ASCII is quite US-centric</p>
+<ul class="incremental">
+<li>Solution: more global standards <em>(see: Unicode)</em></li>
+</ul>
+<h2 id="measuring-bits">Measuring Bits</h2>
+<p>Suppose we send the message: <code>72 73 33</code> (<code>"HI!"</code>)</p>
+<ul class="incremental">
+<li>Suppose each char is represented with 8 bits, that’s 24 bits to send one message</li>
+</ul>
+<p>However, bits are pretty small (physically and mathematically), so we don’t usually measure things in bits</p>
+<ul class="incremental">
+<li><strong>Byte</strong>: 8 bits
+<ul class="incremental">
+<li>The biggest number we can store in a byte is 255 (<code>11111111</code>)</li>
+</ul></li>
+</ul>
+<h2 id="unicode">Unicode</h2>
+<p>256 different unique values for a byte works for English ASCII, but other global standards are needed to support other languages and things like emojis. One solution is <strong>unicode</strong>.</p>
+<ul class="incremental">
+<li><strong>Unicode</strong>: Superset of ASCII that supports a wider variety of characters. Supports 8-bit ASCII for backwards compatibility and 16-bits for &gt;65,000 characters and 32-bits for &gt;4 billion characters.
+<ul class="incremental">
+<li>Unicode standardizes the description of characters. Manufacturers and companies and font creators and users determine how those characters are displayed.
+<ul class="incremental">
+<li>Can lead to miscommunication (e.g., gun vs water gun for the same emoji)</li>
+</ul></li>
+</ul></li>
 </ul>
 </body>
 </html>

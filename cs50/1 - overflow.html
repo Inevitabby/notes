@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>1 - overflow</title>
   <style>
     html {
       line-height: 1.5;
@@ -158,15 +158,18 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="overflow">Overflow</h1>
+<p>Integers and floats can overflow is you try to use more bits than you have available.</p>
+<h1 id="integer-overflow">Integer Overflow</h1>
+<p>Suppose 3 bits that allow us to count to 7 (<code>000</code>). If we try to count to 8 (<code>1000</code>) but only have 3 bits, then we will end up with <del>1</del><code>000</code>, or just 0. This is integer overflow.</p>
+<p>Examples of integer overflow:</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
-</ul>
-<h2 id="self-study">Self-Study</h2>
+<li>The y2k problem (storing last 2 digits of any year back when memory was expensive)</li>
+<li>The next y2k problem: in 2038, the number representing the seconds since jan 1st 1970 overflow past 32-bits and the date will reset to 1901
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>Solution? Kick the can further, add more bits.</li>
+</ul></li>
+<li>Boeing airplane needing to be rebooted after 208 days until a software patch was made.</li>
 </ul>
 </body>
 </html>

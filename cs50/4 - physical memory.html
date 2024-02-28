@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>4 - physical memory</title>
   <style>
     html {
       line-height: 1.5;
@@ -153,20 +153,59 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="physical-memory">Physical Memory</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Incredibly Accurate Diagram of Memory</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">machine code</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">globals</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\downarrow</span> heap <span class="math inline">\downarrow</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>(if heap and stack collide, that’s stack overflow)</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\uparrow</span> stack <span class="math inline">\uparrow</span></td>
+</tr>
+</tbody>
+</table>
+<p>Heap:</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
+<li><code>malloc()</code></li>
 </ul>
-<h2 id="self-study">Self-Study</h2>
+<p>Stack:</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li>Local variables</li>
 </ul>
 </body>
 </html>

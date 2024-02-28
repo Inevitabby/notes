@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>README</title>
+  <title>3 - search algorithms</title>
   <style>
     html {
       line-height: 1.5;
@@ -153,20 +153,58 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="school-notes">School Notes</h1>
-<h2 id="computer-science">Computer Science</h2>
+<h1 id="search-algorithms">Search Algorithms</h1>
+<h2 id="linear-search">Linear Search</h2>
+<pre class="pseudocode"><code>for each door from left to right
+    if number is behind door
+        return true
+return false</code></pre>
+<p>This algorithm does <span class="math inline">n+2</span> steps at most, or <span class="math inline">n+</span> some constant.</p>
+<p>Therefore, for linear search:</p>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1300/">CS1300: Discrete Structures</a></li>
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs1400/">CS1400: Introduction to Programming and Problem Solving</a></li>
+<li><span class="math inline">O(n)</span> (finding the number at the last door; worst case; upper bound)</li>
+<li><span class="math inline">\Omega(1)</span> (finding the number behind the first door; best case; lower bound)</li>
+<li><span class="math inline">\Theta</span> does not exist for this algorithm (<span class="math inline">\Omega \ne O</span>)</li>
 </ul>
-<h2 id="self-study">Self-Study</h2>
+<h2 id="binary-search">Binary Search</h2>
+<pre class="pseudocode"><code>if no doors
+    return false
+if number behind middle door
+    return true
+else if number &gt; middle door
+    search left half
+else if number &lt; middle door
+    search right half</code></pre>
 <ul class="incremental">
-<li><a href="https://inevitabby.codeberg.page/school-notes/cs50/">CS50: Introduction to Computer Science</a></li>
+<li><span class="math inline">O(\log n)</span></li>
+<li><span class="math inline">\Omega(1)</span></li>
+</ul>
+<h2 id="when-to-sort">When To Sort?</h2>
+<p>If you had to sort the data first, you have to look at all the data first (<span class="math inline">O(n)</span>) before you can run efficient binary searches (<span class="math inline">O(\log n)</span>).</p>
+<ul class="incremental">
+<li>Therefore, sorting is good when multiple searches are going to be done on the data</li>
+<li>It really depends on resources and goals.</li>
 </ul>
 </body>
 </html>
