@@ -844,7 +844,7 @@ $$
 } \\~\\
 M_y = \int_a^b x f(x) dx
 \qquad
-M_x = \int_a^b \frac{[f(x_i^*)]^2}{2} dx
+M_x = \int_a^b \frac{[f(x)]^2}{2} dx
 \\
 m = \int_a^b f(x) dx
 $$
@@ -857,7 +857,7 @@ $$
 } \\~\\
 M_y = \int_a^b \rho x f(x) dx
 \qquad
-M_x = \int_a^b \rho \frac{[f(x_i^*)]^2}{2} dx
+M_x = \int_a^b \rho \frac{[f(x)]^2}{2} dx
 \\
 m = \int_a^b \rho f(x) dx
 $$
