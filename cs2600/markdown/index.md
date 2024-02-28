@@ -27,7 +27,9 @@ The following are my class notes for Systems Programming.
 16. [Pointers](16 - Pointers.html)
 17. [Dynamic Memory Allocation](17 - Dynamic Memory Allocation.html)
 18. [Pointer Drawbacks](18 - Pointer Drawbacks.html)
+19. [Command-Line Arguments](19 - Command-Line Arguments.html)
+20. [Structs](20 - Structs.html)
+21. [File IO](21 - File IO.html)
 
 ## $\emptyset$. Misc
-
-19. [Tips and Tricks](Tips and Tricks.html)
+22. [Tips and Tricks](Tips and Tricks.html)
