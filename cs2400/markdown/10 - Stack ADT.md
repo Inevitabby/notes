@@ -13,14 +13,6 @@ title: Stack ADT
 
 ## Specification
 
-| Pseudocode | Description                                                |
-|------------|------------------------------------------------------------|
-| push       | Adds a new entry to the top of the stack                   |
-| pop        | Removes and returns the stack's top entry                  |
-| peek       | Retrieves the stack's top entry without changing the stack |
-| isEmpty    | Returns whether the stack is empty                         |
-| clear      | Removes all entries from the stack                         |
-
 ```plantuml
 @startuml
 class stack {
@@ -33,7 +25,15 @@ class stack {
 @enduml
 ```
 
-> **Note**: You cannot see anything except the top element in a proper stack ADT!
+| Name    | Description                                                |
+|---------|------------------------------------------------------------|
+| push    | Adds a new entry to the top of the stack                   |
+| pop     | Removes and returns the stack's top entry                  |
+| peek    | Retrieves the stack's top entry without changing the stack |
+| isEmpty | Returns whether the stack is empty                         |
+| clear   | Removes all entries from the stack                         |
+
+> **Remember**: You can only interact with the item at the top of the stack!
 > - Don't implement extra features that go against the specification!
 >	- This means no `toArray`!
 
@@ -76,6 +76,12 @@ class stack {
 3. **Postfix**: Each binary operator appears after is operands
 	* *aka: Reverse Polish Notation*
 
+> **Note**: Why Prefix and Postfix Matter
+> - In infix, precedence can be ambiguous, which is why parenthesis and the precedence (order of operations) exists.
+>	- So for a computer to evaluate an infix expression, it needs two stacks (variable and operator stack) *and* it needs to evaluate order of operations.
+> - In prefix and postfix, precedence is not ambiguous, no parenthesis are needed.
+>	- So prefix and postfix is easier and faster to execute on a computer (you only need to use one stack to evaluate, and you don't need to worry about order of operations).
+
 > **Example**: The same expression in infix, prefix, and postfix
 > ```
 > # Infix
@@ -115,7 +121,7 @@ class stack {
 
 ## Converting Infix $\to$ Postfix
 
-Q: How do you programmatically convert an infix expression $\to$ postfix?
+**Q**: How do you programmatically convert an infix expression $\to$ postfix?
 
 **A**: Read the expression character-by-character and use a stack to store operators:
 1. Variables (e.g., `a`, `b`) get appended to the postfix expression as we read them.
@@ -161,10 +167,12 @@ Q: How do you programmatically convert an infix expression $\to$ postfix?
 > | $a$                 | $a$            |                |
 > | ^                 | $a$            | ^              |
 > | $b$                 | $ab$           | ^               |
-> | ^                 | $ab$ ^          | ^              |
-> | $c$                 | $ab$ ^ $c$         | ^              |
-> |                   | $ab$ ^ $c$ ^        |                |
-> - Thus, the postfix form of $a$ ^ $b$ ^ $c$ is $ab$ ^ $c$ ^
+> | ^                 | $ab$           | ^^              |
+> | $c$                 | $abc$         | ^^              |
+> |                   | $abc$ ^        | ^               |
+> |                   | $abc$ ^^        |                |
+> - Thus, the postfix form of $a$ ^ $b$ ^ $c$ is $abc$ ^^
+>	- **Important**: The second `^` may *appear* to have the same precedence as the first `^`—because they're both the same symbol (so you may want to do `ab^c^`)—but the [second `^` has a higher precedence because it's nested in the first one]{.underline}!
 > 
 > 4. Infix Expression: $a / b * ( c + (d-e))$
 > 
@@ -190,6 +198,23 @@ Q: How do you programmatically convert an infix expression $\to$ postfix?
 
 ## Evaluating Postfix Expressions
 
+**Q**: How do you programmatically evaluate a postfix expression?
+
+**A**: We'll use a stack to evaluate it.
+1. Create a stack ($s$)
+2. For every token ($t$),
+	1. If $t$ is a variable:
+		* Push $t$ to stack. (`s.push(t)`)
+	2. Else:
+		* $t$ is an operator (`op = t`)
+		* Pop the right-hand-side variable (`rhs = s.pop()`)
+		* Pop the left-hand-side variables (`lhs = s.pop()`)
+		* Push the result back to the stack (`s.push(lhs op rhs)`)
+		* *(If any of the pops returned incorrect values, the expression was malformed)*
+3. Return `s.pop()`
+	- If the stack isn't empty after this pop, the expression was malformed.
+
+<!--
 > **Example**: Evaluating postfix expressions
 > ```java
 > Algorithm evaluatePostfix(postfix) {
@@ -200,13 +225,130 @@ Q: How do you programmatically convert an infix expression $\to$ postfix?
 > 			case variable: // e.g., a, b, c
 > 				valueStack.push(nextCharacter)
 > 				break;
-> 			case operand: // e.g., +, -, ^
-> 				operandTwo = valueStack.pop()
-> 				operandOne - valueStack.pop()
-> 				result = /* result of the operation in nextCharacters and its operands (operandOne and operandTwo) */
-> 				valueStack.push(result)
+> 			case operation: // e.g., +, -, ^
+> 				varOne = valueStack.pop()
+> 				varTwo - valueStack.pop()
+> 				valueStack.push(varOne operation varTwo)
 > 				break;
 > 		}
 > 	}
 > }
 > ```
+*
+-->
+
+# The Application Program Stack
+
+Stacks make method calling and recursion possible.
+- **Program Activation Record**: Stack maintaining a list of method calls. 
+	- Each record contains of:
+		1. Parameters,
+		2. Local variables, and
+		3. Return address
+
+> **Example**: Program activation records
+> ```java
+> public static void main(string[] args) {
+> 	int x = 5;
+> 	int y = methodA(x);
+> }
+> public static int methodA(int a) {
+> 	a = methodB(a);
+> 	return a;
+> }
+> public static int methodB(int b) {
+> 	return b;
+> }
+> ```
+> 
+> So, by the time `methodB()` begins execution, the program activation record looks like this:
+> 1. `methodB`
+> 2. `methodA`
+> 3. `main`
+> 
+> - *(This demonstrates LIFO, the last method in is the first one executed.)*
+
+# Java Class Library
+
+Found in `java.util`
+
+**Methods**:
+```java
+T push(T item);
+T pop();
+T peek();
+boolean empty();
+```
+
+# Implementing a Stack
+
+## Linked Implementation
+
+Implementing a stack with a singly linked list is trivial.
+- We just use the `head` node as the top of the stack.
+
+> **Example**: Implementing basic stack methods with SLI
+> ```
+> public final class LinkedStack<T> implements StackInterface {
+>	private Node head;
+?	/* constructor goes here */
+> 	public T peek() {
+> 		if (isEmpty()) {
+> 			throw new EmptyStackException();
+> 		}
+> 		return head.data;
+> 	}
+> 	public T pop() {
+> 		T top = peek();
+> 		head = head.next;
+> 		return top;
+> 	}
+> 	public T push(T entry) {
+> 		Node newEntry = Node(entry);
+> 		if (head != null) {
+> 			newEntry.next = head;
+> 		}
+> 		head = newEntry;
+> 	}
+> 	/* private Node inner-class here */
+> }
+> ```
+<!--*-->
+
+## Array-Based Implementation
+
+Implementing a stack with an array is best done by using the end of the array as the top of the stack, as it's the easiest to access.
+
+<!--
+**Example**: Implementing basic stack method with an array
+```java
+public final class ArrayStack implements StackInterface {
+	private int[] stack;
+	private int index;
+	/* constructor goes here */
+	public T peek() {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
+		return head.data;
+	}
+	public T pop() {
+		T top = peek();
+		head = head.next;
+		return top;
+	}
+	public T push(T entry) {
+		Node newEntry = Node(entry);
+		if (head != null) {
+			newEntry.next = head;
+		}
+		head = newEntry;
+	}
+}
+```
+-->
+
+## Vector-Based Stack Implementation
+
+**Vector**: Object that behaves like a high-level array.
+- Falling out of fashion.
