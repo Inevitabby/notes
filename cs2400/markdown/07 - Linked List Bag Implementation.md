@@ -58,6 +58,8 @@ Data is stored as a chain of nodes rather than a contiguous block of memory.
 > - This `Node`{.java} data structure is only available to `LinkedBag`{.java}. 
 <!--*-->
 
+## Example: Traversal
+
 > **Example**: Traversing a linked list
 > ```java
 > public int getCurrentSize() {
@@ -75,9 +77,14 @@ Data is stored as a chain of nodes rather than a contiguous block of memory.
 > 	2. Using the head node instead of a reference to it
 > 		- (You'll destroy your data)
 
-> **Note**: Pros and Cons
-> - Bag can grow and shrink in size as necessary
-> - Unused nodes and be garbage collected.
-> - Adding/removing to end or beginning are relatively simple. 
-> - Requires more meory than array of same length.
-> - Removing specific entries requires traversal of the array
+## Pros and Cons 
+
+**Pros**:
+- Bag can grow and shrink in size as necessary.
+- Unneeded nodes can be garbage collected.
+- Adding/removing to end or beginning is relatively simple. 
+
+**Cons**:
+- Requires more memory than array of same length.
+- Removing specific entries requires costly traversal.
+

@@ -68,12 +68,6 @@ $$
 - But, so long as you know how to use it, you can use any vending machine regardless of internals.
 	* It doesn't matter whether it's using Link or ArrayList or whatever internally.
 
-# Iterator
-
-**Iterator**
-- Object that traverses a collection of data
-- Each item considered one.
-
 # Bag Abstract Data Type
 
 **Definition**:

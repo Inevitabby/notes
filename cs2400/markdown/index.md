@@ -7,3 +7,5 @@
 5. [Generics](05 - Generics.html)
 6. [Bag Implementations That Use Arrays](06 - Bag Implementations That Use Arrays.html)
 7. [Linked List Bag Implementation](07 - Linked List Bag Implementation.html)
+8. [Iterators](08 - Iterators.html)
+9. [Algorithm Efficiency](09 - Algorithm Efficiency.html)
