@@ -347,52 +347,52 @@ function rand(min = 0, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 // Stores information on MIPS32
-const Mips32 = {
-	"command": {
-		"add": {
-			"operands": [];
-			"type": "T";
-			"opcode": 0;
-			"funct": 0;
-		}
-	},
-	"syscall": {
-	},
-	"register": [
-		"$0",
-		"$at",
-		"$v0",
-		"$v1",
-		"$a0",
-		"$a1",
-		"$a2",
-		"$a3",
-		"$t0",
-		"$t1",
-		"$t2",
-		"$t3",
-		"$t4",
-		"$t5",
-		"$t5",
-		"$t7",
-		"$s0",
-		"$s1",
-		"$s2",
-		"$s3",
-		"$s4",
-		"$s5",
-		"$s5",
-		"$s7",
-		"$t8",
-		"$t9",
-		"$k0",
-		"$k1",
-		"$gp",
-		"$sp",
-		"$fp",
-		"$ra",
-	]
-}
+// const Mips32 = {
+// 	"command": {
+// 		"add": {
+// 			"operands": [];
+// 			"type": "T";
+// 			"opcode": 0;
+// 			"funct": 0;
+// 		}
+// 	},
+// 	"syscall": {
+// 	},
+// 	"register": [
+// 		"$0",
+// 		"$at",
+// 		"$v0",
+// 		"$v1",
+// 		"$a0",
+// 		"$a1",
+// 		"$a2",
+// 		"$a3",
+// 		"$t0",
+// 		"$t1",
+// 		"$t2",
+// 		"$t3",
+// 		"$t4",
+// 		"$t5",
+// 		"$t5",
+// 		"$t7",
+// 		"$s0",
+// 		"$s1",
+// 		"$s2",
+// 		"$s3",
+// 		"$s4",
+// 		"$s5",
+// 		"$s5",
+// 		"$s7",
+// 		"$t8",
+// 		"$t9",
+// 		"$k0",
+// 		"$k1",
+// 		"$gp",
+// 		"$sp",
+// 		"$fp",
+// 		"$ra",
+// 	]
+// };
 // === LaTeX Solution Generator Functions ===
 const Solution = {
 	renderTex: function (formula, elem) {
