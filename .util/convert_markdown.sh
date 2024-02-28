@@ -17,6 +17,9 @@ function convert_markdown {
 	if [ "${OUTPUT_FILE}" != "index.html" ]; then
 		PANDOC_ARGS+=" --toc"
 	fi
+	# Create output directory
+	OUTPUT_DIR="public/${INPUT_DIR}"
+	mkdir -p "${OUTPUT_DIR}"
 	# Convert Markdown to minified HTML
-	(pandoc -i "${INPUT_FILE}" ${PANDOC_ARGS} | awk -f ".util/minify.awk") > "${INPUT_DIR}/${OUTPUT_FILE}" &
+	(pandoc -i "${INPUT_FILE}" ${PANDOC_ARGS} | awk -f ".util/minify.awk") > "${OUTPUT_DIR}/${OUTPUT_FILE}" &
 }

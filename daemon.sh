@@ -21,7 +21,7 @@ function cleanup() {
 	# Clean up outputted files
 	rm -f "${STYLE_FILE}"
 	for INPUT_DIR in "${DIRECTORIES[@]}"; do
-		for HTML_FILE in "${INPUT_DIR}/"*.html; do
+		for HTML_FILE in "public/${INPUT_DIR}/"*.html; do
 			clean "${INPUT_DIR}" "${HTML_FILE}"
 		done
 	done
@@ -42,8 +42,8 @@ function convert {
 		done
 	done
 	# Convert special files
-	(pandoc -i "README.md" ${BASE_PANDOC_ARGS} | awk -f ".util/minify.awk") > "index.html" &
-	(pandoc -i "ABOUT.md" ${BASE_PANDOC_ARGS} --toc | awk -f ".util/minify.awk") > "about.html" &
+	(pandoc -i "README.md" ${BASE_PANDOC_ARGS} | awk -f ".util/minify.awk") > "public/index.html" &
+	(pandoc -i "ABOUT.md" ${BASE_PANDOC_ARGS} --toc | awk -f ".util/minify.awk") > "public/about.html" &
 	# Wait for all subprocesses to finish
 	wait
 }
