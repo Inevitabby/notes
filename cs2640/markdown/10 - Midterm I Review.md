@@ -205,12 +205,33 @@ Byte
 <p id="a24"></p>
 </details>
 
-<!--
-TODO
-- Two's Complement to Decimal (Q25—26)
-- Binary Addition (Q27)
-- Two's Complement Addition (Q28)
--->
+**Q25**: Convert the two's complement bit pattern to decimal: <span id="q25" class="math inline"></span>
+
+<details>
+<summary>Answer</summary>
+<p id="a25"></p>
+</details>
+
+**Q26**: Convert the two's complement bit pattern to decimal: <span id="q26" class="math inline"></span>
+
+<details>
+<summary>Answer</summary>
+<p id="a26"></p>
+</details>
+
+**Q27**: Perform <span id="q27" class="math inline"></span> using binary addition.
+
+<details>
+<summary>Answer</summary>
+<p id="a27"></p>
+</details>
+
+**Q28**: Perform <span id="q28" class="math inline"></span> using binary addition and twos complement.
+
+<details>
+<summary>Answer</summary>
+<p id="a28"></p>
+</details>
 
 # Computer Systems
 
@@ -347,52 +368,57 @@ function rand(min = 0, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 // Stores information on MIPS32
-// const Mips32 = {
-// 	"command": {
-// 		"add": {
-// 			"operands": [];
-// 			"type": "T";
-// 			"opcode": 0;
-// 			"funct": 0;
-// 		}
-// 	},
-// 	"syscall": {
-// 	},
-// 	"register": [
-// 		"$0",
-// 		"$at",
-// 		"$v0",
-// 		"$v1",
-// 		"$a0",
-// 		"$a1",
-// 		"$a2",
-// 		"$a3",
-// 		"$t0",
-// 		"$t1",
-// 		"$t2",
-// 		"$t3",
-// 		"$t4",
-// 		"$t5",
-// 		"$t5",
-// 		"$t7",
-// 		"$s0",
-// 		"$s1",
-// 		"$s2",
-// 		"$s3",
-// 		"$s4",
-// 		"$s5",
-// 		"$s5",
-// 		"$s7",
-// 		"$t8",
-// 		"$t9",
-// 		"$k0",
-// 		"$k1",
-// 		"$gp",
-// 		"$sp",
-// 		"$fp",
-// 		"$ra",
-// 	]
-// };
+const Mips32 = {
+	"command": {
+		"add": {
+			"operands": [],
+			"type": "T",
+			"opcode": 0,
+			"funct": 0,
+		},
+	},
+	"syscall": {
+		1: {
+		},
+	},
+	"register": [
+		"$0",
+		"$at",
+		"$v0", "$v1",
+		"$a0", "$a1", "$a2", "$a3",
+		"$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t5", "$t7",
+		"$s0", "$s1", "$s2", "$s3", "$s4", "$s5", "$s6", "$s7",
+		"$t8", "$t9",
+		"$k0", "$k1",
+		"$gp",
+		"$sp",
+		"$fp",
+		"$ra",
+	],
+};
+function twosComplement (binary, elem) {
+	// Find two's complement
+	let complement = "";
+	let foundOneBit = false;
+	for (let i = binary.length - 1; i >= 0; i--) {
+		const BIT = binary[i];
+		if (!foundOneBit) {
+			complement = BIT + complement;
+		} else {
+			complement = (BIT == "0") ? 1 + complement : 0 + complement;
+		}
+		if (BIT == "1") {
+			foundOneBit = true;
+		}
+	}
+	// Perform sign extension (pad with MSBit, which we know is 1)
+	const MSBIT = binary[0];
+	while (complement.length % 4 != 0) {
+		complement = MSBIT + complement;
+	}
+	return complement;
+};
+
 // === LaTeX Solution Generator Functions ===
 const Solution = {
 	renderTex: function (formula, elem) {
@@ -497,26 +523,48 @@ const Solution = {
 		}
 	},
 	twosComplement: function (binary, elem) {
-		// Find two's complement
-		let complement = "";
-		let foundOneBit = false;
-		for (let i = binary.length - 1; i >= 0; i--) {
-			const BIT = binary[i];
-			if (!foundOneBit) {
-				complement = BIT + complement;
-			} else {
-				complement = (BIT == "0") ? 1 + complement : 0 + complement;
-			}
-			if (BIT == "1") {
-				foundOneBit = true;
-			}
-		}
-		// Perform sign extension (pad with MSBit, which we know is 1)
-		const MSBIT = binary[0];
-		while (complement.length % 4 != 0) {
-			complement = MSBIT + complement;
-		}
-		elem.textContent = formatGroup(complement);
+		elem.textContent = formatGroup(twosComplement(binary, elem));
+	},
+	twosComplementToDecimal: function (decimal, elem) {
+		elem.textContent = decimal;
+	},
+	twosComplementAddition: function (decimalA, decimalB, elem) {
+		const BINARY_A = formatGroup(decimalA.toString(2));
+		const BINARY_B = formatGroup(decimalB.toString(2));
+		// Write TeX
+		let solution = "";
+		const ANSWER_FORMATTED = formatGroup((decimalA + decimalB).toString(2));
+		const ANSWER = (decimalA + decimalB).toString(2);
+		this.renderTex(String.raw`
+			\text{
+				${decimalA} + ${decimalB} = ${ANSWER_FORMATTED}
+			} \\~\\ 
+			\begin{aligned}
+				${BINARY_A}& \\
+				+${BINARY_B}& \\
+				=${ANSWER}&
+				${solution}
+			\end{aligned}
+		`, elem);
+	},
+	twosComplementSubtraction: function (decimalA, decimalB, elem) {
+		const BINARY_A = formatGroup(decimalA.toString(2));
+		const BINARY_B = formatGroup(twosComplement(decimalB.toString(2)));
+		// Write TeX
+		let solution = "";
+		const ANSWER_FORMATTED = formatGroup((decimalA + decimalB).toString(2));
+		const ANSWER = (-1 * (decimalA - decimalB)).toString(2);
+		this.renderTex(String.raw`
+			\text{
+				${decimalA} + ${decimalB} = ${ANSWER_FORMATTED}
+			} \\~\\ 
+			\begin{aligned}
+				${BINARY_A}& \\
+				+${BINARY_B}& \\
+				=${ANSWER}&
+				${solution}
+			\end{aligned}
+		`, elem);
 	},
 };
 // === Problem-Generation Functions ===
@@ -579,6 +627,23 @@ const Problem = {
 		this.updateElem(index, formatGroup(RAND_BINARY));
 		Solution.twosComplement(RAND_BINARY, this.answerElem);
 	},
+	twosComplementToDecimal: function (index, min, max) {
+		const RAND_INT = rand(min, max);
+		this.updateElem(index, formatGroup(twosComplement(RAND_INT.toString(2))));
+		Solution.twosComplementToDecimal(-1 * RAND_INT, this.answerElem);
+	},
+	twosComplementAddition: function (index, min, max) {
+		const RAND_INT_A = rand(min, max);
+		const RAND_INT_B = rand(min, max);
+		this.updateElem(index, `${RAND_INT_A} + ${RAND_INT_B}`);
+		Solution.twosComplementAddition(RAND_INT_A, RAND_INT_B, this.answerElem);
+	},
+	twosComplementSubtraction: function (index, min, max) {
+		const RAND_INT_A = rand(min, max);
+		const RAND_INT_B = rand(min, max);
+		this.updateElem(index, `${RAND_INT_A} - ${RAND_INT_B}`);
+		Solution.twosComplementSubtraction(RAND_INT_A, RAND_INT_B, this.answerElem);
+	},
 };
 // === Generate Problems ===
 window.addEventListener('load', function () {
@@ -601,5 +666,9 @@ window.addEventListener('load', function () {
 	Problem.whichShift(21);
 	Problem.twosComplement(23, 16, 64);
 	Problem.twosComplement(24, 16, 64);
+	Problem.twosComplementToDecimal(25, 16, 64);
+	Problem.twosComplementToDecimal(26, 16, 64);
+	Problem.twosComplementAddition(27, 2, 8);
+	Problem.twosComplementSubtraction(28, 2, 8);
 });
 </script>
