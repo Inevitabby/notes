@@ -56,12 +56,12 @@ private final class ArrayBag<T> implements BagInterface<T> {
 	}
 	public ArrayBag(int capacity) {
 		numberOfEntries = 0;
-		@SuppressWarnings("unchecked");
+		@SuppressWarnings("unchecked")
 		T[] tempBag = (T[]) new Object[capacity]; // Unchecked cast
 		this.bag = tempBag; // This is the first initialization of bag, which is why we can do this despite bag being final.
 	}
 	public T[] toArray() {
-		@SuppressWarnings("unchecked");
+		@SuppressWarnings("unchecked")
 		T[] result = (T[]) new Object[numberOfEntries];
 		for (int i = 0; i < numberOfEntries; i++)
 			result[i] = bag[i];
@@ -89,28 +89,28 @@ private final class ArrayBag<T> implements BagInterface<T> {
 Practice fail-safe programming by including checks for anticipated errors.
 - Validate input data and arguments to a method
 
-**Example**: Refining ArrayBag
-- We could add these two fields:
-```java
-private boolean integrityOk = false;
-private static final int MAX_CAPACITY = 100000;
-```
-
-```java
-public ArrayBag(int capacity) {
-	if (capacity > MAX_CAPACITY)
-		throw new Exception("Invalid capacity");
-	numberOfEntries = 0;
-	@SuppressWarnings("unchecked");
-	try {
-		T[] tempBag = (T[]) new Object[capacity]; // Unchecked cast
-		this.bag = tempBag; // This is the first initialization of bag, which is why we can do this despite bag being final.
-	} catch {
-		throw new Exception("Bag is [corrupt](corrupt)");
-	}
-	integrityOk = true;
-}
-private void checkIntegrity() {
-	// TODO
-}
-```
+> **Example**: Refining ArrayBag
+> - We could add these two fields:
+> ```java
+> private boolean integrityOk = false;
+> private static final int MAX_CAPACITY = 100000;
+> ```
+> 
+> ```java
+> public ArrayBag(int capacity) {
+> 	if (capacity > MAX_CAPACITY)
+> 		throw new Exception("Invalid capacity");
+> 	numberOfEntries = 0;
+> 	@SuppressWarnings("unchecked");
+> 	try {
+> 		T[] tempBag = (T[]) new Object[capacity]; // Unchecked cast
+> 		this.bag = tempBag; // This is the first initialization of bag, which is why we can do this despite bag being final.
+> 	} catch {
+> 		throw new Exception("Bag is [corrupt](corrupt)");
+> 	}
+> 	integrityOk = true;
+> }
+> private void checkIntegrity() {
+> 	// TODO
+> }
+> ```
