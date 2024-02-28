@@ -10,6 +10,10 @@
 - [CS2400: Data Structures and Advanced Programming](cs2400)
 - [CS2640: Computer Organization and Assembly Programming](cs2640)
 
+## Mathematics
+
+- [MAT1150: Calculus II](mat1150)
+
 ## General Education
 
 - [PHL2020: Critical Thinking](phl2020)
