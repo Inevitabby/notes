@@ -212,25 +212,21 @@ What are the three phases of the execution cycle in the CPU? What registers are 
 -->
 
 <script>
-
 // === General-Purpose Utility Functions ===
-
 // Group digits into n-digit groups
 function formatGroup(num, n = 4) {
 	while (num.length % n != 0) {
 		num = "0" + num;
 	}
 	return num.match(new RegExp(`.{1,${n}}`, 'g')).join(" ");
-}
+};
 // Generate a random integer [min, max].
 function rand(min = 0, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
+};
 // === LaTeX Solution Generator Functions ===
-
 const Solution = {
 	renderTex: function (formula, elem) {
 		katex.render(formula, elem, {
@@ -333,9 +329,8 @@ const Solution = {
 			elem.innerText = "Logical shift";
 		}
 	},
-}
+};
 // === Problem-Generation Functions ===
-
 const Problem = {
 	questionElem: null,
 	answerElem: null,
@@ -390,7 +385,7 @@ const Problem = {
 		this.updateElem(index, RAND_CHOICE);
 		Solution.whichShift(RAND_CHOICE, this.answerElem);
 	},
-}
+};
 // === Generate Problems ===
 window.addEventListener('load', function () {
 	Problem.decimalToBinary(1, 0, 256);
