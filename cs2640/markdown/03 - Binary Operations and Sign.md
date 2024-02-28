@@ -12,7 +12,7 @@
 
 ## B. Logical Shift
 
-**Logical Shift**: Shifting right $n$-bits divides the number by $2^n$
+**Logical Shift**: Shifting right $n$-bits divides the *unsigned* number by $2^n$
 - Puts zero on the left
 	* For unsigned values
 - e.g., $1000 \to \text{Logical Shift Right} \to 0100$
@@ -25,7 +25,7 @@
 
 ## C. Arithmetic Shift
 
-**Arithmetic Shift**: Shifting right $n$-bits divides the number by $2^n$
+**Arithmetic Shift**: Shifting right $n$-bits divides the *signed* number by $2^n$
 - Replicates the MSBit on the left
 	* For signed values
 - e.g., $1000 \to \text{Arithmetic Shift Right} \to 1100$
@@ -38,26 +38,29 @@
 
 # Sign Extension
 
-## Problem Statement
+## Introduction
 
-Q: In the decimal system, we can denote sign by using the `+` and `-` symbol (e.g., `+5`, `-5`). How can we do the same for binary?
-	* A: Let the MSBit (signed bit) denote whether the number is positive or negative.
+**Q**: In the decimal system, we can denote sign by using the `+` and `-` symbol (e.g., `+5`, `-5`). How can we do the same for binary?
+	* A: Let the MSBit (aka: signed bit) denote whether the number is positive or negative.
+		+ `0`: Positive number
+		+ `1`: Negative number
 
-There are two ways to denote sign extension in binary.
+There are two ways to denote sign extension in binary:
 
 ## A. One's Complement
-
-**How-to Make a Value Negative in One's Complement:**
-- Apply `NOT` on every bit.
 
 **One's Complement**:
 - Older standard.
 
-$$
-0101_2 = +5_{10} \\
-\text{(Flip every bit)} \\
-1010_2 = -5_{10}
-$$
+**How-to Make a Value Negative in One's Complement:**
+- Apply `NOT` to every bit.
+
+> **Example**: Creating a negative number in one's complement
+> $$
+> 0101_2 = +5_{10} \\
+> \text{(Flip every bit)} \\
+> 1010_2 = -5_{10}
+> $$
 
 > **Issues with Ones's Complement**:
 > 1. Two Representations of 0
@@ -101,19 +104,20 @@ $$
 
 ## B. Two's Complement
 
-**How-to Make a Value Negative in Two's Complement:**
-- Apply `NOT` on every bit, then `+1`
-
 **Two's Complement**:
 - Modern standard.
 - Must specify number of bits
 - Sign and magnitude aren't clearly separate bits.
 
-$$
-0101_2 = +5_{10} \\
-\text{(Flip every bit, +1)} \\
-1011_2 = -5_{10}
-$$
+**How-to Make a Value Negative in Two's Complement:**
+- Apply `NOT` on every bit, then `+1`
+
+> **Example**: Creating a negative number in two's complement
+> $$
+> 0101_2 = +5_{10} \\
+> \text{(Flip every bit, +1)} \\
+> 1011_2 = -5_{10}
+> $$
 
 > **Issues with Two's Complement**: We have one more negative value than positive values.
 > - E.g., In nibble (4 bits), the range of possible numbers is $[-8_{10}. 7_{10}]$, you can't represent $8_{10}$ with a nibble in two's complement.
