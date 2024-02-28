@@ -7,7 +7,7 @@ Are the privacy and security concerns of installing a system-wide VPN preventing
 Do you have the almost-primordial spine-tingling sense that Respondus is still looking through you through your webcam 2 years after you uninstalled it after graduating from high school?
 
 <center>
-<iframe width="75%" src="https://www.youtube.com/embed/4zH9Zca1vRM?si=9KdfCt2iEOHJwN2P" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4zH9Zca1vRM?si=9KdfCt2iEOHJwN2P" title="YouTube video player" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>
 </center>
 
 Although you might not need to FTP or SSH into a server behind GlobalConnect VPN for this class, you *might* need to in the future. This is bad news if you're a little paranoid about student surveillance.[^fn1]
