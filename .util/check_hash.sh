@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 function check_hash {
 	INPUT_FILE="${1}"
 	OUTPUT_DIR="${2}"

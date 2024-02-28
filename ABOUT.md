@@ -49,9 +49,11 @@ $$
 
 # Workflow & Architecture
 
+## A. Markdown
+
 I take most of my notes in plaintext (Markdown) during lecture.
 
-In an unrelated note, the source of the incessant click-clacking keyboard driving you insane during lecture has yet to be found.
+In unrelated news, the source of the incessant click-clacking keyboard driving you insane during lecture has yet to be found.
 
 When I want to upload my note(s) to [this Codeberg repository](https://codeberg.org/inevitabby/notes/), I just add them to a subfolder named `markdown` inside a parent folder, like so:
 ```
@@ -64,23 +66,28 @@ When I want to upload my note(s) to [this Codeberg repository](https://codeberg.
 |-phl2020
 |---markdown
 ```
+- *Note: New folders need to be added to the `DIRECTORIES` array in `daemon.sh`* 
 
-The `markdown_to_html.sh` Bash script will convert any unconverted/updated Markdown files into HTML automatically and can be run on a timer like so—
-```bash
-watch "bash markdown_to_html.sh"
-```
-—while cleaning/editing the Markdown files, before just committing to the repo.
+## B. Conversion
 
-And that's all!
+The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wrapper for `pandoc` that does multithreading and selective processing.
 
-If you're interested in the details, keep reading, but that's all for this about page.
+> **More Info for Nerds**: `daemon.sh` has two states:
+> 1. **Running**: Any Markdown files that are edited get converted into HTML.
+> 
+> > - Script starts in this state.
+> > - Uses hashes to detect file edits. Selectivity means CPU doesn't get maxed-out reconverting files, so conversions are faster.
+> 
+> 2. **Cleanup**: *All* files are converted and `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
+> 
+> > - Script enters this state when being killed (`CTRL+C`)
+> > - Converting everything allows changes outside of Markdown edits to propagate (e.g., edits to `template.html`)
+> 
+> **Note**: `daemon.sh` can also be run in oneshot mode with `./daemon.sh -o`, where it just does the cleanup process.
 
-**Architecture**
+**Tools**
 
 - [`pandoc`](https://pandoc.org): Universal document converter. Converts the Markdown to HTML.
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
-- [`markdown_to_html.sh`](https://codeberg.org/Inevitabby/notes/src/branch/pages/markdown_to_html.sh): Bash script that acts as a wrapper for `pandoc` that:
-	1. Improves performance by converting files in parallel
-	2. Stores the hash of every Markdown file and uses the hash to detect when a file is changed (allowing the script to convert files only when necessary, which prevents the script from maxing out the CPU processing files over-and-over when being run by `watch`) [rel: [`check_hash.sh`](https://codeberg.org/Inevitabby/notes/src/branch/pages/check_hash.sh)]
-	3. Minifying the HTML with a crackpot `awk` script [rel: [`minify.awk`](https://codeberg.org/Inevitabby/notes/src/branch/pages/minify.awk)]
 - [Codeberg Pages](https://codeberg.page/): Codeberg lets you host static websites from Git repositories on Codeberg.
+- [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
