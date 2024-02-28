@@ -20,6 +20,12 @@ The following are my class notes for Systems Programming.
 11. [Sed](11 - Sed.html)
 12. [Awk](12 - Awk.html)
 
+## III. C
+13. [C History](13 - C History.html)
+14. [C Intro](14 - C Intro.html)
+15. [GDB](15 - GDB.html)
+16. [Pointers](16 - Pointers.html)
+
 ## $\emptyset$. Misc
 
-13. [Tips and Tricks](Tips and Tricks.html)
+17. [Tips and Tricks](Tips and Tricks.html)
