@@ -1,4 +1,8 @@
-# MIPS Assembly with SPIM
+---
+title: MIPS Assembly
+---
+
+# SPIM
 
 > **SPIM**: MIPS emulator.
 > - Executes assembly source programs.
@@ -8,6 +12,14 @@
 
 > **Tip**: View Whitespace
 > - `:set list`{.vimscript} to show whitespace in Vim.
+
+<!--
+**Note**: Four Columns
+1. TODO
+2. TODO
+3. TODO
+4. TODO
+-->
 
 # MIPS Instructions
 
@@ -20,22 +32,30 @@
 - Three types of instructions (R, J, I) 
 	* Each type is encoded differently.
 
+> **Note**: MIPS Instruction Set
+> - [Stanford MIPS](https://mips.com) commercialised by MIPS Technologies
+> - Similar ISAs have a large share of embedded core market
+> 	* e.g., consumer electronics, network/storage, equipment, cameras, printers, vacuums, etc.
+> 	* Embedded: When the CPU is inside the system.
+> - **Remember**: MIPS is a 3-register instruction machine
+>	- *(When we use an instruction that doesn't use 3 operands, we're actually looking at a pseudo-instruction.)*
+
 ## Register Set
 
-| Name      | Register  | Usage                       |
-|-----------|-----------|-----------------------------|
-| `$zero`   | `$0`      | Always 0                    |
-| `$at`     | `$1`      | Reserved for assembler use  |
+| Name        | Register    | Usage                       |
+|-------------|-------------|-----------------------------|
+| `$zero`     | `$0`        | Always 0                    |
+| `$at`       | `$1`        | Reserved for assembler use  |
 | `$v0`—`$v1` | `$2`—`$3`   | Result values of a function |
 | `$a0`—`$a3` | `$4`—`$7`   | Arguments of a function     |
 | `$t0`—`$t7` | `$8`—`15`   | Temporary values            |
 | `$s0`—`$s7` | `$16`—`$23` | Saved registers             |
 | `$t8`—`$t9` | `$24`—`$25` | More temporaries            |
 | `$k0`—`$k1` | `$26`—`$27` | Reserved for OS kernel      |
-| `$gp`     | `$28`     | Global pointer              |
-| `$sp`     | `$29`     | Stack pointer               |
-| `$fp`     | `$30`     | Frame pointer               |
-| `$ra`     | `$31`     | Return address              |
+| `$gp`       | `$28`       | Global pointer              |
+| `$sp`       | `$29`       | Stack pointer               |
+| `$fp`       | `$30`       | Frame pointer               |
+| `$ra`       | `$31`       | Return address              |
 
 > **Notes**:
 > - `$zero` is a read-only register.
@@ -51,6 +71,11 @@
 ## Reference Card
 
 TODO
+
+<!--
+| Mnemonics | Operands | Instruction | Register Transfer | Type | Op/Funct |
+|-----------|----------|-------------|-------------------|------|----------|
+-->
 
 ## Instruction Formats
 
@@ -69,6 +94,27 @@ TODO
 - `funct`: Function code
 	* extends opcode
 
+### J-Format
+
+| Name | `op` | `rs` | `rt` | `imm` |
+|------|------|------|------|-------|
+| Bits | 6    | 5    | 5    | 16    |
+
+- `op`: Opcode
+- `rs`: First source register number
+- `rt`: Second source register number
+- `imm`: Immediate value
+
+### I-Format
+
+| Name | `op` | `addr` |
+|------|------|--------|
+| Bits | 6    | 26     |
+
+- `op`: Opcode
+- `addr`: Address (of a label).
+	- The 26 bits are achieved by dropping the high-order 4 bits of the address and the low-order 2 bits (which would always be 00, since addresses are always divisible by 4). 
+
 # Encoding & Decoding Instructions
 
 > **Related Notes**: [Hexadecimal, Number Systems (CS2640)](https://inevitabby.codeberg.page/notes/cs2640/02%20-%20Number%20Systems%20and%20Conversions.html#hexadecimal)
@@ -86,7 +132,7 @@ TODO
 > `$t2`: 01010 (rt)
 > - (Register 10)
 > 
-> **According to the reference table, opcode and func is `0/20`, therefore:**
+> **According to the reference table, opcode and func is `0/32`, therefore:**
 > - The opcode is `000000`
 > - The func is `1000000`
 > 
@@ -110,6 +156,163 @@ TODO
 > \end{aligned}
 > $$
 > - So we know `op` is 0
-> - So we know `funct` is 20
+> - So we know `funct` is 32
 > 
 > Now that we know the `op/fn`, we know the type and command, and can convert the rest of the hexadecimal into binary and convert the rest.
+
+# MIPS Assembly
+
+**Assembly Line Format:**
+`[ label: ] opcode [ operand(s) ]`{.mips}
+- Every instruction must be in a single line.
+- You can comment with `#`
+
+## Arithmetic Operations
+
+> **Design Principle 1**: Simplicity favors regularity.
+> 1. Regularity makes implementation simpler
+> 2. Simplicity enables higher performance at lower cost.
+
+**Arithmetic Operations**: Have three operands.
+- Two sources and one destination
+- [All arithmetic operations have this form.]{.underline}
+
+> **Example**: Arithmetic Operations
+> ```mips
+> # a <- b + c
+> add a,b,c 
+> ```
+
+> **Example**: Arithmetic in C and MIPS
+> ```c
+> f = (g + h) - (i + j)
+> ```
+> 
+> ```mips
+> # t0 <- g + h
+> add $t0,$s1,$s2
+> # t1 <- i + j
+> add $t1,$s3,$s4
+> # f <- t0 - t1
+> sub f,$t0,$t1
+> ```
+> - Note how we have to handle the order of operations ourselves *and* split equations into smaller terms.
+
+## Register Operands
+
+> **Design Principle 2**: Smaller is faster
+
+> **Anchor Link**: [Register Set Reference](#register-set)
+
+Arithmetic instructions use register operands.
+
+MIPS has a 32 $\times$ 32-bit register file.
+- Used for frequently-accessed data.
+- Numbered 0—31
+- **Word**: Group of 32 bits (4 bytes)
+	* Beginning of the word must be a multiple of four.
+
+**Assembler Names**:
+- $\$t0$—$\$t9$: Temporary Values
+- $\$s0$—$\$s7$: Saved variables
+
+
+## Labels and Main
+
+**Label**: Symbolic name for a memory address. Can be instruction or data.
+- Program executions begins at the location label `main`.
+
+```mips
+      .text
+main:	add	$t2,$t0,$t1
+```
+
+## SPIM Segments and Linker Directives
+
+**Segment**: Logical part of code that translates to a specific memory location.
+
+| Name      | Parameters | Description                       |
+|-----------|------------|-----------------------------------|
+| `.data`   | *addr*     | Data segment.                     |
+| `.text`   | *addr*     | Text segment.                     |
+| `.kdata`  | *addr*     | Kernel data segment.              |
+| `.ktext`  | *addr*     | Kernel text segment.              |
+| `.extern` | *sym size* | Declare as global label *sym*     |
+| `.globl`  | *sym*      | Declare as global the label *sym* |
+
+## SPIM Data Directives
+
+**Directives**: Tell the assembler how to organize data.
+
+```mips
+      .data
+      .word	n	# 32-bit
+      .byte	nn	# 8 bit
+      .ascii	'?'	# ASCII string
+      .asciiz	"$$$"	# zero-terminated ASCII string
+      .half	n	# 16-bit
+      .space	n	# n bytes
+```
+
+**Example**: Using a label.
+```mips
+count:	.word	0
+	.word	.word	1,2,3
+```
+- To get to the second line, we can just jump to `count+4`.
+
+**Example**: .text
+```mips
+	.text
+main:	li	$t0,10
+	li	$t1,20
+	add	$a0,$t0,$t1
+```
+- `li`: Load immediate. Is a pseudo-instruction.
+	- The assembler will turn `li	$t0,10` into `addi $t0,$zero,$t0`
+
+## SPIM Syscalls
+
+**Syscall**: Special instruction that interfaces with the I/O subsystem.
+- SPIM provides a small set of operating-system-like services throug hthe MIPS system call instruction.
+
+| Services     | System Call Code | Arguments                                  | Result                     |
+|--------------|------------------|--------------------------------------------|----------------------------|
+| print_int    | 1                | $a0=integer                                |                            |
+| print_float  | 2                | $f12=float                                 |                            |
+| print_double | 3                | $f12=double                                |                            |
+| print_string | 4                | $a0=string                                 |                            |
+| read_int     | 5                |                                            | integer (in $v0)           |
+| read_float   | 6                |                                            | float (in $f0)             |
+| read_double  | 7                |                                            | double (in $f0)            |
+| read_string  | 8                | $a0=buffer,$a1=length                      |                            |
+| sbrk         | 9                | $a0=amount                                 | address (in $v0)           |
+| exit         | 10               |                                            |                            |
+| print_char   | 11               | $a0=char                                   |                            |
+| read_char    | 12               |                                            | char (in $a0)              |
+| open         | 13               | $a0=filename (string), $a1=flags,$a2=mode  | file descriptor (in $a0)   |
+| read         | 14               | $a0=file descriptor, $a1=buffer,$a2=length | num chars read (in $a0)    |
+| write        | 15               | $a0=file descriptor, $a1=buffer,$a2=length | num chars written (in $a0) |
+| close?       | 16               | $a0=file descriptor                        |                            |
+| exit2        | 17               | $a0=result                                 |                            |
+
+> **Note**: More on some syscalls
+> - **print_int**: Passes an integer and prints it on the console.
+> - **print_float**: Prints a single floating point number.
+> - **print_double**: Prints a double precision number.
+> - **print_string**: Passes a pointer to a null-terminated string. 
+> - **read_int**, **read_float**, **read_double**: Read an entire line of input up to and including a newline.
+> - **read_string**: Same semantics as the UNIX library routine `fgets`.
+> 	- Reads up to `n-1` characters into a buffer and terminates the string with a null byte.
+> 		If there are fewer characters on the current line, it reads through the newline and again null-terminates the string.
+> - **sbrk**: returns a pointer to a block of memory containing $n$ additional bytes
+> - **exit**:  stops program execution
+
+## Pseudo-Instructions
+
+<!--
+TODO
+-->
+
+> **Note**: `move` v.s. `li`
+> - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.

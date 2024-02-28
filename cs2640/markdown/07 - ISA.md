@@ -5,6 +5,8 @@
 - Implementations vary in performance, price, size, etc.
 - *"Everything you need to know to program a computer"*
 	* For us, assembly programmers, this is the registers and operations.
+- Different computer have different ISA with many similar aspects.
+- Many modern and early computers have very simple instruction sets.
 
 > **Note**: Everything you need to know to program a computer
 > - Built-in data types (integers, floating points)
