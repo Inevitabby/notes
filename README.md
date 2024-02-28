@@ -17,6 +17,7 @@
 ## General Education
 
 - [PHL2020: Critical Thinking](phl2020)
+- [PLS2010: Introduction to American Government](pls2010)
 
 ## Self-Study
 
