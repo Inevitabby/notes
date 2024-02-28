@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
 PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet"
-N=16 # Number of parallel Pandoc processes
+N=24 # Number of parallel Pandoc processes
 function convert_directory {
 	INPUT_DIR="${1}"
 	for INPUT_FILE in "${INPUT_DIR}/markdown/"*
