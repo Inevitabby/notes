@@ -72,33 +72,12 @@ $$
 # Computing the Number of Memory Accesses
 
 The more memory accesses you do, the slower your code is.
-- To count the number of memory accesses we'll read each instruction line-by-line and count the number of accesses for (1) data and (2) instructions it makes, tallying up the total once we're done.
 
 **How-To Count Memory Accesses for One Instruction**:
-1. The instruction itself means +1 to the instruction count.
-2. Each memory field in the instruction increments instruction count.
-	- (Registers don't count)
-3. Each read or write increments data count.
-	- Rewriting the instruction in RTN (register transfer notation) can help visualize reads and writes.
-
-> **tl;dr version**: Counting memory accesses
-> 1. Split instruction into terms delimited by space and/or commas.
-> 2. +1 data access for every non-register value (e.g., A, B, X, T1, T2, etc.) Instruction doesn't count.
-> 3. +1 instruction access for every non-register value. Instruction counts (e.g., MOV, ADD, MUL, etc.)
-> 
-> > **Example**: Counting accesses
-> > ```
-> > ADD R1,A,B
-> > ```
-> > - Instruction Access: ADD, A, B = 3 Accesses
-> > - Data Access: A, B = 2 Data Accesses
-> > 
-> > ```
-> > MUL X,R1,R2
-> > ```
-> > - Instruction Access: MUL, X = 2 Accesses
-> > - Data Access: X = 1 Access
-
+1. The instruction itself +1 to instruction count.
+2. Rewrite in register transfer notation.
+	- Each memory read `+1` to instruction count.
+	- Each memory read or write `+1` to data count.
 
 > **Note**: Assumptions\
 > We (usually) make the following assumptions when computing the number of memory accesses:
@@ -113,7 +92,7 @@ The more memory accesses you do, the slower your code is.
 > | ADD R2,C,D  | R2 <- C + D  | 2    | 3           |
 > | MUL X,R1,R2 | X <- R1 * R2 | 1    | 2           |
 > 
-> - Total: $5 + 18 = 13$
+> - Total: $5 + 8 = 13$
 
 > **Example**: Three-register address machine with three registers
 > 
