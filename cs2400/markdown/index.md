@@ -9,3 +9,4 @@
 7. [Linked List Bag Implementation](07 - Linked List Bag Implementation.html)
 8. [Iterators](08 - Iterators.html)
 9. [Algorithm Efficiency](09 - Algorithm Efficiency.html)
+9. [Stack ADT](10 - Stack ADT.html)
