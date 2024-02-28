@@ -122,6 +122,8 @@ interface BagInterface{
 
 ## Example Interface
 
+> **Remember**: The interface is wholly interface-independent. No constructor, no fields, no comments about any implementation details.
+
 **Interface**:
 ```java
 // "T" is a generic type parameter
