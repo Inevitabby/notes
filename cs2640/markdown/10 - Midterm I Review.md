@@ -396,7 +396,8 @@ const Mips32 = {
 		"$ra",
 	],
 };
-function twosComplement (binary, elem) {
+// Finds the two's complement of a binary pattern
+function twosComplement (binary) {
 	// Find two's complement
 	let complement = "";
 	let foundOneBit = false;
@@ -418,7 +419,6 @@ function twosComplement (binary, elem) {
 	}
 	return complement;
 };
-
 // === LaTeX Solution Generator Functions ===
 const Solution = {
 	renderTex: function (formula, elem) {
@@ -533,11 +533,10 @@ const Solution = {
 		const BINARY_B = formatGroup(decimalB.toString(2));
 		// Write TeX
 		let solution = "";
-		const ANSWER_FORMATTED = formatGroup((decimalA + decimalB).toString(2));
-		const ANSWER = (decimalA + decimalB).toString(2);
+		const ANSWER = formatGroup((decimalA + decimalB).toString(2));
 		this.renderTex(String.raw`
 			\text{
-				${decimalA} + ${decimalB} = ${ANSWER_FORMATTED}
+				${decimalA} + ${decimalB} = ${ANSWER}
 			} \\~\\ 
 			\begin{aligned}
 				${BINARY_A}& \\
@@ -552,11 +551,10 @@ const Solution = {
 		const BINARY_B = formatGroup(twosComplement(decimalB.toString(2)));
 		// Write TeX
 		let solution = "";
-		const ANSWER_FORMATTED = formatGroup((decimalA + decimalB).toString(2));
-		const ANSWER = (-1 * (decimalA - decimalB)).toString(2);
+		const ANSWER = formatGroup((decimalA + decimalB).toString(2));
 		this.renderTex(String.raw`
 			\text{
-				${decimalA} + ${decimalB} = ${ANSWER_FORMATTED}
+				${decimalA} - ${decimalB} = ${ANSWER}
 			} \\~\\ 
 			\begin{aligned}
 				${BINARY_A}& \\
