@@ -6,3 +6,4 @@
 4. [Abstract Data Types](04 - Abstract Data Types.html)
 5. [Generics](05 - Generics.html)
 6. [Bag Implementations That Use Arrays](06 - Bag Implementations That Use Arrays.html)
+7. [Linked List Bag Implementation](07 - Linked List Bag Implementation.html)
