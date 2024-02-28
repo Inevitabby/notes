@@ -223,3 +223,30 @@ Counterexample is not trivial for all cases.
 > \end{align*}
 > $$
 > 	- True, $\textcolor{blue}{2}$ times any integer is even.
+
+> **Problem**: Prove or disprove that the product of 3 consecutive integers is even.
+> - Mathematical Representation: $n * (n+1) * (n+2) = 2k$
+> - Case I: $n$ is even. $n * (n+1) * (n+2) = 2k$ has a factor of 2, therefore even.
+> $$
+> \begin{align*}
+> 	n * (n+1) * (n+2) &= 2k \\
+> 	2k * (2k+1) * (2k+2) &= 2k \\
+> \end{align*}
+> $$
+> - Case II: $n$ is odd. $n(n+1)(n+2)$ has a factor of 2, therefore even.
+> $$
+> \begin{align*}
+> 	n * (n+1) * (n+2) &= 2k \\
+> 	(2k+1) * ((2k+1)+1) * ((2k+1)+2) &= 2k \\
+> \end{align*}
+> $$
+> - Conclusion: True by proof by cases.
+
+> **Problem**: Prove or disprove that the sum of two rational numbers is rational
+> - Definition: Rational numbers are $\frac{p}{q}$  where $p,q$ are integers. 
+> - Mathematical Representation: $\frac{p}{q} + \frac{t}{r}$
+> 	* $q \ne 0, r \ne 0$
+> $$
+> 	\frac{p}{q} + \frac{t}{r} = \frac{pr + qt}{qr}
+> $$
+> - $pr + qt$ is an integer, therefore the sum of two rational numbers is rational by direct proof.

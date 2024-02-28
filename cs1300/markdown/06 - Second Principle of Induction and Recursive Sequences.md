@@ -1,33 +1,3 @@
-# Second Principle
-
-> Note: We probably won't be questioned about this in homework or tests.
-
-When assuming $P(k)$ isn't enough to prove $P(k+1)$, use an extended version of basic induction proof: The second principle.
-
-**Second Principle**:
-$$
-P(1) \text{ is true} \\
-P(1) \land P(2) \land ... \to P(k+1) \text{ is true}
-$$
-
-> **Example**: Prove that the amount of postage greater than or equal to 8 cents can be built using only 3-cent and 5-cent stamps.
-> 
-> Using the second principle of induction, we have to prove that $P(n)$ is true for $n \ge 8$ where $P(n)$ is that $n$ cents worth of postage can be built using only 3-cent and 5-cent stamps.
-> 
-> Assuming $k$ can be built with 3's and 5's, we want to prove $k+1$
-> 
-> Base Cases:
-> $$
-> p(8) = 3 + 5 \\
-> p(9) = 3 + 3 + 3 \\
-> p(10) = 5 + 5
-> $$
-> 
-> To get 11, 12, 13, we can just add 3 to 8, 9, and 10-case, respectively.
-> - By proving $p(9)$ and $p(10)$, we've proven $P(k+1)$
->
-> Therefore, for any $n \ge 8$, n cents worth of postage can be built using only 3-cent and 5-cent stamps.
-
 # Recursive Sequences
 
 **Sequence**: Ordered list.
