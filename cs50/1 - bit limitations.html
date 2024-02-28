@@ -153,6 +153,70 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
+  <style>
+    :root {
+      /* Light Theme */
+      --text-color: #1a1a1a;
+      --background-color: #fdfdfd;
+      --blockquote-border-color: #e6e6e6;
+      --blockquote-text-color: #606060;
+      --hr-color: #1a1a1a;
+      --link-color: #1a1a1a;
+      --table-border-color: #1a1a1a;
+      --th-border-color: #1a1a1a;
+      --TOC-background-color: #f0f0f0;
+      --TOC-border-color: #ccc;
+      --TOC-item-border-color: #ddd;
+      --TOC-text-color: #333;
+      --TOC-hover-background-color: #ddd;
+      --toggleNavbar-background-color: #f0f0f0;
+      --toggleNavbar-border-color: #ccc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color: #ffffff;
+        --background-color: #1a1a1a;
+        --blockquote-border-color: #444;
+        --blockquote-text-color: #999;
+        --hr-color: #ffffff;
+        --link-color: #ffffff;
+        --table-border-color: #ffffff;
+        --th-border-color: #ffffff;
+        --TOC-background-color: #333;
+        --TOC-border-color: #666;
+        --TOC-item-border-color: #444;
+        --TOC-text-color: #ccc;
+        --TOC-hover-background-color: #444;
+        --toggleNavbar-background-color: #333;
+        --toggleNavbar-border-color: #666;
+      }
+    }
+    html {
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    body {
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    blockquote {
+      border-left-color: var(--blockquote-border-color);
+      color: var(--blockquote-text-color);
+    }
+    hr {
+      background-color: var(--hr-color);
+    }
+    a, a:visited {
+      color: var(--link-color);
+    }
+    table {
+      border-top-color: var(--table-border-color);
+      border-bottom-color: var(--table-border-color);
+    }
+    th {
+      border-top-color: var(--th-border-color);
+    }
+  </style>
     <style>
     html {
       scroll-behavior: smooth;
@@ -163,9 +227,9 @@
       right: 0;
       width: 200px;
       height: 100%;
-      background-color: #f0f0f0;
+      background-color: var(--TOC-background-color);
       overflow-y: auto;
-      border-left: 1px solid #ccc;
+      border-left: 1px solid var(--TOC-border-color);
       display: block;
       counter-reset: toc-counter;
       z-index: 1;
@@ -178,16 +242,16 @@
     #TOC > .incremental li {
       margin: 0;
       padding: 8px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--TOC-item-border-color);
       counter-increment: toc-counter;
     }
     #TOC > .incremental li a {
       text-decoration: none;
-      color: #333;
+      color: var(--TOC-text-color);
       display: block;
     }
     #TOC > .incremental li a:hover {
-      background-color: #ddd;
+      background-color: var(--TOC-hover-background-color);
     }
     #TOC > .incremental li::before {
       content: counter(toc-counter, upper-roman) ". ";
@@ -215,8 +279,8 @@
         top: 10px;
         right: 10px;
         z-index: 2;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
+        background-color: var(--toggleNavbar-background-color);
+        border: 1px solid var(--toggleNavbar-border-color);
         padding: 5px 10px;
         cursor: pointer;
       }
