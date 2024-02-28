@@ -28,3 +28,9 @@
 ## VI. Stack
 
 10. [Stack](10 - Stack ADT.html)
+
+
+## VII. Stack
+
+11. [Queue](11 - Queue ADT.html)
+
