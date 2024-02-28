@@ -36,3 +36,5 @@ To perform a task, an appropriate program (list of instructions) is store in the
 ADD R0, M1
 ```
 - What it does: `R0 <- R0 + M1`{.rtn}
+	- `M1`'s contents are preserved.
+	- `R0` is overwritten.
