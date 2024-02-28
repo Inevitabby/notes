@@ -11,3 +11,4 @@ The following are my class notes for Systems Programming.
 - [UNIX Philosophy](03 - UNIX Philosophy.html)
 - [Operating System](04 - Operating System.html)
 - [Basic Commands](05 - Basic Commands.html)
+- [UNIX File Types, File System Hierarchy, and File Permissions](06 - UNIX Files.html)
