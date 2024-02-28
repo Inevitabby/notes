@@ -40,5 +40,6 @@ convert_directory "cs1300"&
 convert_directory "cs1400"&
 convert_directory "cs50"&
 convert_directory "phl2020"&
-eval pandoc "-i \"README.md\" ${BASE_PANDOC_ARGS} -o \"index.html\""
+(eval pandoc "-i \"README.md\" ${BASE_PANDOC_ARGS}" | awk -f "minify.awk") > "index.html" &
+(eval pandoc "-i \"ABOUT.md\" ${BASE_PANDOC_ARGS} --toc" | awk -f "minify.awk") > "about.html" &
 wait # Wait for all processes to finish

@@ -35,6 +35,7 @@ $endif$
       --TOC-item-border-color: #ddd;
       --TOC-text-color: #333;
       --TOC-hover-background-color: #ddd;
+      --toggleNavbar-color: #1a1a1a;
       --toggleNavbar-background-color: #f0f0f0;
       --toggleNavbar-border-color: #ccc;
     }
@@ -53,6 +54,7 @@ $endif$
         --TOC-item-border-color: #444;
         --TOC-text-color: #ccc;
         --TOC-hover-background-color: #444;
+        --toggleNavbar-color: #ffffff;
         --toggleNavbar-background-color: #333;
         --toggleNavbar-border-color: #666;
       }
@@ -64,6 +66,18 @@ $endif$
     body {
       color: var(--text-color);
       background-color: var(--background-color);
+      min-height: 90vh;
+    }
+    footer {
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      margin-bottom: 1em;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    footer p {
+      margin: 0; /* Remove default margin for the paragraph */
     }
     blockquote {
       border-left-color: var(--blockquote-border-color);
@@ -207,6 +221,19 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
+$if(is_about_page)$
+    <footer>
+      <p>
+        <i><a href="https://inevitabby.codeberg.page/notes/">Return</a></i>
+      </p>
+    </footer>
+$else$
+    <footer>
+      <p>
+        <i><a href="https://inevitabby.codeberg.page/notes/about.html">About</a></i>
+      </p>
+    </footer>
+$endif$
 <script>
     // Toggle the navbar (Table of Contents)
     function toggleNavbar() {

@@ -1,4 +1,6 @@
-# [School Notes](https://inevitabby.codeberg.page/notes)
+<center>
+	<h1 id="notes"><a href="https://inevitabby.codeberg.page/notes">Academic Notes</a></h1>
+</center>
 
 ## Computer Science
 
