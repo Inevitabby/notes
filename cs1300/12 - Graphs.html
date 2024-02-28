@@ -153,8 +153,77 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -167,13 +236,36 @@
     fleqn: false
    });
 }}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#definitions-of-a-graph" id="toc-definitions-of-a-graph">Definitions of a Graph</a>
+<ul class="incremental">
+<li><a href="#example" id="toc-example">Example</a></li>
+</ul></li>
+<li><a href="#directed-graphs" id="toc-directed-graphs">Directed Graphs</a>
+<ul class="incremental">
+<li><a href="#example-1" id="toc-example-1">Example</a></li>
+</ul></li>
+<li><a href="#tangent-counting-edges-of-graphs" id="toc-tangent-counting-edges-of-graphs">Tangent (???): Counting Edges of Graphs</a></li>
+<li><a href="#tree-terminology" id="toc-tree-terminology">Tree Terminology</a>
+<ul class="incremental">
+<li><a href="#more-tree-terminology" id="toc-more-tree-terminology">More Tree Terminology</a></li>
+<li><a href="#binary-trees" id="toc-binary-trees">Binary Trees</a></li>
+</ul></li>
+<li><a href="#defining-trees-recursively" id="toc-defining-trees-recursively">Defining Trees Recursively</a></li>
+<li><a href="#todays-plan" id="toc-todays-plan">Today’s Plan</a></li>
+<li><a href="#applications-of-trees" id="toc-applications-of-trees">Applications of Trees</a></li>
+<li><a href="#tree-traversal-algorithms" id="toc-tree-traversal-algorithms">Tree Traversal Algorithms</a></li>
+</ul>
+</nav>
 <h1 id="definitions-of-a-graph">Definitions of a Graph</h1>
 <p><strong>Informal Definition of a Graph</strong>: A graph is a nonempty set of <em>nodes</em> (vertices) and a set of <em>arcs</em> (edges) such that arc connects two nodes.</p>
 <ul class="incremental">
@@ -269,5 +361,11 @@ P(k,2)
 <p><strong>Preorder Traversal</strong>: The root of the tree is visited first, and then the subtrees are processed left to right, each in preorder.</p>
 <p><strong>Inorder Traversal</strong>: Left subtree is processed by an inorder traversal, then the root is visited, and then the remaining subtrees are processed from left to right, each in inorder.</p>
 <p><strong>Postorder Traversal</strong>: Root is visited last, after all subtrees have been processed from left to right in postorder.</p>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

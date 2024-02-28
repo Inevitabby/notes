@@ -153,11 +153,17 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
 
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

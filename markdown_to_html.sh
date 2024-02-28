@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
-PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet"
+BASE_PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet --template template.html"
 N=24 # Number of parallel Pandoc processes
 function convert_directory {
 	INPUT_DIR="${1}"
@@ -10,6 +10,10 @@ function convert_directory {
 		((i=i%N)); ((i++==0)) && wait
 		OUTPUT_FILE=$(basename -- "${INPUT_FILE}")
 		OUTPUT_FILE="${OUTPUT_FILE%.*}.html"
+		PANDOC_ARGS="${BASE_PANDOC_ARGS}"
+		if [ "$OUTPUT_FILE" != "index.html" ]; then
+			PANDOC_ARGS+=" --toc"
+		fi
 		eval pandoc "-i \"${INPUT_FILE}\" ${PANDOC_ARGS} -o \"${INPUT_DIR}/${OUTPUT_FILE}\""&
 	done
 	# Delete orphaned HTML files
@@ -17,8 +21,7 @@ function convert_directory {
 	do
 		MARKDOWN_FILE=$(basename -- "${HTML_FILE}")
 		MARKDOWN_FILE="${INPUT_DIR}/markdown/${MARKDOWN_FILE%.*}.md"
-		if [ ! -f "${MARKDOWN_FILE}" ];
-		then
+		if [ ! -f "${MARKDOWN_FILE}" ]; then
 			rm "${HTML_FILE}"
 		fi
 	done

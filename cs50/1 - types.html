@@ -153,11 +153,86 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <!--[if lt IE 9]>
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#types" id="toc-types">Types</a></li>
+</ul>
+</nav>
 <h1 id="types">Types</h1>
 <ul class="incremental">
 <li><p>bool: True false</p></li>
@@ -171,5 +246,11 @@
 <li><p>When changing a variable that has already been defined, the type doesn’t need to be redeclared.</p></li>
 <li><p>So long as one of the values in an arithmetic calculation are a long, the others will be promoted to longs as well.</p></li>
 </ul>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

@@ -216,8 +216,77 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -230,13 +299,28 @@
     fleqn: false
    });
 }}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#the-increment-and-decrement-operators" id="toc-the-increment-and-decrement-operators">The Increment and Decrement Operators</a></li>
+<li><a href="#the-while-loop" id="toc-the-while-loop">The <code>while</code> loop</a></li>
+<li><a href="#using-the-while-loop-for-input-validation" id="toc-using-the-while-loop-for-input-validation">Using the <code>while</code> Loop for Input Validation</a></li>
+<li><a href="#mixing-calls-to-nextline-with-calls-to-other-scanner-methods" id="toc-mixing-calls-to-nextline-with-calls-to-other-scanner-methods">Mixing Calls to <code>nextLine</code> with Calls to Other Scanner Methods</a></li>
+<li><a href="#the-for-loop" id="toc-the-for-loop">The <code>for</code> Loop</a></li>
+<li><a href="#running-totals-and-sentinel-values" id="toc-running-totals-and-sentinel-values">Running Totals and Sentinel Values</a></li>
+<li><a href="#nested-loops" id="toc-nested-loops">Nested Loops</a></li>
+<li><a href="#the-break-and-continue-statements" id="toc-the-break-and-continue-statements">The <code>break</code> and <code>continue</code> Statements</a></li>
+<li><a href="#deciding-which-loop-to-use" id="toc-deciding-which-loop-to-use">Deciding Which Loop to Use</a></li>
+<li><a href="#generating-random-numbers-with-the-random-class" id="toc-generating-random-numbers-with-the-random-class">Generating Random Numbers with the <code>Random</code> class</a></li>
+</ul>
+</nav>
 <h1 id="the-increment-and-decrement-operators">The Increment and Decrement Operators</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>number<span class="op">++;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>number<span class="op">--;</span></span>
@@ -390,5 +474,11 @@
 <li><code>nextInt(int n)</code>: Returns random int with range of 0 to <span class="math inline">n-1</span></li>
 <li><code>nextLong()</code>: Returns random long within range of long (-9,223,372,036,854,775,808, 9,223,372,036,854,775,808)</li>
 </ul>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

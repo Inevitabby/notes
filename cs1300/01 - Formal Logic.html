@@ -216,8 +216,77 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -230,13 +299,38 @@
     fleqn: false
    });
 }}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#formal-logic" id="toc-formal-logic">Formal Logic</a></li>
+<li><a href="#statement" id="toc-statement">Statement</a></li>
+<li><a href="#logic" id="toc-logic">Logic</a>
+<ul class="incremental">
+<li><a href="#binary-connectives" id="toc-binary-connectives">Binary Connectives</a></li>
+</ul></li>
+<li><a href="#truth-table" id="toc-truth-table">Truth Table</a></li>
+<li><a href="#tautological-equivalence-between-rightarrow-and-lor" id="toc-tautological-equivalence-between-rightarrow-and-lor">Tautological Equivalence between <span class="math inline">\rightarrow</span> and <span class="math inline">\lor</span></a></li>
+<li><a href="#well-formed-formula-wff" id="toc-well-formed-formula-wff">Well-Formed Formula (WFF)</a></li>
+<li><a href="#priority-of-connectives" id="toc-priority-of-connectives">Priority of Connectives</a></li>
+<li><a href="#de-morgans-laws" id="toc-de-morgans-laws">De Morgan’s Laws</a></li>
+<li><a href="#tautology-and-contradiction" id="toc-tautology-and-contradiction">Tautology and Contradiction</a></li>
+<li><a href="#tautological-equivalence" id="toc-tautological-equivalence">Tautological Equivalence</a></li>
+<li><a href="#common-equivalences" id="toc-common-equivalences">Common Equivalences</a></li>
+<li><a href="#statements-in-programs" id="toc-statements-in-programs">Statements in Programs</a></li>
+<li><a href="#in-class-exercises" id="toc-in-class-exercises">In-Class Exercises</a>
+<ul class="incremental">
+<li><a href="#exercise-i-negation" id="toc-exercise-i-negation">Exercise I: Negation</a></li>
+<li><a href="#exercise-ii-rewriting-into-statement-variables" id="toc-exercise-ii-rewriting-into-statement-variables">Exercise II: Rewriting into Statement Variables</a></li>
+</ul></li>
+</ul>
+</nav>
 <h1 id="formal-logic">Formal Logic</h1>
 <p><strong>Formal Logic</strong>: The study of reasoning, specifically whether something is true or false.</p>
 <ul class="incremental">
@@ -624,5 +718,11 @@ A &amp;\land B&#39; \\
 <li>“if and only if” is bidirectional (<span class="math inline">\leftrightarrow</span>)</li>
 </ul>
 </blockquote>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

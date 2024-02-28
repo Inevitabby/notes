@@ -153,11 +153,119 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <!--[if lt IE 9]>
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#intro-to-computers-and-java" id="toc-intro-to-computers-and-java">Intro to Computers and Java</a></li>
+<li><a href="#why-program" id="toc-why-program">Why Program?</a></li>
+<li><a href="#computer-systems-hardware-and-software" id="toc-computer-systems-hardware-and-software">Computer Systems: Hardware and Software</a>
+<ul class="incremental">
+<li><a href="#cpu" id="toc-cpu">CPU</a></li>
+<li><a href="#main-memory" id="toc-main-memory">Main Memory</a></li>
+<li><a href="#secondary-memory" id="toc-secondary-memory">Secondary Memory</a></li>
+<li><a href="#input-devices" id="toc-input-devices">Input Devices</a></li>
+<li><a href="#output-devices" id="toc-output-devices">Output Devices</a></li>
+<li><a href="#software" id="toc-software">Software</a>
+<ul class="incremental">
+<li><a href="#operating-systems" id="toc-operating-systems">Operating Systems</a></li>
+<li><a href="#application-software" id="toc-application-software">Application Software</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#programming-languages" id="toc-programming-languages">Programming Languages</a>
+<ul class="incremental">
+<li><a href="#procedural-programming" id="toc-procedural-programming">Procedural Programming</a></li>
+<li><a href="#object-oriented-programming" id="toc-object-oriented-programming">Object-Oriented Programming</a></li>
+</ul></li>
+<li><a href="#software-engineering" id="toc-software-engineering">Software Engineering</a></li>
+<li><a href="#java-history" id="toc-java-history">Java History</a></li>
+<li><a href="#what-is-a-program-made-of" id="toc-what-is-a-program-made-of">What Is a Program Made Of?</a>
+<ul class="incremental">
+<li><a href="#lines-vs-statements" id="toc-lines-vs-statements">Lines vs Statements</a></li>
+<li><a href="#variables" id="toc-variables">Variables</a></li>
+<li><a href="#the-compiler-and-jvm" id="toc-the-compiler-and-jvm">The Compiler and JVM</a></li>
+</ul></li>
+<li><a href="#what-is-a-program-made-of-cont." id="toc-what-is-a-program-made-of-cont.">What is a Program Made Of? (cont.)</a></li>
+<li><a href="#portability" id="toc-portability">Portability</a></li>
+<li><a href="#java-editions" id="toc-java-editions">Java Editions</a></li>
+<li><a href="#quick-reference-compiling-and-running-java-code" id="toc-quick-reference-compiling-and-running-java-code">Quick Reference: Compiling and Running Java Code</a></li>
+<li><a href="#the-programming-process" id="toc-the-programming-process">The Programming Process</a></li>
+<li><a href="#types-of-errors" id="toc-types-of-errors">Types of Errors</a></li>
+</ul>
+</nav>
 <h1 id="intro-to-computers-and-java">Intro to Computers and Java</h1>
 <h1 id="why-program">Why Program?</h1>
 <ul class="incremental">
@@ -440,5 +548,11 @@
 <li>Run-Time Error: <code>x = 2/0;</code></li>
 <li>Logical Error: <code>grossPay = hours + payrate;</code></li>
 </ol>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>

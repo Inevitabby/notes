@@ -216,8 +216,77 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    #TOC {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f0f0f0;
+      overflow-y: auto;
+      border-left: 1px solid #ccc;
+      display: block;
+      counter-reset: toc-counter;
+      z-index: 1;
+    }
+    #TOC > .incremental {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #TOC > .incremental li {
+      margin: 0;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      counter-increment: toc-counter;
+    }
+    #TOC > .incremental li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    #TOC > .incremental li a:hover {
+      background-color: #ddd;
+    }
+    #TOC > .incremental li::before {
+      content: counter(toc-counter, upper-roman) ". ";
+      font-weight: bold;
+      margin-right: 4px;
+    }
+    #toggleNavbar {
+      display: none;
+    }
+    @media (max-width: 1200px) {
+      body {
+        margin-right: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      #TOC {
+        display: none;
+      }
+      body {
+        margin-right: 0;
+      }
+      #toggleNavbar {
+        display: block;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+    }
+  </style>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -230,13 +299,65 @@
     fleqn: false
    });
 }}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
+<button id="toggleNavbar" onclick="toggleNavbar()">Toggle Navbar</button>
+<nav id="TOC" role="doc-toc">
+<ul class="incremental">
+<li><a href="#objects-and-classes" id="toc-objects-and-classes">Objects and Classes</a></li>
+<li><a href="#writing-a-class" id="toc-writing-a-class">Writing a Class</a>
+<ul class="incremental">
+<li><a href="#uml-diagram" id="toc-uml-diagram">UML Diagram</a></li>
+<li><a href="#access-specifiers" id="toc-access-specifiers">Access Specifiers</a></li>
+<li><a href="#accessors-and-mutators-setters-and-getters" id="toc-accessors-and-mutators-setters-and-getters">Accessors and Mutators (Setters and Getters)</a></li>
+</ul></li>
+<li><a href="#data-hiding" id="toc-data-hiding">Data Hiding</a></li>
+<li><a href="#stale-data" id="toc-stale-data">Stale Data</a></li>
+<li><a href="#class-layout-conventions" id="toc-class-layout-conventions">Class Layout Conventions</a></li>
+<li><a href="#instance-fields-and-methods" id="toc-instance-fields-and-methods">Instance Fields and Methods</a>
+<ul class="incremental">
+<li><a href="#using-same-variable-names-in-setters" id="toc-using-same-variable-names-in-setters">Using Same Variable Names in Setters</a></li>
+</ul></li>
+<li><a href="#constructors" id="toc-constructors">Constructors</a>
+<ul class="incremental">
+<li><a href="#constructors-in-uml" id="toc-constructors-in-uml">Constructors in UML</a></li>
+</ul></li>
+<li><a href="#uninitialized-local-reference-variables" id="toc-uninitialized-local-reference-variables">Uninitialized Local Reference Variables</a></li>
+<li><a href="#the-default-constructor" id="toc-the-default-constructor">The Default Constructor</a></li>
+<li><a href="#no-arg-constructor" id="toc-no-arg-constructor">No-Arg Constructor</a></li>
+<li><a href="#passing-objects-as-arguments" id="toc-passing-objects-as-arguments">Passing Objects as Arguments</a></li>
+<li><a href="#overloading-methods-and-constructors" id="toc-overloading-methods-and-constructors">Overloading Methods and Constructors</a></li>
+<li><a href="#method-signature-and-binding" id="toc-method-signature-and-binding">Method Signature and Binding</a></li>
+<li><a href="#bankaccount-example" id="toc-bankaccount-example"><code>BankAccount</code> Example</a></li>
+<li><a href="#scope-of-instance-fields" id="toc-scope-of-instance-fields">Scope of Instance Fields</a></li>
+<li><a href="#shadowing" id="toc-shadowing">Shadowing</a></li>
+<li><a href="#packages-and-import-statements" id="toc-packages-and-import-statements">Packages and <code>import</code> Statements</a>
+<ul class="incremental">
+<li><a href="#some-java-standard-packages" id="toc-some-java-standard-packages">Some Java Standard Packages</a></li>
+</ul></li>
+<li><a href="#the-tostring-method" id="toc-the-tostring-method">The <code>toString</code> Method</a></li>
+<li><a href="#static-class-members" id="toc-static-class-members">Static Class Members</a>
+<ul class="incremental">
+<li><a href="#static-fields" id="toc-static-fields">Static Fields</a></li>
+<li><a href="#static-methods" id="toc-static-methods">Static Methods</a></li>
+</ul></li>
+<li><a href="#the-equals-method" id="toc-the-equals-method">The <code>equals</code> Method</a></li>
+<li><a href="#methods-that-copy-objects" id="toc-methods-that-copy-objects">Methods that Copy Objects</a>
+<ul class="incremental">
+<li><a href="#copy-constructors" id="toc-copy-constructors">Copy Constructors</a></li>
+</ul></li>
+<li><a href="#null-references" id="toc-null-references">Null References</a></li>
+<li><a href="#this-reference" id="toc-this-reference"><code>this</code> Reference</a></li>
+<li><a href="#garbage-collection" id="toc-garbage-collection">Garbage Collection</a></li>
+<li><a href="#finalize-method" id="toc-finalize-method"><code>finalize</code> Method</a></li>
+<li><a href="#aggregation" id="toc-aggregation">Aggregation</a></li>
+</ul>
+</nav>
 <h1 id="objects-and-classes">Objects and Classes</h1>
 <p>An object exists in memory and performs a specific task</p>
 <ul class="incremental">
@@ -696,5 +817,11 @@ Branch(location : String):void
 getLocation():String
 }
 <span class="citation" data-cites="enduml">@enduml</span></p>
+<script>
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+  }
+</script>
 </body>
 </html>
