@@ -80,7 +80,9 @@
 
 ## Exercise 2.2
 
-(1) I shouldn't go home this weekend not only because (2) I have too much studying to do, but also because (3) I can't afford the trip.
+Prompt: (1) I shouldn't go home this weekend not only because (2) I have too much studying to do, but also because (3) I can't afford the trip.
+
+Diagram:
 
 > <center>1 2
 > 
@@ -88,7 +90,7 @@
 > 
 > 3</center>
 
-# Good v.s. Bad Argument
+# Good Arguments v.s. Bad Arguments
 
 **Good Argument**: Argument that succeeds in proving its conclusion.
 - **Two Components of a Good Argument**:

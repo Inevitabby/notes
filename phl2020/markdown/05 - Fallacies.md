@@ -1,6 +1,6 @@
 # Fallacy
 
-**Fallacy**: A counterfeit argument.
+**Fallacy**: A counterfeit argument. 
 - Appears to be valid at a first glance.
 
 # A. Fallacies of Relevance
@@ -47,7 +47,7 @@
 9. **Hasty Generalization**: One or a few things show $p$, therefore $p$
 10. **Accident**: We have a generalization and falsely apply it to prove $p$
 	- Note: This is the reverse of hasty generalization (hasty instantiation?)
-	- Examples:
+	- Example:
 		* "A player has 20 seconds to serve starting from the end of the last point in a Tennis game. The player fell down and got injured in the last point and 20 seconds have passed, therefore that player has lost a point."
 11. **Slippery Slope**: Action $P \to Q \to R \to S$, therefore we shouldn't do $P$.
 

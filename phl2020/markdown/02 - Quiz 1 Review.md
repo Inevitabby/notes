@@ -10,14 +10,14 @@
 
 ---
 
-**Contradictions**: Nothing can be both $A$ and $\lnot A$ at the same time and in the same respect.
+**Law of Non-Contradiction**: Nothing can be both $A$ and $\lnot A$ at the same time and in the same respect.
 - The only place contradictions can exist is our minds.
 
 ---
 
-**Logic**: A way of thinking that is (1) rooted in evidence and (2) not self-contradictory.
+**Logic**: A way of thinking that is (1) *Rooted in evidence* and (2) *Not self-contradictory*.
 - "The art of reasoning" ("art" in the sense that it's an applied science)
-- Goal: To find truth
+- Goal of Logic: To find truth.
 
 ---
 

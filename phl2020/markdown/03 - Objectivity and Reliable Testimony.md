@@ -4,26 +4,21 @@
 - Objectivity is a work-in-progress.
 - You can't just put your emotions aside, but you need to be cautious with them
 
-## Where Mistakes Come In
+# Where Mistakes Come In
 
-"Our senses don't lie"
-- e.g., Your sense of sight may perceive a mirage, but the lie happens when you misinterpret it as water instead of a mirage
+1. **Misinterpreting Senses**:
+	- "Our senses don't lie": Your sense of sight may perceive a mirage, but the lie happens when you *misinterpret* it as water instead of a mirage
+2. **Words & Language**:
+	- Error can come in as soon as we begin organizing experiences into words.
+3. **Pleasure & Pain**:
+	- Physical: Errors come in when you relate the feeling to life in general
+	- Emotions: Thinking shapes over time what gives you emotional pleasure/pain
 
-Words & Language:
-- Error can come in as soon as we begin organizing experiences into words.
+**Other People...**:
+- ...Are potential sources of every type of mistake above
+- ...And they can also willfully lie.
 
-> *Comment: White people actually eat pumpkin ice cream?!??*
-
-Pleasure & Pain:
-1. Physical: Errors come in when you relate the feeling to life in general
-2. Emotions: Thinking shapes over time what gives you emotional pleasure/pain
-	- e.g., Fetishists
-
-Other People:
-- All of the above sources of mistakes
-- They can also willfully lie
-
-## 3 Basic Requirements of Reliable Testimony
+# 3 Basic Requirements of Reliable Testimony
 
 > **Testimony**: Any learning from other people that goes beyond your own direct experience.
 
