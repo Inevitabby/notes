@@ -3,7 +3,7 @@
 **GDB (GNU Project Debugger)**: Lets you look inside programs and debug them.
 
 > Three Types of Errors:
-> 1. **Compiler Errors**: Occur during compilation. 
+> 1. **Syntax Errors**: Occur during compilation. 
 > 2. **Runtime Errors**: Occur while the program is executing.
 > 	- Typically prevents program from continuing.
 > 3. **Logical Errors**: Occur while the program is executing. 
