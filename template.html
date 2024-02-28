@@ -96,9 +96,7 @@ $endif$
     th {
       border-top-color: var(--th-border-color);
     }
-  </style>
   $if(toc)$
-  <style>
     html {
       scroll-behavior: smooth;
     }
@@ -142,17 +140,9 @@ $endif$
     #toggleNavbar {
       display: none;
     }
-    @media (max-width: 1200px) {
-      body {
-        margin-right: 200px;
-      }
-    }
-    @media (max-width: 600px) {
+    @media (max-width: 1280px) {
       #TOC {
         display: none;
-      }
-      body {
-        margin-right: 0;
       }
       #toggleNavbar {
         display: block;
@@ -167,8 +157,8 @@ $endif$
         cursor: pointer;
       }
     }
-  </style>
   $endif$
+  </style>
 $for(css)$
   <link rel="stylesheet" href="$css$" />
 $endfor$

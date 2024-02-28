@@ -1,3 +1,151 @@
+# Counting
+
+> **Goal**: Find out ow many members are present in a finite set.
+
+Some Example Counting Problems:
+- If a man has 4 suits, 8 shirts, and 5 ties, how many outfits can he put together?
+- How many ways are there to buy 13 different bagels from a shop that sells 17 types?
+
+Solving counting problems usually involves converting problems to set cardinality problems.
+
+# Multiplication Principle
+
+**Multiplication Principle**: If there are $n$ possible outcomes for a first event and $m$ possible outcomes for a second event, then there are $nm$ possible outcomes for the sequence of two events.
+
+> **Mathematical Representation**:
+> $$
+> | A \times B | = | A | * | B |
+> $$
+
+## Examples: Multiplication Principle
+
+> **Example**:
+> - A child is allowed to choose *one jelly bean out of two* jellybeans—one red and one black—and *one gummy bear out of three* gummy bears—yellow, green, and white. How many different sets of candy can the child have?
+> 
+> Solution:
+> - There are $2(3) = 6$ possible outcomes.
+>	- Because there are 2 possible outcomes for the jellybeans and 3 possible outcomes for the gummy bears.
+
+> **Example**:
+> - How many four digit numbers can there be if repetition of numbers are allowed?
+> 
+> Solution:
+> - There are $10 \times 10 \times 10 \times 10 = 10,000$ possible combinations.
+>
+> Sub-Problem: What if none of the digits can repeat?
+> - Solution: $10 \times 9 \times 8 \times 7$ possible combinations.
+
+> **Example**:
+> - If a man has 4 suits, 8 shirts, and 5 ties, how many outfits can he put together?
+>
+> Solution:
+> - $4*8*5$ outfits
+
+> **Problem**: How many three-digit integers (numbers between 100 and 999 inclusive) are even?
+> 
+> Solution:
+> $$
+> \begin{aligned}
+> \text{(1 to 9)} \times \text{(0 to 9)} \times \text{(even digits)} &= \\
+> |\{ 1,...,9 \}| \times |\{ 0,...,9 \}| \times |\{ 0,2,4,6,8 \}| &= \\
+> 9 \times 10 \times 5 &= 450 \text{ integers}
+> \end{aligned}
+> $$
+
+# Addition Principle
+
+**Addition Principle**: If $A$ and $B$ are disjoint events with $n$ and $m$ outcomes, respectively, then the total number of possible outcomes for event "$A$ or $B$" is $n+m$
+
+> **Mathematical Representation**:
+> $$
+> | A \cup B | = | A | + | B |
+> $$
+
+## Examples: Addition Principle
+
+> **Example**:
+> - A customer wants to purchase a vehicle from a dealer. The dealer has 23 cars and 14 trucks in stock. How many selections does the customer have?
+> 
+> Solution:
+> - They have $23+14=37$ possible selections.
+
+> **Example**:
+> - Suppose there are 5 chicken dishes and 8 beef dishes. How many selections does a customer have?
+> 
+> Solution:
+> - They have $5+8=13$ possible selections.
+
+# Example: Using Addition and Multiplication Principle
+
+> **Problem**: How many four-digit numbers begin with a 4 or 5?
+> 
+> Solution:
+> $$
+> (1*10*10*10) + (1*10*10*10) = 2,000 \text{ 4-digit numbers}
+> $$
+> - 4XXX and 5XXX are disjoined, so we can add their individual possibilities together.
+> 
+> Alternative Solution: (Using only multiplication principle)
+> $$
+> 2*10*10*10 = 2,000 \text{ 4-digit numbers}
+> $$
+
+<!--*-->
+
+# Decision Trees
+
+**Decision Trees**: Trees that provide the number of outcomes of an event based on a series of possible choices.
+
+# Principle of Inclusion and Exclusion
+
+**Theory**: The union of multiple sets can be found by adding (including) all the elements together and then subtracting (excluding) all the intersections that got double-counted.
+- Alternate: To find the total number of items in a combined set, add everything up and subtract any overlaps.
+
+## Principle of Inclusion and Exclusion on 2 Sets
+
+If $A$ and $B$ are subsets of universal set $S$, then $(A-B),(B-A),$ and $(A \cap B)$ are disjoint sets. So:
+
+> **Principle of Inclusion and Exclusion on 2 Sets**:
+> $$
+> 	| A \cup B | = | A | + | B | - | A \cap B |
+> $$
+
+> **Example**: How many integers from 1 to 1000 are either multiples of 3 or multiples of 5?
+> 
+> $$
+> A = \{ \text{Multiples of 3 from 1 to 1000} \} \\
+> B = \{ \text{Multiples of 5 from 1 to 1000} \} \\~\\
+> \text{Goal: Find $|A \cup B|$} \\~\\
+> \begin{aligned}
+> 	| A \cup B | &= | A | + | B | - | A \cup B | \\
+> 	&= \Bigl\lfloor \frac{1000}{3} \Bigr\rfloor + \Bigl\lfloor \frac{1000}{5} \Bigr\rfloor - \Bigl\lfloor \frac{1000}{15} \Bigr\rfloor \\
+> 	&= 457
+> \end{aligned}
+> $$
+
+## Principle of Inclusion and Exclusion on 3 Sets
+
+> **Principle of Inclusion and Exclusion on 3 Sets**:
+> $$
+> | A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C |
+> $$
+
+**Example**: In a class of students undergoing a computer course the following were observed.
+- Out of a total of 50 students: 30 know Pascal, 18 know Fortran, 26 know COBOL, 9 know both Pascal and Fortran, 16 know both Pascal and COBOL, 8 know both Fortran and COBOL, 47 know at least one of the three languages.
+
+1. How many students know none of the languages?
+	- $50 - 47 = 3$ students.
+2. How many students know all three languages?
+
+$$
+| A \cup B \cup C | = 47 \\~\\
+\text{Recall: }
+| A \cup B \cup C | = | A | + | B | + | C | - | A \cap B | - | A \cap C | - | B \cap C | + | A \cap B \cap C | \\~\\
+47 = 30 + 18 + 26 - 9 - 16 - 8 + |A \cap B \cap C| \\
+\downarrow \\
+|A \cap B \cap C| = 6
+$$
+
 # Pigeonhole Principle
 
 1. If more than $k$ items are placed into $k$ bins, then at least one bin has more than one item.
