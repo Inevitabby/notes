@@ -72,10 +72,31 @@ title: MIPS Assembly
 
 TODO
 
-<!--
-| Mnemonics | Operands | Instruction | Register Transfer | Type | Op/Funct |
-|-----------|----------|-------------|-------------------|------|----------|
--->
+| Mnemonic | Operands    | Instruction                    | Register Transfer          | Type | Op/Funct |
+|----------|-------------|--------------------------------|----------------------------|------|----------|
+| add      | rd, rs, rt  | Add                            | rd = rs + rt               | R    | 0/20     |
+| sub      | rd, rs, rt  | Subtract                       | rd = rs - rt               | R    | 0/22     |
+| addi     | rt, rs, imm | Add Imm.                       | rt = rs + imm±             | I    | 8        |
+| addu     | rd, rs, rt  | Add Unsigned                   | rd = rs + rt               | R    | 0/21     |
+| subu     | rd, rs, rt  | Subtract Unsigned              | rd = rs - rt               | R    | 0/23     |
+| addiu    | rt, rs, imm | Add Imm. Unsigned              | rt = rs + imm±             | I    | 9        |
+| mult     | rs, rt      | Multiply                       | {hi, lo} = rs * rt         | R    | 0/18     |
+| mul      | rd, rs, rt  | Multiply without overflow      | rd = rs * rt               | R    | c/2      |
+| div      | rs, rt      | Divide                         | lo = rs / rt; hi = rs % rt | R    | 0/1a     |
+| multu    | rs, rt      | Multiply Unsigned              | {hi, lo} = rs * rt         | R    | 0/19     |
+| mulu     | rd, rs, rt  | Multiply without overflow, uns | rd = rs * rt               | R    | 0/19     |
+| divu     | rs, rt      | Divide Unsigned                | lo = rs / rt; hi = rs % rt | R    | 0/1b     |
+| mfhi     | rd          | Move From HJ                   | rd = hi                    | R    | 0/10     |
+| mflo     | rd          | Move From LO                   | rd = lo                    | R    | 0/12     |
+| mthi     | rs          | Move to HI                     | hi = rs                    | R    | 0/11     |
+| mtlo     | rs          | Move to LO                     | lo = rs                    | R    | 0/13     |
+| and      | rd, rs, rt  | And                            | rd = rs & rt               | R    | 0/24     |
+| or       | rd, rs, rt  | Or                             | rd = rs \| rt              | R    | 0/25     |
+| nor      | rd, rs, rt  | Nor                            | rd =  ̃(rs \| rt)           | R    | 0/27     |
+| xor      | rd, rs, rt  | eXclusive Or                   | rd = rs ˆ rt               | R    | 0/26     |
+| andi     | rt, rs, imm | And Imm.                       | rt = rs & imm0             | I    | c        |
+| ori      | rt, rs, imm | Or Imm.                        | rt = rs \| imm0            | I    | d        |
+| xori     | rt, rs, imm | eXclusive Or Imm.              | rt = rs ˆ imm0             | I    | e        |
 
 ## Instruction Formats
 
@@ -276,25 +297,25 @@ main:	li	$t0,10
 **Syscall**: Special instruction that interfaces with the I/O subsystem.
 - SPIM provides a small set of operating-system-like services throug hthe MIPS system call instruction.
 
-| Services     | System Call Code | Arguments                                  | Result                     |
-|--------------|------------------|--------------------------------------------|----------------------------|
-| print_int    | 1                | $a0=integer                                |                            |
-| print_float  | 2                | $f12=float                                 |                            |
-| print_double | 3                | $f12=double                                |                            |
-| print_string | 4                | $a0=string                                 |                            |
-| read_int     | 5                |                                            | integer (in $v0)           |
-| read_float   | 6                |                                            | float (in $f0)             |
-| read_double  | 7                |                                            | double (in $f0)            |
-| read_string  | 8                | $a0=buffer,$a1=length                      |                            |
-| sbrk         | 9                | $a0=amount                                 | address (in $v0)           |
-| exit         | 10               |                                            |                            |
-| print_char   | 11               | $a0=char                                   |                            |
-| read_char    | 12               |                                            | char (in $a0)              |
-| open         | 13               | $a0=filename (string), $a1=flags,$a2=mode  | file descriptor (in $a0)   |
-| read         | 14               | $a0=file descriptor, $a1=buffer,$a2=length | num chars read (in $a0)    |
-| write        | 15               | $a0=file descriptor, $a1=buffer,$a2=length | num chars written (in $a0) |
-| close?       | 16               | $a0=file descriptor                        |                            |
-| exit2        | 17               | $a0=result                                 |                            |
+| Services       | System Call Code | Arguments                                     | Result                     |
+|----------------|------------------|-----------------------------------------------|----------------------------|
+| `print_int`    | 1                | $a0=integer                                   |                            |
+| `print_float`  | 2                | $f12=float                                    |                            |
+| `print_double` | 3                | $f12=double                                   |                            |
+| `print_string` | 4                | $a0=string                                    |                            |
+| `read_int`     | 5                |                                               | integer (in $v0)           |
+| `read_float`   | 6                |                                               | float (in $f0)             |
+| `read_double`  | 7                |                                               | double (in $f0)            |
+| `read_string`  | 8                | $a0=buffer,\$a1=length                        |                            |
+| `sbrk`         | 9                | $a0=amount                                    | address (in $v0)           |
+| `exit`         | 10               |                                               |                            |
+| `print_char`   | 11               | $a0=char                                      |                            |
+| `read_char`    | 12               |                                               | char (in $a0)              |
+| `open`         | 13               | $a0=filename (string), \$a1=flags, \$a2=mode  | file descriptor (in $a0)   |
+| `read`         | 14               | $a0=file descriptor, \$a1=buffer, \$a2=length | num chars read (in $a0)    |
+| `write`        | 15               | $a0=file descriptor, \$a1=buffer, \$a2=length | num chars written (in $a0) |
+| `close?`       | 16               | $a0=file descriptor                           |                            |
+| `exit2`        | 17               | $a0=result                                    |                            |
 
 > **Note**: More on some syscalls
 > - **print_int**: Passes an integer and prints it on the console.
