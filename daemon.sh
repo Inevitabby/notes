@@ -27,7 +27,9 @@ function cleanup() {
 	done
 	wait
 	# Deduplicate the analysis style file
-	sort -u -o "public/${STYLE_FILE}" "public/${STYLE_FILE}"
+	awk -i inplace -f ".util/css-formatter.awk" "public/${STYLE_FILE}" # Place all rules into their own lines
+	awk -i inplace '!seen[$0]++' "public/${STYLE_FILE}" # De-duplicate lines
+	awk -i inplace '{ printf "%s", $0 }' "public/${STYLE_FILE}" # Remove all newlines
  	exit
 }
 trap "cleanup" SIGINT

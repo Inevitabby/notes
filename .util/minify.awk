@@ -7,7 +7,7 @@
 /<style/,/<\/style/ {
 	gsub(/\/\*.*\*\//, ""); # Remove comments
 	gsub(/[ \t]+/, " "); # Remove multiple spaces and tabs
-	printf "%s", $0; # Print without newline
+	print $0;
 	next;
 }
 # Minify JavaScript
