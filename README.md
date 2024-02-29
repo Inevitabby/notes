@@ -1,5 +1,5 @@
 <center>
-	<h1 id="notes"><a href="https://inevitabby.gitlab.io/notes">Mostly Academic Notes</a></h1>
+	<h1 id="notes"><a href="https://inevitabby.gitlab.io/notes">Academic Notes</a></h1>
 </center>
 
 ## Computer Science
