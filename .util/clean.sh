@@ -39,6 +39,7 @@ function extract_css {
 	sed -i "s|<style>.*<\/style>|<link rel=\"stylesheet\" type=\"text/css\" href=\"${RELATIVE_PATH}\">|" "$HTML_FILE"
 	wait
 }
+# Clean up a HTML file
 function clean {
 	INPUT_DIR=$1
 	HTML_FILE=$2

@@ -19,7 +19,7 @@ function cleanup() {
 	rm -rf ".md5sums"
 	convert
 	# Clean up outputted files
-	rm -f "${STYLE_FILE}"
+	rm -f "public/${STYLE_FILE}"
 	for INPUT_DIR in "${DIRECTORIES[@]}"; do
 		for HTML_FILE in "public/${INPUT_DIR}/"*.html; do
 			clean "${INPUT_DIR}" "${HTML_FILE}"
