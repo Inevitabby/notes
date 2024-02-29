@@ -1,14 +1,13 @@
 ---
-title: "Queue ADT"
+title: "Queue and Deque ADT"
 ---
 
-# Queue
+# A. Queue
 
 **Queue**: Entries organized first-in, first-out (**FIFO**)
 - *Metaphor: Waiting in line at a store*
 - Used in OS and to simulate real-world events
 	* Comes into play whenever processes or events must wait.
-- Client can [only]{.underline} see and remove the entry at the [front of the queue]{.underline}.
 - **Data**: Collection of objects in chronological order.
 
 > **Example**: OS Task Queue
@@ -44,10 +43,180 @@ class queue {
 > **Note**: Improving performance in implementation
 > - If you keep references to the first and last nodes, you can make additions and removals take $O(1)$.
 
-# Deques
+> **Remember**: Client can [only]{.underline} see and remove the entry at the [front of the queue]{.underline}!
 
+> **Example**: Queue Interface
+> ```java
+> public interface QueueInterface<T> {
+> 	void enqueue(T: newEntry);
+> 	T dequeue();
+> 	T getFront();
+> 	boolean isEmpty();
+> 	void clear();
+> }
+> ```
 
+## Simulating a Waiting Line (CRC)
 
-# Priority Queues
+**Responsibilities**: 
+- Simulate customers entering and leaving a waiting line
+- Display number served, total wait time; average wait time, and number left in line
 
+**Collaboration**:
+- Customer
 
+```plantuml
+@startuml
+class WaitLine {
+	-line
+	-numberOfArrivals
+	-numberServed
+	-totalTimeWaited
+	simulate(duration, arrivalProbabilities, max TrascationTime)
+	+displayResult()
+}
+class Customer {
+	-arrivalTime
+	-transactionTime
+	-customerNumber
+	+getArrivalTime()
+	+getTransactionTime()
+	+getCustomerNumber()
+}
+@enduml
+```
+
+> **Remember**: Random Number Generation
+> - We can generate a floating-point between 0—1.
+>	- So, to pick something 80% of the time, we simply check if the random number is $\le 0.8$
+
+## Java Class Library: The Interface `Queue`
+
+Methods:
+- `add()`
+- `offer()`
+	* Like add, but doesn't generate exception.
+- `remove()`
+- `poll()`
+	* Like remove, but doesn't generate exception if queue empty.
+- `element()`
+- `peek()`
+- `isEmpty()`
+- `size()`
+
+# B. Deque
+
+**Deque**: Double-ended queue.
+- *Pronounced: "Deck"*
+- Has queue-like and stack-like operations.
+- You can add to and from the front and back, but not the middle.
+
+> **Example**:
+> - Deque is used in the real-world to provide undo functionality.
+
+## Specification
+
+```plantuml
+@startuml
+class deque {
+	+addToFront(newEntry : T) : boolean
+	+addToBack(newEntry : T) : boolean
+	+removeFront() : boolean
+	+removeBack() : boolean
+	+getFront() : T
+	+getBack() : T
+	+isEmpty(): boolean
+	+clear(): void
+}
+@enduml
+```
+
+> **Example**: Interface
+> ```java
+> public interface DequeInterface<T> {
+> 	boolean addToFront(T newEntry);
+> 	boolean addToBack(T newEntry);
+> 	boolean removeFront();
+> 	boolean removeBack();
+> 	T getFront();
+> 	T getBack();
+> 	boolean isEmpty();
+> 	void clear();
+> 
+> }
+> ```
+
+## Java Class Library: The Interface `Queue`
+
+Methods:
+- `addFirst`, `offerFirst`
+- `addLast`, `offerLast`
+- `removeFirst`, `pollFirst`
+- `removeLast`, `pollLast`
+- `getFirst`, `peekFirst`
+- `getLast`, `peekLast`
+- `isEmpty`, `clear`, `size`
+- `push`, `pop`
+
+## Java Class Library: The Class `ArrayDeque`
+
+- Implements the interface Deque with an array.
+- **Constructors**:
+	* `ArrayDeque()`
+	* `ArrayDeque(int initialCapacity)`
+
+> **Note**: A better data structure to implement the deque would be a doubly-linked list.
+
+# C. Priority Queues
+
+**Priority Queue**: Organizes objects according to their priorities.
+- *Metaphor: Triage in a hospital*
+- If all items being added have the same priority, the queue behaves like **FIFO**.
+
+> **Note**: The definition of "priority" depends on the nature of the items in the queue.
+
+> **Note**: Well be using priority queue (and other ADTs) for the final project (implementing [Dijkstra's algorithm](https://wikipedia.org/wiki/Dijkstra%27s_algorithm))
+
+> **Example**: Priority Queue Interface
+> ```java
+> public interface PriorityQueueInterface<T> extends Comparable<? super T> {
+> 	void add(T newEntry);
+> 	T remove();
+> 	T peek();
+> 	boolean isEmpty();
+> 	int getSize();
+> 	void clear();
+> }
+> ```
+> - Note: `Comparable<? super T>`{.java}
+>	- Means that we want the generic object (or its super class) to implement the `Comparable` method.
+
+> **Example**: Priority queue based on lexical graphical order
+> 
+> ```java
+> PriorityQueueInterface<String> myQueue = newLinkedPriorityQueue<>();
+> myQueue.add("Jane");
+> myQueue.add("Jess");
+> myQueue.add("Jill");
+> myQueue.add("Jim");
+> myQueue.remove();
+> // Remaining Entries:
+> // Jess
+> // Jill
+> // Jim
+> ```
+
+## Java Class Library: The Class Priority Queue
+
+Methods:
+- `add`
+- `offer`
+- `remove`
+- `poll`
+- `element`
+- `peek`
+- `isEmpty`
+- `clear`
+- `size`
+
+> **Note**: Uses a heap.
