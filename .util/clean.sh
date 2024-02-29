@@ -29,12 +29,11 @@ function extract_css {
 		return;
 	fi
 	# Append CSS to a style file for further processing
-	echo "${CSS}" >> "${STYLE_FILE}"
+	echo "${CSS}" >> "public/${STYLE_FILE}"
 	# Replace <style> tags in the HTML with a <link> pointing to the style.min.css
 	NUM_PARENTS=$(tr -cd '/' <<< "${HTML_FILE}" | wc -c)
-	((NUM_PARENTS--))
 	RELATIVE_PATH="${STYLE_FILE}"
-	for ((i = 0; i < NUM_PARENTS; i++)); do
+	for ((i = 0; i < (NUM_PARENTS - 1); i++)); do
 		RELATIVE_PATH="../${RELATIVE_PATH}"
 	done
 	sed -i "s|<style>.*<\/style>|<link rel=\"stylesheet\" type=\"text/css\" href=\"${RELATIVE_PATH}\">|" "$HTML_FILE"

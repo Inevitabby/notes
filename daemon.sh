@@ -27,7 +27,7 @@ function cleanup() {
 	done
 	wait
 	# Deduplicate the analysis style file
-	sort -u -o "${STYLE_FILE}" "${STYLE_FILE}"
+	sort -u -o "public/${STYLE_FILE}" "public/${STYLE_FILE}"
  	exit
 }
 trap "cleanup" SIGINT
