@@ -483,7 +483,36 @@ main:
 > 	add	$a0, $t0, $t1
 > 	li	$v0, 1
 > 	syscall
+>	# Print newline
+> 	li	$a0, '\n'
+> 	li	$v0, 11
+> 	syscall
 > 	# Exit
 > 	li	$v0, 10
 > 	syscall
 > ```
+
+> **Important**: Don't forget to print a newline character before exiting the program!
+
+# Branched Statements
+
+```mips
+beq	rt, r, label
+bne	rd, rs, label
+```
+
+> **Important**: We will **not** be using the jump instruction.
+
+> **Example**: Basic if in C v.s. MIPS
+> ```c
+> if (a != o)
+> 	// Do output
+> ```
+> 
+> ```mips
+> 	# If zero, jump to the endif label
+> 	beqz	$t0, endif
+> 	# Do output
+> endif:
+> ```
+> - **Note**: Basically, we just want to do the opposite instruction to simplify the jump.
