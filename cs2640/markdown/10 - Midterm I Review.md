@@ -352,6 +352,127 @@ $2^n$ bytes
 
 > **Notes**: [MIPS Assembly (CS2640)](https://inevitabby.gitlab.io/notes/cs2640/09%20-%20SPIM.html)
 
+# Assorted Questions
+
+**Q39**: Fill in the memory accesses needed for the following instructions:
+
+| Instruction | Operands | Data Count | Instruction Count |
+| ----------- | -------- | ---------- | ----------------- |
+| ADD         | M3,M2,M1 |            |                   |
+| ADD         | R1,R2,R3 |            |                   |
+|             |          |            |                   |
+
+<details><summary>Answer</summary>
+| Instruction | Operands | Data Count | Instruction Count |
+| ----------- | -------- | ---------- | ----------------- |
+| ADD         | M3,M2,M1 | 3          | 4                 |
+| ADD         | R1,R2,R3 | 0          | 1                 |
+|             |          | 3          | 5                 |
+</details>
+
+**Q40**: Instruction Set Architecture is __
+
+a. A bus specification
+b. Abstract model of a computer
+c. The building block of a computer
+d. Instructions processed by the control unit
+
+<details><summary>Answer</summary>
+b. Abstract model of a computer
+</details>
+
+**Q41**: Why do we use assembly language?
+
+a. Speed and size of the program is critically important.
+b. Assembly language is easy to read.
+c. Access to specialized instructions that are not available in high-level language
+d. Assembly language is machine independent
+
+<details><summary>Answer</summary>
+a. Speed and size of the program is critically important.
+c. Access to specialized instructions that are not available in high-level language
+</details>
+
+**Q42**: What are the parts/fields in a machine instruction?
+
+<details><summary>Answer</summary>
+1. Opcode Fields
+2. Address Fields
+</details>
+
+**Q43**: What are the different types of MIPS instruction formats? What field do they all share?
+
+<details><summary>Answer</summary>
+1. R
+2. I
+3. J
+
+They all have an opcode field.
+</details>
+
+**Q44**: What is an assembler directive?
+
+<details><summary>Answer</summary>
+Tells the assembler where in memory to place thing.
+- e.g., `.text` tells assembler that we are giving it instructions (below 0x400000 in MIPS)
+</details>
+
+**Q45**: Which is the following is NOT a pseudo-instruction?
+
+a. `li $t1, 0`{.mips}
+b. `li $ao, hello`{.mips}
+c. `move $to, $t1`{.mips}
+d. `addi $t0, $t1, 0`{.mips}
+
+<details><summary>Answer</summary>
+d. `addi $t0, $t1, 0`{.mips}
+</details>
+
+**Q46**: translate the following pseudocode to assembly. `c` and `f` are memory locations.
+
+$$
+c=5*(f-32)/9
+$$
+
+<details><summary>Answer</summary>
+```mips
+lw	$t0, f
+sub	$t0, $t0, 32
+mul	$t0, $t0, 5
+div	$t0, $t0, 9
+sw	$t0, c
+```
+</details>
+
+<!--
+**Q47**: Write a complete MIPS program that will:
+a. Prompt the user for an integer number
+b. Computer $a=(31415*r*r)/10000$
+c. Output a
+
+Required I/O:
+```
+Input? <in>
+<out>
+```
+
+```mips
+	.data
+prompt:	.asciiz	"Input?"
+	.text
+main:	la	$a0, prompt
+	li	$v0, 4
+	syscall
+	li	$v0, 5
+	syscall
+	mul	$
+```
+
+<details><summary>Answer</summary>
+</details>
+
+-->
+
 <script>
 // === General-Purpose Utility Functions ===
 // Group digits into n-digit groups
