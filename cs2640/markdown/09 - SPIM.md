@@ -501,18 +501,111 @@ beq	rt, r, label
 bne	rd, rs, label
 ```
 
+- Branching to a non-existent label will result in a runtime error.
+- To turn an if statement into a branched statement, we need to flip the condition.
+	- Besides reducing the number of jumps necessary for a simple `if` statement, it also maintains the order of `if` and `else` in the code.
+
 > **Important**: We will **not** be using the jump instruction.
 
 > **Example**: Basic if in C v.s. MIPS
+> 1. C
 > ```c
-> if (a != o)
+> if (a != o) {
 > 	// Do output
+> }
 > ```
 > 
+> 2. MIPS
+> ```mips
+>       # If zero, jump to the endif label
+>       beqz      $t0, endif
+>       # Do output
+> endif:
+> ```
+
+> **Example**: Basic if in C v.s. MIPS
+> 1. C
+> ```c
+> if (t0 < 10) {
+> 	// Do output
+> }
+> ```
+> 
+> 2. MIPS
 > ```mips
 > 	# If zero, jump to the endif label
-> 	beqz	$t0, endif
+> 	bge	$t0, 10, endif
 > 	# Do output
 > endif:
 > ```
-> - **Note**: Basically, we just want to do the opposite instruction to simplify the jump.
+
+> **Guideline**: To work with multiple `endif` labels, will just add a number to the end (e.g., `endif0:`, `endif1:`, etc.)
+
+> **Example**: Branched if in C v.s. MIPS
+> 1. C
+> ```c
+> if (t0 < 10) {
+> 	// output 1
+> } else {
+> 	// output 2
+> }
+> ```
+> 
+> 2. MIPS
+> ```mips
+>       bge      $t0, 10, else
+>       # output 1
+>       b endif
+> else:
+>       # output 2
+> endif:
+> ```
+
+## While Loop
+
+To loop, we'll use a register to control the loop
+
+> **Example**: A while statement
+> ```mips
+>        .data
+> hello: .asciiz "hello\n"
+>        .text
+> main:
+>        li      $t0, 1 # Initialize loop control register
+> while: bgt     $t0, 10, endw # While loop
+>        la      $a0, hello
+>        li      $v0, 4
+>        syscall
+>        addi    $t0, 1 # increment loop control register
+>        b       while
+> endw:  li      $v0, 10 # End of while loop
+>        syscall
+> # end of program
+> ```
+
+> **Example**: Nesting an if statement inside a while statement
+> ```mips
+>        .data
+> hello: .asciiz "hello\n"
+>        .text
+> main:
+>        li      $t0, 1 # Initialize loop control register
+> while: bgt     $t0, 10, endw # While loop
+>        
+>        # Print loop counter variable if it is less than 5
+>        bge     $t0, 5, endif
+>        move    $a0, $t0
+>        li      $v0, 1
+>        syscall
+> endif:
+>        
+>        la      $a0, hello
+>        li      $v0, 4
+>        syscall
+>        addi    $t0, 1 # increment loop control register
+>        b       while
+> endw:  li      $v0, 10 # End of while loop
+>        syscall
+> # end of program
+> ```
+
