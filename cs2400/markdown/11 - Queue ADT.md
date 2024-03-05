@@ -104,6 +104,19 @@ Methods:
 - `isEmpty()`
 - `size()`
 
+## Java Class Library: The Class AbstractQueue
+
+```java
+boolean add(T newEntry);
+boolean offer(T newEntry);
+T remove();
+T poll();
+T element();
+T peek();
+void isEmpty();
+int clearSize();
+```
+
 # B. Deque
 
 **Deque**: Double-ended queue.
@@ -220,3 +233,45 @@ Methods:
 - `size`
 
 > **Note**: Uses a heap.
+
+# Implementations
+
+## A. Queue
+
+**(Singly) Linked Implementation**:
+- Keep two reference variables (to head and tail) to let us add items at the front and remove items from the back at $O(1)$
+	* We *enqueue* (add) to the tail.
+	* We *deque* (remove) at the head.
+- **Special Case:** Remember that if we *deque* a queue [with only one node]{.underline}, we must set both head and tail to `null`.
+
+**Circular Array Implementation**:
+- **Circular Array**: When we get to the end of the array, we wrap around to index 1.
+- We maintain three variables:
+	1. `frontIndex`: Where we enqueue
+	2. `backIndex`: Where we dequeue
+	3. `count`: Keeps track of how many entries we have.
+		- Makes operations like `isEmpty` much easier.
+		- Once the `count` is equal to the array's length, the queue is full.
+		- Alternatively, you could always keep one entry empty and use it to keep track of the size.
+- This is how you achieve a high-performance queue.
+- We use modulo (`%`) to find indices.
+
+> **Remember**: A queue is not a bag, it's not supposed to be used for storage, we use it because we want to take things out.
+> - *tl;dr We use a queue when we have a *producer* and *consumer* of data (e.g., keyboard input).*
+
+**Circular Linked Implementation**:
+- **Circular Linked List**: Previous nodes that have been dequeued are reused for the next enqueue.
+	* If there are no unused nodes left, we'll add a new node
+	* The tail points to the head.
+
+## B. Deque
+
+**Doubly-Linked Implementation**:
+- **Double-Linked List**: Each node points to the `next` node and `previous` node.
+	* This allows us to remove and add from the head and tail.
+	* Unlinking a node in doubly-linked list is $O(1)$ because we don't need to perform any traversal to get the next or previous nodes.
+- Useful for implementing priority queue.
+
+## C. Priority Queue
+
+One way to implement a priority queue is to use an array of queue.

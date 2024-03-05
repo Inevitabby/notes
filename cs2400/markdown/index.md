@@ -34,3 +34,7 @@
 
 11. [Queue](11 - Queue ADT.html)
 
+## VIII. Recursion
+
+12. [Recursion](12 - Recursion.html)
+
