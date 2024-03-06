@@ -561,6 +561,27 @@ bne	rd, rs, label
 > endif:
 > ```
 
+> **Example**: Else-if in C v.s. MIPS
+> 1. C
+> 
+> ```c
+> if (t0 == 0) {
+> 	t0++;
+> } else {
+> 	t1++;
+> }
+> ```
+> 
+> 2. MIPS
+> 
+> ```mips
+> if:	bnez	$0, else
+> 	addi	$t0, 1
+> 	b	endif
+> else:	addi	$t1, 1
+> endif:
+> ```
+
 ## While Loop
 
 To loop, we'll use a register to control the loop
@@ -609,3 +630,69 @@ To loop, we'll use a register to control the loop
 > # end of program
 > ```
 
+> **Example**: While-loop in C v.s. MIPS
+> 1. C
+> ```c
+> int t1=0;
+> int t0=1;
+> while (t0 <= 100) {
+> 	t1 += t0;
+> 	t0++;
+> }
+> ```
+> 
+> 2. MIPS
+> ```mips
+> 	li	$t1, 0
+> 	li	$t0, 1
+> while:	bgt	$t0, 100, endw
+> 	addi	$t1, $t1, $t0
+> 	addi	$t0, 1
+> 	b while
+> endw:
+> ```
+
+## More on Less-Than or Greater-Than
+
+These commands are used by `bge`, `bgt`, `ble`, and `blt`
+- `seq`
+- `sne`
+- `sge`
+- `sgt`
+- `sle`
+- `slt`
+
+# Masking Bits
+
+> **Relevant Notes**: 
+
+> **Example**: Checking if a number is even using a mask
+> ```mips
+> 	li	$t1, 1		# Mask the LSBIT
+> 	and	$t2, $t0, $t1
+> 	# If $t2 is zero, then t0 is even
+> 	bnez	$t2, endif
+> 	# t0 is even, do whatever.
+> endif: 
+> ```
+
+> **Example**: Checking if a number is divisible by four
+> ```mips
+> 	li	$t1, 3		# Mask last two LSBITS (this is 11 in binary)
+> 	and	$t2, $t0, $t1
+> 	# If $t2 is zero, then t0 is divisible by four
+> 	bnez	$t2, endif
+> 	# t0 is divisble by 4 (continue calculations here)
+> endif: 
+> ```
+> - (If you list out every possible value for 4 bits, you'll be able to verify this.)
+
+> **Note**: MSBIT Mask: 0x8000000
+> - (Use this to check if a signed integer is negatie)
+
+# Signed Integers
+
+By default, integers are signed,
+- To use an unsigned integer, use the unsigned instruction variants.
+
+> **Beware**: Unsigned operations don't generate traps on overflow, while signed operations *will* generate traps on overflow.
