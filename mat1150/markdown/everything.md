@@ -1044,6 +1044,7 @@ $$
 $$
 </details>
 
+
 ## Physical Applications
 
 $$
@@ -1130,3 +1131,208 @@ W &= \int_0^8 9800 \times 16 \pi (10 - h) dh \\
 \end{aligned}
 $$
 </details>
+
+# Hyperbolic Functions
+
+$$
+\boxed{
+	\text{Hyperbolic Cosine: } \cosh x = \frac{e^x + e^{-x}}{2}
+} \\~\\
+\boxed{
+	\text{Hyperbolic Sine: } \sinh x = \frac{e^x - e^{-x}}{2}
+}
+$$
+
+<details><summary>Properties, Deriving Other Hyperbolic Functions</summary>
+You can derive other hyperbolic functions trivially, e.g.,
+$$
+\sech x = \frac{1}{\cosh x} \\
+\cosh^2 x + \sinh^2 x = 1
+$$
+
+Properties are same, e.g.,
+$$
+(\cosh)' = \sinh x
+$$
+</details>
+
+# Sequences
+
+<details><summary>What is a Sequence</summary>
+$$
+\text{\textbf{Sequence}: An ordered infinite list of numbers.} \\
+\small\text{(often of the form $a_1, a_2, a_3, a_4, ..., a_n, ...$)}
+$$
+
+**Arithmetic Sequence**: Distance between every pair of successive terms is same.
+- This difference is called the common difference ($d$)
+
+**Geometric Sequence**: Ratio of successive to previous term is same.
+- This ratio is called the common ratio ($r$)
+
+$$
+\text{Shorthand for Sequence:} \\
+\{ a_n \}_{n=1}^\infin \quad \text{or} \quad \{ a_n \}
+$$
+
+> **Example**: Shorthand representation of a sequence
+> - Listing: { 2, 4, 8, 16, 32, 64, ... }
+> - Formula: $\{ 2^n \}$
+
+**Terminology**:
+- For a sequence $a_1, a_2, a_3, a_4, ..., a_n, ...$:
+	- $n$ is the [index variable]{.underline}.
+	- $a_n$ is the [term]{.underline}.
+	- $a_n = 2^n$ is an example of an [explicit function]{.underline} for a sequence
+- Sometimes sequences are defined by [recurrence relations]{.underline}, where one or more terms are defined explicitly while the rest are defined in terms of previous terms.
+	* E.g., $a_n = 2^n$ could also be defined with a recurrence relation where:
+		+ $a_1 = 2$
+		+ $a_n = 2a_{n-1}$ for $n \gt 1$
+</details>
+
+<details><summary>Example: Unsystematically finding explicit formulas</summary>
+$$
+\text{A) }
+- \frac{1}{2} , \frac{2}{3}, -\frac{3}{4}, \frac{4}{5}, - \frac{5}{6}
+$$
+
+For the moment ignoring the negatives, we can see that the number is always the index variable, while the denominator is the index variable + 1. Thus, the current formula is: 
+
+$$
+a_n = \frac{n}{n+1} \times ???
+$$
+
+To get the alternating signs we can use { $(-1)^n$ }, which has a pattern of { -1, 1, -1, 1, ...}
+
+> **Note**: To alternate on every other term, do { $(-1)^{n+1}$ }
+
+Thus, the explicit formula is:
+
+$$
+a_n = \frac{(-1)^n \times n}{n+1}
+$$
+
+---
+
+$$
+\text{B) }
+\frac{3}{4}, \frac{9}{7}, \frac{27}{10}, \frac{81}{13}, \frac{243}{16}, ...
+$$
+
+We can see that the numerator is $3^n$
+- (This is a geometric sequence)
+
+The denominator is $1+3n$
+- (This is an arithmetic sequence)
+
+Thus, $a_n = \frac{3^n}{1+3n}$
+</details>
+
+$$
+\boxed{
+	\text{Arithmetic Sequence: } a_n = a_1 + d (n - 1)
+} \\
+\small\textit{(where $d$ is the common difference)} \\
+\textit{recurrence relation: } a_1 = k \qquad a_n = a_{n-1} + d \textit{ for } n \ge 2
+$$
+
+<details><summary>Example: Systematically finding formula for arithmetic sequence</summary>
+**Q**: Find the explicit formula for 25, 21, 17, 13, 4, 5, 1, -3, ...
+
+A: The common difference is $d = -4$, thus the formula is:
+$$
+a_n = 25 + (-4)(n-1)
+$$
+</details>
+
+$$
+\boxed{
+	\text{Geometric Sequence: } a_n = a_1 r^{n-1}
+} \\
+\small\textit{(where $r$ is the common ratio)} \\
+\textit{recurrence relation: } a_1 = k \qquad a_n = r a_{n-1} \textit{ for } n \ge 2
+$$
+
+<details><summary>Example: Systematically finding formula for geometric sequence</summary>
+**Q**: Find the explicit formula for 12, 18, 27, 40.5, ...
+
+A: The common ratio is $r = \frac{3}{2}$, thus the formula is:
+$$
+\begin{aligned}
+a_n &= 12 \times \frac{3}{2}^{n-1} \\
+&= 12 \times \frac{3}{2}^{n} ( \frac{3}{2} )^{-1} \\
+&= 12 \times \frac{3}{2}^{n} \frac{2}{3} \\
+&= 8 (\frac{3}{2})^n
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example: Find explicit formula for recurrence relations</summary>
+**Q**: Find the explicit formula for:
+$$
+a_1 = 2 \qquad a_n = -3 a_{n-1} \text{ for } n \ge 2
+$$
+
+A: By listing out the terms we can see that the sequence is geometric, where $r = -3$:
+$$
+\{ 2, -6, 18, -54 \}
+$$
+
+Therefore, $a_n = 2(-3)^{n-1}$
+
+**Q**: 
+$$
+a_1 = \frac{1}{2} \qquad a_n = a_{n-1} + ( \frac{1}{2} )^n \text{ for } n \ge 2
+$$
+
+**A**: Listing out the terms we see:
+$$
+\{
+	\frac{1}{2}, \frac{3}{4}, \frac{7}{8}, \frac{15}{16}
+\}
+$$
+- The denominator is a geometric sequence: $2^n$
+- And the numerator is the denominator - 1, so:
+
+$$
+a_n = \frac{2^n - 1}{2^n}
+$$
+</details>
+
+<details><summary>How-To Graph a Sequence</summary>
+To graph a sequence { $a_n$ }, we plot points ($n$, $a_n$)
+
+> **Example**: { $2^n$ }
+> - Points would be (1,2), (2,4), (3,8), ...
+</details>
+
+$$
+\boxed{
+	\text{Convergent Sequence: }
+	\lim_{n \to \infin} a_n = L
+}
+$$
+
+
+<details><summary>More on Convergence and Divergence</summary>
+Given a sequence { $a_n$ }, if the terms $a_n$ get arbitrarily close to some finite number $L$ as $n$ becomes sufficiently large, then we say { $a_n$ } is a convergent sequence is a [convergent sequence]{.underline} and that $L$ is the limit of the sequence:
+$$
+\lim_{n \to \infin} a_n = L
+$$
+
+Otherwise, we say it is divergent.
+
+> **Example**
+> - Convergent: $2^n \to \infin$
+> - Divergent: $1 - \frac{1}{2^n} \to 1$
+> - Divergent: $(-1)^n \to $ oscillates between -1 and 1 forever
+> - Convergent: $\frac{(-1)^n}{n} \to 0$
+</details>
+
+<!--
+> ### Memorize This
+> $$
+> \{ (-1)^n \} = \{ -1, 1, -1, 1, ... \}
+> $$
+-->
+
