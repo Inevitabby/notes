@@ -4,7 +4,7 @@
 
 0. [Coding Guidelines](00 - Requirements.html)
 1. [Intro](01 - Intro.html)
-2. [Review (Arrays)](02 - Arrays.html)
+2. [Review](02 - Arrays.html)
 
 ## II. Classes, Abstract Data Types, and Generics
 
@@ -14,7 +14,7 @@
 
 ## III. Fixed-Size Array and Linked List
 
-6. [Bag Implenentation: Fixed-Size Array](06 - Bag Implementations That Use Arrays.html)
+6. [Bag Implementation: Fixed-Size Array](06 - Bag Implementations That Use Arrays.html)
 7. [Bag Implementation: Linked List](07 - Linked List Bag Implementation.html)
 
 ## IV. Iterators
