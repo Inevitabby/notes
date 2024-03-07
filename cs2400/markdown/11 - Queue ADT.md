@@ -127,6 +127,23 @@ int clearSize();
 > **Example**:
 > - Deque is used in the real-world to provide undo functionality.
 
+> **Example**: Private Node inner-class with next and previous pointers
+> ```java
+> private class Node<T> {
+> 	private T data;
+> 	private Node next;
+> 	private Node prev;
+> 	private Node (T data) {
+> 		this(data, null, null)
+> 	}
+> 	private Node (T data, Node next, Node prev) {
+> 		this.data = data;
+> 		this.next = next;
+> 		this.prev = prev;
+> 	}
+> }
+> ```
+
 ## Specification
 
 ```plantuml

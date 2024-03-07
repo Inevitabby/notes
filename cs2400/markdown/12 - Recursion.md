@@ -27,6 +27,14 @@ title: Recursion
 
 **Recursion**: Problem-solving process of breaking a problem into identical but smaller problems.
 - **Recursive Method:** Method that calls itself
+	* Each call generates an activation record.
+- Uses more memory than an iterative method.
+
+**Tail Recursion**: When the last action performed by a method is a recursive call.
+- Converting tail-recursive methods to an iterative one is usually straightforward.
+	- Some compilers will even convert it to a for loop.
+
+**Indirect Recursion**: When $a(x)$ calls $b(x)$ and $b(x)$ calls $a(x)$
 
 > **Example**: Count down from a positive integer
 > ```java
@@ -38,7 +46,6 @@ title: Recursion
 > }
 > ```
 > - This uses tail recursion, as the last thing it does is call itself.
->	- Tail recursion is iteration, and some compilers will even convert it to a for loop for loop.
 
 **Design Guidelines**:
 - Method must be given an input value
@@ -104,3 +111,6 @@ Now the answer begins traveling up the chain:
 > 	}
 > }
 > ```
+
+> **Common Mistake:** Using iteration instead of an if statement in a recursive function.
+

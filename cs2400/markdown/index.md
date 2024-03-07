@@ -38,3 +38,7 @@
 
 12. [Recursion](12 - Recursion.html)
 
+## IX. List
+
+13. [List](13 - List ADT.html)
+
