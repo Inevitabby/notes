@@ -22,7 +22,6 @@ title: List ADT
 > list.add(2, "Elias");
 > list.add(2, "Bob");
 > list.add(3, "Drew");
-> list.add(1, "Aaron");
 > ```
 > 
 > 1. Aaron
