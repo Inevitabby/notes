@@ -1308,11 +1308,52 @@ To graph a sequence { $a_n$ }, we plot points ($n$, $a_n$)
 
 $$
 \boxed{
+	\text{Alternating Signs: } \{ (-1)^n \} = \{ -1, 1, -1, 1, ... \}
+} \\
+\small\textit{(do n+1 to change alternation)}
+$$
+
+$$
+\boxed{
+	\text{Even Numbers: } \{ 2n \}
+} \\~\\
+\boxed{
+	\text{Odd Numbers: } \{ 2n - 1 \}
+}
+$$
+
+$$
+\boxed{
+	\text{Factorial: } a_0 = 1, a_n = n ( a_{n-1} ) \text{ for } n \ge 1
+}
+$$
+
+## Algebraic Laws for Sequences
+
+$$
+\text{Suppose:}\\
+\begin{aligned}
+	\lim_{n \to \infin} a_n &= A \\
+	\lim_{n \to \infin} b_n &= B \\
+\end{aligned} \\~\\
+\begin{aligned}
+	\text{1) }& \lim_{n \to \infin} c = c \\
+	\text{2) }& \lim_{n \to \infin} c a_n = c \times \lim_{n \to \infin} a_n = c \times A \\
+	\text{3) }& \lim_{n \to \infin} a_n \pm b_n = \lim_{n \to \infin} a_n \pm \lim_{n \to \infin} b_n = A + B \\
+	\text{4) }& \lim_{n \to \infin} a_n b_n = (\lim_{n \to \infin} a_n) (\lim_{n \to \infin} b_n) = AB \\
+	\text{5) }& \lim_{n \to \infin} \frac{a_b}{b_n} = \frac{\lim_{n \to \infin} a_n}{\lim_{n \to \infin} b_n} = \frac{A}{B}
+\end{aligned} \\~\\
+\small\textit{((5) provided that $B \ne 0$)}
+$$
+
+## Sequence Convergence
+
+$$
+\boxed{
 	\text{Convergent Sequence: }
 	\lim_{n \to \infin} a_n = L
 }
 $$
-
 
 <details><summary>More on Convergence and Divergence</summary>
 Given a sequence { $a_n$ }, if the terms $a_n$ get arbitrarily close to some finite number $L$ as $n$ becomes sufficiently large, then we say { $a_n$ } is a convergent sequence is a [convergent sequence]{.underline} and that $L$ is the limit of the sequence:
@@ -1322,17 +1363,128 @@ $$
 
 Otherwise, we say it is divergent.
 
-> **Example**
+> **Example** *(as $n \to \infin$)*
 > - Convergent: $2^n \to \infin$
-> - Divergent: $1 - \frac{1}{2^n} \to 1$
-> - Divergent: $(-1)^n \to $ oscillates between -1 and 1 forever
+> - Convergent: $1 - \frac{1}{2^n} \to 1$
+> - Divergent: $(-1)^n \to$ oscillates between -1 and 1 forever
 > - Convergent: $\frac{(-1)^n}{n} \to 0$
 </details>
 
-<!--
-> ### Memorize This
-> $$
-> \{ (-1)^n \} = \{ -1, 1, -1, 1, ... \}
-> $$
--->
+> ### Theorem I
+> 
+> Let { $a_n$ } be a sequence and $f(x)$ a function so that $a_n = f(n)$ for every positive integer $n$.
+> 
+> If there exists some real number $L$ so that $\lim_{x \to \infin} f(x) = L$ , then { $a_n$ } converges and $\lim_{x \to \infin} a_n = L$
 
+<details><summary>Example: Does it converge?</summary>
+**Q**:
+$$
+\lim_{n \to \infin} \frac{3n^4 = 7 n^2 + 5}{6-4 n^4}
+$$
+
+A: We'll multiply numerator and denominator by $\frac{1}{n^4}$ (so that we can cancel things out with the fact that $\frac{1}{x} = 0$ if $x \to \infin$)
+$$
+\begin{aligned}
+=& \lim_{n \to \infin} \frac{
+	3- \frac{7}{n^2} + \frac{5}{n^4}
+}{
+	\frac{6}{n^4} - 4
+} \\
+=& \frac{3 - 0 + 0}{0 - 4} \\
+=& - \frac{3}{4}
+\end{aligned}
+$$
+
+**Q**:
+$$
+\{
+(1 + \frac{4}{n})^n
+\}
+$$
+
+> **Note**: $1^\infin$ is indeterminate
+> - *(We don't know if we are approaching 1 fast enough to cancel out the infinity)*
+
+A: We'll take the $\ln$ of both sides to get a real value, and then plug that value back in and put both sides as a power of $e$:
+
+$$
+\ln y = \ln (1 + \frac{4}{x})^x \\
+= \lim_{x \to \infin} \frac{1 + \frac{4}{x}}{\frac{1}{x}}
+$$
+
+This form is indeterminate, so we can use L'Hopitals:
+
+$$
+\lim{x \to \infin} \frac{
+	\frac{-4x^2}{1 + \frac{4}{x}}
+}{
+	-x^{-2}
+} = 
+\lim_{x \to \infin} \frac{4}{1 + \frac{4}{x}} = 4
+$$
+
+Thus,
+$$
+\lim_{n \to \infin} \ln (1 + \frac{4}{n})^n = 4 \\
+\lim_{n \to \infin} (1 + \frac{4}{n})^n = e^4
+$$
+</details>
+
+> ### Squeeze Theorem
+> 
+> Suppose { $a_n$ }, { $b_n$ }, { $c_n$ } are sequences where $a_n \le b_n \le c_n$
+> 
+> If $\lim_{n \to \infin} a_n = L = \lim_{n \to \infin} c_n$,
+> 
+> Then $\lim_{n \to \infin} b_n = L$
+
+<details><summary>Example: Does it converge?</summary>
+**Q**: { $\frac{(-1)^n \cos n}{n^2}$ }
+
+**A**:
+
+$$
+-1 \le \cos n \le 1 \\
+\frac{-1}{n^2} \le \frac{\cos n}{n^2} \le \frac{1}{n^2} \\
+$$
+
+$$
+\frac{-1}{n^2} \land \frac{1}{n^2} \text{ for go to $\infin$ as $n \to \infin$}
+$$
+- So $\frac{\cos n}{n^2}$ will also go to zero.
+
+Thus, { $\frac{(-1)^n \cos n}{n^2}$ } also converges on zero.
+
+**Q**: Show $r^n$ converges for $-1, r \le 1$ and diverges otherwise.
+
+A:
+
+$$
+- | r |^n \le r^n \le |r|^n \\
+\lim_{n \to \infin} \pm |r|^n = 0
+$$
+- By squeeze theorem, $\lim_{n \to \infin} r^n = 0$ when $r=1$.
+
+But/and $r>1$: $\lim_{n \to \infin} r^n = \infin$ and $r<-1$ grows arbitrarily large and oscillates between negative and positive infinity ($(-2)^n$)
+</details>
+
+> ### Bounded Sequences
+> 
+> A sequence is **bounded above** if there is some real number $m$ so that $a_n \le M$ for every $n$.
+> 
+> A sequence is **bounded below** if there is some real number $m$ so that $a_n \ge M$ for every $n$.
+> 
+> A sequence bounded above and below is **bounded**.
+> - Otherwise, it is **unbounded**.
+>
+> > **Note**: For shorthand, "for every $n$" is referring to every positive real number.
+
+<details><summary>Example: Bounded and unbounded sequences</summary>
+- { $\frac{1}{n}$ } is bounded above since $\frac{1}{n} \le 1$ for all $n$; and it is also bounded below since $\frac{1}{n} \ge 0$ for every $n$.
+- { $n$ } is bounded below since $n \ge 0$ for every $n$, but it isn't bounded above (it just goes to infinity). Thus, it is unbounded.
+</details>
+
+> ### Theorem: All Unbounded Sequences Diverge
+> 
+> If a sequence { $a_n$ } converges, then it is bounded.
+> - Contrapositive: If { $a_n$ } is unbounded, { $a_n$ } diverges.
