@@ -696,3 +696,100 @@ By default, integers are signed,
 - To use an unsigned integer, use the unsigned instruction variants.
 
 > **Beware**: Unsigned operations don't generate traps on overflow, while signed operations *will* generate traps on overflow.
+
+# Example: Converting a C Program to MIPS
+
+> **Example**: Translating C to MIPS 
+> 1. C
+> ```c
+> #include <stdio.h>
+> int sum;
+> int n = 100;
+> int main()
+> {
+> 	register int i = 1;
+> 	sum = 0;
+> 	while (i <= n) {
+> 		sum += i;
+> 		i++;
+> 	}
+> 	printf("%d\n", sum);
+> }
+> ```
+> 
+> 2. One-to-one conversion to MIPS
+> ```mips
+> 	.data
+> sum:	.word	0
+> n:	.word	100
+> 	.text
+> main:
+> 	li	$t0, 1	# t0: i
+> 	sw	$zero, sum
+> 	lw	$t1, n
+> while:	bgt	$t0, $t1, endw
+> 	# sum += i
+> 	lw	$t2, sum
+> 	add	$t2, $t2, $t0
+> 	sw	$t2, sum
+> 	# i++
+> 	addi	$t0, $t0, 1
+> 	b	while
+> endw:	lw	$a0, sum
+> 	li	$v0, 1
+> 	syscall
+> 	# Exit
+> 	li	$v0, 10
+> 	syscall
+> # End of program
+> ```
+> - This code is very inefficient, it reads and writes to memory excessively.
+> 
+> 3. MIPS (Better)
+> 
+> ```mips
+> 	.data
+> sum:	.word	0
+> n:	.word	100
+> 	.text
+> main:
+> 	li	$t0, 0
+> 	lw	$t1, n
+> 	li	$t2, 1
+> while:	bgt	$t2, $t1, endw
+> 	add	$t0, $t0, $t2
+> 	addi	$t2, $t2, 1
+> 	b while
+> endw:	sw	$t0, sum
+> 	lw	$a0, sum
+>  	li	$v0, 1
+>  	syscall
+>  	# Exit
+>  	li	$v0, 10
+>  	syscall
+> # End of program
+> ```
+> - This is not a one-to-one translation of the C code, but it only writes to memory once, making it much more efficient.
+>
+> 4. Or, you could use the explicit form: $n(n+1)/2$ so that the program is $O(1)$ instead of $O(n)$
+> ```mips
+> 	.data
+> sum:	.word	0
+> n:	.word	100
+> 	.text
+> main:
+> 	# t0 <- n(n+1)/2
+> 	lw	$t0, n
+> 	addi	$t1, $t0, 1	# n + 1
+> 	mul	$t0, $t0, $t1	# * (n + 1)
+> 	sra	$t0, $t0, 1	# / 2
+> 	# Print and exit
+> 	sw	$t0, sum
+>  	lw	$a0, sum
+>   	li	$v0, 1
+>   	syscall
+>   	li	$v0, 10
+> 	syscall
+> # End of program
+> ```
+
