@@ -16,18 +16,10 @@ title: "MIPS Assembly"
 > set list
 > " Never expand tabs to spaces
 > set noexpandtab
-> " Make tabs take up 16 spaces
-> set tabstop=16
-> set shiftwidth=16
+> " Make tabs take up 8 spaces
+> set tabstop=8
+> set shiftwidth=8
 > ```
-
-<!--
-**Note**: Four Columns
-1. TODO
-2. TODO
-3. TODO
-4. TODO
--->
 
 # MIPS Instructions
 
@@ -38,15 +30,15 @@ title: "MIPS Assembly"
 - Small number of formats encoding operation code, register numbers, ...
 - Regularity
 - Three types of instructions (R, J, I) 
-	* Each type is encoded differently.
+  * Each type is encoded differently.
 
 > **Note**: MIPS Instruction Set
 > - [Stanford MIPS](https://mips.com) commercialised by MIPS Technologies
 > - Similar ISAs have a large share of embedded core market
-> 	* e.g., consumer electronics, network/storage, equipment, cameras, printers, vacuums, etc.
-> 	* Embedded: When the CPU is inside the system.
+>   * e.g., consumer electronics, network/storage, equipment, cameras, printers, vacuums, etc.
+>   * Embedded: When the CPU is inside the system.
 > - **Remember**: MIPS is a 3-register instruction machine
->	- *(When we use an instruction that doesn't use 3 operands, we're actually looking at a pseudo-instruction.)*
+> - *(When we use an instruction that doesn't use 3 operands, we're actually looking at a pseudo-instruction.)*
 
 ## Register Set
 
@@ -68,7 +60,7 @@ title: "MIPS Assembly"
 > **Notes**:
 > - `$zero` is a read-only register.
 > - `$at` stands for "assembler temporary".
-> 	* In general, we can't/won't be using `$at` 
+>   * In general, we can't/won't be using `$at` 
 > - Note how we can only return *two* values from a function (`$v0`—`$v1`)
 
 > **Registers**:
@@ -78,90 +70,111 @@ title: "MIPS Assembly"
 
 ## Instructions
 
-| Mnemonic | Operands               | Instruction                          | Register Transfer                               | Type | Op/Funct |
-|----------|------------------------|--------------------------------------|-------------------------------------------------|------|----------|
-| add      | rd, rs, rt             | Add                                  | rd = rs + rt                                    | R    | 0/20     |
-| sub      | rd, rs, rt             | Subtract                             | rd = rs - rt                                    | R    | 0/22     |
-| addi     | rt, rs, imm            | Add Imm.                             | rt = rs + imm±                                  | I    | 8        |
-| addu     | rd, rs, rt             | Add Unsigned                         | rd = rs + rt                                    | R    | 0/21     |
-| subu     | rd, rs, rt             | Subtract Unsigned                    | rd = rs - rt                                    | R    | 0/23     |
-| addiu    | rt, rs, imm            | Add Imm. Unsigned                    | rt = rs + imm±                                  | I    | 9        |
-| mult     | rs, rt                 | Multiply                             | {hi, lo} = rs * rt                              | R    | 0/18     |
-| mul      | rd, rs, rt             | Multiply without overflow            | rd = rs * rt                                    | R    | c/2      |
-| div      | rs, rt                 | Divide                               | lo = rs / rt; hi = rs % rt                      | R    | 0/1a     |
-| multu    | rs, rt                 | Multiply Unsigned                    | {hi, lo} = rs * rt                              | R    | 0/19     |
-| mulu     | rd, rs, rt             | Multiply without overflow, uns       | rd = rs * rt                                    | R    | 0/19     |
-| divu     | rs, rt                 | Divide Unsigned                      | lo = rs / rt; hi = rs % rt                      | R    | 0/1b     |
-| mfhi     | rd                     | Move From HJ                         | rd = hi                                         | R    | 0/10     |
-| mflo     | rd                     | Move From LO                         | rd = lo                                         | R    | 0/12     |
-| mthi     | rs                     | Move to HI                           | hi = rs                                         | R    | 0/11     |
-| mtlo     | rs                     | Move to LO                           | lo = rs                                         | R    | 0/13     |
-| and      | rd, rs, rt             | And                                  | rd = rs & rt                                    | R    | 0/24     |
-| or       | rd, rs, rt             | Or                                   | rd = rs \| rt                                   | R    | 0/25     |
-| nor      | rd, rs, rt             | Nor                                  | rd =  ̃(rs \| rt)                                | R    | 0/27     |
-| xor      | rd, rs, rt             | eXclusive Or                         | rd = rs ˆ rt                                    | R    | 0/26     |
-| andi     | rt, rs, imm            | And Imm.                             | rt = rs & imm0                                  | I    | c        |
-| ori      | rt, rs, imm            | Or Imm.                              | rt = rs \| imm0                                 | I    | d        |
-| xori     | rt, rs, imm            | eXclusive Or Imm.                    | rt = rs ^ imm0                                  | I    | e        |
-| sll      | rd, rt, sh             | Shift Left Logical                   | rd = rt << sh                                   | R    | 0/0      |
-| srl      | rd, rt, sh             | Shift Right Logical                  | rd = rt >>> sh                                  | R    | 0/2      |
-| sra      | rd, rt, sh             | Shift Right Arithmetic               | rd = rt >> sh                                   | R    | 0/3      |
-| sllv     | rd, rt, rs             | Shift Left Logical Variable          | rd = rt << rs                                   | R    | 0/4      |
-| srlv     | rd, rt, rs             | Shift Right Logical Variable         | rd = rt >>> rs                                  | R    | 0/6      |
-| srav     | rd, rt, rs             | Shift Right Arithmetic Variable      | rd = rt >> rs                                   | R    | 0/7      |
-| slt      | rd, rs, rt             | Set if Less Than                     | rd = rs < rt ? 1 : 0                            | R    | 0/2a     |
-| sltu     | rd, rs, rt             | Set if Less Than Unsigned            | rd = rs < rt ? 1 : 0                            | R    | 0/2b     |
-| slti     | rt, rs, imm            | Set if Less Than Imm.                | rt = rs < imm± ? 1 : 0                          | I    | a        |
-| sltiu    | rt, rs, imm            | Set if Less Than Imm. Unsigned       | rt = rs < imm± ? 1 : 0                          | I    | b        |
-| j        | addr                   | Jump                                 | PC = PC &0xF0000000 \| (addr0<< 2)              | J    | 2        |
-| jal      | addr                   | Jump And Link                        | $ra = PC + 8; PC = PC&0xF0000000 \| (addr0<< 2) | J    | 3        |
-| jr       | rs                     | Jump Register                        | PC = rs                                         | R    | 0/8      |
-| jalr     | rs                     | Jump And Link Register               | $ra = PC + 8; PC = rs                           | R    | 0/9      |
-| beq      | rt, rs, offset         | Branch if Equal                      | if (rs == rt) PC += 4 + (imm±<< 2)              | I    | 4        |
-| bne      | rt, rs, offset         | Branch if Not Equal                  | if (rs != rt) PC += 4 + (imm±<< 2)              | I    | 5        |
-| syscall  |                        | System Call                          | c0_cause = 8 << 2; c0_epc = PC; PC = 0x80000080 | R    | 0/c      |
-| lui      | rt,imm                 | Load Upper Imm.                      | rt = imm << 16                                  | I    | f        |
-| lb       | rt,imm(rs)             | Load Byte                            | rt = SignExt(M1[rs + imm±])                     | I    | 20       |
-| lbu      | rt,imm(rs)             | Load Byte Unsigned                   | rt = M1[rs + imm±] & 0xFF                       | I    | 24       |
-| lh       | rt,imm(rs)             | Load Half                            | rt = SignExt(M2[rs + imm±])                     | I    | 21       |
-| lhu      | rt,imm(rs)             | Load Half Unsigned                   | rt = M2[rs + imm±] & 0xFFFF                     | I    | 25       |
-| lw       | rt,imm(rs)             | Load Word                            | rt = M4[rs + imm±]                              | I    | 23       |
-| sb       | rt,imm(rs)             | Store Byte                           | M1[rs + imm±] = rt                              | I    | 28       |
-| sh       | rt,imm(rs)             | Store Half                           | M2[rs + imm±] = rt                              | I    | 29       |
-| sw       | rt,imm(rs)             | Store Word                           | M4[rs + imm±] = rt                              | I    | 2b       |
+| Mnemonic    | Operands       | Instruction                     | Register Transfer                                        | Type | Op/Funct |
+|-------------|----------------|---------------------------------|----------------------------------------------------------|------|----------|
+| **add**     | rd, rs, rt     | Add                             | rd $=$ rs $+$ rt                                         | R    | 0/20     |
+| **sub**     | rd, rs, rt     | Subtract                        | rd $=$ rs $-$ rt                                         | R    | 0/22     |
+| **addi**    | rt, rs, imm    | Add Imm.                        | rt $=$ rs $+$ imm±                                       | I    | 8        |
+| **addu**    | rd, rs, rt     | Add Unsigned                    | rd $=$ rs $+$ rt                                         | R    | 0/21     |
+| **subu**    | rd, rs, rt     | Subtract Unsigned               | rd $=$ rs $-$ rt                                         | R    | 0/23     |
+| **addiu**   | rt, rs, imm    | Add Imm. Unsigned               | rt $=$ rs $+$ imm±                                       | I    | 9        |
+| **mult**    | rs, rt         | Multiply                        | {hi, lo} $=$ rs * rt                                     | R    | 0/18     |
+| **mul**     | rd, rs, rt     | Multiply without overflow       | rd $=$ rs * rt                                           | R    | c/2      |
+| **div**     | rs, rt         | Divide                          | lo $=$ rs / rt; hi $=$ rs % rt                           | R    | 0/1a     |
+| **multu**   | rs, rt         | Multiply Unsigned               | {hi, lo} $=$ rs * rt                                     | R    | 0/19     |
+| **mulu**    | rd, rs, rt     | Multiply without overflow, uns  | rd $=$ rs * rt                                           | R    | 0/19     |
+| **divu**    | rs, rt         | Divide Unsigned                 | lo $=$ rs / rt; hi $=$ rs % rt                           | R    | 0/1b     |
+| **mfhi**    | rd             | Move From HJ                    | rd $=$ hi                                                | R    | 0/10     |
+| **mflo**    | rd             | Move From LO                    | rd $=$ lo                                                | R    | 0/12     |
+| **mthi**    | rs             | Move to HI                      | hi $=$ rs                                                | R    | 0/11     |
+| **mtlo**    | rs             | Move to LO                      | lo $=$ rs                                                | R    | 0/13     |
+| **and**     | rd, rs, rt     | And                             | rd $=$ rs & rt                                           | R    | 0/24     |
+| **or**      | rd, rs, rt     | Or                              | rd $=$ rs \| rt                                          | R    | 0/25     |
+| **nor**     | rd, rs, rt     | Nor                             | rd $=$  ̃(rs \| rt)                                       | R    | 0/27     |
+| **xor**     | rd, rs, rt     | eXclusive Or                    | rd $=$ rs ˆ rt                                           | R    | 0/26     |
+| **andi**    | rt, rs, imm    | And Imm.                        | rt $=$ rs & imm0                                         | I    | c        |
+| **ori**     | rt, rs, imm    | Or Imm.                         | rt $=$ rs \| imm0                                        | I    | d        |
+| **xori**    | rt, rs, imm    | eXclusive Or Imm.               | rt $=$ rs $^$ imm0                                       | I    | e        |
+| **sll**     | rd, rt, sh     | Shift Left Logical              | rd $=$ rt $<<$ sh                                        | R    | 0/0      |
+| **srl**     | rd, rt, sh     | Shift Right Logical             | rd $=$ rt $>>>$ sh                                       | R    | 0/2      |
+| **sra**     | rd, rt, sh     | Shift Right Arithmetic          | rd $=$ rt $>>$ sh                                        | R    | 0/3      |
+| **sllv**    | rd, rt, rs     | Shift Left Logical Variable     | rd $=$ rt $<<$ rs                                        | R    | 0/4      |
+| **srlv**    | rd, rt, rs     | Shift Right Logical Variable    | rd $=$ rt $>>>$ rs                                       | R    | 0/6      |
+| **srav**    | rd, rt, rs     | Shift Right Arithmetic Variable | rd $=$ rt $>>$ rs                                        | R    | 0/7      |
+| **slt**     | rd, rs, rt     | Set if Less Than                | rd $=$ rs $<$ rt ? 1 : 0                                 | R    | 0/2a     |
+| **sltu**    | rd, rs, rt     | Set if Less Than Unsigned       | rd $=$ rs $<$ rt ? 1 : 0                                 | R    | 0/2b     |
+| **slti**    | rt, rs, imm    | Set if Less Than Imm.           | rt $=$ rs $<$ imm$\pm$ ? 1 : 0                           | I    | a        |
+| **sltiu**   | rt, rs, imm    | Set if Less Than Imm. Unsigned  | rt $=$ rs $<$ imm$\pm$ ? 1 : 0                           | I    | b        |
+| **j**       | addr           | Jump                            | PC $=$ PC &0xF0000000 \| (addr0$<<$ 2)                   | J    | 2        |
+| **jal**     | addr           | Jump And Link                   | \$ra $=$ PC $+$ 8; PC $=$ PC&0xF0000000 \| (addr0$<<$ 2) | J    | 3        |
+| **jr**      | rs             | Jump Register                   | PC $=$ rs                                                | R    | 0/8      |
+| **jalr**    | rs             | Jump And Link Register          | \$ra $=$ PC $+$ 8; PC $=$ rs                             | R    | 0/9      |
+| **beq**     | rt, rs, offset | Branch if Equal                 | if (rs $==$ rt) PC $+=$ 4 $+$ (imm$\pm <<$ 2)            | I    | 4        |
+| **bne**     | rt, rs, offset | Branch if Not Equal             | if (rs $\ne$ rt) PC $+=$ 4 $+$ (imm$\pm <<$ 2)           | I    | 5        |
+| **syscall** |                | System Call                     | c0_cause $=$ 8 $<<$ 2; c0_epc $=$ PC; PC $=$ 0x80000080  | R    | 0/c      |
+| **lui**     | rt,imm         | Load Upper Imm.                 | rt = imm $<<$ 16                                         | I    | f        |
+| **lb**      | rt,imm(rs)     | Load Byte                       | rt = SignExt(M1[rs + imm±])                              | I    | 20       |
+| **lbu**     | rt,imm(rs)     | Load Byte Unsigned              | rt = M1[rs + imm±] & 0xFF                                | I    | 24       |
+| **lh**      | rt,imm(rs)     | Load Half                       | rt = SignExt(M2[rs + imm±])                              | I    | 21       |
+| **lhu**     | rt,imm(rs)     | Load Half Unsigned              | rt = M2[rs + imm±] & 0xFFFF                              | I    | 25       |
+| **lw**      | rt,imm(rs)     | Load Word                       | rt = M4[rs + imm±]                                       | I    | 23       |
+| **sb**      | rt,imm(rs)     | Store Byte                      | M1[rs + imm±] = rt                                       | I    | 28       |
+| **sh**      | rt,imm(rs)     | Store Half                      | M2[rs + imm±] = rt                                       | I    | 29       |
+| **sw**      | rt,imm(rs)     | Store Word                      | M4[rs + imm±] = rt                                       | I    | 2b       |
+
+| Pseudo   | Operands       | Instruction                             | Register Transfer            |
+|----------|----------------|-----------------------------------------|------------------------------|
+| **move** | rd, rs         | Move                                    | rd $=$ rs                    |
+| **li**   | rd,imm         | Move immediate                          | rd $=$ imm                   |
+| **la**   | rd, label      | Load address                            | rd $=$ &label                |
+| **mul**  | rd, rs, src    | Multiply (no overflow)                  | rd $=$ rs * src              |
+| **div**  | rd, rs, src    | Divide                                  | rd $=$ rs / src              |
+| **rem**  | rd, rs, src    | Remainder                               | rd $=$ rs % src              |
+| **add**  | rs, rd, imm    | Add immediate, use addi                 | rd $=$ rd $+$ imm            |
+| **add**  | rd, imm        | Add immediate                           | rd $+=$ imm                  |
+| **sub**  | rd, rs, src    | Subtract immediate                      | rd $=$ rs $–$ imm            |
+| **sub**  | rd imm         | Subtract immediate                      | rd $-=$ imm                  |
+| **b**    | offset         | Branch                                  | goto offset                  |
+| **beqz** | rs, label      | Branch on equal zero                    | if (rs $==$ 0) goto label    |
+| **bnez** | rs, label      | Branch on not equal zero                | if (rs $\ne$ 0) goto label   |
+| **bgez** | rs, label      | Branch on Greater Than or Equal to Zero | if (rs $\ge$ 0) goto label   |
+| **bgtz** | rs, label      | Branch on Greater Than Zero             | if (rs $>$ 0) goto label     |
+| **blez** | rs, label      | Branch on Less Than or Equal to Zero    | if (rs $\le$ 0) goto label   |
+| **bltz** | rs, label      | Branch on Less Than Zero                | if (rs $<$ 0) goto label     |
+| **beq**  | rs, src, label | Branch on equal                         | if (rs $==$ src) goto label  |
+| **bne**  | rs, src, label | Branch on not equal                     | if (rs $\ne$ src) goto label |
+| **bge**  | rs, src, label | Branch on greater than equal            | if (rs $\ge$ src) goto label |
+| **bgt**  | rs, src, label | Branch on greater than                  | if (rs $>$ src) goto label   |
+| **ble**  | rs, src, label | Branch on less than equal               | if (rs $\le$ src) goto label |
+| **blt**  | rs, src, label | Branch on less than                     | if (rs $<$ src) goto label   |
+| **seq**  | rd, rs, src    | Set equal                               | rd = rs $==$ src ? 1 : 0     |
+| **sne**  | rd, rs, src    | Set not equal                           | rs = rt $\ne$ src ? 1 : 0    |
+| **sge**  | rd, rs, src    | Set greater than equal                  | rs = rt $\ge$ src ? 1 : 0    |
+| **sgt**  | rd, rs, src    | Set greater than                        | rs = rt $>$ src ? 1 : 0      |
+| **sle**  | rd, rs, src    | Set less than equal                     | rs = rt $\le$ src ? 1 : 0    |
+| **slt**  | rd, rs, src    | Set less than                           | rs = rt $<$ src ? 1 : 0      |
 
 > **Note**: Using `mult`
 > - Multiplying two number requires two instructions, one to multiply (`mult`), another to read the multiplication result from the `HI` or `LO` register (`mfhi` *or* `mflo`).
->	- If the resulting number doesn't overflow (is less than 32-bits), you can use `mflo` to get it from the `LO` register.
+> - If the resulting number doesn't overflow (is less than 32-bits), you can use `mflo` to get it from the `LO` register.
 > 
 > **What `hi` and `lo` contain**:
 > - `lo`: Contains `rs / rt`
 > - `hi`: Contains `rs % rt`
 > 
 > ```mips
-> 	li 	$t1, 2
-> 	# A: Multiplies t0 and t1
-> 	mult	$t0, $t1
-> 	mflo	$t0
-> 	# B: Same thing, using mul
-> 	mul	$t0, $t0, $t1
+>   li  $t1, 2
+>   # A: Multiplies t0 and t1
+>   mult  $t0, $t1
+>   mflo  $t0
+>   # B: Same thing, using mul
+>   mul $t0, $t0, $t1
 > ```
-
-<!--
-TODO
-| Pseudo | Operands | Instruction | Register Transfer |
-|--------|----------|-------------|-------------------|
-|        |          |             |                   |
 
 ## Pseudo-Instructions
 
-<!--
-TODO
--->
-
 > **Note**: `move` v.s. `li`
 > - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.
--->
 
 ## Instruction Formats
 
@@ -176,9 +189,9 @@ TODO
 - `rt`: Second source register number
 - `rd`: Destination register number
 - `shamt`: Shift amount 
-	* `00000` for now
+  * `00000` for now
 - `funct`: Function code
-	* extends opcode
+  * extends opcode
 
 ### J-Format
 
@@ -199,7 +212,7 @@ TODO
 
 - `op`: Opcode
 - `addr`: Address (of a label).
-	- The 26 bits are achieved by dropping the high-order 4 bits of the address and the low-order 2 bits (which would always be 00, since addresses are always divisible by 4). 
+  - The 26 bits are achieved by dropping the high-order 4 bits of the address and the low-order 2 bits (which would always be 00, since addresses are always divisible by 4). 
 
 # Encoding & Decoding Instructions
 
@@ -207,7 +220,7 @@ TODO
 
 > **Example**: Encoding an assembly instruction into hexadecimal
 > ```mips
-> add	$t0, $t1, $t2
+> add $t0, $t1, $t2
 > ```
 > 
 > **Converting Registers to Binary**:
@@ -227,18 +240,18 @@ TODO
 > Putting it all together:
 > $$
 > \begin{aligned}
-> 	\text{R-Format: }& \text{op $+$ rs $+$ rt $+$ rd $+$ shamt $+$ funct} \\
-> 	\text{Binary: }& 0000 0001 0010 1010 0100 0000 0010 0000 \\
-> 	\text{Hexadecimal: }& 012A4020
+>   \text{R-Format: }& \text{op $+$ rs $+$ rt $+$ rd $+$ shamt $+$ funct} \\
+>   \text{Binary: }& 0000 0001 0010 1010 0100 0000 0010 0000 \\
+>   \text{Hexadecimal: }& 012A4020
 > \end{aligned}
 > $$
 
 > **Example**: Decoding hexadecimal into an assembly instruction
 > $$
 > \begin{aligned}
-> 	\text{Hexadecimal: }& 012A4020 \\
-> 	\text{First Six Binary Digits: }& 0000 00 \\
-> 	\text{Last Six Binary Digits: }& 10 0000 \\
+>   \text{Hexadecimal: }& 012A4020 \\
+>   \text{First Six Binary Digits: }& 0000 00 \\
+>   \text{Last Six Binary Digits: }& 10 0000 \\
 > \end{aligned}
 > $$
 > - So we know `op` is 0
@@ -296,7 +309,7 @@ MIPS has a 32 $\times$ 32-bit register file.
 - Used for frequently-accessed data.
 - Numbered 0—31
 - **Word**: Group of 32 bits (4 bytes)
-	* Beginning of the word must be a multiple of four.
+  * Beginning of the word must be a multiple of four.
 
 **Assembler Names**:
 - $\$t0$—$\$t9$: Temporary Values
@@ -310,7 +323,7 @@ MIPS has a 32 $\times$ 32-bit register file.
 
 ```mips
       .text
-main:	add	$t2,$t0,$t1
+main: add $t2,$t0,$t1
 ```
 
 ## SPIM Segments and Linker Directives
@@ -334,29 +347,29 @@ Use the `sw` (store word) command to load a value from a register back into a wo
 
 **Example**: Loading a word into a register
 ```mips
-	.data
-sumIs:	.asciiz	"The sum is "
-value1:	.word	15
-value2:	.word	25
-sum:	.word	0
-	.text
+  .data
+sumIs:  .asciiz "The sum is "
+value1: .word 15
+value2: .word 25
+sum:  .word 0
+  .text
 main:
-	lw	$t0, value1
-	lw	$t1, value2
-	# Print string
-	la	$a0, sumIs
-	li	$v0, 4
-	syscall
-	# Add integers and store in sum
-	add	$t2, $t0, $t1
-	sw	$t2, sum
-	# Print result
-	lw	$v0, sum
-	li	$v0, 1
-	syscall
-	# Exit
-	li	$v0, 10
-	syscall
+  lw  $t0, value1
+  lw  $t1, value2
+  # Print string
+  la  $a0, sumIs
+  li  $v0, 4
+  syscall
+  # Add integers and store in sum
+  add $t2, $t0, $t1
+  sw  $t2, sum
+  # Print result
+  lw  $v0, sum
+  li  $v0, 1
+  syscall
+  # Exit
+  li  $v0, 10
+  syscall
 ```
 
 ## SPIM Data Directives
@@ -365,30 +378,30 @@ main:
 
 ```mips
       .data
-      .word	n	# 32-bit
-      .byte	nn	# 8 bit
-      .ascii	'?'	# ASCII string
-      .asciiz	"$$$"	# zero-terminated ASCII string
-      .half	n	# 16-bit
-      .space	n	# n bytes
+      .word n # 32-bit
+      .byte nn  # 8 bit
+      .ascii  '?' # ASCII string
+      .asciiz "$$$" # zero-terminated ASCII string
+      .half n # 16-bit
+      .space  n # n bytes
 ```
 
 **Example**: Using a label.
 ```mips
-count:	.word	0
-	.word	.word	1,2,3
+count:  .word 0
+  .word .word 1,2,3
 ```
 - To get to the second line, we can just jump to `count+4`.
 
 **Example**: .text
 ```mips
-	.text
-main:	li	$t0,10
-	li	$t1,20
-	add	$a0,$t0,$t1
+  .text
+main: li  $t0,10
+  li  $t1,20
+  add $a0,$t0,$t1
 ```
 - `li`: Load immediate. Is a pseudo-instruction.
-	- The assembler will turn `li	$t0,10` into `addi $t0,$zero,$t0`
+  - The assembler will turn `li $t0,10` into `addi $t0,$zero,$t0`
 
 ## SPIM Syscalls
 
@@ -422,36 +435,36 @@ main:	li	$t0,10
 > - **print_string**: Passes a pointer to a null-terminated string. 
 > - **read_int**, **read_float**, **read_double**: Read an entire line of input up to and including a newline.
 > - **read_string**: Same semantics as the UNIX library routine `fgets`.
-> 	- Reads up to `n-1` characters into a buffer and terminates the string with a null byte.
-> 		If there are fewer characters on the current line, it reads through the newline and again null-terminates the string.
+>   - Reads up to `n-1` characters into a buffer and terminates the string with a null byte.
+>     If there are fewer characters on the current line, it reads through the newline and again null-terminates the string.
 > - **sbrk**: returns a pointer to a block of memory containing $n$ additional bytes
 > - **exit**:  stops program execution
 
 > **Example**: Using some syscalls
 > ```mips
 >       .data
-> str:  .asciiz	"Enter an integer to double: "
+> str:  .asciiz "Enter an integer to double: "
 > 
 >       .text
 > main:
 >       # Print a string (syscall 4)
->       la	$a0, str # Put address to the string in $a0
->       li	$v0, 4
+>       la  $a0, str # Put address to the string in $a0
+>       li  $v0, 4
 >       syscall
 >       # Read an integer (syscall 5)
->       li 	$v0, 5
+>       li  $v0, 5
 >       syscall
->       move	$t0, $v0 # Now move the number from $v0 to $t0 
+>       move  $t0, $v0 # Now move the number from $v0 to $t0 
 >       # Double user's integer
->       li 	$t1, 2
->       mult	$t0, $t1
->       mflo	$t0
+>       li  $t1, 2
+>       mult  $t0, $t1
+>       mflo  $t0
 >       # Print the resulting integer (syscall 5)
->       move	$a0, $t0
->       li	$v0, 1
+>       move  $a0, $t0
+>       li  $v0, 1
 >       syscall
 >       # Exit Program
->       li	$v0, 10
+>       li  $v0, 10
 >       syscall
 > # End of program
 > ```
@@ -460,36 +473,36 @@ main:	li	$t0,10
 
 ```mips
 # This program does nothing and exits gracefully.
-	.text
+  .text
 main:
-	li	$v0, 10
-	syscall
+  li  $v0, 10
+  syscall
 # The end
 ```
 
 > **Example**: Adding two numbers
 > ```mips
-> 	.data
-> sumIs:	.asciiz	"The sum is "
-> 	.text
+>   .data
+> sumIs:  .asciiz "The sum is "
+>   .text
 > main:
-> 	li	$t0, 15
-> 	li	$t1, 25
-> 	# Print string
-> 	la	$a0, sumIs
-> 	li	$v0, 4
-> 	syscall
-> 	# Add integers and print to console
-> 	add	$a0, $t0, $t1
-> 	li	$v0, 1
-> 	syscall
->	# Print newline
-> 	li	$a0, '\n'
-> 	li	$v0, 11
-> 	syscall
-> 	# Exit
-> 	li	$v0, 10
-> 	syscall
+>   li  $t0, 15
+>   li  $t1, 25
+>   # Print string
+>   la  $a0, sumIs
+>   li  $v0, 4
+>   syscall
+>   # Add integers and print to console
+>   add $a0, $t0, $t1
+>   li  $v0, 1
+>   syscall
+> # Print newline
+>   li  $a0, '\n'
+>   li  $v0, 11
+>   syscall
+>   # Exit
+>   li  $v0, 10
+>   syscall
 > ```
 
 > **Important**: Don't forget to print a newline character before exiting the program!
@@ -497,13 +510,13 @@ main:
 # Branched Statements
 
 ```mips
-beq	rt, r, label
-bne	rd, rs, label
+beq rt, r, label
+bne rd, rs, label
 ```
 
 - Branching to a non-existent label will result in a runtime error.
 - To turn an if statement into a branched statement, we need to flip the condition.
-	- Besides reducing the number of jumps necessary for a simple `if` statement, it also maintains the order of `if` and `else` in the code.
+  - Besides reducing the number of jumps necessary for a simple `if` statement, it also maintains the order of `if` and `else` in the code.
 
 > **Important**: We will **not** be using the jump instruction.
 
@@ -511,7 +524,7 @@ bne	rd, rs, label
 > 1. C
 > ```c
 > if (a != o) {
-> 	// Do output
+>   // Do output
 > }
 > ```
 > 
@@ -527,15 +540,15 @@ bne	rd, rs, label
 > 1. C
 > ```c
 > if (t0 < 10) {
-> 	// Do output
+>   // Do output
 > }
 > ```
 > 
 > 2. MIPS
 > ```mips
-> 	# If zero, jump to the endif label
-> 	bge	$t0, 10, endif
-> 	# Do output
+>   # If zero, jump to the endif label
+>   bge $t0, 10, endif
+>   # Do output
 > endif:
 > ```
 
@@ -545,9 +558,9 @@ bne	rd, rs, label
 > 1. C
 > ```c
 > if (t0 < 10) {
-> 	// output 1
+>   // output 1
 > } else {
-> 	// output 2
+>   // output 2
 > }
 > ```
 > 
@@ -566,19 +579,19 @@ bne	rd, rs, label
 > 
 > ```c
 > if (t0 == 0) {
-> 	t0++;
+>   t0++;
 > } else {
-> 	t1++;
+>   t1++;
 > }
 > ```
 > 
 > 2. MIPS
 > 
 > ```mips
-> if:	bnez	$0, else
-> 	addi	$t0, 1
-> 	b	endif
-> else:	addi	$t1, 1
+> if: bnez  $0, else
+>   addi  $t0, 1
+>   b endif
+> else: addi  $t1, 1
 > endif:
 > ```
 
@@ -636,19 +649,19 @@ To loop, we'll use a register to control the loop
 > int t1=0;
 > int t0=1;
 > while (t0 <= 100) {
-> 	t1 += t0;
-> 	t0++;
+>   t1 += t0;
+>   t0++;
 > }
 > ```
 > 
 > 2. MIPS
 > ```mips
-> 	li	$t1, 0
-> 	li	$t0, 1
-> while:	bgt	$t0, 100, endw
-> 	addi	$t1, $t1, $t0
-> 	addi	$t0, 1
-> 	b while
+>   li  $t1, 0
+>   li  $t0, 1
+> while:  bgt $t0, 100, endw
+>   addi  $t1, $t1, $t0
+>   addi  $t0, 1
+>   b while
 > endw:
 > ```
 
@@ -668,21 +681,21 @@ These commands are used by `bge`, `bgt`, `ble`, and `blt`
 
 > **Example**: Checking if a number is even using a mask
 > ```mips
-> 	li	$t1, 1		# Mask the LSBIT
-> 	and	$t2, $t0, $t1
-> 	# If $t2 is zero, then t0 is even
-> 	bnez	$t2, endif
-> 	# t0 is even, do whatever.
+>   li  $t1, 1    # Mask the LSBIT
+>   and $t2, $t0, $t1
+>   # If $t2 is zero, then t0 is even
+>   bnez  $t2, endif
+>   # t0 is even, do whatever.
 > endif: 
 > ```
 
 > **Example**: Checking if a number is divisible by four
 > ```mips
-> 	li	$t1, 3		# Mask last two LSBITS (this is 11 in binary)
-> 	and	$t2, $t0, $t1
-> 	# If $t2 is zero, then t0 is divisible by four
-> 	bnez	$t2, endif
-> 	# t0 is divisble by 4 (continue calculations here)
+>   li  $t1, 3    # Mask last two LSBITS (this is 11 in binary)
+>   and $t2, $t0, $t1
+>   # If $t2 is zero, then t0 is divisible by four
+>   bnez  $t2, endif
+>   # t0 is divisble by 4 (continue calculations here)
 > endif: 
 > ```
 > - (If you list out every possible value for 4 bits, you'll be able to verify this.)
@@ -707,40 +720,40 @@ By default, integers are signed,
 > int n = 100;
 > int main()
 > {
-> 	register int i = 1;
-> 	sum = 0;
-> 	while (i <= n) {
-> 		sum += i;
-> 		i++;
-> 	}
-> 	printf("%d\n", sum);
+>   register int i = 1;
+>   sum = 0;
+>   while (i <= n) {
+>     sum += i;
+>     i++;
+>   }
+>   printf("%d\n", sum);
 > }
 > ```
 > 
 > 2. One-to-one conversion to MIPS
 > ```mips
-> 	.data
-> sum:	.word	0
-> n:	.word	100
-> 	.text
+>   .data
+> sum:  .word 0
+> n:  .word 100
+>   .text
 > main:
-> 	li	$t0, 1	# t0: i
-> 	sw	$zero, sum
-> 	lw	$t1, n
-> while:	bgt	$t0, $t1, endw
-> 	# sum += i
-> 	lw	$t2, sum
-> 	add	$t2, $t2, $t0
-> 	sw	$t2, sum
-> 	# i++
-> 	addi	$t0, $t0, 1
-> 	b	while
-> endw:	lw	$a0, sum
-> 	li	$v0, 1
-> 	syscall
-> 	# Exit
-> 	li	$v0, 10
-> 	syscall
+>   li  $t0, 1  # t0: i
+>   sw  $zero, sum
+>   lw  $t1, n
+> while:  bgt $t0, $t1, endw
+>   # sum += i
+>   lw  $t2, sum
+>   add $t2, $t2, $t0
+>   sw  $t2, sum
+>   # i++
+>   addi  $t0, $t0, 1
+>   b while
+> endw: lw  $a0, sum
+>   li  $v0, 1
+>   syscall
+>   # Exit
+>   li  $v0, 10
+>   syscall
 > # End of program
 > ```
 > - This code is very inefficient, it reads and writes to memory excessively.
@@ -748,48 +761,48 @@ By default, integers are signed,
 > 3. MIPS (Better)
 > 
 > ```mips
-> 	.data
-> sum:	.word	0
-> n:	.word	100
-> 	.text
+>   .data
+> sum:  .word 0
+> n:  .word 100
+>   .text
 > main:
-> 	li	$t0, 0
-> 	lw	$t1, n
-> 	li	$t2, 1
-> while:	bgt	$t2, $t1, endw
-> 	add	$t0, $t0, $t2
-> 	addi	$t2, $t2, 1
-> 	b while
-> endw:	sw	$t0, sum
-> 	lw	$a0, sum
->  	li	$v0, 1
->  	syscall
->  	# Exit
->  	li	$v0, 10
->  	syscall
+>   li  $t0, 0
+>   lw  $t1, n
+>   li  $t2, 1
+> while:  bgt $t2, $t1, endw
+>   add $t0, $t0, $t2
+>   addi  $t2, $t2, 1
+>   b while
+> endw: sw  $t0, sum
+>   lw  $a0, sum
+>   li  $v0, 1
+>   syscall
+>   # Exit
+>   li  $v0, 10
+>   syscall
 > # End of program
 > ```
 > - This is not a one-to-one translation of the C code, but it only writes to memory once, making it much more efficient.
 >
 > 4. Or, you could use the explicit form: $n(n+1)/2$ so that the program is $O(1)$ instead of $O(n)$
 > ```mips
-> 	.data
-> sum:	.word	0
-> n:	.word	100
-> 	.text
+>   .data
+> sum:  .word 0
+> n:  .word 100
+>   .text
 > main:
-> 	# t0 <- n(n+1)/2
-> 	lw	$t0, n
-> 	addi	$t1, $t0, 1	# n + 1
-> 	mul	$t0, $t0, $t1	# * (n + 1)
-> 	sra	$t0, $t0, 1	# / 2
-> 	# Print and exit
-> 	sw	$t0, sum
->  	lw	$a0, sum
->   	li	$v0, 1
->   	syscall
->   	li	$v0, 10
-> 	syscall
+>   # t0 <- n(n+1)/2
+>   lw  $t0, n
+>   addi  $t1, $t0, 1 # n + 1
+>   mul $t0, $t0, $t1 # * (n + 1)
+>   sra $t0, $t0, 1 # / 2
+>   # Print and exit
+>   sw  $t0, sum
+>   lw  $a0, sum
+>     li  $v0, 1
+>     syscall
+>     li  $v0, 10
+>   syscall
 > # End of program
 > ```
 
