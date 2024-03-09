@@ -21,7 +21,7 @@ title: "MIPS Assembly"
 > set shiftwidth=8
 > ```
 
-# MIPS Instructions
+# MIPS Instructions / Reference
 
 > **Note**: In this class we'll be learning 32-bit MIPS, not 64-bit MIPS.
 
@@ -122,6 +122,33 @@ title: "MIPS Assembly"
 | **sh**      | rt,imm(rs)     | Store Half                      | M2[rs + imm±] = rt                                       | I    | 29       |
 | **sw**      | rt,imm(rs)     | Store Word                      | M4[rs + imm±] = rt                                       | I    | 2b       |
 
+> **Note**: Using `mult`{.mips}
+> - Multiplying two number with `mult`{.mips} requires two instructions, one to multiply (`mult`{.mips}) and another to read the multiplication result from the `HI` or `LO` register (`mfhi`{.mips} *or* `mflo`{.mips}).
+> - If the resulting number doesn't overflow (is less than 32-bits), you can use `mflo`{.mips} to get it from the `LO` register.
+> 
+> **What `hi` and `lo` contain**:
+> - `lo`: Contains `rs / rt`
+> - `hi`: Contains `rs % rt`
+> 
+>**Example** :
+> ```mips
+>     li  $t1, 2
+>     # A: Multiplies t0 and t1
+>     mult  $t0, $t1
+>     mflo  $t0
+>     # B: Same thing, using mul
+>     mul $t0, $t0, $t1
+> ```
+
+## Pseudo-Instructions
+
+> **Note**: `move` v.s. `li`
+> - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.
+
+**Pseudo-Instructions**: Instructions that don't have a direct hardware implementation.
+- Assembler translates them into equivalent real instructions.
+- Provided for the convenience of the programmer.
+
 | Pseudo   | Operands       | Instruction                             | Register Transfer            |
 |----------|----------------|-----------------------------------------|------------------------------|
 | **move** | rd, rs         | Move                                    | rd $=$ rs                    |
@@ -154,27 +181,7 @@ title: "MIPS Assembly"
 | **sle**  | rd, rs, src    | Set less than equal                     | rs = rt $\le$ src ? 1 : 0    |
 | **slt**  | rd, rs, src    | Set less than                           | rs = rt $<$ src ? 1 : 0      |
 
-> **Note**: Using `mult`
-> - Multiplying two number requires two instructions, one to multiply (`mult`), another to read the multiplication result from the `HI` or `LO` register (`mfhi` *or* `mflo`).
-> - If the resulting number doesn't overflow (is less than 32-bits), you can use `mflo` to get it from the `LO` register.
-> 
-> **What `hi` and `lo` contain**:
-> - `lo`: Contains `rs / rt`
-> - `hi`: Contains `rs % rt`
-> 
-> ```mips
->   li  $t1, 2
->   # A: Multiplies t0 and t1
->   mult  $t0, $t1
->   mflo  $t0
->   # B: Same thing, using mul
->   mul $t0, $t0, $t1
-> ```
-
-## Pseudo-Instructions
-
-> **Note**: `move` v.s. `li`
-> - `move` moves the value of one register into another, `li` puts an immediate value directly into a register.
+> **Example**: This pseudo-instruction `move $t0, $s0`{.mips} is translated into this real instruction: `addu $t0, $zero, $s0`{.mips}
 
 ## Instruction Formats
 
@@ -233,7 +240,7 @@ title: "MIPS Assembly"
 > 
 > **According to the reference table, opcode and func is `0/32`, therefore:**
 > - The opcode is `000000`
-> - The func is `1000000`
+> - The func is `100000`
 > 
 > **As this isn't a shift instruction, `shamt` is 000000.**
 > 
@@ -259,7 +266,7 @@ title: "MIPS Assembly"
 > 
 > Now that we know the `op/fn`, we know the type and command, and can convert the rest of the hexadecimal into binary and convert the rest.
 
-# MIPS Assembly
+# More on MIPS Assembly
 
 **Assembly Line Format:**
 `[ label: ] opcode [ operand(s) ]`{.mips}
@@ -315,20 +322,21 @@ MIPS has a 32 $\times$ 32-bit register file.
 - $\$t0$—$\$t9$: Temporary Values
 - $\$s0$—$\$s7$: Saved variables
 
-
 ## Labels and Main
 
-**Label**: Symbolic name for a memory address. Can be instruction or data.
-- Program executions begins at the location label `main`.
+**Label**: Symbolic name for a memory address. Can be an instruction or data.
+- Program execution begins at the location label `main`.
 
 ```mips
       .text
 main: add $t2,$t0,$t1
 ```
 
-## SPIM Segments and Linker Directives
+## Segments and Linker Directives
 
 **Segment**: Logical part of code that translates to a specific memory location.
+
+**Directives**: Tell the assembler how to organize data.
 
 | Name      | Parameters | Description                       |
 |-----------|------------|-----------------------------------|
@@ -339,42 +347,22 @@ main: add $t2,$t0,$t1
 | `.extern` | *sym size* | Declare as global label *sym*     |
 | `.globl`  | *sym*      | Declare as global the label *sym* |
 
-### Using `.word`
+> **Example**: Using a label.
+> ```mips
+> count:  .word 0
+> # end
+> ```
 
-Use the `lw` (load word) command to load a value from a word into a register.
-
-Use the `sw` (store word) command to load a value from a register back into a word.
-
-**Example**: Loading a word into a register
-```mips
-  .data
-sumIs:  .asciiz "The sum is "
-value1: .word 15
-value2: .word 25
-sum:  .word 0
-  .text
-main:
-  lw  $t0, value1
-  lw  $t1, value2
-  # Print string
-  la  $a0, sumIs
-  li  $v0, 4
-  syscall
-  # Add integers and store in sum
-  add $t2, $t0, $t1
-  sw  $t2, sum
-  # Print result
-  lw  $v0, sum
-  li  $v0, 1
-  syscall
-  # Exit
-  li  $v0, 10
-  syscall
-```
-
-## SPIM Data Directives
-
-**Directives**: Tell the assembler how to organize data.
+> **Example**: Using `.text`
+> ```mips
+>        .text
+> main:  li  $t0,10
+>        li  $t1,20
+>        add $a0,$t0,$t1
+> # end
+> ```
+> - `li`: Load immediate. Is a pseudo-instruction.
+>   - The assembler will turn `li $t0,10` into `addi $t0,$zero,$t0`
 
 ```mips
       .data
@@ -386,27 +374,46 @@ main:
       .space  n # n bytes
 ```
 
-**Example**: Using a label.
-```mips
-count:  .word 0
-  .word .word 1,2,3
-```
-- To get to the second line, we can just jump to `count+4`.
+### More on Using `.word`
 
-**Example**: .text
-```mips
-  .text
-main: li  $t0,10
-  li  $t1,20
-  add $a0,$t0,$t1
-```
-- `li`: Load immediate. Is a pseudo-instruction.
-  - The assembler will turn `li $t0,10` into `addi $t0,$zero,$t0`
+Use the `lw` (load word) command to load a value from a word into a register.
 
-## SPIM Syscalls
+Use the `sw` (store word) command to load a value from a register back into a word.
+
+**Example**: Loading a word into a register
+```mips
+        .data
+sumIs:  .asciiz "The sum is "
+value1: .word 15
+value2: .word 25
+sum:    .word 0
+        .text
+main:
+        lw  $t0, value1
+        lw  $t1, value2
+        # Print string
+        la  $a0, sumIs
+        li  $v0, 4
+        syscall
+        # Add integers and store in sum
+        add $t2, $t0, $t1
+        sw  $t2, sum
+        # Print result
+        lw  $v0, sum
+        li  $v0, 1
+        syscall
+        # Exit
+        li  $v0, 10
+        syscall
+# End of program
+```
+
+## Data Directives
+
+## Syscalls
 
 **Syscall**: Special instruction that interfaces with the I/O subsystem.
-- SPIM provides a small set of operating-system-like services throug hthe MIPS system call instruction.
+- MIPS provides a small set of operating-system-like services through the system call instruction.
 
 | Services       | System Call Code | Arguments                                     | Result                     |
 |----------------|------------------|-----------------------------------------------|----------------------------|
