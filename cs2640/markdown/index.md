@@ -4,6 +4,7 @@ The following are my class notes for Computer Organization and Assembly Programm
 
 # Topics
 
+0. [Programming Guidelines](00 - Programming Guidelines.html)
 1. [Intro](01 - Intro.html)
 2. [Number Systems and Conversions](02 - Number Systems and Conversions.html)
 3. [Binary Operations and Sign](03 - Binary Operations and Sign.html)
