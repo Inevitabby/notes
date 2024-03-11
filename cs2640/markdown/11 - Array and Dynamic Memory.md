@@ -52,24 +52,24 @@ $$
 > ```
 > - **Note**: `($t0)` is the same as `0($t0)`
 
-**Example**: Translating C program that uses an array into MIPS
-```c
-int array[20];
-for (int = 0; i < 20; i++) {
-	array[i] = i + 1;
-}
-```
-
-```mips
-         .data
-array:   .word    0:20
-         .text
-         la       $t0, array
-         li       $t1, 1
-while:   bgt      $t1, 20, endw
-         sw       $t1, (t0)
-         addiu    $t0, $t0, 4      # Move address to next element
-         addi     $t1, $t0, 1      # Increment loop counter variable
-         b while
-endw:
-```
+> **Example**: Translating C program that uses an array into MIPS
+> ```c
+> int array[20];
+> for (int = 0; i < 20; i++) {
+> 	array[i] = i + 1;
+> }
+> ```
+> 
+> ```mips
+>          .data
+> array:   .word    0:20
+>          .text
+>          la       $t0, array
+>          li       $t1, 1
+> while:   bgt      $t1, 20, endw
+>          sw       $t1, (t0)
+>          addiu    $t0, $t0, 4      # Move address to next element
+>          addi     $t1, $t0, 1      # Increment loop counter variable
+>          b while
+> endw:
+> ```
