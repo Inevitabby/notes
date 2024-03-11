@@ -80,3 +80,29 @@ boolean contains(Object anEntry);
 int size();
 boolean isEmpty();
 ```
+
+<!--
+# Iterators for the ADT List
+
+> **Note**: If you implement the iterator as a separate class rather than an inner-class, you need to finagle with the list's methods.
+
+**Inner-Class Iterator**
+
+```java
+public interface ListInterface<T> extends Iterable<T>
+```
+
+```java
+public Iterator<T> iterator() {
+	// return the private iterator
+}
+private class IteratorForLinkedList implements Iterator<T> {
+	private Node nextNode;
+	private IteratorForLinkedList() {
+		nextNode = head;
+	}
+	//
+	public T next
+}
+```
+-->
