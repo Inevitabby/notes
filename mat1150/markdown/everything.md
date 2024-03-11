@@ -1346,7 +1346,7 @@ $$
 \small\textit{((5) provided that $B \ne 0$)}
 $$
 
-## Sequence Convergence
+## Convergence
 
 $$
 \boxed{
@@ -1468,6 +1468,8 @@ $$
 But/and $r>1$: $\lim_{n \to \infin} r^n = \infin$ and $r<-1$ grows arbitrarily large and oscillates between negative and positive infinity ($(-2)^n$)
 </details>
 
+## Bounded Sequences
+
 > ### Bounded Sequences
 > 
 > A sequence is **bounded above** if there is some real number $m$ so that $a_n \le M$ for every $n$.
@@ -1484,7 +1486,164 @@ But/and $r>1$: $\lim_{n \to \infin} r^n = \infin$ and $r<-1$ grows arbitrarily l
 - { $n$ } is bounded below since $n \ge 0$ for every $n$, but it isn't bounded above (it just goes to infinity). Thus, it is unbounded.
 </details>
 
-> ### Theorem: All Unbounded Sequences Diverge
+> ### Theorem: All Unbounded Sequences Diverge; or,
+> ### Theorem: All Convergent Sequences Are Bounded
 > 
 > If a sequence { $a_n$ } converges, then it is bounded.
 > - Contrapositive: If { $a_n$ } is unbounded, { $a_n$ } diverges.
+> 
+> > **Important**: This does NOT mean that all bounded sequences are convergent (they aren't)!
+> > - e.g., { $(-1)^n$ } is bounded, but does not converge.
+
+## Monotonic Sequences
+
+> ### Monotonic Sequences
+> 
+> A sequence { $a_n$ } is monotonic for all $n>n_0$ if it  if it is either increasing or decreasing for all $n>n_0$.
+> 
+> $$
+> \boxed{
+> \text{Increasing Monotonic Sequence: }
+> a_{n+1} \ge a_n \forall n \ge n_0
+> }
+> $$
+> 
+> $$
+> \boxed{
+> \text{Decreasing Monotonic Sequence: }
+> a_{n+1} \le a_n \forall n \ge n_0
+> }
+> $$
+> 
+> > **Note**: $-a_n$ both sides to get difference test; $\div a_n$ both sides to get ratio test
+
+<details><summary>Example: Show the sequence is monotonic</summary>
+**Q:** Show that { $\frac{n+1}{n}$ } is monotonic.
+
+**A:** **Method 1: Difference Method**
+
+We can take the definition of increasing and decreasing monotonic sequences and move the terms to one side to get these formulas:
+
+$$
+\text{Increasing Monotonic: }
+a_{n+1} - a_n \ge 0
+$$
+
+$$
+\text{Decreasing Monotonic: }
+a_{n+1} - a_n \le 0
+$$
+
+---
+
+Now we can find $a_n$ and $a_{n+1}$:
+$$
+a_n = \frac{n+1}{n} \\
+a_{n + 1} = \frac{n+2}{n + 1} \\
+$$
+
+Now we just need to perform $a_{n+1} - a_n$ and check whether it is negative
+- ($\le \lor \ge 0$)
+
+$$
+a_{n+1} - a_n =
+\frac{(n+2)n}{(n+1)n} - \frac{(n+1)(n+1)}{(n+1)n} \\
+= \frac{
+	n^2 + 2n - ( n^2 -n + n + 1 )
+}{
+	(n+ 1) n
+} \\
+= \frac{
+	-1
+}{
+	(n+1)n
+}
+$$
+
+Because the difference is (always) less than or equal to zero, that means { $\frac{n+1}{n}$ } is decreasing and therefore monotonic.
+</details>
+
+> ### Theorem: Bounded Monotonic Sequences Always Converge
+> 
+> If { $a_n$ } is bounded and monotonic for $n \ge n_0$, then { $a_n$ } converges.
+
+
+<details><summary>Example: Show the sequence is convergent</summary>
+**Q:** Show that { $\frac{n+1}{n}$ } converges.
+
+**A:** **1. Using Monotone Convergence**
+
+In the previous example—which used the difference method—we know that the sequence is decreasing monotonic.
+
+Since $n$ is positive, $\frac{n+1}{n}$ is always positive; or $\frac{n+1}{n} > 0$, which means that the sequence is bounded from below.
+
+We can calculate that $a_1 = 2$, and since the sequence is decreasing monotonic, the sequence is also bounded from above.
+
+Therefore, the sequence is convergent by the Monotone Convergence Theorem.
+
+**A: 2. L'Hopital's Rule**
+
+We could also take L'Hopital's and find $L=1$, as this example was easy to computer.
+- But not examples will be like this!
+
+</details>
+**Q:** Show that { $\frac{4^n}{n!}$ } converges.
+
+**A:**
+
+We can see that $\lim_{n \to \infin} n! = \infin$, which means that $\lim_{n \to \infin} \frac{4^n}{n!} = \frac{\infin}{\infin}$.
+- As this isn't a function, we can't use L'Hopital's, though.
+
+1. Show { $\frac{4^n}{n!}$ } is monotonic
+
+**Method 2: Ratio Method**
+
+Instead of moving terms in the definition of monotonic sequences with subtraction to create a test, we could also use division to create a test for monotonicity.
+- **Note**: This only works if $a_n > 0$
+
+$$
+\text{Increasing Monotonic: }
+\frac{a_{n+1}}{a_n} \ge 1
+$$
+
+$$
+\text{Decreasing Monotonic: }
+\frac{a_{n+1}}{a_n} \le 1
+$$
+
+$$
+a_n = \frac{4^n}{n!} \\
+a_{n+1} = \frac{4^{n+1}}{(n + 1)!} \\
+$$
+
+Doing the test:
+$$
+\begin{aligned}
+\frac{a_{n+1}}{a_n} &=
+\frac{4^{n+1}}{(n + 1)!} \times \frac{n!}{4} \\
+&= \frac{4n!}{(n+1)!} \\
+&= \frac{4n!}{(n+1)n!} \\
+&= \frac{4}{n+1}
+\end{aligned}
+$$
+
+> Why?
+> - The $4^{n+1}$ and $\frac{1}{4^n}$ cancel out into a $4$
+> - In regards to the division of the terms with factorial:
+> $$
+> \begin{aligned}
+> 3! &= 3 \times 2 \times 1 \\
+> (3 + 1)! &= 4! = 4 \times 3 \times 2 \times 1 \\
+> \frac{3!}{(3+1)!} &= \frac{1}{4} \\
+> \frac{n!}{(n+1)!} &= \frac{1}{n + 1} \\
+> \end{aligned}
+> $$
+
+$\frac{4}{n+1}$ will become $\le 1$ if and only if $4 \le n + 1$
+- So, for $n \ge 3$, { $\frac{4^n}{n!}$ } is decreasing.
+
+2. Show { $\frac{4^n}{n!}$ } is bounded
+
+Also, the sequence is $> 0$  for all $n$, so the sequence is bounded.
+
+Thus, the sequence is convergent.
