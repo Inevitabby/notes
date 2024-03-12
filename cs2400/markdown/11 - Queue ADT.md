@@ -23,7 +23,7 @@ title: "Queue and Deque ADT"
 ```plantuml
 @startuml
 class queue {
-	+enqueue(newEntry : T) void
+	+enqueue(newEntry : T) : void
 	+dequeue(): T
 	+getFront(): T
 	+isEmpty(): boolean

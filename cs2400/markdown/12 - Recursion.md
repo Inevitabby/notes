@@ -35,6 +35,7 @@ title: Recursion
 	- Some compilers will even convert it to a for loop.
 
 **Indirect Recursion**: When $a(x)$ calls $b(x)$ and $b(x)$ calls $a(x)$
+- Difficult to understand and trace, but can occur.
 
 > **Example**: Count down from a positive integer
 > ```java
@@ -114,3 +115,8 @@ Now the answer begins traveling up the chain:
 
 > **Common Mistake:** Using iteration instead of an if statement in a recursive function.
 
+# On Problem-Solving
+
+Some problems like the **Tower of Hanoi** or **finding the shortest path** or **8-Queen problem** are made easier through recursion because it makes backtracking easier.
+
+Some algorithms like Fibonacci are very inefficient when solved recursively.

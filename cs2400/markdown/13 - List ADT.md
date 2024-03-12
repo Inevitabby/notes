@@ -62,11 +62,21 @@ class List {
 | `getLength()`                      | Returns number of items in the list        |
 | `isEmpty()`                        | Returns whether list is empty              |
 
-<!--
 > **Example**: Interface
-```java
-```
--->
+> ```java
+> public interface ListInterface<T> {
+> 	void add(T newEntry)
+> 	void add(int newPosition, T newEntry)
+> 	T remove(int givenPosition)            
+> 	void clear()                          
+> 	T replace(int givenPosition, T newEntry) 
+> 	T getEntry(int givenPosition)          
+> 	T[] toArray()                        
+> 	boolean contains(T anEntry)                
+> 	int getLength()                      
+> 	boolean isEmpty()                        
+> }
+> ```
 
 ## Java Class Library: The Interface `List`
 
@@ -81,7 +91,6 @@ int size();
 boolean isEmpty();
 ```
 
-<!--
 # Iterators for the ADT List
 
 > **Note**: If you implement the iterator as a separate class rather than an inner-class, you need to finagle with the list's methods.
@@ -105,4 +114,3 @@ private class IteratorForLinkedList implements Iterator<T> {
 	public T next
 }
 ```
--->
