@@ -178,4 +178,4 @@ c. Or, we could have each node have two data fields, one for key and another for
 
 
 > **Thus**: A sorted array is the only implementation covered so far that provides better performance.
-> - Hashing, however, allows us to have $O(1)$ searching.
+> - Hashing, however, allows us to have $O(1)$ searching, by turning keys into numeric values that can be used as indices.
