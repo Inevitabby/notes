@@ -42,3 +42,11 @@
 
 13. [List](13 - List ADT.html)
 
+
+## X. Dictionary
+
+14. [Dictionary](14 - Dictionary ADT.html)
+
+## XI. Hashing
+
+15. [Hashing](15 - Hashing.md)
