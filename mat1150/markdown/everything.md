@@ -1586,7 +1586,6 @@ Therefore, the sequence is convergent by the Monotone Convergence Theorem.
 We could also take L'Hopital's and find $L=1$, as this example was easy to computer.
 - But not examples will be like this!
 
-</details>
 **Q:** Show that { $\frac{4^n}{n!}$ } converges.
 
 **A:**
@@ -1629,7 +1628,7 @@ $$
 
 > Why?
 > - The $4^{n+1}$ and $\frac{1}{4^n}$ cancel out into a $4$
-> - In regards to the division of the terms with factorial:
+> - In regard to the division of the terms with factorial:
 > $$
 > \begin{aligned}
 > 3! &= 3 \times 2 \times 1 \\
@@ -1647,3 +1646,147 @@ $\frac{4}{n+1}$ will become $\le 1$ if and only if $4 \le n + 1$
 Also, the sequence is $> 0$  for all $n$, so the sequence is bounded.
 
 Thus, the sequence is convergent.
+</details>
+
+# Infinite Series
+
+<!--
+<details><summary>Example: Intro problem</summary>
+**Q**: 
+Oil is leaking into a lake.
+
+- Week 1: 1/2 a ton leaks in
+- Week 2: 1/4 a ton leaks.
+- Week 3: 1/8 a ton.
+- Week 4: 1/16 a ton.
+
+How much oil is in the lake as time goes on?
+
+> Note: We can see that the amount of oil leaking into the leak is the sequence { $\frac{1}{2^n}$ }.
+
+**A**:
+- Week 1: $s_1 = 1/2$
+- Week 2: $s_2 = 1/2 + 1/4 = 3/4$
+- Week 3: $s_3 = 3/4 + 1/8 = 7/8$
+- Week 4: $s_4 = 7/8 + 1/16$ = 15/16
+- Week $k$: $s_k = \frac{2^k - 1}{2^k} \lor 1 - \frac{1}{2^k}$
+
+As time goes on, oil in the lake approaches:
+$$
+\lim_{k \to \infin} s_k = \lim_{k \to \infin} 1 - \frac{1}{2^k} = 1 \text{ ton}
+$$
+</details>
+-->
+
+### Infinite Series
+
+If { $a_n$ } is a sequence, we call $s_k$ the sum of the first $k$ terms:
+
+$$
+\boxed{
+\text{$k$th Partial Sum of the Sequence: } s_k = \sum_{n = 1}^k a_n
+}
+$$
+
+The limit of $k$th partial sums ($\lim_{k \to \infin} s_k$) is denoted:
+
+$$
+\boxed{
+\text{Infinite Series: } \sum_{n=1}^\infin a_n
+}
+$$
+$$
+\boxed{
+	\text{Infinite Series Sum: }
+      \frac{r}{1-r}
+}\\
+\small\textit{( only converges for $-1 < r < 1$ )}
+$$
+
+<details><summary>Example: Find the sum</summary>
+**Q**:
+$$
+\sum_{n=1}^\infin (\frac{1}{2})^n
+$$
+
+**A**:
+$$
+\begin{aligned}
+\sum_{n=1}^\infin (\frac{1}{2})^n
+&=
+\frac{\frac{1}{2}}{1 - \frac{1}{2}} \\
+&= \frac{\frac{1}{2}}{\frac{1}{2}} \\
+&= 1
+\end{aligned}
+$$
+</details>
+
+
+> ### Convergence
+> If $s_k$ converges to $S$, we write $\sum_{n=1}^\infin a_n = S$ and we say the infinite series converges.
+> 
+> Otherwise, we say the infinite series diverges.
+
+### Geometric Series
+
+$$
+\boxed{
+\text{Geometric Series: } \sum_{n=1}^\infin r^n
+}
+$$
+$$
+\boxed{
+	\text{$k$th Partial Sum of Geometric Series: }
+      s_k = 1 - \frac{1}{2^k}
+}
+$$
+<details><summary>Why?</summary>
+Partial Sum of Geometric Series:
+
+$$
+s_k = r+ r^2 + r^3 + ... + r^k \\
+s_k(1-r) = r + r^2 + r^3 + ... + r^k(1-r) \\
+s_k(1-r) = r-r^{k+1} \\
+s_k(1-r) = r(1-r^{k}) \\
+\text{($1-r$ must $\ne$ 0)} \\
+s_k = \frac{r(1-r^{k})}{1-r} \\
+s_k = 1 - \frac{1}{2^k}
+$$
+</details>
+
+### Geometric Series Test
+
+$$
+ \text{A geometric series ($\sum_{n=1}^\infin r^n$) is convergent if: }\\
+\boxed{
+	\text{Geometric Series Test: } \sum_{n=1}^\infin = \frac{r}{1-r}
+}
+\\
+\small\textit{( if and only if $-1 < r < 1$ )}
+$$
+
+<details><summary>1-Indice Form</summary>
+$$
+\sum_{n=0}^\infin = \frac{1}{1-r}
+$$
+</details>
+
+<details><summary>Does the geometric series converge?</summary>
+**Q:**
+$$
+\sum_{n=0}^\infin (\frac{-1}{2})^n
+$$
+
+**A**: It converges because $-1 < \frac{-1}{2} < 1$
+
+If we use $\frac{1}{1 - r}$ we can see that it converges to $\frac{2}{3}$
+
+**Q**: 
+$$
+\sum_{n=1}^\infin (-1)^n
+$$
+
+**A**: Diverges because $-1$ is not between $-1$ and $1$.
+</details>
+
+### Non-Geometric Series
