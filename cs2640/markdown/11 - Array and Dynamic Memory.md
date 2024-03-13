@@ -33,7 +33,9 @@ $$
 \text{Base} + 
 \text{Offset}
 $$
-- *Adding to a memory address is always performed with `addu` or `addui`*
+
+> **Remember**: Addresses are always unsigned (you can't have negative addresses!)
+> - Adding to a memory address is [always performed with `addu` or `addui`]{.underline}
 
 > **Remember**: The offset is in bytes.
 > - *e.g., to get to the next word you'll need to add 4, to get to the next half-world you need to add 2, to get to the next byte you need to add 1*
@@ -53,6 +55,7 @@ $$
 > - **Note**: `($t0)` is the same as `0($t0)`
 
 > **Example**: Translating C program that uses an array into MIPS
+> 1. C
 > ```c
 > int array[20];
 > for (int = 0; i < 20; i++) {
@@ -60,6 +63,7 @@ $$
 > }
 > ```
 > 
+> 2. MIPS
 > ```mips
 >          .data
 > array:   .word    0:20
@@ -73,3 +77,102 @@ $$
 >          b while
 > endw:
 > ```
+
+> **Example**: Accessing random element in array
+> ```mips
+>         la	$1, array
+>         sll	$t2, $t5, 2
+>         addu	$t3, $t1, $t2
+>         lw	$t0, ($t3)
+> # End
+> ```
+
+> **Example**: Traversing through array linearly
+> ```mips
+>         la	$t2, array
+>         li	$t0, 1
+>         li	$t1, 1
+> for:
+>         bge	$t1, 4, endf
+>         # Get ith item
+>         lw	$t3, ($t2)
+>         add	$t0, $t0, $t3
+>         # Increment counter variables
+>         addiu	$t2, $t2, 4
+>         addi	$t1, $t1, 1
+>         b for
+> endf:
+> ```
+
+> **Note**: To translate a switch statement to assembly, just remember that all switch statements can be rewritten as *if-else-if* statements.
+
+> **Example**: Random access of array of addresses (Strings)
+> ```mips
+>         .data
+> a1:     .asciiz	"Hello"
+> a2:     .asciiz	"World"
+> a3:     .asciiz	"Goodbye"
+> strArr: .word	a1, a2, a3
+>         .text
+> main:
+>         # The ith elem we want
+>         li	$t0, 0
+>         la	$t1, strArr
+>         sll	$t2, $t0, 2
+>         addu	$t3, $t1, $t2
+>         lw	$a0, ($t3)
+>         li	$v0, 4
+>         syscall
+>         li	$v0, 10
+>         syscall
+> # End
+> ```
+
+<!--
+**Example**: Linear search
+1. C
+
+```c
+boolean found = false;
+int index = 0;
+while (!found && index < LEN) {
+	if (array[index] == t0) {
+		found = true;
+	} else {
+		index++;
+	}
+}
+```
+
+```mips
+# We'll use t1 to store the boolean and t3 to store base
+	.data
+a1:	.asciiz	"Hello"
+a2:	.asciiz	"World"
+a3:	.asciiz	"Goodbye"
+strArr:	.word	a1, a2, a3
+LEN:	.word	3
+	.text
+main:
+	# boolean found
+	li	$t1, 0
+	# index
+	li	$t2, 0
+while:
+	bnez	$t1, endw
+	bge	$t2, LEN, endw
+	lw	$t4, ($t3)
+	bne	$t3, $t0, else
+	li	$t1, 1
+	b	endif
+else:
+	addi	$t2, $t2, 1
+	addu	$t2, $t3, 4
+endif:
+	b	while
+endw:
+	li	$v0, 10
+	syscall
+
+```
+-->
