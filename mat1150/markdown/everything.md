@@ -1790,3 +1790,38 @@ $$
 </details>
 
 ### Non-Geometric Series
+
+$$
+\boxed{
+	\text{$k$th Partial Sum: }
+	s_k = \frac{n}{n+1}
+}
+$$
+
+**An infinite series is a limit of partial sums.**
+
+<details><summary>Why?</summary>
+**Q**: 
+$$
+\sum_{n=1}^\infin \frac{1}{n(n+1)}
+$$
+
+**A**:
+$$
+\begin{aligned}
+s_1 &= a_1 = \frac{1}{1 \times 2} = \frac{1}{2} \\
+s_2 &= a_1 + a_2 = \frac{1}{1 \times 2} + \frac{1}{2 \times 3} = \frac{2}{3} \\
+s_3 &= a_1 + a_2 + a_3 = \frac{1}{1 \times 2} + \frac{1}{2 \times 3} + \frac{1}{3 \times 4} = \frac{3}{4}
+\end{aligned}
+$$
+- etc...
+</details>
+
+### Harmonic Series
+
+$$
+\boxed{
+\text{Harmonic Series: } \sum_{n=1}^\infin \frac{1}{n}
+}\\
+\small\textit{(diverges)}
+$$
