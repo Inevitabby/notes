@@ -13,8 +13,10 @@ MIPS is a load-and-store architecture, only two instructions can access memory.
 > - Is word aligned (is a multiple of four)
 >	* Thus, the last two bits of a word will always be zero.
 
-- .data: 0x400000
-- .text: 0x10000000
+**Memory Layout**:
+- Text Segment (`.text`): 0x400000 — 0x10000000
+- Static Data (`.data`): ??? — 0x10000000
+- Dynamic Data: Stored above static data.
 
 **Symbol Table**: Stores a table of symbols and their addresses.
 - e.g., The symbol `mem` may map to `0x100000004` in the table.
@@ -176,3 +178,42 @@ endw:
 
 ```
 -->
+
+# Dynamic Memory Allocation (Syscall 9)
+
+**Syscall 9:** Lets us allocate dynamic data.
+— To use it, load `$a0` with the number of bytes you want and do the syscall.
+- `$v0` will contain the base address of the array.
+
+> **Example**: Dynamic Memory Allocation in C v.s. MIPS
+> 1. C
+> ```c
+> // Create an array that can store 100 integers
+> int *int_arr = malloc(100*sizeof(int));
+> int_arr[5] = 20;
+> ```
+> <!--*-->
+> 
+> > 2. MIPS
+> ```mips
+>       li	$a0, 20*4
+>       li	$v0, 9
+>       syscall
+>       # Save the base into t9
+>       move	$t9, $v0
+> ```
+<!--*-->
+
+**Dynamic Memory Allocation**: 
+- To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes.
+
+To turn a number into the nearest multiple of 4, add 3 and remove the lower two bytes.
+
+> **Example**:
+> ```mips
+>       add	$t1, $t0, 3
+>       andi	$a0, $t1, 0xfffc
+>       li	$v0, 9
+>       syscall
+> # End
+> ```
