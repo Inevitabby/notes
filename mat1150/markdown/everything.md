@@ -1825,3 +1825,21 @@ $$
 }\\
 \small\textit{(diverges)}
 $$
+
+<details><summary>Why?</summary>
+$$
+1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} > 
+1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{4}
+$$
+- Because $\frac{1}{3} > \frac{1}{4}$
+
+
+$$
+1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ... \frac{1}{8} > 
+1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8}
+$$
+
+So on and so forth...
+
+Partial sum is bigger than $1+\frac{n}{2}$, so infinite sum of harmonic series will also go to $\infin$
+</details>
