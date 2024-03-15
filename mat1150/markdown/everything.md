@@ -1931,6 +1931,41 @@ $$
 
 ## Divergence and Integral Tests
 
+> ### Theorem I
+> 
+> If $\sum_{n=1}^\infin$ converges, then $\lim_{n \to \infin} a_n = 0$
+
+<details><summary>Why></summary>
+Suppose $\sum_{n=1}^\infin$ converges.
+- Then the sequence of partial sums ($s_k$) converges to some number $L$, where $\lim_{k \to \infin} s_k = L$
+
+Let's define a new sequence:
 $$
-\sum_{n=1}^\infin \frac{n}{n+1}
+b_1 = 0, b_2 = s_1, b_3 = s_2, b_4 = s_3, ..., b_k =s_{k=1}, ...
 $$
+- Then $\sum_{k=1}^\infin b_k = \lim_{k \to \infin} s_{k-1} = L$
+
+Then:
+$$\
+\begin{aligned}
+lim_{k \to \infin} s_k - b_k &= \lim_{k \to \infin} s_k - s_{k - 1} \\
+&= L - L \\
+&= 0
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	s_1 - b_1 &= s_1 - 0 = s_1 = a_1 \\
+	s_2 - b_2 &= s_2 - s_1 = a_1 + a_2 -a_1 = a_2 \\
+	s_3 - b_2 &= s_3 - s_2 = ... = a_3 \\
+	s_k - b_k &= a_k
+\end{aligned}
+$$
+
+Thus, $\lim_{k \to \infin} a_k = 0$
+</details>
+<!--
+> ### I
+> For a series $\sum_{n=1}^\infin$ to even have a chance of converging, it must go to $0$ as $n \to \infin$
+-->
