@@ -204,10 +204,15 @@ endw:
 > ```
 <!--*-->
 
-**Dynamic Memory Allocation**: 
+**Dynamically Allocating $n$ Bytes**: 
 - To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes.
 
-To turn a number into the nearest multiple of 4, add 3 and remove the lower two bytes.
+To turn a number into the nearest multiple of 4, add 3 and remove the lower two bits.
+$$
+\boxed{
+	\text{Nearest Multiple of 4: } (n + 3) & ~3
+}
+$$
 
 > **Example**:
 > ```mips
