@@ -168,7 +168,6 @@ c. Or, we could have each node have two data fields, one for key and another for
 > 	/** etc. */
 > }
 > > ```
-> > - We use the extends syntax to ensure that the keys can be compared (so that we can sort them).
 > 
 > > **Example**: Header for a sorted linked implementation
 > > ```java
@@ -179,3 +178,4 @@ c. Or, we could have each node have two data fields, one for key and another for
 
 > **Thus**: A sorted array is the only implementation covered so far that provides better performance.
 > - Hashing, however, allows us to have $O(1)$ searching, by turning keys into numeric values that can be used as indices.
+
