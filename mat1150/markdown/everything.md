@@ -1843,3 +1843,94 @@ So on and so forth...
 
 Partial sum is bigger than $1+\frac{n}{2}$, so infinite sum of harmonic series will also go to $\infin$
 </details>
+
+## Telescoping Series
+
+> ### Telescoping Series
+> 
+> A series where the next term in the sum cancels the previous term.
+
+
+<details><summary>Example: Find the sum</summary>
+**Q**: Find the sum of:
+$$
+\sum_{n=1}^\infin \ln (\frac{n}{n+1})
+$$
+
+**A**:
+
+1. Let's find the pattern to find $s_k$
+$$
+\begin{aligned}
+s_1 &= \ln(\frac{1}{2}) = \ln 1 - \ln 2 \\
+s_2 &= \ln(\frac{1}{2}) + \ln(\frac{2}{3}) = \ln 1 - \ln 2 + \ln 2 - \ln 3 = \ln1 - \ln 3 \\
+s_3 &= \ln(\frac{1}{2}) + \ln(\frac{2}{3}) + \ln(\frac{3}{4}) = \ln 1 - \ln 2 + \ln 2 - \ln 3 + \ln 3 - 
+\ln 4 = \ln 1 - \ln 4
+\end{aligned}
+$$
+
+Thus,
+$$
+s_k = - \ln (k + 1)
+$$
+
+2. Thus, the sum is:
+
+$$
+\begin{aligned}
+\sum_{n=1}^\infin \ln (\frac{n}{n+1}) &= \lim_{k \to \infin} s_k \\
+&= \lim_{k \to \infin} - \ln (k + 1) \\
+&= - \infin
+\end{aligned}
+$$
+
+**Q**:
+$$
+\sum_{n=1}^\infin \fra{1}{n} - \frac{1}{n+1}
+$$
+
+**A**:
+- Writing out the first couple $s_k$ values, we can derive that $s_k = \frac{k}{k+1}$, which goes to 1 as $k$ goes to infinity.
+</details>
+
+## Algebraic Laws for Series
+
+$$
+\text{Suppose:}\\
+\begin{aligned}
+	\sum_{n=1}^\infin a_n &= L \\
+	\sum_{n=1}^\infin b_n &= K \\
+\end{aligned} \\~\\
+\begin{aligned}
+	\text{1) }& \sum_{n=1}^\infin c a_n = c L \\
+	\text{2) }& \sum_{n=1}^\infin (a_n + b_n) = L + K \\
+	\text{3) }& \sum_{n=1}^\infin (a_n - b)n) = L - K
+\end{aligned} \\~\\
+\small\textit{($L$ and $K$ diverging doesn't necessarily mean $L \pm K$ also diverges)}
+$$
+
+<details><summary>Example: Find the sum</summary>
+**Q**:
+$$
+\sum_{n=1}^\infin \frac{4}{(-3)^n}
+$$
+
+**A:**
+$$
+\begin{aligned}
+\sum_{n=1}^\infin \frac{4}{(-3)^n} - \frac{3}{3^n}
+&= \sum_{n=1}^\infin \frac{4}{(-3)^n} - \sum_{n=1}^\infin \frac{3}{3^n} \\
+&= 4 \sum_{n=1}^\infin \frac{1}{(-3)^n} - 3 \sum_{n=1}^\infin \frac{1}{3^n} \\
+&= 4 \sum_{n=1}^\infin (\frac{-1}{3})^n - 3 \sum_{n=1}^\infin (\frac{1}{3})^n \\
+&= 4 \times \frac{ - \frac{1}{3} }{ 1 - ( -\frac{1}{3} ) } - 3 \times \frac{ \frac{1}{3} }{ 1 - \frac{1}{3} } \\
+&= -1 - \frac{3}{2} \\
+&= - \frac{5}{2}
+\end{aligned}
+$$
+</details>
+
+## Divergence and Integral Tests
+
+$$
+\sum_{n=1}^\infin \frac{n}{n+1}
+$$
