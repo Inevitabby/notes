@@ -207,7 +207,9 @@ endw:
 
 ## Dynamically Allocating $n$ Bytes (Alignment)
 
-To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes.
+In MIPS32, addresses must always be multiples of 4.
+
+To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes (bec
 
 To turn a number into the nearest multiple of 4, add 3 to the number and remove the lower two bits.
 $$
@@ -225,3 +227,40 @@ $$
 > # End
 > ```
 
+# 2D Arrays
+
+$$
+\text{Effective Offset: }\\ ( \text{Row} \times \text{Max Cols} + \text{Col}) \times \text{Size of Elements in Array (Bytes)}
+$$
+
+> **Example**: Doing `matrix[t0][t1] = 0`
+> ```mips
+>         .data
+> NROWS = 5
+> NCOLS = 13
+> matrix: .word    0:NROWS * NCOLEs # int matrix[NROWS][NCOLS = { 0 };
+>         .text
+>         # matrix[t0][t1] = 0
+>         # effective offset: (t0 * NCOLS + t1) * 4
+>         
+>         # Compute Effective Offset
+>         muliw    $t2, $t0, NCOLS
+>         addiw    $t2, $t2, $t1
+>         slliw    $t2, $t2, 2
+>         
+>         # Compute Effective Address
+>         la      $a0, matrix
+>         add     $a1, $a0, $t2
+> 
+> 	# matrix[t0][t1] = 0
+>         sw      $zero, ($a1)
+> # End
+> ```
+
+> **Example**: Creating an identity matrix
+> 1. C
+> ```c
+> for (int i = 0; i < n; i++) {
+> 	matrix[i][i] = 1;
+> }
+> ```
