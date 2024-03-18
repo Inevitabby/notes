@@ -201,24 +201,27 @@ endw:
 >       syscall
 >       # Save the base into t9
 >       move	$t9, $v0
+> # End
 > ```
 <!--*-->
 
-**Dynamically Allocating $n$ Bytes**: 
-- To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes.
+## Dynamically Allocating $n$ Bytes (Alignment)
 
-To turn a number into the nearest multiple of 4, add 3 and remove the lower two bits.
+To allocate a dynamic number of bytes $n$, we need to make sure we are requesting in chunks of 4 bytes.
+
+To turn a number into the nearest multiple of 4, add 3 to the number and remove the lower two bits.
 $$
 \boxed{
-	\text{Nearest Multiple of 4: } (n + 3) & ~3
+	\text{Nearest Multiple of 4: } (n + 3) \& ~3
 }
 $$
 
 > **Example**:
 > ```mips
->       add	$t1, $t0, 3
->       andi	$a0, $t1, 0xfffc
->       li	$v0, 9
+>       add     $t1, $t0, 3
+>       andi    $a0, $t1, 0xfffc
+>       li      $v0, 9
 >       syscall
 > # End
 > ```
+
