@@ -1935,7 +1935,7 @@ $$
 > 
 > If $\sum_{n=1}^\infin$ converges, then $\lim_{n \to \infin} a_n = 0$
 
-<details><summary>Why></summary>
+<details><summary>Why?</summary>
 Suppose $\sum_{n=1}^\infin$ converges.
 - Then the sequence of partial sums ($s_k$) converges to some number $L$, where $\lim_{k \to \infin} s_k = L$
 
@@ -1969,3 +1969,104 @@ Thus, $\lim_{k \to \infin} a_k = 0$
 > ### I
 > For a series $\sum_{n=1}^\infin$ to even have a chance of converging, it must go to $0$ as $n \to \infin$
 -->
+
+## $n$th Term Test for Divergence
+
+$$
+\boxed{
+	\text{If }
+		\lim_{n \to \infin} \ne 0
+	\text{, then }
+		\sum_{n=1}^\infin a_n \text{ diverges}
+}
+$$
+
+<details><summary>Why: Contrapositive</summary>
+$$
+P \to Q = Q' \to P
+$$
+- If $P$, then $Q$
+- If not $Q$, then not  $P$.
+
+> If honey's what you covet, [then] you'll find that they [heffulumps and woosels] love it.
+> - **Contrapositive**: If heffulumps and woosels don't love honey, then you don't covet honey.
+
+Convergence: If $\sum_{n=1}^\infin a_n$ converges, then $\lim_{n \to \infin = 0}$
+- Contrapositive: If $\lim_{n \to \infin} \ne 0$, then $\sum_{n=1}^\infin a_n$ diverges.
+	* *Remember, this doesn't say anything about when $\lim_{n \to \infin} = 0$!*
+</details>
+
+<details><summary>Example: Does it diverge?</summary>
+**Q**: $\sum_{n=1}^\infin \frac{n}{3n+1}$
+
+**A**:
+$$
+\lim_{n \to \infin} \frac{n}{3n+1} = \frac{1}{3}
+$$
+- Thus, diverges. ($\frac{1}{3} \ne 0$)
+
+**Q**: $\sum_{n=1}^\infin e^{\frac{1}{n^2}}$
+
+**A**:
+$$
+\lim_{n \to \infin} e^{\frac{1}{n^2}} = 1
+$$
+- Thus, diverges. ($1 \ne 0$)
+</details>
+
+## Integral Test
+
+$$
+\boxed{
+	\text{Integral Test: } \sum_{n \to N}^\infin a_n \text{ and } \int_N^\infin f(x) dx \text{ both conv./div.}
+} \\
+\small\textit{Let { $a_n$ } be a sequence of positive terms} \\
+\textit{Let $f(n) = a_n$ for all $n$}
+$$
+
+<details><summary>Why?</summary>
+Let { $a_n$ } be a sequence of positive terms.
+
+Suppose a continuous and decreasing function $f$ where $f(n) = a_n$ for all $n$.
+
+Then $\sum_{n \to N}^\infin a_n$ IIF $\inf_N^\infin f(x) dx$
+
+$$
+0 < \sum_{n=2}^\infin a_n \le \int_1^\infin f(x) dx \le \sum_{n=1}^\infin a_n
+$$
+- If $\sum_{n=1}^\infin a_n$ converges, then $\int_1^\infin f(x) dx$ converges.
+</details>
+
+<details><summary>Example: Does it converge?</summary>
+**Q**: $\sum_{n=1}^\infin = \frac{1}{e^n}$
+
+**A**:
+
+Let's test if this integral converges:
+$$
+\begin{aligned}
+\int_1^\infin \frac{1}{e^x} dx &= \lim_{t \to \infin} \int_1^t e^{-x} dx \\
+&= \lim_{t \to \infin} e^{-x} |_1^t \\
+&= \lim_{t \to \infin} e^{-t} - e^{-1} \\
+&= 0 - \frac{1}{e} \\
+&= \frac{1}{e} \\
+\end{aligned}
+$$
+- So, by the integral test, the series converges.
+</details>
+
+<details><summary>Example: Proving the harmonic series diverges</summary>
+$$
+\sum_{n=1}^\infin \frac{1}{n}
+$$
+
+$$
+\begin{aligned}
+\int_1^\int \frac{1}{x} dx &=
+\lim_{t \to \infin} \ln x |_1^t \\
+&= \lim_{t \to \infin} \ln t \\
+&= \infin
+\end{aligned}
+$$
+- By the integral test, the harmonic series diverges.
+</details>
