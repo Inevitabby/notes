@@ -122,10 +122,6 @@ private int getHashIndex(K key) {
 2. Change the structure of the hash tale so that each location can represent more than one value.
 	- *(this introduces searching and a whole slew of problems like deleting entries)*
 
-**Linear Probing**: Resolves collision during hashing by examining consecutive locations in hash table (looping back around if we reach the end)
-- Basically just probing the next location until we find an empty location.
-- If we make it back to the starting location, we know that the table is full.
-
 **Three Kinds of Locations in a Hash Table**:
 1. Occupied
 	- Location references an entry in the dictionary
@@ -134,3 +130,28 @@ private int getHashIndex(K key) {
 3. Available
 	- Location was previously occupied, but is now available.
 
+## A. Linear Probing
+
+**Linear Probing**: Resolves collision during hashing by examining consecutive locations in hash table (looping back around if we reach the end)
+- Basically just probing the next location until we find an empty location.
+- If we make it back to the starting location, we know that the table is full.
+- *(We must differentiate between empty and available locations)*
+
+> **Note**: This resolves collision during additions, but complicates removals.
+
+**Clustering**: Collisions resolved with linear probing cause groups of consecutive locations in hash table to be occupied, called clusters.
+- Bigger clusters mean longer search times following collision.
+
+## B. Open Addressing with Quadratic Probing
+
+**Quadratic Probing**: Considers the locations at indices $k + j^j$, rather than going consecutively from $k$.
+- *e.g., probing $k$, $k+1$, $k+4$, etc.*
+
+## C. Open Addressing with Double Hashing
+
+**Double Hashing**: Use a second hash function to compute increments.
+
+## D. Separate Chaining
+
+**Separate Chaining**: Track collisions with linked list.
+- **Bucket**: Each location is called a bucket, it can represent more than one value.
