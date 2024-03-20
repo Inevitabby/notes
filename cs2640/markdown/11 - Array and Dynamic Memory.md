@@ -181,8 +181,9 @@ endw:
 
 # Dynamic Memory Allocation (Syscall 9)
 
-**Syscall 9:** Lets us allocate dynamic data.
+**Syscall 9:** Lets us allocate dynamic data to the heap.
 — To use it, load `$a0` with the number of bytes you want and do the syscall.
+	- *Remember: You can only request numbers that are multiples of 4!*
 - `$v0` will contain the base address of the array.
 
 > **Example**: Dynamic Memory Allocation in C v.s. MIPS
@@ -218,6 +219,19 @@ $$
 }
 $$
 
+> **Example**: Allocate t0 bytes
+> ```mips
+>       # Store t0 in a0, make a0 a multiple of 4
+>       addiu     $a0, $t0, 3
+>       srl       $a0, $a0, 2 # + 3
+>       sll       $a0, $a0, 2 # Clear lower 2 bits
+>       # Allocate memory
+>       li        $v0, 9
+>       syscall
+> # End
+> ```
+
+<!--
 > **Example**:
 > ```mips
 >       add     $t1, $t0, 3
@@ -226,6 +240,34 @@ $$
 >       syscall
 > # End
 > ```
+-->
+
+> **Example**: Creating a dynamic array
+> ```mips
+>             .data
+> SIZE=10
+> WSIZE=SIZE*4
+> darray:     .word      0:SIZE
+>             .text
+> 	      # Allocate memory
+>             li         $a0, WSIZE
+>             li         $v0, 9
+> 	      syscall
+> 	      # Store address into memory
+> 	      sw         $v0, darray
+> 	      # Use a while loop to fill array with { 2n }
+> 	      lw         $t0, darray
+> 	      li         $t1, 1
+> 	      li         $t2, 0
+> while:      bge        $t2, SIZE, endu
+>             sw         $t1, ($t0)
+> 	      sll        $t1, $t1, 1
+> 	      addiu      $t0, $t0, 4
+> 	      addi       $t2, $t2, 1
+> 	      b while
+> endw:       nop
+> ```
+<!---*-->
 
 # 2D Arrays
 
