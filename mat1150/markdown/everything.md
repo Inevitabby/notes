@@ -2070,3 +2070,118 @@ $$
 $$
 - By the integral test, the harmonic series diverges.
 </details>
+
+## p-Series
+
+$$
+\boxed{
+	\text{p-series form:} \sum_{n=1}^\infin \frac{1}{n^P}
+}\\
+\small\textit{Where $p$ is a constant} \\
+\textit{Convergent if $p > 1$} \\
+\textit{Divergent if $p \le 1$}
+$$
+
+<details><summary>Why?</summary>
+We can use the integral test to determine if a p-series converges or diverges:
+
+$$
+\begin{aligned}
+\int_1^\infin \frac{1}{x^P} dx &= \lim_{t \to \infin} \int_1^t x^{-P} dx \\
+&= \lim_{t \to \infin} \frac{x^{-P-1}}{-p + 1} |_1^t \\
+&= \lim_{t \to \infin} \frac{1}{(1-p)x^{p - 1}} |_1^t \\
+&= \lim_{t \to \infin} \frac{1}{(1-p)t^{p - 1}} - \frac{1}{1-p} \\~\\
+&= 0 - \frac{1}{1-p} \text{ if $p-1 > 0$} \\
+&= \infin \text{ if $p-1 < 0$} \\
+\end{aligned}
+$$
+
+Thus,:
+- If $p > 1$, the series converges.
+- If $p \le 1$, the series diverges.
+</details>
+
+<details><summary>Example: Which of the following converge?</summary>
+**Q**: $\frac{1}{n^4}$
+- A: Converges
+
+**Q**: $\frac{1}{n^{2/3}}$
+- A: Diverges
+
+**Q**: $\frac{1}{n^\pi}$
+- A: Converges
+</details>
+
+## Remainder Test
+
+$$
+\boxed{
+	\text{Remainder: }
+	R_N = \sum_{n=1}^\infin a_n - S_N
+}
+$$
+
+<details><summary>Why?</summary>
+Derived from integral test.
+
+$$
+S_N + \sum_{n=N+1}^\infin a_N \le S_N + \int_N^\infin f(x) dx
+$$
+
+$$
+\sum_{n=1}^\infin a_n \le S_N + \int_N^\infin f(x) dx
+$$
+
+$$
+\int_{N+1}^\infin f(x) dx \le \sum_{n=1}^\infin a_n - S_N \le \int_N^\infin f(x) dx
+$$
+- $R_N = \sum_{n=1}^\infin a_n - S_N$
+</details>
+
+> ### Remainder Estimate for Integral Test
+> $$
+> \boxed{
+> \text{Remainder Estimate: } \int_{N+1}^\infin f(x) dx < R_n < \int_N^\infin f(x) dx
+> }
+> $$
+> Suppose { $a_n$ } is a sequence with positive terms. $f$ is a continuous, decreasing function with $f(n_=a_n$ for all $n \ge 1$.
+> 
+> Let $S_N$ be the $N$th partial sum of $\sum_{n=1}^\infin$ and suppose this series converges.
+> 
+> Then, for all $n$, the remainder ($R_N$) satisfies the estimate.
+
+<details><summary>Example: Remainder estimate for integral</summary>
+**Q**: Consider $\sum_{n=1}^\infin \frac{1}{n^2}$, which is a convergent p-series (because $2 > 1$). Calculate $S_{10}$ along with the error.
+
+**A**: Using a calculator, we get $S_{10} \approx 1.549767731$
+
+Now, estimating error:
+
+$$
+\begin{aligned}
+\int_{N+1}^\infin \frac{1}{x^2} dx &=
+\lim_{t \to \infin} \int_N^t x^{-2} dx \\
+&= \lim_{t \to \infin} \frac{x^{-1}}{-1} |_N^t \\
+&= \lim_{t \to \infin} - \frac{1}{x} |_N^t \\
+&= \frac{1}{N}
+\end{aligned}
+$$
+
+$$
+\frac{1}{11} < R_{10} < \frac{1}{10} = 0.1
+$$
+- Thus, the answer $S_{10}$ is at most 0.1 off from the actual answer.
+
+**Follow-Up Question**: How far would we need to go to get an error at most $0.001$?
+
+We now know:
+$$
+R_N < \int_N^\infin \frac{1}{x^2} dx = \frac{1}{N}
+$$
+
+Thus we just need to solve:
+$$
+\frac{1}{N} < 0.001
+$$
+- This gives us $N=1000$, which is the answer.
+</details>
