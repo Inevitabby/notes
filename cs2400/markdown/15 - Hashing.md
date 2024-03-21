@@ -155,3 +155,63 @@ private int getHashIndex(K key) {
 
 **Separate Chaining**: Track collisions with linked list.
 - **Bucket**: Each location is called a bucket, it can represent more than one value.
+
+# More on Implementation
+
+- Successful retrieval/removal has same efficiency as successful search.
+- Unsuccessful retrieval/removal has same efficiency as unsuccessful search.
+- Successful addition has same efficiency as unsuccessful search.
+- Unsuccessful addition has same efficiency as successful search.
+
+## Load Factor ($\lambda$)
+
+**Load Factor**: Measure of cost of collision resolution
+
+$$
+\lambda = \frac{\text{Num. of entries in dictionary}}{\text{Num. of locations in hash table}}
+$$
+- Never negative.
+- For open addressing, $1 \ge \lambda$
+- For separate chaining, $\lambda$ has no maximum.
+- Reducing $\lambda$ improves performance.
+
+**Maintaining Performance**:
+- $< 0.5$ for open addressing
+- $< 1.0$ for separate chaining
+- If load factor exceeds these bounds, increase the size of the hash table.
+
+**Rehashing**:
+- Compute new size
+	1. Double present size
+	2. Increase result to next prime number
+- Use add to add current entries in dictionary to new table.
+
+## More Advanced Entries 
+
+> **Example**: Another private inner-class to encapsulate key, value pairs along with state.
+> ```java
+> private static class TableEntry<K,V> {
+> 	private K key;
+> 	private V value;
+> 	private States state;
+> 	private enum States { CURRENT, REMOVED }
+> 	private TableEntry(K key, V value) {
+> 		this.key = key;
+> 		this.value = value;
+> 		this.state = States.CURRENT;
+> 	}
+> }
+> ```
+> - Not necessary if we're doing linear probing.
+
+## Java Class Library: The Class `HashMap`
+
+- Variety of constructors provided.
+- Default maximum load factor of 0.75
+	* Increases size when limit exceeded.
+- Possible to avoid rehashing by setting number of buckets larger. 
+
+## Java Class Library: The Class `HashSet`
+
+- Implements `java.util.Set` interface
+- Uses an instance of `HashMap`
