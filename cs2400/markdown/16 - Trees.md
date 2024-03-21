@@ -24,6 +24,13 @@ title: Tree ADT
 - **Height**: Number of levels in the tree.
 	* A tree can be empty.
 
+# Traversal of a Tree
+
+**Traversal**: Process of visiting each data item exactly once.
+- Traversal can pass through a node without visiting it at that moment.
+- Order we visited items is not unique.
+- Traversing a binary tree is somewhat easy to understand.
+
 # Binary Trees
 
 **Binary Tree**: Each node can have between 0—2 nodes.
@@ -34,3 +41,12 @@ title: Tree ADT
 	* *e.g., Expression binary tree*
 - **Complete**: All leaf nodes at any level are filled from left to right.
 - **Not Full and Not Complete**: A tree that is neither full nor complete.
+
+**Height**:
+$$
+\boxed{
+	\text{Height of a Full Binary Tree} = 2^\text{Number of Nodes} - 1
+}
+$$
+
+## Traversing a Binary Tree
