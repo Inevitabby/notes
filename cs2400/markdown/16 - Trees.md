@@ -26,10 +26,12 @@ title: Tree ADT
 
 # Traversal of a Tree
 
-**Traversal**: Process of visiting each data item exactly once.
-- Traversal can pass through a node without visiting it at that moment.
+**Traversal**: Process of processing each data item exactly once.
+- Traversal can pass through a node without processing it at that moment.
 - Order we visited items is not unique.
 - Traversing a binary tree is somewhat easy to understand.
+
+In general, to iterate through a tree, we need to use a stack or recursion.
 
 # Binary Trees
 

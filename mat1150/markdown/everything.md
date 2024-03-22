@@ -2185,3 +2185,106 @@ $$
 $$
 - This gives us $N=1000$, which is the answer.
 </details>
+
+## The Comparison Test
+
+> ### Direct Comparison Test
+> 
+> Let { $a_n$ } and { $b_n$ } be positive sequences such that $a_n \le b_n$ for all $n \ge N$ for some positive integer $N$.
+> - If $\sum_{n=1}^\infin b_n$ converges, so does $\sum_{n=1}^\infin a_n$
+> - If $\sum_{n=1}^\infin a_n$ diverges, so does $\sum_{n=1}^\infin b_n$
+
+<details><summary>Why?</summary>
+$$
+\text{Does it converge?: }
+\sum_{n = 1}^\infin \frac{1}{n^2 + 1}
+$$
+- Looks kinda like the p-series { $\frac{1}{n^2}$ }
+	* And we know that the p-series converges because $p=2$
+
+We can see that:
+$$
+\sum_{n = 1}^\infin \frac{1}{n^2 + 1}
+<
+\sum_{n = 1}^\infin \frac{1}{n^2}
+$$
+- Because the series is bounded above and is monotonic, we can see that it converges.
+</details>
+
+<details><summary>Example</summary>
+**Q**: Does $\sum_{n=1}^\infin \frac{1}{\ln n}$ converge?
+
+> Hint: $n > \ln n$
+
+**A**: We'll do comparison test against $\frac{1}{n}$
+
+$$
+\sum_{n=1}^\infin \frac{1}{n} < \sum_{n=1}^\infin \frac{1}{\ln n}
+$$
+
+We know the harmonic series diverges, so the series also diverges.
+</details>
+
+> ### Limit Comparison Test
+> 
+> Let { $a_n$ } and { $b_n$ } be positive sequences such that $a_n \le b_n$ for all $n \ge N$ for some positive integer $N$.
+> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = L$, then $\sum_{n=1}^\infin a_n$ and $\sum_{n=1}^\infin b_n$ both converge or both diverge.
+> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = 0$ and $\sum_{n=1}^\infin b_n$ converges, then $\sum_{n=1}^\infin a_n$ converges.
+> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = \infin$ and $\sum_{n=1}^\infin b_n$ diverges, then $\sum_{n=1}^\infin a_n$ diverges.
+
+<details><summary>Example</summary>
+**Q**: Does $\sum_{n=1}^\infin \frac{1}{\sqrt{n^2 + 3}}$ converge?
+
+**A**: We'll try to directly compare this against $\frac{1}{\sqrt{n^2}}$, which is the harmonic series:
+
+We know—
+$$
+\sqrt{n^2 + 3} > \sqrt{n^2}
+$$
+—so:
+
+$$
+\sum_{n=1}^\infin \frac{1}{\sqrt{n^2 + 3}}
+<
+\sum_{n=1}^\infin \frac{1}{n}
+$$
+- This doesn't tell us anything, so we'll use the limit comparison test.
+	* (We could also manipulate the inequality to get what we want)
+
+**A**: Let's try again with the [limit comparison test]{.underline}
+
+$$
+\{ a_n \}: \sum_{n=1}^\infin \frac{1}{\sqrt{n^2 + 3}} \qquad
+\{ b_n \}: \sum_{n=1}^\infin \frac{1}{n}
+$$
+
+$$
+\begin{aligned}
+\lim_{n \to \infin} \frac{1}{\sqrt{n^2 + 3}} \times \frac{n}{1}
+&= \lim_{n \to \infin} \frac{n}{\sqrt{n^2 + 3}} \\
+&= \lim_{n \to \infin} \frac{\sqrt{n^2}}{\sqrt{n^2 + 3}} \\
+&= \lim_{n \to \infin} \sqrt{ \frac{n^2}{n^2 + 3} } \\
+&= \lim_{n \to \infin} \sqrt{ \frac{2n}{2n} } \\
+&= \lim_{n \to \infin} \sqrt{ 1 } \\
+&= \lim_{n \to \infin} 1 \\
+\end{aligned}
+$$
+- By limit comparison test, we know these both converge or both diverge.
+	* Because harmonic series diverges, so does our series.
+
+**Q**: Does $\sum_{n=1}^\infin \frac{1}{3^n - n^2}$ converge?
+
+**A**: Limit comparison test
+
+We could compare to { $\frac{1}{3^n}$ } or { $\frac{1}{n^2}$ }.
+1. If we try { $\frac{1}{n^2}$ }, we get:
+
+$$
+\begin{aligned}
+\lim_{n \to \infin} \frac{1}{3^n - n^2} \times \frac{n^2}{1} 
+&= \lim_{n \to \infin} \frac{n^2}{3^n - n^2} \\
+&= 0
+\end{aligned}
+$$
+- Because the limit goes to zero **and** { $\frac{1}{n^p}$ } converges, the series converges.
+</details>
