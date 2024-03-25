@@ -13,13 +13,27 @@ MIPS is a load-and-store architecture, only two instructions can access memory.
 > - Is word aligned (is a multiple of four)
 >	* Thus, the last two bits of a word will always be zero.
 
-**Memory Layout**:
-- Text Segment (`.text`): 0x400000 — 0x10000000
-- Static Data (`.data`): ??? — 0x10000000
-- Dynamic Data: Stored above static data.
-
 **Symbol Table**: Stores a table of symbols and their addresses.
 - e.g., The symbol `mem` may map to `0x100000004` in the table.
+
+# Memory Layout
+
+(`$sp`{.mips}) 0x7fffffff:
+- **Stack Segment** Starts (Grows Down)
+	* *(So to head down you need to perform subtraction)*
+- `$sp`{.mips} register that contains address to the top of the stack segment.
+
+(`$gp`{.mips}) 0x00008000:
+- **Dynamic Data** Ends (Grows Up)
+- **Data Segment** Starts
+
+0x10000000:
+- **Data Segment** Ends (`.data`)
+- **Text Segment** Starts (`.text`)
+
+(`$pc`{.mips}) 0x00400000:
+- **Text Segment** Ends
+- **Reserved Segment** Starts
 
 # Offset
 
@@ -305,4 +319,60 @@ $$
 > for (int i = 0; i < n; i++) {
 > 	matrix[i][i] = 1;
 > }
+> ```
+
+# Stack Segment
+
+> **Local Variable**: Variable that is automatically created and destroyed.
+> - Exists in the stack segment.
+
+> **Example**: Pushing and popping from the stack segment
+> ```mips
+>       # push t0 to stack segment
+>       addiu   $sp, $sp, -4
+>       sw      $t0, ($sp)
+>       
+>       # pop t0 from stack segment
+>       lw      $t0, ($sp)
+>       addiu   $sp, $sp, 4
+> # End
+> ```
+
+> **Example**: Pushing and popping multiple values from the stack segment 
+> ```mips
+>       # pushing t0 and t1 to the stack
+>       addiu   $sp, $sp, -8
+>       sw      $t0, 4($sp)
+>       sw      $t1, 0($sp)
+>       
+>       # popping t0 and t1 from the stack
+>       lw      $t0, 0($sp)
+>       lw      $t1, 4($sp)
+>       addiu   $sp, $sp, 8
+> # End
+> ```
+
+> **Example**: Creating an array of 100 words on the stack
+> 
+> 1. C
+> 
+> ```c
+> int array[100];
+> array[t0] = 99;
+> ```
+> 
+> 2. MIPS
+> 
+> ```mips
+>       addiu     $sp, $sp, -400
+>       
+>       sll       $t1, $t0, 2	# Offset
+>       addu      $t2, $sp, $t1	# Effective Address
+>       
+>       # array[t0] = 99;
+>       li        $t3, 99
+>       sw        $t3, ($t2)
+>       
+>       addiu     $sp, $sp, 400
+> # End
 > ```
