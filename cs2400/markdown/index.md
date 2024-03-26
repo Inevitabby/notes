@@ -51,6 +51,6 @@
 
 15. [Hashing](15 - Hashing.html)
 
-## XI. Hashing
+## XII. Trees
 
 16. [Trees](16 - Trees.html)
