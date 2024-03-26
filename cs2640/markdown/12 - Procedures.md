@@ -59,6 +59,7 @@ title: "Procedures"
 > 	jr	$ra
 > # End of getint
 > ```
+> - Remember to save procedure results to avoid them getting overridden.
 
 # Register Conventions
 
