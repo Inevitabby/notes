@@ -2330,3 +2330,161 @@ $$
 
 This series converges by the alternating series test because $\lim_{n \to \infin} \frac{1}{n} = 0$
 </details>
+
+> ### Alternating Series Approximation Theorem
+> 
+> Let { $b_n$ } be a positive, decreasing sequence so that $\lim_{n \to \infin} b_n = 0$.
+> 
+> Let $S_N$ be the $N$th partial sum of the alternating series, either:
+> $$
+> \sum_{n=1}^\infin (-1)^n b_n
+> \lor
+> \sum_{n=1}^\infin (-1)^{n+1} b_n
+> $$
+> 
+> And let $S$ be the sum of the alternating series, then:
+> 
+> $$
+> \boxed{
+> 	\text{Alternating Series Approximation Theorem: } R_N = S - S_N
+> } \\
+> \small\textit{}
+> $$
+
+> Satisfies:
+> 1. $|R_N| \le b_{n+1}$
+> 2. $S$ lies between $S_N$ and $S_{N+!}$
+
+<details><summary>Why?</summary>
+The sum of a convergent alternating series lies in-between successive partial sums:
+$$
+S_N < S < S_{N+1}
+$$
+- Or similar.
+
+Then $|R_N| \le b_{n+1}$
+</details>
+
+<details><summary>Example: Approximate the series</summary>
+**Q**: Estimate $\sum_{n=1}^\infin (-1)^{n+1} \frac{1}{n}$ within 0.001
+
+**A**:
+$$
+R_N \le b_{N+1} \le 0.01 \\
+R_N \le \frac{1}{N+1} \le 0.01 \\
+$$
+
+$$
+\begin{aligned}
+	\frac{1}{N+1} &\le 0.01 \\
+	1 &\le 0.01(N+1) \\
+	100 &\le N+1 \\
+	99 &\le N \\
+\end{aligned}
+$$
+
+Putting $\sum_{n=1}^{99} (-1)^{n+1} \frac{1}{n}$ into a calculator we get ~$0.69$
+</details>
+
+## Absolute Convergence
+
+### Absolute Convergence Theorem
+
+$$
+\boxed{
+	\begin{aligned}
+	&\qquad \text{Absolute Convergence Theorem: }\\
+	&\text{If $\sum_{n=1}^\infin |a_n|$ converges, so does $\sum_{n=1}^\infin a_n$}
+\end{aligned}
+}
+$$
+
+> **Definition**: Absolute Convergence
+> - If $\sum_{n=1}^\infin |a_n|$ converges, we say $\sum_{n=1}^\infin a_n$ **converges absolutely**.
+> - If $\sum_{n=1}^\infin |a_n|$ diverges, we say $\sum_{n=1}^\infin a_n$ **converges conditionally**.
+
+<details><summary>Why?</summary>
+A sequence being alternating or having a mix of positive and negative terms makes it corresponding series more likely to converge.
+
+Ex: $\sum_{n=1}^\infin (-1)^{n+1} \frac{1}{n}$ converges, but $\sum_{n=1}^\infin \frac{1}{n}$ diverges.
+
+Also, note that if a series of positive terms converges, then changing the signs of some terms will change what it converges to, [but it won't change the convergence]{.underline}.
+
+**Absolute Convergence Theorem Proof**:
+
+$$
+0 \le a_n + |a_n| \le 2 | a_n |
+$$
+
+By assumption and algebraic laws for series,
+$$
+\sum_{n=1}^\infin 2 | a_n | = 2 \sum_{n=1}^\infin | a_n |
+$$
+
+By the direct comparison test, $\sum_{n=1}^\infin a_n + |a_n|$ also converges
+
+Let's do subtraction:
+$$
+\sum_{n=1}^\infin a_n + |a_n| - \sum_{n=1}^\infin |a_n| \\
+= \sum_{n=1}^\infin a_n \\
+$$
+- Which is convergent by algebraic laws for series.
+	* (Because we subtracted two convergent series to get another convergent series)
+</details>
+
+<details><summary>Example: Does it converge absolutely, conditionally, or diverge?</summary>
+**Q**: $\sum_{n=1}^\infin (-1)^{n+1} \frac{1}{n^2}$
+
+**A**:
+
+Let's take the absolute value to get:
+
+$$
+\sum_{n=1}^\infin \frac{1}{n^2}
+$$
+
+We can see that this new series is a convergent $p$-series (because $2 > 1$).
+- This tells us that our [original series converges absolutely]{.underline}.
+
+**Q**: $\sum_{n=1}^\infin (-1)^{n+1} \frac{\sin n}{n^2}$
+
+**A**:
+
+Let's take the absolute value to get:
+
+$$
+\sum_{n=1}^\infin \frac{\sin n}{n^2}
+$$
+
+Let's do comparison test, specifically the direct comparison (because limit comparison wouldn't work with $\sin n$):
+
+Letting {$b_n$} $= \frac{1}{n^2}$, we can see that the series converges by direct comparison.
+- Thus [the original sum converges absolutely]{.underline}.
+
+**Q**: $\sum_{n=1}^\infin (-1)^{n+1} \frac{3n + 4}{2n^2 + 3n + 5}$
+
+**A**:
+
+Let's take the absolute value to get:
+
+$$
+\sum_{n=1}^\infin \frac{3n + 4}{2n^2 + 3n + 5}
+$$
+
+We'll compare this against { $\frac{n}{n^2}$ } (limit comparison test):
+
+$$
+\begin{aligned}
+	\lim_{n \to \infin} \frac{3n + 4}{2n^2 + 3n + 5} \times \frac{n}{1}
+	&= \lim_{n \to \infin} \frac{3n^2 + 4n}{2n^2 + 3n + 5} \\
+	&\textit{(do l'hopitals)}
+	&= \lim_{n \to \infin} \frac{6}{4} \\
+\end{aligned}
+$$
+- This is the case where $a_n$ and $b_n$ either both converge or diverge.
+	* As $b_n$ is harmonic series, this tells us that the original series does not converge absolutely.
+		+ The original series could still be conditionally convergent or divergent, so we don't have an answer yet.
+
+Doing the alternating series test on the original series, we can see that it is convergent ($\lim_{n \to \infin} \frac{3n + 4}{2n^2 + 3n + 5} = 0$).
+- This combined with the fact that it isn't absolutely convergent means that the [original series converges conditionally]{.underline}.
+</details>
