@@ -2512,17 +2512,53 @@ $$
 
 ## Ratio Test
 
-<!--
-TODO: Redo these notes
-- Accidentally deleted them :sob: 
--->
+$$
+\begin{aligned}
+	\qquad \text{Ratio Test:} \\
+	\text{Let $\sum_{n=1}^\infin a_n$ have nonzero terms} \\
+	\text{Suppose $\lim_{n \to \infin} | \frac{a_{n+1}}{a_n} | = \rho$} \\
+	\text{1. If $\rho < 1$, the series converges absolutely} \\
+	\text{2. If $\rho > 1$, the series diverges} \\
+	\text{3. If $\rho = 1$, test is inconclusive}
+\end{aligned}
+$$
+
+<details><summary>Tip: When to use this test</summary>
+If the series uses a factorial, this test might work.
+</details>
 
 ## Root Test
 
-<!--
-TODO: Redo these notes
-- Accidentally deleted them :sob: 
--->
+$$
+\begin{aligned}
+	\qquad \text{Root Test:} \\
+	\text{Let $\sum_{n=1}^\infin a_n$ be a series} \\
+	\text{Suppose $\lim_{n \to \infin} \hphantom{}^n \sqrt{|a_n|} = \lim_{n \to \infin} | a_n |^{\frac{1}{n}} = \rho$} \\
+	\text{1. If $\rho < 1$, the series converges absolutely} \\
+	\text{2. If $\rho > 1$, the series diverges} \\
+	\text{3. If $\rho = 1$, test is inconclusive}
+\end{aligned}
+$$
+
+<details><summary>Example: Does it diverge?</summary>
+Q:
+
+$$
+\sum_{n=1}^\infin (\frac{3n+1}{5n-2})^n
+$$
+
+A:
+
+$$
+\begin{aligned}
+	\lim_{n \to \infin} n \sqrt{ (\frac{3n+1}{5n-2})^n }
+	&= \lim_{n \to \infin} \frac{3n+1}{5n-2} \\
+	&= \frac{3}{5}
+\end{aligned}
+$$
+
+$3/5$ is less than $1$, so the series converges.
+</details>
 
 ## Power Series and Functions
 
