@@ -126,12 +126,13 @@ Exp 2: Select two balls at random in a row without replacing the ball your took.
 Ex: Select one employee at random out of 100 employees.
 
 |        | Smoke | Not Smoke |
+|--------|-------|-----------|
 | Male   | 45    | 15        |
 | Female | 10    | 30        |
 
 1. P(Male) = 60/100 = 0.6
 2. P(Smoker) = 55/100 = 0.55
-3. P(Male $\cup$ smoker) = 45/100 = 0.45
+3. P(Male $\cup$ Smoker) = 45/100 = 0.45
 </details>
 
 # Conditional Probability
@@ -155,22 +156,26 @@ Q: Construct the probability table from the following information
 There are 30 students in class, 10 students are female and 12 students are from LA county. There are 3 female students from LA county.
 
 |                | Female | Male |
+|----------------|--------|------|
 | LA County      |        |      |
 | Other Counties |        |      |
 
 A:
 
 |                | Female | Male |    |
+|----------------|--------|------|----|
 | LA County      | 3      |      | 12 |
 | Other Counties |        |      |    |
 |                | 10     |      | 30 |
 
 |                | Female | Male |    |
+|----------------|--------|------|----|
 | LA County      | 3      |      | 12 |
 | Other Counties |        |      | 18 |
 |                | 10     | 20   | 30 |
 
 |                | Female | Male |    |
+|----------------|--------|------|----|
 | LA County      | 3      | 9    | 12 |
 | Other Counties | 7      | 11   | 18 |
 |                | 10     | 20   | 30 |
@@ -298,7 +303,7 @@ $$
 $$
 </details>
 
-<details><summary>Example: Rule of total probability</summary>p
+<details><summary>Example: Rule of total probability</summary>
 Q: There are 10 students and 6 of them are women. 
 
 Suppose we take a sample of two students (w/o replacement). Find the probability that the second student is a woman.
@@ -320,7 +325,7 @@ $$
 $$
 </details>
 
-<details><summary>Example: Rule of total probability</summary>p
+<details><summary>Example: Rule of total probability</summary>
 Q: There is an urn containing three white balls and four black. One ball will be drawn at random and put back into the urn with another of a kind. Another ball will be drawn at random after adding another ball of the same color into the urn.
 
 What is the probability the second ball is black?
@@ -347,7 +352,7 @@ $$
 P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^c)P(B^c)}
 $$
 
-<details><summary>Example: Bayes Rule</summary>p
+<details><summary>Example: Bayes Rule</summary>
 Q: 
 
 $$
