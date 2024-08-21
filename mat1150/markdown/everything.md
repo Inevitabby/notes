@@ -2228,9 +2228,9 @@ We know the harmonic series diverges, so the series also diverges.
 > ### Limit Comparison Test
 > 
 > Let { $a_n$ } and { $b_n$ } be positive sequences such that $a_n \le b_n$ for all $n \ge N$ for some positive integer $N$.
-> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = L$, then $\sum_{n=1}^\infin a_n$ and $\sum_{n=1}^\infin b_n$ both converge or both diverge.
-> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = 0$ and $\sum_{n=1}^\infin b_n$ converges, then $\sum_{n=1}^\infin a_n$ converges.
-> - If $\lim_{n \to \infin} \frac{a_n}{b_n} = \infin$ and $\sum_{n=1}^\infin b_n$ diverges, then $\sum_{n=1}^\infin a_n$ diverges.
+> 1. If $\lim_{n \to \infin} \frac{a_n}{b_n} = L$, then $\sum_{n=1}^\infin a_n$ and $\sum_{n=1}^\infin b_n$ both converge or both diverge.
+> 2. If $\lim_{n \to \infin} \frac{a_n}{b_n} = 0$ and $\sum_{n=1}^\infin b_n$ converges, then $\sum_{n=1}^\infin a_n$ converges.
+> 3. If $\lim_{n \to \infin} \frac{a_n}{b_n} = \infin$ and $\sum_{n=1}^\infin b_n$ diverges, then $\sum_{n=1}^\infin a_n$ diverges.
 
 <details><summary>Example</summary>
 **Q**: Does $\sum_{n=1}^\infin \frac{1}{\sqrt{n^2 + 3}}$ converge?
@@ -2287,4 +2287,46 @@ $$
 \end{aligned}
 $$
 - Because the limit goes to zero **and** { $\frac{1}{n^p}$ } converges, the series converges.
+</details>
+
+<details><summary>Note: Picking the right { $b_n$ }</summary>
+Sometimes, finding the right { $b_n$ } can be difficult.
+
+For example: For $\sum_{n=1}^\infin \frac{\ln n}{n^2}$, trying to compare against $\sum_{n=1}^\infin \frac{1}{n^2}$ or $\sum_{n=1}^\infin \frac{1}{n^2}$ is inconclusive, we go too small and too big.
+- This, however clues us in on trying $\sum_{n=1}^\infin \frac{1}{n^{1.5}}$, which *does* work.
+
+For things in trig functions, comparing against the function parameter is usually helpful.
+- ex: Compare $\sin \theta$ against $\theta$, $\sin \frac{1}{n}$ against $\frac{1}{n}$, etc.
+</details>
+
+## Alternating Series
+
+<details><summary>Note: Difference</summary>
+In the previous sections, all tests (except for divergence test) assumed that { $a_n$ } consisted only of positive terms.
+
+This section inspects series with alternating positive and negative terms.
+</details>
+
+$$
+\boxed{
+\text{Alternating Series: } 
+	\sum_{n=1}^\infin (-1)^{n} b_n
+	\lor
+	\sum_{n=1}^\infin (-1)^{n+1} b_n
+} \\
+\small\textit{where \{ $b_n$ \} is a positive sequence}
+$$
+
+> ### Alternating Series Test
+> 
+> Let { $b_n$ } be a positive, decreasing sequence with $\lim_{n \to \infin} b_n = 0$
+> 
+> Then, the alternating series—$\sum_{n=1}^\infin (-1)^{n} b_n \lor \sum_{n=1}^\infin (-1)^{n+1} b_n$—both converge.
+
+<details><summary>Example: Proving alternating harmonic series converges</summary>
+$$
+\sum_{n=1}^\infin (-1)^{n+1} \frac{1}{n}
+$$
+
+This series converges by the alternating series test because $\lim_{n \to \infin} \frac{1}{n} = 0$
 </details>
