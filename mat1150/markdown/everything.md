@@ -2509,3 +2509,150 @@ $$
 \end{aligned}
 }
 $$
+
+## Ratio Test
+
+<!--
+TODO: Redo these notes
+- Accidentally deleted them :sob: 
+-->
+
+## Root Test
+
+<!--
+TODO: Redo these notes
+- Accidentally deleted them :sob: 
+-->
+
+## Power Series and Functions
+
+<details><summary>Motivating Question</summary>
+**Recall**:
+
+$$
+\sum_{n=0}^\infin r^n = \frac{1}{1-r}
+$$
+- for $-1 < r < 1$
+	* diverges for $|r| \ge 1$
+- We can think of this as a function with $r=x$ our input:
+
+$$
+f(x) = \sum_{n=0}^\infin x^n = 1 + x + x^2 + x^3 + ... = \frac{1}{1-x}
+$$
+- for $-1 < x < 1$
+
+**Motivating Question**: Can we write other functions as infinite sums of powers of $x$?
+</details>
+
+> ### Power Series
+> 
+> Let $x$ be a variable and { $c_n$ } a sequence.
+> 
+> A power series in $x$ centered at $x=0$ is of the form:
+> 
+> $$
+> \sum_{n=0}^\infin c_n x^n = c_0 + c_1 x + c_2 x^2 + c_3 x^3 + ...
+> $$
+> 
+> A power series in $x$ centered at $x=a$ is of the form:
+> 
+> $$
+> \sum_{n=0}^\infin c_n (x-a)^n = c_0 + c_1 (x-a) + c_2 (x-a)^2 + ...
+> $$
+
+> ### Convergence of Power Series
+> 
+> For the power series $\sum_{n=0}^\infin c_n (x-a)^n$:
+> 
+> Case I: Series converges at $x=a$ and diverges for all other $x$
+> 
+> Case II: Series converges for all real numbers.
+> 
+> Case III: There exists a real number $R$ such that the series converges for $|x-a|<R$, diverges for $|x-a|>R$, and for $|x-a|=R$ nay converge or diverge.
+
+<details><summary>Why?</summary>
+Let's use the Ratio Test to determine if this power series converges:
+
+**Q**:
+$$
+\sum_{n=1}^\infin \frac{x^n}{n}
+$$
+
+**A**:
+
+$$
+\begin{aligned}
+	\lim_{n \to \infin} | \frac{a_{n+1}}{a_n} | &= \lim_{n \to \infin} | \frac{x^{n+1}}{n+1} \times \frac{n}{x^n} | \\
+	&= \lim_{n \to \infin} |x| \times \frac{n}{n+1} \\
+	&= |x| \lim_{n \to \infin} \frac{n}{n+1} \\
+	&= |x|
+\end{aligned}
+$$
+
+Thus, the outcome of the ratio test depends on what $|x|$ is 
+- If $|x|<1$: Converges
+- If $|x|>1$: Diverges
+- If $|x|=1$: Inconclusive
+
+**Investigating the Inconclusive Case**:
+
+If $|x|=1$, then there are two cases: $x=1$ and $x=-1$
+
+Case I: $x=1$
+$$
+\sum_{n=1}^\infin = \frac{1^n}{n}
+$$
+- Diverges (harmonic series)
+
+
+Case II: $x=-1$
+$$
+\sum_{n=1}^\infin = \frac{(-1)^n}{n}
+$$
+- Converges (alternating harmonic series)
+
+**Conclusion**:
+- The power series converges when $|x|<1$ or $x=-1$
+	* Diverges for all other values
+	* $-1 \le x < 1$
+- Alternative phrasing: Converges for $x = [-1, 1)$
+</details>
+
+> ### Radius of Convergence ($R$)
+> 
+> Case I: $R = 0$ 
+> 
+> Case II: $R = \infin$
+> 
+> **Interval of Convergence:** Interval on which power series converges.
+
+<details><summary>Why?</summary>
+**The Idea**: Use the ratio test on power series
+- Let's do this more generally
+
+$$
+\lim_{n \to \infin} | \frac{c_{n+1} (x-a)^{n+1}}{ c_n (x-a)^n } | =
+| x - a | \lim_{n \to \infin} | \frac{c_{n+1}}{c_n} | \\
+= |x-a| \rho
+$$
+
+Cases:
+1. $\rho = \infin$: Diverges for all $x$ except $x=a$ 
+2. $\rho = 0$: Converges for all $x$
+3. $\rho = \infin$: Converges as long as $|x-a| < R$
+	- $R$ is another name for $\frac{1}{\rho}$, the [Radius of Convergence]{.underline} if the series.
+</details>
+
+<details><summary>Example: Find radius and interval of convergence</summary>
+**Q**: $\sum_{n=1}^\infin \frac{(x-1)^n}{n^2}$
+
+**A**: Let's use the ratio test
+
+$$
+\lim_{n \to \infin} | \frac{ (x-1)^{n+1} }{ (x+1)^2 } \times \frac{n^2}{(x-1)^n} | \\
+= |x-1| \lim_{n \to \infin} \frac{n^2}{(n+1)^2} \\
+= |x-1| < 1
+$$
+- Radius of Convergence is $1$
+</details>
+
