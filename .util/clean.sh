@@ -7,7 +7,7 @@ function clean_orphan {
 	INPUT_DIR=$1
 	HTML_FILE=$2
 	MARKDOWN_FILE=$(basename -- "${HTML_FILE}")
-	MARKDOWN_FILE="${INPUT_DIR}/markdown/${MARKDOWN_FILE%.*}.md"
+	MARKDOWN_FILE="${INPUT_DIR}/${MARKDOWN_FILE%.*}.md"
 	if [ ! -f "${MARKDOWN_FILE}" ]; then
 		printf " - Deleting orphan: %s\n" "${MARKDOWN_FILE}"
 		rm "${HTML_FILE}"

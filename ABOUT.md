@@ -57,18 +57,19 @@ I take most of my notes in plaintext (Markdown) during lecture.
 
 In unrelated news, the source of the incessant click-clacking keyboard driving you insane during lecture has yet to be found.
 
-When I want to upload my note(s) to [this GitLab repository](https://gitlab.com/inevitabby/notes/), I just add them to a subfolder named `markdown` inside a parent folder, like so:
+When I want to upload my note(s) to [this GitLab repository](https://gitlab.com/inevitabby/notes/), I just add them to a folder, like so:
 ```
 |-cs1300
-|---markdown
+|--index.md
+|--01 - Formal Logic.md
+|--02 - Propositional Logic.md
+|--etc...
 |-cs1400
-|---markdown
-|-cs50
-|---markdown
+|--etc...
 |-phl2020
-|---markdown
+|--etc...
 ```
-- *Note: New folders need to be added to the `DIRECTORIES` array in `daemon.sh`* 
+- *Note: Folders need to be added to the `DIRECTORIES` array in `daemon.sh` to actually get processed into HTML* 
 
 ## B. Conversion
 
@@ -89,12 +90,12 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 
 **Tools**
 
-- [`pandoc`](https://pandoc.org): Universal document converter. Converts the Markdown to HTML.
+- [`pandoc`](https://pandoc.org): Universal document converter. Used to convert Markdown to HTML.
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
 - [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): GitLab lets you host static websites from Git repositories on GitLab.
 - [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
 - [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plain text.
-	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to replace all convert all embedded PlantUML into embedded SVGs. 
+	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to turn all embedded PlantUML into embedded SVGs. 
 
 **Gentoo Packages**
 

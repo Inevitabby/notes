@@ -37,7 +37,7 @@ trap "cleanup" SIGINT
 function convert {
 	# Convert notes
 	for INPUT_DIR in "${DIRECTORIES[@]}"; do
-		for INPUT_FILE in "${INPUT_DIR}/markdown/"*.md
+		for INPUT_FILE in "${INPUT_DIR}/"*.md
 		do
 			((i=i%N)); ((i++==0)) && wait # Limit number of parallel processes
 			convert_markdown "${INPUT_FILE}" "${INPUT_DIR}"
