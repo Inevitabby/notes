@@ -357,3 +357,103 @@ Things we can store in the stack frame:
 >     jr	$ra
 > # End
 > ```
+
+## Variable Arguments
+
+**Variable Arguments**: Functions that take a variable number of arguments essentially are functions that take optional arrays.
+
+> E.g., `System.out.println(String, args...)`{.java}
+
+In MIPS convention, the required parameters will be a-registers while *varargs* will be on the stack.
+- Because we don't know how many arguments we're getting, we need to put arguments onto the stack in the reverse order. 
+
+> **Example**: Vararg in MIPS (printf)
+> 
+> ```mips
+>       .data
+> name: .asciiz    "John"
+> age:  .word      "22"
+> str:  .asciiz    " ... "
+>       .text
+> main:
+>       la        $a0, str
+> 	addiu     $sp, $sp, -8
+> 	la        $t0, name
+> 	sw        $t0, 0($sp)
+> 	lw        $t0, age
+> 	sw        $t0, 4($sp)
+> 	jal       printf
+> 	addiu     $sp, $sp, 8
+> printf:
+>       # push a0 to stack
+> 	# Do t1 = $sp + 4 (addiu)
+> 	# Move a0 into t0
+> 	# while (*t0 != != '\0')
+> 	# ^ Note: Use lb $t2, ($t0)
+> 	#	if t2 == '%'
+> 	#           t0++
+> 	#           switch (*t0 (next char))
+> 	#           case '%'
+> 	#               Print '%'
+> 	#           case 'd'
+> 	#               Print ($t1) (remember to use lw)
+> 	#               t1 += 4
+> 	#               ^ we do this so that if there's another %d, we will use the next param
+> 	#           case 's'
+> 	#               Print ($t1)
+> 	#               t1 += 4
+> 	#      else
+> 	#           Print $t2 (syscall 11)
+> 	#	t0++
+> 	# pop a0
+> # End
+> ```
+<!--*-->
+
+## Array Arguments
+
+Functions that take arrays with no sentinel values must also take the length of the array as an argument.
+
+> **Example**: Sum of array contents
+> 
+> ```mips
+> 	.data
+> array:	.word	0:20
+> sum:	.word	0
+> 	.text
+> main:
+> 	la	$a0, array
+> 	li	$a1, 20
+> 	jal	sumArr
+> 	sw	$v0, sum
+> 	  # Do exit syscall
+> # sumArr(array, array_length)
+> sumArr:
+> 	move	$t0, $a0
+> 	li	$v0, 0 # Sum
+> 	li	$t1, 0 # Counter
+> while:
+> 	bge	$t1, $a1, endw
+> 	lw	$t2, ($t0)
+> 	add	$v0, $v0, $t2
+> 	addiu	$t0, $t0, 4
+> 	addiu	$t1, $t1, 1
+> 	b	while
+> endw:
+> 	jr	$ra
+> # End
+> ```
+> 
+
+<!--
+**REVIEW IDEA:**
+
+Data Segment
+- Static Array
+
+Heap
+- Dynamic Array
+
+Stack Segment
+- Local Array
+-->
