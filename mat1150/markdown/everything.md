@@ -2967,3 +2967,65 @@ Theorem: Let $f(x) = \sum_{n=0}^\infin c_n x^n = c_0 + c_1 x + c_2 x^2 + ...$ wi
 Then
 
 1. f'(x) = \sum_{n=r}^\infin n c_n x^{n-2}
+
+## Taylor and Maclaurin Series
+
+
+If $f$ has derivatives of all orders at $x=a$, the Taylor series for the function $f$ at $a$ is:
+
+$$
+\sum_{n=0}^\infin \frac{f^{(n)}(a)}{n!} (x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!} (x-a)^2 + \frac{f'''(a)}{3!} (x-a)^3 + ...
+$$
+
+$$
+\boxed{
+	\text{MacLaurin Series: } \sum_{n=0}^\infin \frac{f^{(n)}(0)}{n!} x^n
+}
+$$
+- This just a Taylor series where $a=0$
+
+The nth partial sum for a Taylor series is called the nth Taylor polynomial
+
+$$
+p_0 (x) = f(a) \\
+p_1 (x) = f(a) + f'(a) (x-a) \\
+p_2 (x) = f(a) + f'(a) (x-a) + \frac{f''(n)}{2!}(x-a)^2 \\
+$$
+
+Example: Find the second Maclaurin polynomial for e^x
+
+$$
+p_5 (x) = f(0) + f'(0) x + \frac{f''(0)}{2!} x^2
+$$
+
+Note how all the derivatives (f'(0), f''(0), etc.) are just $e^x$ again, and $e^0 = 1$, so:
+
+$$
+p_5 (x) = 1 + x + \frac{1}{2!} x^2
+$$
+
+The nth MacLaurin polynomial for $e^x$ is
+
+$$
+\sum_{n=0}^\infin \frac{1}{n!} x^n
+$$
+
+### Mean Value Theorem
+
+> aka: Taylor's Theorem with remainder
+
+Let $f$ be a function that can be differentiated $n+1$ times on an interval $I$ containing $a$
+
+Let $R_n$ be the nth Taylor polynomial of $f$ at $a$.
+
+$$
+\text{nth Remainder: } R_n (x) = f(x) - \rho_n (x)
+$$
+
+Then for each $x$ in the interval $I$ there exists a real number $c$ between $x$ and $a$ so that
+
+$$
+R_n (x) = \frac{f^{n+1} (c) }{ (n+1)! } (x-a)^{n+1}
+$$
+
+If there exists a real number
