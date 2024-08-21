@@ -2,23 +2,21 @@
 title: Introduction to Statistics
 ---
 
-# Introduction
-
-## What is Statistics?
+# What is Statistics?
 
 **Statistics**: Methods to collect, analyze, present, interpret data, and make decisions.
 
 **Two Types of Statistics**:
 1. **Descriptive**: Methods to organize, display, and describe data.
 	- e.g., Tables, graphs, summary measures
-2. **Inferential**: Methods that use sample results to help ake decisions or predictions about a population.
+2. **Inferential**: Methods that use sample results to help make decisions or predictions about a population.
 	- e.g., T-test, confidence
 
 > **Note**: Probability lies in-between descriptive and inferential statistics.
 
 > **Course Progression**: Descriptive Statistics $\to$ Probability $\to$ Inferential Statistics
 
-## Terms in Statistics
+# Terms in Statistics
 
 **Population**: The [entire]{.underline} group of individuals that we want information about.
 - Usually impossible to observe the entire population.
@@ -87,4 +85,6 @@ title: Introduction to Statistics
 
 **Multi-Stage R.S.**: A mixture or combination of at least two methods above (except simple R.S.)
 
-> **Note**: In this course, we'll assume the samples we're given are good samples and gotten through simple R.S., unless told otherwise.
+> **Course Note**: Assume the samples we're given are good samples unless told otherwise.
+
+
