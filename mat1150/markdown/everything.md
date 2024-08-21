@@ -2594,7 +2594,7 @@ $$
 $3/5$ is less than $1$, so the series converges.
 </details>
 
-## Power Series and Functions
+# Power Series and Functions
 
 <details><summary>Motivating Question</summary>
 **Recall**:
@@ -2864,4 +2864,106 @@ $$
 [Thus]{.underline}, **interval of convergence** is $[-2, 6]$
 </details>
 
-## Finding the Power Series
+## Properties of Power Series
+
+<!-- 6.2 -->
+
+### Combining Power Series
+
+Suppose the two power series $\sum_{n=0}^\infin c_n x^n$ and $\sum_{n=0}^\infin d_n x^n$ converge to functions f(x) and g(x) respectively on common interval $I$.
+
+1. $\sum_{n=0}^\infin ( c_n x^n \pm d_n x^n)$ converges to $f(x) \pm g(x)$
+2. For integer $m \ge 0$, real number $b$, $\sum_{n =0}^\infin b x^m c_n x^n$ converges to $b x^m f(x)$ on $I$
+3. For integer $m \ge 0$, real number $b$, $\sum_{n =0}^\infin c_n (b x^m)^n$ converges to $f(bx^m)$.
+
+### Multiplying Power Series
+
+Suppose the power series $\sum_{n=0}^\infin c_n x^n$ and $\sum_{n=0}^\infin d_n x^n$ converge to functions $f(x)$ and $g(x)$ on common interval $I$.
+
+Let $e_n = c_0 d_n + c_1 d_{n-1} + c_2 d_{n-2} + ...$
+
+Or,
+
+$$
+\sum_{k=0}^n c_k d_{n-k}
+$$
+
+Then, $(\sum_{n=0}^\infin c_n x^n) (\sum_{n=0}^\infin d_n x^n) = \sum_{n=0}^\infin e_n x^n$, which converges to $f(x)g(x)$ on $I$.
+
+
+<details><summary>Example: Find first 2 terms of the power series</summary>
+$$
+\begin{aligned}
+	\frac{2}{(x-1)(x-3)} &= \frac{-2}{1 - x} \times \frac{-1}{3 - x} \\
+	&= \frac{2}{1-x} \times \frac{\frac{1}{3}}{1 - \frac{x}{3}} \\
+	&= (\sum_{n=0}^\infin 2x^n)(\sum_{n=0}^\infin \frac{1}{3} (\frac{x}{3})^n) \\
+	&= (2 + 2x + 2x^2 + ...)(\frac{1}{3} + \frac{x}{9} + \frac{x^2}{27} + ...)
+\end{aligned}
+$$
+
+$$
+e_0 = c_0 d_0 = 2(\frac{1}{3}) = \frac{2}{3} \\
+e_1 = c_0 d_1 + c_1 d_0 = 2 ( \frac{1}{4} ) + 2 ( \frac{1}{3} ) \\
+$$
+
+$$
+\frac{2}{3} + 2 ( \frac{1}{4} ) + 2 ( \frac{1}{3} ) = \frac{11}{6}
+$$
+</details>
+
+### Calculus
+
+$$
+f(x)  = \frac{1}{1-x} = (1-x)^{-1} \\
+f'(x) = \frac{1}{(1-x)^2}
+$$
+
+Thus,
+
+$$
+[ \sum_{n=0}^\infin x^n ]' = \sum_{n=1}^\infin n x^{n-1}
+$$
+- For $|x| < 1$
+
+$$
+	F(x) = \int \frac{1}{1-x} dx = - \ln | 1 -x| + D
+$$
+
+Thus,
+
+$$
+\int \sum_{n=0}^\infin x^n dx = C + \sum_{n=0}^\infin \frac{x^{n+1}}{n + 1}
+$$
+- For $|x| < 1$
+
+---
+
+Let $x=0$:
+
+$$
+-\ln |1 | + D = C + \sum_{n=0}^\infin \frac{0^{n+1}}{n+1} \\~\\
+D = C
+$$
+
+Thus,
+
+$$
+-\ln | 1-x| = \sum_{n=0}^\infin \frac{x^{n+1}}{n+1}
+$$
+
+---
+
+Let x=1:
+
+Eventually you get
+$$
+\ln 2 = \text{Alternating harmonic series}
+$$
+
+---
+
+Theorem: Let $f(x) = \sum_{n=0}^\infin c_n x^n = c_0 + c_1 x + c_2 x^2 + ...$ with $R$.
+
+Then
+
+1. f'(x) = \sum_{n=r}^\infin n c_n x^{n-2}
