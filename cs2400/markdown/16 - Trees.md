@@ -294,7 +294,7 @@ $$
 > - Because the that order things go in relates to how things come out.
 > - Like a mix of array, priority queue, and tree.
 
-# General Trees Applications
+# General Tree Applications
 
 **Parse Tree**: 
 - Lets you check the syntax of a string for valid algebraic expressions.
@@ -313,7 +313,9 @@ $$
 
 # Tree Implementations
 
-## Binary Tree Nodes
+## Binary Tree
+
+### Binary Tree Nodes
 
 Each node has three fields:
 1. Value
@@ -340,3 +342,106 @@ class BinaryNode<T> {
 }
 ```
 
+### initializeTree
+
+```java
+private void initializeTree(T rootData, BinaryTree<T> leftTree, BinaryTree<T> rightTree)
+```
+
+### Additional Challenges
+
+1. Make sure you copy nodes by value when applicable.
+	- Don't have your nodes point to nodes in other trees!
+2. If you want to use recursion for a public method; you'll need a `private` and `public` version of a method.
+
+### Example: In-order Traversal
+
+**Recursive**:
+```java
+private void inorderTraverse(BinaryNode<T> node) {
+	if (node != null) {
+		inorderTaverse(node.getLeftChild());
+		System.out.println(node.getData());
+		inorderTaverse(node.getRightChild());
+	}
+}
+```
+
+**Stack**:
+1. Push node to stack.
+2. Push left node onto stack
+	- Keep doing this until we've pushed the leaf node.
+3. Pop off leaf node and parent of the leaf node.
+4. Push right node onto stack
+	- Keep doing this until we've pushed the leaf node.
+
+### Example: Level-Order Traversal
+
+Use a queue.
+1. Add everything on the current level to the queue.
+2. Dequeue everything once you reach end of level.
+3. Go to next level.
+
+## Expression Tree
+
+### Expression Tree Implementation
+
+```java
+public interface ExpressionTreeInterface extends BinaryTreeInterface<String> {
+	double evaluate();
+}
+```
+- Notice how there is no generic!
+
+### Postfix $\to$ Expression Tree (BTS)
+
+**Steps**: For each token:
+1. If token is an operand:
+	- Push it to the BTS (binary tree stack) as a leaf node.
+2. If token is an operator:
+	- Pop off rhs and lhs
+	- Make new tree from rhs, lhs, and operator (operator is root)
+	- Push tree back into BTS
+
+> **Example**: Manually converting postfix to expression tree
+> 
+> **Prefix**: `ab+`
+> 
+> We will use a binary tree stack, a stack of binary trees.
+> 
+> 1. We will read the first character onto the stack as a leaf node (a)
+> 2. We will add the second character onto the stack as a leaf node (b)
+> 3. Once we read an operator, we will pop off the two leaf nodes and make them children of the operator (+)
+
+### Evaluation
+
+```java
+private double evaluate(BinaryNode<String> rootNode) {
+	double result;
+	if (rootNode == null) {
+		return 0;
+	}
+	if (rootNode.isLeaf()) {
+		String variable = rootNOdegetData();
+		result = getValueOf(Variable);
+	} else {
+		double firstOperand = evaluate(rootNode.getLeftChild());
+		double secondOperand = evaluate(rootNode.getRightChild());
+		/* Perform computation */
+	}
+}
+```
+
+## General Trees
+
+You can implement a general tree with (1) lists, or (2) a binary tree!
+
+**Representing General Tree with a Binary Tree**:
+- Right-Children indicate siblings.
+- Left-Children indicate children.
+
+> **Tip**: Draw the binary with horizontal right-lines to make the sibling relationship clearer.
+
+<!--
+> **Note**: To iterate through it, we must iterate through all the right nodes.
+-->
