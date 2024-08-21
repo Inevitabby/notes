@@ -30,7 +30,7 @@ $$
 	}
 }
 \\~\\
-\small\textit{\textit{Percentage} = \textit{Relative Frequency} \times 100}
+\small\textit{\textit{Percentage} = \textit{Relative Frequency} $\times 100$}
 $$
 
 > **Remember**: A table should summarize its data.
@@ -97,7 +97,7 @@ So:
 - *aka: Bar Chart, Bar Plot*
 
 **Pie Chart**: Circle divided into portions that represent [relative frequencies]{.underline} (or percentages) of respective categories.
-- $\text{Angle of a Slice} = \text{Relative Frequency} \times 360 \deg$
+- $\text{Angle of a Slice} = \text{Relative Frequency} \times 360 \degree$
 
 # Histogram
 
