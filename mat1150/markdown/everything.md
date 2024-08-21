@@ -2488,3 +2488,24 @@ $$
 Doing the alternating series test on the original series, we can see that it is convergent ($\lim_{n \to \infin} \frac{3n + 4}{2n^2 + 3n + 5} = 0$).
 - This combined with the fact that it isn't absolutely convergent means that the [original series converges conditionally]{.underline}.
 </details>
+
+$$
+\boxed{
+	\begin{aligned}
+	&\qquad \text{Absolute Convergence Theorem (Pt II): }\\
+	&\text{If $\sum_{n=1}^\infin a_n$ converges absolutely,} \\
+	&\text{so does any arrangement of the terms of the series}
+\end{aligned}
+}
+$$
+
+
+$$
+\boxed{
+	\begin{aligned}
+	&\qquad \text{Reimann Rearrangement Theorem: }\\
+	&\text{If $\sum_{n=1}^\infin a_n$ is conditionally convergent,} \\
+	&\text{For any $S$ in [ $-\infin$, $\infin$ ] there exists a rearrangement of the terms of the series so it adds up to $S$}
+\end{aligned}
+}
+$$
