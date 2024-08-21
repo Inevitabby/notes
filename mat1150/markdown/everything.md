@@ -2809,8 +2809,28 @@ $$
 \end{aligned}
 $$
 - **Radius of Convergence:** 4
+- We know our center is 2 and $R=4$, thus the work-in-progress interval is -2, 6 
+	* However, at the endpoints the ratio test is inconclusive (equal to 1)
+		+ Thus we need to test the endpoints to know what the interval of convergence is.
 
 > Aside: Understanding $| x-2 | < 4$
 > - "$x$'s distance from 2 is at most 4"
+
+**Testing Endpoints:**
+
+Case I: -2
+$$
+\sum_{n=1}^\infin \frac{ (-2(-2) + 4)^n }{ n^2 \times 8^n } = blah
+$$
+- Converges because it yields the convergent p-series $\frac{1}{n^2}$
+
+Case II: 6
+- Doing a bunch of algebra we eventually get—
+$$
+\sum_{n=1}^\infin (-1)^n \frac{1}{n^2}
+$$
+- —which converges by the alternating series test. 
+
+[Thus]{.underline}, **interval of convergence** is $[-2, 6]$
 </details>
 
