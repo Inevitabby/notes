@@ -509,6 +509,7 @@ Stack Segment
 >     jr	$ra
 > ```
 
+<!--
 **Example**: Recursive Fibonacci in Java and MIPS
 
 1. Java
@@ -522,5 +523,7 @@ int fib(int n) {
 }
 ```
 
-2. MIPS
+1. MIPS
 	- (You'll need to store the result of fib to the stack in order to call it twice)
+-->
+
