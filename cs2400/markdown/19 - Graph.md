@@ -248,3 +248,10 @@ public class DirectedGraph<T> implements GraphInterface<T> {
 ```
 
 > **Important**: Remember to check if `getCost()` returned no path every time you use it.
+
+**Digraph**: A set of distinct vertices and distinct edges.
+- Dictionary of vertices
+
+- Only Java class we're allowed to use is the list, every other thing needs to be implemented by us.
+
+
