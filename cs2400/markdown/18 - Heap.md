@@ -1,5 +1,5 @@
 ---
-title: "Heap ADT"
+title: "Heap"
 ---
 
 # Heap
@@ -31,13 +31,14 @@ title: "Heap ADT"
 > **Priority Queue / FIFO Behavior**: 
 > - Suppose you put in the same node ($a$) twice: $a_1$ followed by $a_2$. When you "dequeue", $a_1$ will come out first.
 
-# Representing Complete Binary Tree with Array
+# Representing Complete Binary Tree with an Array
 
-We can use an array to represent a complete binary tree
+We can use a (partially-filled) array to represent a complete binary tree
 - No need to mess around with nodes!
 
 **How-To:**
 1. Number nodes in the order in which level-order traversal would visit them.
+	- *(Start indexing/counting the nodes at 1.)*
 2. We locate the children or the parent of any node with a simple computation:
 
 > Node n(index)
@@ -52,4 +53,30 @@ We can use an array to represent a complete binary tree
 -->
 
 > **Note**: Inserting
-> - To insert, you need to find the parent.
+> 
+> **Steps**:
+> 1. Insert the new value in a way to keeps the tree complete
+> 2. Check the parent's value. Swap the parent and new node if they don't follow max/min rules.
+> 3. Repeat step 2 on the parent node, until you reach the root. (**Reheap**)
+> 
+> - To insert, you need to be able to find the parent of any node.
+
+> **Note**: Removal
+> 
+
+> **Note**: Reheaping the Whole Tree
+> 1. Look at the root node and swap it with the smallest/biggest appropriate child to maintain min/max heap.
+> 2. Traverse down the tree
+
+> **Note**: Removal
+> 
+> **Steps**
+> 1. Move last node to the position of the node to remove.
+> 2. Reheap the whole tree.
+
+> **Growing the Array:** 
+> - You can safely expand the array (copy-by-value to a bigger array). You don't need to perform any special operations.
+
+# Priority Queue
+
+
