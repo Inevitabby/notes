@@ -2513,14 +2513,16 @@ $$
 ## Ratio Test
 
 $$
+\boxed{
 \begin{aligned}
-	\qquad \text{Ratio Test:} \\
-	\text{Let $\sum_{n=1}^\infin a_n$ have nonzero terms} \\
-	\text{Suppose $\lim_{n \to \infin} | \frac{a_{n+1}}{a_n} | = \rho$} \\
-	\text{1. If $\rho < 1$, the series converges absolutely} \\
-	\text{2. If $\rho > 1$, the series diverges} \\
-	\text{3. If $\rho = 1$, test is inconclusive}
+	&\qquad \text{Ratio Test:} \\
+	&\text{Let $\sum_{n=1}^\infin a_n$ have nonzero terms} \\
+	&\text{Suppose $\lim_{n \to \infin} | \frac{a_{n+1}}{a_n} | = \rho$} \\
+	&\text{1. If $\rho < 1$, the series converges absolutely} \\
+	&\text{2. If $\rho > 1$, the series diverges} \\
+	&\text{3. If $\rho = 1$, test is inconclusive}
 \end{aligned}
+}
 $$
 
 <details><summary>Tip: When to use this test</summary>
@@ -2530,14 +2532,16 @@ If the series uses a factorial, this test might work.
 ## Root Test
 
 $$
+\boxed{
 \begin{aligned}
-	\qquad \text{Root Test:} \\
-	\text{Let $\sum_{n=1}^\infin a_n$ be a series} \\
-	\text{Suppose $\lim_{n \to \infin} \hphantom{}^n \sqrt{|a_n|} = \lim_{n \to \infin} | a_n |^{\frac{1}{n}} = \rho$} \\
-	\text{1. If $\rho < 1$, the series converges absolutely} \\
-	\text{2. If $\rho > 1$, the series diverges} \\
-	\text{3. If $\rho = 1$, test is inconclusive}
+	&\qquad \text{Root Test:} \\
+	&\text{Let $\sum_{n=1}^\infin a_n$ be a series} \\
+	&\text{Suppose $\lim_{n \to \infin} \hphantom{}^n \sqrt{|a_n|} = \lim_{n \to \infin} | a_n |^{\frac{1}{n}} = \rho$} \\
+	&\text{1. If $\rho < 1$, the series converges absolutely} \\
+	&\text{2. If $\rho > 1$, the series diverges} \\
+	&\text{3. If $\rho = 1$, test is inconclusive}
 \end{aligned}
+}
 $$
 
 <details><summary>Example: Does it diverge?</summary>
@@ -2652,6 +2656,7 @@ $$
 	* Diverges for all other values
 	* $-1 \le x < 1$
 - Alternative phrasing: Converges for $x = [-1, 1)$
+	* This is why we need to use other tests to check if a power series converges.
 </details>
 
 > ### Radius of Convergence ($R$)
@@ -2690,5 +2695,89 @@ $$
 = |x-1| < 1
 $$
 - Radius of Convergence is $1$
-</details>
 
+**Q**:
+
+$$
+\sum_{n=0}^\infin n! (x-3)^n
+$$
+
+**A**: Let's do ratio test
+
+> Recall:
+> $$
+> \boxed{
+> \begin{aligned}
+> 	&\qquad \text{Ratio Test:} \\
+> 	&\text{Let $\sum_{n=1}^\infin a_n$ have nonzero terms} \\
+> 	&\text{Suppose $\lim_{n \to \infin} | \frac{a_{n+1}}{a_n} | = \rho$} \\
+> 	&\text{1. If $\rho < 1$, the series converges absolutely} \\
+> 	&\text{2. If $\rho > 1$, the series diverges} \\
+> 	&\text{3. If $\rho = 1$, test is inconclusive}
+> \end{aligned}
+> }
+> $$
+
+$$
+\begin{aligned}
+	\lim_{n \to \infin} | \frac{ a_{n+1} }{ a_n } | &= 
+	\lim_{n \to \infin}
+	| \frac{
+		(n+1)! (x-3)^{n+1}
+	}{
+		n! (x-3)^n
+	} | \\
+	&= \lim_{n \to \infin} (n+1) |x-3| \\
+	&= |x-3| \lim_{n \to \infin} (n+1) \\
+	&= \infin
+\end{aligned}
+$$
+- Thus, the series converges at 3 (its center) and nowhere else.
+	- **Remember**: The series always converges at its center.
+- Radius of Convergence: 0
+	* *(You can't go any distance from 3 without diverging)*
+- There isn't really an interval to converge on.
+
+> **Tip**: Manipulating Factorials for Cancellation
+> $$
+> (n+1)! = (n+1)n!
+> $$
+
+**Q**:
+
+$$
+\sum_{n=1}^\infin ( \frac{ 6x-12 }{ n } )^n
+$$
+
+**A**:
+
+Thinking:
+- We could use the ratio test, but the root test will work better.
+
+> Recall:
+> 
+> $$
+> \boxed{
+> \begin{aligned}
+> 	&\qquad \text{Root Test:} \\
+> 	&\text{Let $\sum_{n=1}^\infin a_n$ be a series} \\
+> 	&\text{Suppose $\lim_{n \to \infin} \hphantom{}^n \sqrt{|a_n|} = \lim_{n \to \infin} | a_n |^{\frac{1}{n}} = \rho$} \\
+> 	&\text{1. If $\rho < 1$, the series converges absolutely} \\
+> 	&\text{2. If $\rho > 1$, the series diverges} \\
+> 	&\text{3. If $\rho = 1$, test is inconclusive}
+> \end{aligned}
+> }
+> $$
+
+$$
+\begin{aligned}
+\lim_{n \to \infin} \hphantom{}^n \sqrt{ | \frac{ 6x-12 }{ n } |^n }
+&= \lim_{n \to \infin} \frac{ |6x-12| }{ n } \\
+&= |6x-12| \lim_{n \to \infin} \frac{ 1 }{ n } \\
+&= 0
+\end{aligned}
+$$
+- This is zero ($<1$) for every $x$, so the series always converges.
+- **Radius of Convergence:** Infinity
+- **Interval of Convergence:** $(-\infin, \infin)$
+</details>
