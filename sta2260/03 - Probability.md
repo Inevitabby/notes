@@ -1,0 +1,365 @@
+---
+title: "Event and Probability"
+---
+
+# Terms
+
+**Experiment**: Process that results in one or many observations 
+
+**Outcome**: Observations of an experiment
+
+**Sample Space** ($S$): Set of all possible outcomes
+
+**Event** ($E$): Statement about the outcome.
+- Any subset of the sample space.
+
+> Example: Experiment: Toss a coin once.
+> - $S$ = { Heads, Tails }
+
+> Example: Experiment: Toss a coin twice.
+> - $S$ = { HH, HT, TH, TT }
+> - E = { Heads on the first flip } 
+>	- This is true for { HH, HT }
+
+
+# Set Operators
+
+**Complement**: $A^c$ or $\bar{A}$
+- All outcomes in the sample space that are not in A.
+
+**Union**: $A \cup B$
+- All outcomes that are in A or B (inclusive).
+
+**Intersection**: $A \cap B$
+- All outcomes that are in A and B.
+
+**Disjoint Events**: $A \cap B = \emptyset$
+- Events A and B are mutually exclusive *(they can't occur together)*
+	* Ex: $A$ and $A^c$ are always disjoint.
+
+> Example: Experiment: Roll a die once.
+> - S = { 1, 2, 3, 4, 5, 6 }
+> - A = { An even number } = { 2, 4, 6 }
+
+<details><summary>Example: Set operators</summary>
+Q: Given
+
+$S = \{ 1, 2, 3, 4, 5, 6 \}$
+
+$A = \{ 2, 4, 6 \}$
+
+$B = \{ 3, 6 \}$
+
+Find:
+1. $A^c$
+2. $B^c$
+3. $A \cup B$
+3. $A \cap B$
+
+A:
+
+1. $A^c$: { 1, 3, 5 }
+2. $B^c$: { 1, 2, 4, 5 }
+3. $A \cup B$: { 2, 3, 4, 6 }
+3. $A \cap B$ { 6 }
+</details>
+
+> Related Notes: [Operations on Sets - CS1300](https://inevitabby.gitlab.io/notes/cs1300/07%20-%20Set%20Theory.html#operations-on-sets)
+> Note: Probability can be represented with Venn diagrams.
+
+# Probability Rules
+
+**Probability**:
+
+$$
+\boxed{
+	P(E) = \frac{\text{\# of outcomes in $E$ occured}}{\text{\# of outcomes in $S$ occured}}
+} \\~\\
+\small\textit{Given that all outcomes in $S$ are equally likely}
+$$
+
+- $0 \le P(E) \le 1$
+	- Probabilities are between 0—1.
+- $P(S) = 1$
+	- Probability of sample space must be one.
+- $P(A^c) = 1 - P(A) = 1 - P(A)$
+	* Complement is 1 - probability. 
+- $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+	* To get union, subtract the intersection to avoid double-counting.
+
+# Disjoint Events & Independent Events
+
+Let A, B, and C be events.
+
+1. $A$ and $B$ are disjoint (mutually exclusive) if and only if $P(A \cap B) = 0$
+2. If $A$ and $B$ are disjoint, $P(A \cup B) = P(A) + P(B)$
+3. If $A$, $B$, and $C$ are disjoint, $P(A \cup B \cup C) = P(A) + P(B) + P(C)$
+4. $A$ and $B$ are independent if and only if $P(A \cap B) P(A) P(B)$
+
+<details><summary>Example: Disjoint v.s. Independent</summary>
+There's a box containing 1 white ball and 3 black balls.
+
+A = { The first ball is white }
+B = { The second ball is white }
+
+Exp 1: Select two balls at random in a row with replacement.
+
+Exp 2: Select two balls at random in a row without replacing the ball your took.
+
+1. Exp 1: 
+	- Is not disjoint (A and B can happen). 
+	- Is independent (the result of the first pick has no effect on the second)
+2. Exp 2:
+	- Is disjoint (A and B cannot both happen)
+	- Is dependent (A affects the occurrence of B)
+</details>
+
+# Marginal & Joint Probability
+
+**Marginal Probability**: Probability of a single event without considering any other events.
+
+**Joint Probability**: Probability of two events occurring simultaneously.
+
+> Note: Both probabilities are out of $n$.
+
+<details><summary>Example: Marginal probability</summary>
+Ex: Select one employee at random out of 100 employees.
+
+|        | Smoke | Not Smoke |
+| Male   | 45    | 15        |
+| Female | 10    | 30        |
+
+1. P(Male) = 60/100 = 0.6
+2. P(Smoker) = 55/100 = 0.55
+3. P(Male $\cup$ smoker) = 45/100 = 0.45
+</details>
+
+# Conditional Probability
+
+**Conditional Probability**: $P(A|B)$: Probability of A given B
+- Probability that event A will occur under the condition that the event B already occurred. 
+
+$$
+\boxed{
+	P(A|B) = \frac{
+		P(A \cap B)
+	}{
+		P(B)
+	}
+}
+$$
+
+<details><summary>Example: Marginal probability</summary>
+Q: Construct the probability table from the following information
+
+There are 30 students in class, 10 students are female and 12 students are from LA county. There are 3 female students from LA county.
+
+|                | Female | Male |
+| LA County      |        |      |
+| Other Counties |        |      |
+
+A:
+
+|                | Female | Male |    |
+| LA County      | 3      |      | 12 |
+| Other Counties |        |      |    |
+|                | 10     |      | 30 |
+
+|                | Female | Male |    |
+| LA County      | 3      |      | 12 |
+| Other Counties |        |      | 18 |
+|                | 10     | 20   | 30 |
+
+|                | Female | Male |    |
+| LA County      | 3      | 9    | 12 |
+| Other Counties | 7      | 11   | 18 |
+|                | 10     | 20   | 30 |
+
+---
+
+Q: One student will be selected at random, what is the probability that the selected student is:
+
+1. Male?
+2. From LA County?
+3. Male and from LA County.
+4. If a male is selected, what is the probability that he is from LA county.
+
+A: 
+
+1. 20/30
+2. 12/30
+3. 9/30
+4. 9/20
+
+</details>
+
+# Conditional Probability and Independent Events
+
+If A and B are independent, then $P(A|B) = P(A)$ and $P(B|A) = P(B)$, furthermore:
+
+$$
+\boxed{
+	\text{If A and B are independent: }
+	P(A) = P(A|B) = P(A | B^c )
+}
+$$
+
+# Multiplication Rule
+
+$$
+\boxed{
+	P(A \cap B) = P(A|B) P(B) \lor P(B|A) P(A)
+}
+$$
+
+<details><summary>Example: Multiplication rule</summary>
+Q: There are 10 students and 6 of them are women.
+
+We take a sample of two students (w/out replacement), find the probability that both students are women.
+
+A: 
+
+$$
+\begin{aligned}
+	P(W_1 \cap W_2) &= P(W_1) P(W_2 | W_1) \\
+	&= \frac{6}{10} \times \frac{5}{9} \\
+	&= \frac{1}{3}
+\end{aligned}
+$$
+
+---
+
+Q: Find the probability that the first student is a woman and the second student is a man.
+
+A:
+
+$$
+\begin{aligned}
+	P(W_1 \cap M_2) &= P(W_1) P(M_2 | W_1) \\
+	&= \frac{6}{10} \times \frac{4}{9} \\
+	&= \frac{4}{15}
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example: Multiplication rule</summary>
+Q: Let $P(A)=0.7$ and $P(B|A)=0.4$, find $P(A \cap B)$
+
+A:
+
+$$
+\begin{aligned}
+	P(A \cap B) &= P(B|A)P(A) \\
+	&= 0.4 \times 0.7  \\
+	&= 0.28
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example: Multiplication rule</summary>
+Q: 70% of a population are male. 40% of males smoke.
+
+When a person is chosen at random from this population, find the probability that the person is a male smoke.
+
+A:
+
+Let A = Male and B = Smoker
+
+We have been told that $P(A)=0.7$ and $P(B|A)=0.4$, so:
+
+$$
+P(A \cap B) = P(B|A) P(A) = 0.4 \times 0.7 = 0.28
+$$
+</details>
+
+# Rule of Total Probability
+
+<!--
+TODO image
+-->
+
+**Rule of Total Probability**: 
+- Helps you find complicated marginal probabilities.
+
+$$
+\boxed{
+	\text{Rule of Total Probability: }
+	P(A) = P(A|B)P(B) + P(A|B^c) P(B^c)
+}
+$$
+
+<details><summary>Why?</summary>
+$$
+\begin{aligned}
+	P(A) &= P{ (A \cap B) \cup (A \cap B^c) } \\
+	&= P(A \cap B) + P(A \cap B^c) \textit{(disjoint)} \\
+	&= P(A|B)P(B) + P(A|B^c) P(B^c) \textit{(multiplication rule)}
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example: Rule of total probability</summary>p
+Q: There are 10 students and 6 of them are women. 
+
+Suppose we take a sample of two students (w/o replacement). Find the probability that the second student is a woman.
+
+A:
+
+We will consider two cases:
+1. First student is $W_1$
+2. First student is $M_1$
+
+$$
+\begin{aligned}
+	P(W_2) &= P(W_1 \cap W_2) + P(W_1^c \cap W_2) \\
+	&= P(W_2 | W_1) P(W_1) + P(W_2 | W_1^c) P(W_1^c) \\
+	&= P(W_2 | W_1) P(W_1) + P(W_2 | M_1) P(M_1) \\
+	&= \frac{5}{9} \times \frac{6}{10} + \frac{6}{9} \times \frac{4}{10} \\
+	&= \frac{3}{5}
+\end{aligned}
+$$
+</details>
+
+<details><summary>Example: Rule of total probability</summary>p
+Q: There is an urn containing three white balls and four black. One ball will be drawn at random and put back into the urn with another of a kind. Another ball will be drawn at random after adding another ball of the same color into the urn.
+
+What is the probability the second ball is black?
+
+A:
+
+We will consider two cases:
+1. First ball is white ($W_1$).
+2. First ball is black ($B_1$).
+
+$$
+\begin{aligned}
+	P(B_2) &= P(B_1 \cap B_2) + P(W_1 \cap B_2) \\
+	&= P(B_2 | B_1) P(B_1) + P(B_2 | W_1) P(W_1) \\
+	&= \frac{5}{8} \times \frac{4}{7} + \frac{4}{8} \times \frac{3}{7} \\
+	&= \frac{4}{7}
+\end{aligned}
+$$
+</details>
+
+# Bayes Rule
+
+$$
+P(B|A) = \frac{P(B \cap A)}{P(A)} = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^c)P(B^c)}
+$$
+
+<details><summary>Example: Bayes Rule</summary>p
+Q: 
+
+$$
+\begin{aligned}
+	P(W_1 | W_2) &= \frac{P(W_1 \cap W_2)}{P(W_2)} \\
+	&= \frac{P(W_2|W_1) P(W_1)}{P(W_2|W_1)P(W_1) + P(W_2|M_1)P(M_1)} \\
+	&= \frac{
+		\frac{5}{9} \times \frac{6}{10}
+	}{
+		\frac{3}{5}
+	} \\
+	&= \frac{5}{9}
+\end{aligned}
+$$
+</details>
