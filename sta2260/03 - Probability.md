@@ -78,6 +78,7 @@ $$
 \small\textit{Given that all outcomes in $S$ are equally likely}
 $$
 
+**Rules**:
 - $0 \le P(E) \le 1$
 	- Probabilities are between 0—1.
 - $P(S) = 1$

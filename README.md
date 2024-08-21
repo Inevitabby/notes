@@ -13,6 +13,7 @@
 ## Mathematics
 
 - [MAT1150: Calculus II](mat1150)
+- [STA2260: Probability and Statistics for Computer Scientists and Engineers](sta2260)
 
 
 ## General Education
