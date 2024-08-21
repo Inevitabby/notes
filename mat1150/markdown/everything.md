@@ -1497,25 +1497,55 @@ But/and $r>1$: $\lim_{n \to \infin} r^n = \infin$ and $r<-1$ grows arbitrarily l
 
 ## Monotonic Sequences
 
+$$
+\boxed{
+      \text{Increasing Monotonic Sequence: }
+	a_{n+1} \ge a_n 
+} \\
+\small\textit{For all } n \ge n_0
+$$
+
+$$
+\boxed{
+      \text{Decreasing Monotonic Sequence: }
+	a_{n+1} \le a_n
+} \\
+\small\textit{For all } n \ge n_0
+$$
+
+<details><summary>Longer Definition: Monotonic Sequences</summary>
 > ### Monotonic Sequences
 > 
-> A sequence { $a_n$ } is monotonic for all $n>n_0$ if it  if it is either increasing or decreasing for all $n>n_0$.
+> A sequence { $a_n$ } is monotonic for all $n>n_0$ if it is either increasing or decreasing for all $n>n_0$.
 > 
-> $$
-> \boxed{
-> \text{Increasing Monotonic Sequence: }
-> a_{n+1} \ge a_n \forall n \ge n_0
-> }
-> $$
-> 
-> $$
-> \boxed{
-> \text{Decreasing Monotonic Sequence: }
-> a_{n+1} \le a_n \forall n \ge n_0
-> }
-> $$
-> 
-> > **Note**: $-a_n$ both sides to get difference test; $\div a_n$ both sides to get ratio test
+</details>
+
+$$
+\boxed{
+	\begin{aligned}
+	&\qquad \text{Difference Test: } \\
+	& \text{Increasing: } a_{n+1} - a_n \ge  0 \\
+	& \text{Decreasing: } a_{n+1} - a_n \le  0 
+	\end{aligned}
+}
+$$
+
+$$
+\boxed{
+	\begin{aligned}
+	&\qquad \text{Ratio Test: } \\
+	& \text{Increasing: } a_{n+1} \div a_n \ge  0 \\
+	& \text{Decreasing: } a_{n+1} \div a_n \le  0 
+	\end{aligned}
+}
+$$
+
+<details><summary>Why? (Deriving Difference and Ratio Test for Monotonicity)</summary>
+Take the definitions of increasing/decreasing monotonic sequences:
+1. Subtract $a_n$ from both sides to get the difference test for increasing/decreasing monotonicity.
+2. Divide $a_n$ from both sides to get the ratio test for increasing/decreasing monotonicity.
+	- Remember that the ratio test should only be used for positive sequences.
+</details>
 
 <details><summary>Example: Show the sequence is monotonic</summary>
 **Q:** Show that { $\frac{n+1}{n}$ } is monotonic.
@@ -2834,3 +2864,4 @@ $$
 [Thus]{.underline}, **interval of convergence** is $[-2, 6]$
 </details>
 
+## Finding the Power Series
