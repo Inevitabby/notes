@@ -3014,18 +3014,103 @@ $$
 
 > aka: Taylor's Theorem with remainder
 
-Let $f$ be a function that can be differentiated $n+1$ times on an interval $I$ containing $a$
+Let $f$ be a function that can be differentiated $n+1$ times on an interval containing $a$.
 
-Let $R_n$ be the nth Taylor polynomial of $f$ at $a$.
-
-$$
-\text{nth Remainder: } R_n (x) = f(x) - \rho_n (x)
-$$
-
-Then for each $x$ in the interval $I$ there exists a real number $c$ between $x$ and $a$ so that
+Let $p_n$ be the nth Taylor polynomial for $r$ at $a$.
 
 $$
-R_n (x) = \frac{f^{n+1} (c) }{ (n+1)! } (x-a)^{n+1}
+\text{Error (remainder): }
+R_n (x) = f(x) - p_n (x)
 $$
 
-If there exists a real number
+Then for each $x$ in $I$, there exists some value $c$ between $x$ and $a$ so that
+
+$$
+R_n (x) =
+\frac{f^{n+1} (c)}{ (n+1)! } (x-a)^{n+1}
+$$
+
+If there exists number $M$ so that $|f^{n+1} (x)| \le M$ for all $x$ in $I$, then
+
+$$
+|R_n(x) \le \frac{M}{(n+1)!} |x-a|^{n+1}
+$$
+
+### Convergence of Taylor Series
+
+Suppose $f$ has derivatives of all orders on an interval $I$ containing $a$.
+
+Then the Taylor series
+
+$$
+\sum_{n=0}^\infin \frac{f^{(n) (a)}}{ n! } (x-a)^n
+$$
+
+Converges to f(x) for all x in I if and only if the error goes to 0 at n goes to infinity.
+
+<!--
+**Example**: 
+
+$$
+\sum_{n=0}^\infin \frac{x^n}{n!}
+$$
+
+Q: Find the interval of convergence of the power series and then show that the Taylor series converges to $e^x$ on that interval.
+
+**A**:
+
+Do ratio test, you'll get $0 < 1$ and get $R = \infin$ and interval of convergence to be all real numbers.
+
+$e^x$ gets infinitely big if we plug in infinity (unbounded) so we'll cheat it by showing that $e^x$ converges to its Taylor series on $(-b, b)$, and thus also neg infin to pos infin.
+
+On (-b, b), |f^{n+1} (x)| = |e^x| \le e^b
+
+| R_n (x) | \le \frac{e^b}{(n+1)!} |x|^{n+1}
+
+Then you do nth term test for divergence and squeeze theorem to prove convergence.
+-->
+
+**Example**: Find the Taylor series for $\sin x$ and show it converges to $\sin on its interval of convergence.$
+
+## Working with Taylor Series
+
+### Common MacLaurin Series
+
+$$
+\begin{matrix}
+	\text{Function} & \text{MacLaurin Series} & \text{Interval of Convergence} \\
+	\frac{1}{1-x} & \sum_{n=0}^\infin x^n & -1 < x < 1 \\
+	e^x & \sum_{n=0}^\infin (-1)^n \frac{x^n}{n!} & - \infin < x \infin \\
+	\sin x & \sum_{n=0}^\infin (-1)^n \frac{x^{2n+1}}{ (2n+1)! } & - \infin < x \infin \\
+	\cos x & \sum_{n=0}^\infin (-1)^n \frac{x^{2n}}{ (2n)! } & - \infin < x \infin \\
+	\ln(1+x) & \sum_{n=0}^\infin (-1)^{n+1} \frac{x^n}{n} & -1 < \le 1 \\
+	\arctan x & \sum_{n=0}^\infin \frac{x^{2n+1}}{ 2n+1 } & -1 \le x \le 1 \\
+	(1+x)^r & \sum_{n=0}^\infin (\binom{n}{r}) x^n & -1 < x < 1
+\end{matrix}
+$$
+
+$$
+\binom{n}{r} = \frac{
+	r(r-1)(r-2)...(r-(n-1))
+}{
+	n!
+} = \frac{n!}{(n-r)n!}
+$$
+
+<!--
+**Example**: Find the MacLaurin series
+
+**Q**: $\sqrt{1+x} = (1+x)^{1/2}$
+-->
+
+## Standard Normal Distribution
+
+The probability a randomly-chosen value is between $a$ and $b$ on a bell-curve is the area under the bell curve between those points.
+
+Integration doesn't work, so we must use power series.
+
+Z substitution
+
+$$
+Z = \frac{z- \mu}{\sigma}
+$$
