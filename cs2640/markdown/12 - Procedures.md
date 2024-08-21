@@ -457,3 +457,70 @@ Heap
 Stack Segment
 - Local Array
 -->
+
+# Recursive Procedures
+
+**Recursive Subprogram**: Has:
+1. **Base Case(s)**: Terminating scenario that doesn't use recursion.
+2. **Recursive Step:** Set of rules that reduces all other cases toward the base case.
+
+> **Remember**: A recursive subprogram [must]{.underline} have at least one parameter that it used to detect the base case.
+> - If it lacks a parameter, it's just a for loop.
+
+> **Example**: Recursive Factorial in Java v.s. MIPS
+> 
+> 1. Java
+> ```java
+> int fact(int n) {
+> 	if (n == 0) {
+> 		return 1;
+> 	} else {
+> 	return n * fact(n-1);
+> 	}
+> }
+> ```
+> - Analysis:
+> 	- This is a non-leaf procedure, meaning that $ra needs to be saved to the stack alongside the local variable (the parameter $n$, which would be stored in `$a0`).
+> 
+> 2. MIPS: Direct Translation
+> 
+> ```mips
+> # a0: n 
+> fact:
+>     # Push a0 and ra
+>     addi	$sp, $sp, -8
+>     sw	$a0, 4($sp)
+>     sw	$ra, 0($sp)
+>     # Base Case: Return 1 if n==0
+>     bnez	$a0, else
+>     li	$v0, 1
+>     b endif
+> else:
+>     # Recursive Case: Return n * fact(n-1)
+>     sub	$a0, $a0, 1	# Get fact(n-1)
+>     jal	fact
+>     lw	$a0, 4($sp)	# Multiply by original n
+>     mul	$v0, $a0, $v0
+>     b endif
+> endif:
+>     lw	$a0, 4($sp)
+>     lw	$ra, 0($sp)
+>     addi	$sp, $sp, 8
+>     jr	$ra
+> ```
+
+**Example**: Recursive Fibonacci in Java and MIPS
+
+1. Java
+```java
+int fib(int n) {
+	if (n <= 1) {
+		return n;
+	} else {
+		return fib(n-1) + fib(n-2);
+	}
+}
+```
+
+2. MIPS
+	- (You'll need to store the result of fib to the stack in order to call it twice)
