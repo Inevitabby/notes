@@ -84,23 +84,112 @@ title: "Procedures"
 
 > **Note**: Calling sub-programs from within subprograms
 
-**Example**: Suppose we have a method that uses `$t0` as a loop-control variable that calls another procedure.
-- Problem: It is the responsibility of the caller to save and restore `$t0` before and after each call.
+> **Example**: Suppose we have a method that uses `$t0` as a loop-control variable that calls another procedure.
+> - Problem: It is the responsibility of the caller to save and restore `$t0` before and after each call.
+> 
+> ```mips
+> proc:
+> 	# Push s0 to stack
+> 	addiu	$s0, $sp, -4
+> 	sw	$s0, $sp
+> 	# While Loop
+> 	li	$s0, 1
+> while:	
+> 	jal	proc2
+> 	add	$s0, 1
+> 	b	while
+> end:
+> 	# Pop s0 from stack
+> 	lw	$s0, ($sp)
+> 	addiu	$sp, $sp, 4
+> 	jr	$ra
+> # End of program
+> ```
+
+# Command-Line Arguments
+
+When `main` is called, `$a0` equivalent to C's `argc`{.c} while `$a1` is equivalent to C's `argv`{.c}.
+- `$a0`: Number of command-line arguments.
+- `$a1`: Array of pointers to strings.
+
+> **Example**: Reading command-line arguments
+> 
+> ```mips
+> main:
+>       # Load address of first arg
+>       lw	$a0, ($a1)
+>       # Print it
+>       li	$v0, 4
+>       syscall
+> 
+>       # Load address of second arg
+>       lw	$a0, 4($a1)
+>       # Print it
+>       li	$v0, 4
+>       syscall
+> # Etc...
+> ```
+
+> **Note**: The zeroth element of the argument array (`0($a1)`) is the program's name.
+
+## Converting a String to an Integer
+
+To convert a single character to an integer, you must do math to the ASCII code.
+
+In ASCII, numbers start at value 48, or char `'0'`, so:
+
+$$
+\boxed{
+	\text{Numeric Value of ASCII Char: } 
+	\text{c} - '0'
+}
+$$
+
+Suppose we advance through the string to the next char in the string.
+- We must multiply the previous value by 10, calculate the numeric value, and add it to the previous value.
+- We stop this process once we reach the null char.
+
+> **Note**: Other Number Systems
+> - To convert a string to other number systems, instead of multiplying by 10, multiply it by the number system's base.
+>	- Ex: If you're converting to octal, you simply need to multiply by 8 instead if 10 (or; shift left by 3 bits). 
+
+> **Example**: Parseint Procedure
 
 ```mips
-proc:
-	# Push s to stack
-	addiu	$s0, $sp, -4
-	sw	$s0, $so
-	# While Loop
-	li	$s0, 1
-while:	
-	jal	proc2
-	add	$s0, 1
-	b	while
-end:
-	# Pop s from stack
-	lw	$s0, ($sp)
-	addiu	$sp, $sp, 4
-	jr	$ra
+# a0: String
+# v0: Value
+# v1: 0 if valid, 1 if invalid
+parseint:
 ```
+
+## Lowercase-to-Uppercase ASCII with a Bit Mask
+
+**Lowercase to Uppercase**:
+```mips
+andi	$t0, $t0, 0xdf
+```
+
+**Uppercase to Lowercase**:
+```mips
+ori	$t0, $t0, 0x20
+```
+
+<details>
+<summary>Why? (Deriving the bit mask)</summary>
+> **Why?**:
+> - $1000001$ is the ASCII value for "A"
+> - $1100001$ is the ASCII value for "a"
+> 
+> This one-bit difference can be observed for all ASCII chars A—Z, hence we just need to clear the bit $0100000$ to convert a lowercase char to uppercase.
+> 
+> The bit mask to use is $1011111$, or `0xdf` in hexadecimal, to convert a lower-case ASCII code to uppercase.
+> 
+> The opposite of this mask is `0x20`, which we use with the `ori` command to convert an uppercase ASCII value to lowercase.
+</details>
+
+> **Example**: Converting a lowercase hexadecimal value to a numeric value
+> ```mips
+> andi	$t0, $t0, 0xdf
+> sub	$t0, $t0, 'A'
+> add	$t0, $t0, 10
+> ```
