@@ -3114,3 +3114,24 @@ Z substitution
 $$
 Z = \frac{z- \mu}{\sigma}
 $$
+
+# Calculus of Parametric Equations
+
+$$
+\boxed{
+\text{Cartesian $\to$ Polar: }
+r^2 = x^2 + y^2
+\qquad
+\tan \theta = \frac{y}{x}
+}
+$$
+
+$$
+\boxed{
+\text{Polar $\to$ Cartesian: }
+x = r \cos \theta
+\qquad
+y = r \sin \theta
+}
+$$
+
