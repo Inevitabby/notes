@@ -26,10 +26,11 @@ $$
 	\text{Relative Frequency} = \frac{
 		\text{Frequency}
 	}{
-		\text{# of Observations}
+		\text{\# of Observations}
 	}
-} \\~\\
-\small\textit{\text{Percentage} = \text{Relative Frequency} \times 100}
+}
+\\~\\
+\small\textit{\textit{Percentage} = \textit{Relative Frequency} \times 100}
 $$
 
 > **Remember**: A table should summarize its data.
@@ -50,7 +51,7 @@ Rules:
 
 $$
 \boxed{
-	\text{Ideal # of Classes: }
+	\text{Ideal \# of Classes: }
 	k = [ \sqrt{n} ]
 }
 $$
