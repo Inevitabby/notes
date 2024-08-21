@@ -193,3 +193,167 @@ ori	$t0, $t0, 0x20
 > sub	$t0, $t0, 'A'
 > add	$t0, $t0, 10
 > ```
+
+<!--
+Note: To iterate through each char in a stirn,g us lb
+-->
+
+# Passing More Than 4 Parameters
+
+**Steps**:
+1. Make room for parameters on the stack
+	- By convention, allocate space even for the registers (`$a0`—`$a3`)
+2. Set the values of the parameters
+3. Call the function
+4. Readjust the stack
+
+> **Example**: Calling a function that takes 5 parameters
+> ```mips
+> main:
+>     # 1. Make room for 5 parameters
+>     addiu	$sp, $sp, -20
+>     # 2. Set values
+>     li	$a0, 1
+>     li	$a1, 2
+>     li	$a2, 3
+>     li	$a3, 4
+>     li	$t0, 5
+>     sw	$t0, ($sp)
+>     # 3. Call function
+>     jal	sum5
+>     # 4. Readjust the stack
+>     sw	$v0, n
+>     addiu	$sp, $sp, 20
+>     # Exit
+>     li	$v0, 10
+>     syscall
+> sum5:
+>     # Add first four registers
+>     add	$v0, $a0, $a1
+>     add	$v0, $v0, $a2
+>     add	$v0, $v0, $a3
+>     # Add the fifth param (stack)
+>     lw	$t0, ($sp)
+>     add	$v0, $v0, $t0
+>     jr	$ra
+> # End
+> ```
+> - **Important**: Note the convention of allocating space for the first four params!
+
+# Frame Pointer Register
+
+**Frame Pointer** (`$fp`): Lets us keep track of where the frame of a procedure is.
+- Register 29
+- Treat it like the s-registers.
+- Frame pointers let us save the state of a procedure and use `jal` and whatever else to our heart's content.
+
+## Stack Frame
+
+Things we can store in the stack frame:
+- Parameters
+- S-Registers
+- Local Variables
+
+> **Example Stack Frame**:
+> - `$a0`
+> - `$a1`
+> - `$a2`
+> - `$a3`
+> - `$p4` (not a real register)
+> - `$fp`
+> - `$s0`
+> - `$s1`
+> - `$ra`
+> 
+> > Note how everything can be accessed relative to `$fp` (e.g., `$p4` is `4($fp)`)
+
+> **Example**: Saving and restoring the stack frame
+> 
+> ```mips
+> main:
+>     # Save the stack frame
+>     addiu	$sp, $sp, -4
+>     sw	$fp, ($sp)
+>     move	$fp, $sp
+>     # Make room for s0, s1, and ra
+>     addiu	$sp, $sp, -12
+>     # Save s0, s1, and ra
+>     sw	$s0, 8($sp)
+>     sw	$s1, 4($sp)
+>     sw	$ra, 0($sp)
+> 
+>     # DO WHATEVER WE WANT HERE
+>     # - We can jal, ra, and s0—s3 to our heart's content
+> 
+>     # Restore stack frame
+>     lw	$s0, 8($sp)
+>     lw	$s1, 4($sp)
+>     lw	$ra, 0($sp)
+>     lw	$fp, ($fp)
+>     addiu	$sp, $sp, 16
+>     jr	$ra
+> ```
+
+> **Example**: Passing parameters and returning values with stack instead of registers
+> 
+> ```mips
+> # Goal: Do n = sum(1,2)
+> main:
+>     addiu	$sp, $sp, -12
+>     li	$t0, 1
+>     sw	$t0, 4($sp)
+>     li	$t0, 2
+>     sw	$t0, 0($sp)
+>     jal	sum
+>     lw	$t0, ($sp)
+>     sw	$t0, n
+>     addiu	$sp, $sp, 12
+> sum5:
+>     lw	$t0, 8($sp)
+>     lw	$t1, 4($sp)
+>     add	$t0, $t0, $t1
+>     sw	$t0, ($sp)
+>     jr	$ra
+> # End
+> ```
+> - Somewhat trite example, but kinda illustrates how things need to be done on Intel.
+
+## Local Variables
+
+**Local Variable**: Variable that's only allocated while function is running.
+
+> **Example**: Creating local variables
+> 
+> 1. C
+> 
+> ```c
+> int proc(int m, int n) {
+> 	int k;
+> 	int a[20];
+> }
+> ```
+> 
+> 2. MIPS
+> 
+> Our stack should look like this:
+> - `$sp`
+> - `$fp`
+> - k
+> - a[19]
+> - ...
+> - a[0]
+> 
+> ```mips
+> proc:
+>     # Set up the frame pointer (our anchor point)
+>     addiu	$sp, $sp, -4
+>     sw	$fp, ($sp)
+>     move	$fp, sp
+>     # Make room for k and a
+>     addiu	$sp, $sp, -84
+>     # k is at -4($fp) 
+>     # a is at -84($fp) 
+>     # - (specifically a[0])
+>     jr	$ra
+> # End
+> ```
