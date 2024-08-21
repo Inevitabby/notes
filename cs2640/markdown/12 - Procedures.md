@@ -527,3 +527,41 @@ int fib(int n) {
 	- (You'll need to store the result of fib to the stack in order to call it twice)
 -->
 
+```mips
+	.data
+fibs:	.word	0, 1, 1, ..., 34
+	.text
+main:
+	la	$a0, fibs
+	li	$a1, 10
+	li	$a2, 8
+	jal	lsearch
+```
+
+# Generating a Random Number
+
+```mips
+# Simple Non-Recursive Traversal
+traverse:
+	# SAVE RA
+	move	$t0, $a0
+while:	beqz	$t0, endw
+	lw	$a0, DATA($t0)
+	jalr	$a1
+	lw	$t0, NEXT($t0)
+	b	while
+endw:	
+	$ POP RA
+	jr	$ra
+
+# How to use it
+main:
+	la	$a0, jead
+	la	$a1, print
+	jal	traverse
+	
+print:
+	li	$v0, 4
+	syscall
+	jr	$a0
+```
