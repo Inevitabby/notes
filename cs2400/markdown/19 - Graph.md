@@ -144,3 +144,23 @@ Algorithm
 > - This is basically a simplified version of Dijkstra's algorithm.
 >	- To handle weights, we need to use a priority queue.
 
+<!--
+# Basic Graph Interface
+
+```java
+public interface BasicGraphInterface<T> {
+	boolean addVertex(T vertexLabel);
+	boolean addEdge(T begin, T end, double edgeWeight);
+	int getNumberOfVertices();
+	// ET CETERA
+}
+```
+
+```java
+public interface GraphAlgorithmsInterface<T> {
+	
+}
+```
+-->
+
+# Implementation
