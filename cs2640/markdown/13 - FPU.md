@@ -50,6 +50,8 @@ We can place an imaginary binary point in a binary pattern to define an integer 
 Instructions are split between single and double precision.
 - Don't mix single and double precision!
 	* Only even f-registers are valid operands for double precision operations.
+- Single-Precision: 7 fractional bits of precision.
+- Double-Precision: 15 fractional bits of precision.
 
 ```mips
 	.data
