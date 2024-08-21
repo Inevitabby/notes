@@ -144,23 +144,107 @@ Algorithm
 > - This is basically a simplified version of Dijkstra's algorithm.
 >	- To handle weights, we need to use a priority queue.
 
-<!--
-# Basic Graph Interface
+# Graph Interfaces
 
 ```java
 public interface BasicGraphInterface<T> {
 	boolean addVertex(T vertexLabel);
 	boolean addEdge(T begin, T end, double edgeWeight);
+	boolean addEdge(T begin, T end);
+	boolean hasEdge(T begin, T end);
+	boolean isEmpty();
 	int getNumberOfVertices();
-	// ET CETERA
+	int getNumberOfEdges();
+	void clear();
 }
 ```
 
 ```java
 public interface GraphAlgorithmsInterface<T> {
-	
+	QueueInterface<T> getBreadthFirstTraversal(T origin);
+	QueueInterface<T> getDepthFirstTraversal(T origin);
+	StackInterface<T> getTopologicalOrder();
+	int getShortestPath(T begin, T end, StackInterface<T> path);
+	double getCheaprestPath(T begin, T end, StackInterface<T> path);
 }
 ```
--->
+
+```java
+
+```
+
 
 # Implementation
+
+Two ways to implement graph:
+1. Array: A two-dimensional square array.
+	- Adjacency matrix.
+	- Rows and columns represent nodes, and values are set to true and false to indicate adjacency.
+2. List.
+	- Adjacency list.
+	- Basically just give each label a list of adjacent nodes.
+
+## Vertices and Edges
+
+What the `Vertex` class needs:
+- Identify vertices
+- Visit vertices
+- Adjacency list
+- Path operations
+
+Vertex interface:
+```java
+public interface VertexInterface<T> {
+	T getLabel();
+	void visit();
+	void unvisit();
+	boolean isVisited();
+	boolean connect(VertexInterface<T> endVertex, double edgeWeight);
+	boolean connect(VertexInterface<T> endVertex);
+	Iterator<VertexInterface<T>> getNeighborIterator();
+	Iterator<Double> getWeightIterator();
+	boolean hasNeighbor();
+	VertexInterface<T> getUnvisitedNeighbor();
+	void setPredecessor(VertexInterfac<T> predecessor);
+	VertexInterface<T> getPredecessor();
+	boolean hasPredecessor();
+	void setCost(double newCost);
+	double getCost();
+}
+```
+
+Edge inner-class:
+```java
+protected class Edge {
+	private VertexInterface<T> vertex; // Vertex at end of edge
+	private double weight;
+	protected Edge(VertexInterface<T> endVertex, double edgeWeight) {
+		vertex = endVertex;
+		weight = edgeWeight;
+	}
+	protected Edge(VertexInterface<T> endVertex) {
+		vertex = endVertex;
+		weight = 0;
+	}
+	protected VertexInterface<T> getEndVertex() {
+		return vertex;
+	}
+	protected double getWeight() {
+		return weight;
+	}
+}
+```
+
+Directed graph:
+```java
+public class DirectedGraph<T> implements GraphInterface<T> {
+	private DictionaryInterface<T> VertexInterface<T>> vertices;
+	private int edgeCount;
+	public DirectedGraph() {
+		vertices = new LinkeDictionary<>();
+		edgeCount = 0;
+	}
+}
+```
+
+> **Important**: Remember to check if `getCost()` returned no path every time you use it.
