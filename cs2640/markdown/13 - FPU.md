@@ -70,3 +70,23 @@ main:
 	li	$v0, 10
 	syscall
 ```
+
+> **Tangent**: Swapping Values in Two Registers with Xor
+> 
+> On x86, we have 4 general-purpose registers, A, B, C, and D.
+> 
+> Q: How do we swap A and B without using memory or using another GPR?
+> 
+> A: Use the exclusive or operator
+> 
+> ```
+> A <- A ^ B
+> B <- A ^ B
+> A <- A ^ B
+> ```
+> 
+> ```mips
+> xor	$t0, $t0, $t1
+> xor	$t1, $t0, $t1
+> xor	$t0, $t0, $t1
+> ```
