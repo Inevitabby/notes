@@ -167,11 +167,15 @@ public interface BinaryTreeInteface<T> extends TreeInterface<T>, TreeIteratorInt
 > - **Note**: If we have a non-leave node that's missing a tree, make sure the side is set to an empty tree. Only the leave nodes should have null children.
 >	- Empty trees are like sentinel values.
 
-# Expression Tree
+# Binary Tree Applications
+
+## Expression Tree
 
 **Expression Tree**: Binary tree representation of an expression.
 - Traversing the tree can give us prefix and postfix expressions
 - The last operation done is the root of the expression tree.
+- **Term**: A tree containing an operator and two operands.
+	* To evaluate an expression tree
 
 > **Important**: Things to Know when Recreating Expression Trees from their Traversals
 > - First node in preorder traversal is the root node.
@@ -181,15 +185,158 @@ public interface BinaryTreeInteface<T> extends TreeInterface<T>, TreeIteratorInt
 > **Example**: Evaluating an expression tree
 > ```
 > Algorithm evaluate(expressionTree) {
-> 	if expressionTree is empty {
-> 		return 0;
-> 	} else {
+> 	if expressionTree is a leaf node {
+>		# (l and r children == null)
+>		return the value of the leaf node;
+>	} else {
 > 		firstOperand = evaluate(left subtree)
 > 		secondOperand = evaluate(right subtree)
-> 		operator = root
+> 		operator = root of expression tree
 >		return firstOperand operator secondOperator
 > 	}
 > }
 > ```
 
+## Decision Tree
+
+> **Real-World Example**: Expert systems with decision trees
+> - Tech support troubleshooting decision trees.
+> - Guessing games.
+
+> **Example**: Interface for a decision tree.
+> ```java
+> public interface DecisionTreeInterfacemT< extends BinaryTreeInterface<T> {
+> 	T getCurrentData();
+> 	void setCurrentData(T newData);
+> 	void setResponses(T responseForNo, T responseForYes);
+> 	boolean isAnswer();
+> 	void advanceToNo();
+> 	void advanceToYes();
+> 	void resetCurrentNode();
+> }
+> ```
+> 
+> Note the hierarchy of inheritance:
+> 1. Tree
+> 2. Binary Tree
+> 3. Decision Tree
+
+## Binary Search Tree
+
+**Binary Search Tree**: A binary tree where each node's value is:
+1. Greater than all nodes in its left subtree, and
+2. Less than all nodes in its right subtree. 
+
+> **Cool Characteristic**: In-Order Traversal of BST
+> - [In-order traversal]{.underline} of a binary search tree [gives us the contents of the tree in sorted order]{.underline} (low to high)
+> - *(Pre and post-order traversal doesn't give us anything intersting)*
+
+**On Performance**:
+$$
+\boxed{
+	\text{(Balanced) BST Search Performance: }
+	O ( \log n )
+} \\
+\small\textit{(where $n$ is the height of the tree)}
+$$
+- You build the tree as data comes in, so you need to balance the tree afterward to ensure balance
+	* We won't cover balancing techniques in this class.
+	* If input data is random, tree will be somewhat balanced.
+	* If you build the tree with a sorted list, performance will be garbage ($O(n)$)
+- The time to build the tree is $O \log n$
+- The shorter the tree, the more efficient the search.
+
+> **Example**: How-To Search a BST
+> ```
+> Algorithm bstSearch(tree, needle) {
+> 	if tree is empty
+> 		return false
+> 	else if needle == root
+> 		return true
+> 	else if needle < root
+> 		return bstSearch(tree's left subtree, needle)
+> 	else needle > root
+> 		return bstSearch(tree's right subtree, needle)
+> }
+> ```
+> - Be cognizant of stack overflow when using recursion. 
+
+## Heap ADT
+
+**Heap**: A complete binary tree where each node is (1) smaller or (2) larger than [all]{.underline} objects in its descendants.
+
+**Two Types of Heaps**:
+1. **Maxheap**: Object in node greater than or equal to its descendent objects.
+2. **Minheap**: Object in node less than or equal to its descendent objects.
+- *(Implementations are exactly the same, only difference is whether you compare with $\le \lor \ge$)*
+
+> **Example**: Maxheap Interface
+> ```java
+> public interface MaxHeapInterface<T extends Comparable<? super T>> {
+> 	void add (T newEntry);
+> 	T removeMax();
+> 	T getMax();
+> 	boolean isEmpty();
+> 	int getSize();
+> 	void clear();
+> }
+> ```
+> - `T getMax()`{.java} is really just `T getRootData()`{.java} from the `TreeInterface`
+
+<!--
+> **Important**: Don't confuse the heap ADT with dynamic memory.
+> - We often call dynamic memory a "heap", don't confuse this with the heap ADT!
+-->
+
+> **Implementation Note**: We usually implement heaps with arrays.
+
+> **Cool Characteristic**: Behaves like a priority queue
+> - Because the that order things go in relates to how things come out.
+> - Like a mix of array, priority queue, and tree.
+
+# General Trees Applications
+
+**Parse Tree**: 
+- Lets you check the syntax of a string for valid algebraic expressions.
+- More detailed than syntax trees, and detects malformed expressions.
+	- Valid expressions can be expressed as a parse trees.
+	- For invalid expressions, will tell you what's missing.
+- Parse tree must be a general tree to accommodate any expression.
+
+> **Real-World Examples of Parse Trees**:
+> - Used by compilers, syntax checkers, etc.
+> - Creating a parse tree for a game of tic-tac-toe
+
+> **Relationship between Binary Tree and General Tree**:
+> - You can implement a general tree with a binary tree. 
+>	- e.g., Let all right-nodes be siblings, let all left node be children.
+
+# Tree Implementations
+
+## Binary Tree Nodes
+
+Each node has three fields:
+1. Value
+2. Left node
+3. Right node
+
+```java
+class BinaryNode<T> {
+	private T data;
+	private BinaryNode<T> leftChild;
+	private BinaryNode<T> rightChild;
+	public BinaryNode() {
+		this(null);
+	}
+	public BinaryNode(T dataPortion) {
+		this(dataPortion, null, null);
+	}
+	public BinaryNode(T dataPortion, BinaryNode<T> leftChild, BinaryNode<T> rightChild) {
+		this.data = dataPortion;
+		this.leftChild = leftChild;
+		this.rightChild = rightChild;
+	}
+
+}
+```
 
