@@ -2780,4 +2780,37 @@ $$
 - This is zero ($<1$) for every $x$, so the series always converges.
 - **Radius of Convergence:** Infinity
 - **Interval of Convergence:** $(-\infin, \infin)$
+
+**Q**: 
+
+$$
+\sum_{n \to \infin}^\infin \frac{ (-2x+4)^n }{ n^2 \times 8^n }
+$$
+
+**A**: Ratio Test
+
+$$
+\begin{aligned}
+	\lim_{n \to \infin} | \frac{(-2x+4)^{n+1}}{(n+1)^2 \times 8^{n+1}} \times \frac{ n^2 \times 8^n }{ (-2x+4)^n } | 
+	&= \frac{ |-2x+4| }{ 8 } \lim_{n \to \infin} \frac{n^2}{(n+1)^2} \\
+	&= \frac{ |-2x+4| }{ 8 } \times 1
+\end{aligned}
+$$
+
+This series will converge when $\frac{ |-2x+4| }{ 8 } < 1$, so now we need to solve for that.
+
+$$
+\begin{aligned}
+	\frac{ |-2x+4| }{ 8 } &< 1 \\
+	|-2x+4| &< 8 \\
+	2 \times | x-2 | &< 8 \\
+	| x-2 | &< 4 \\
+	| x-2 | &< 4 \\
+\end{aligned}
+$$
+- **Radius of Convergence:** 4
+
+> Aside: Understanding $| x-2 | < 4$
+> - "$x$'s distance from 2 is at most 4"
 </details>
+
