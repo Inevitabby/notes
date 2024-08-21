@@ -31,3 +31,4 @@ The following are my class notes for Computer Organization and Assembly Programm
 11. [Midterm I Review](10 - Midterm I Review.html)
 12. [Array and Dynamic Memory](11 - Array and Dynamic Memory.html)
 13. [Procedures](12 - Procedures.html)
+14. [Floating-Points](13 - FPU.html)
