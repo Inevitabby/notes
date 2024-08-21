@@ -2689,13 +2689,13 @@ $$
 	* This is why we need to use other tests to check if a power series converges.
 </details>
 
-> ### Radius of Convergence ($R$)
+<details><summary>Definitions: Radius and Interval of Convergence</summary>
+> ### Definitions
 > 
-> Case I: $R = 0$ 
-> 
-> Case II: $R = \infin$
+> **Radius of Convergence** ($R$): Distance from the center of the series you can be before it diverges.
 > 
 > **Interval of Convergence:** Interval on which power series converges.
+</details>
 
 <details><summary>Why?</summary>
 **The Idea**: Use the ratio test on power series
