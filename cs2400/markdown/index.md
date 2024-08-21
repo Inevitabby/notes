@@ -56,3 +56,4 @@
 16. [Trees](16 - Trees.html)
 17. [Binary Search Tree](17 - BST.html)
 18. [Heap](18 - Heap.html)
+19. [Graph](19 - Graph.html)
