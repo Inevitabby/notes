@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+---
+title: "Descriptive Statistics"
+---
+
+
+||||||| fae446c
+=======
 ---
 title: "Descriptive Statistics"
 ---
@@ -488,3 +496,4 @@ A: $s = \sqrt{1.747} = 1.3217$
 **Boxplot**: Shows center, spread, and skew of a data set.
 - Good for large samples
 
+>>>>>>> 40c26e6c1c641d6af3426dca081468db4c91358f
