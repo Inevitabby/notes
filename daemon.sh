@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
-DIRECTORIES=("cs1300" "cs1400" "cs2400" "cs2600" "cs2640" "cs50" "phl2020" "mat1150" "pls2010" "mips" "ffmpeg" "sta2260" "cs3560")
+DIRECTORIES=("cs1300" "cs1400" "cs2400" "cs2600" "cs2640" "cs50" "phl2020" "mat1150" "pls2010" "mips" "ffmpeg" "sta2260" "cs3560" "cs4800")
 N=32 # Number of parallel Pandoc processes
 BASE_PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet --template template.html --lua-filter=.util/plantuml.lua"
 STYLE_FILE="style.min.css"

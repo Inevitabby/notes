@@ -10,6 +10,7 @@
 - [CS2400: Data Structures and Advanced Programming](cs2400)
 - [CS2640: Computer Organization and Assembly Programming](cs2640)
 - [CS3560: Object-Oriented Design and Programming](cs3560)
+- [CS4800: Software Engineering](cs4800)
 
 ## Mathematics
 
