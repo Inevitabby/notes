@@ -118,21 +118,99 @@ Problem: Split into subsystems:
 
 Classes:
 
-Product:
-- Price
-- Image
-- Vendor
-- Description
-
-Supplier:
-- Name
-- Phone
-
-Contact Person:
-- Name
-- Phone
-- Email
-- Image
-
 Since we can have multiple images, it's better to define another class for Image.
 -->
+
+# Example: Tradeshow Project
+
+**Problwm**: Purchasing agents attend apparel and fabric trade shows and want to send information back to HQ.
+
+Day 1:
+1. Understand the project.
+2. Plan the project
+	- Divide and conquer (determine major components).
+	- Identify order in which subsystems will be developed.
+	- Identify order the subsystems will be developed
+3. Work Break Down Structure
+	- Describes the work and ETAs
+
+Day 2:
+1. Discover and Understand Details
+	- List use cases and use case diagram.
+	- List classes (don't worry about how they connect)
+
+
+Supplier:
+- id
+- name
+
+Product
+
+Product Image
+
+Contact Person
+
+> Remember: Things that are attributes in one program may need to be a class in another.
+
+| Class          | Attributes |
+|----------------|------------|
+| Supplier       |            |
+| Contact        |            |
+| Product        |            |
+| ProductPicture |            |
+
+
+Use-Case Diagrams:
+- We will use [Draw IO](https://app.diagrams.net/) to make UML diagrams.
+- Some users need some abilities that others don't.
+
+Database Schema
+
+
+**FURPS+ Requirements**:
+- Functional
+	* System *must* do these.
+- Usability
+- Reliability
+- Performance
+- Security
+- + even more categories like design constraints, usability.
+
+Stakeholder: People with an interest in the successful implementation of the system.
+- Internal: Within org
+- External: Outside org
+- Operational: Regularly interact with system
+- Executive: Don't directly interact, but have financial interest
+
+**Additional Techniques**:
+- Observe and Document Business Processes
+	* Watch and learn
+- Research Vendor Solution
+	* What have others done?
+- Collect Active Use Comments and Suggestions
+
+**Scope Creep**: When the project grows forever and never ends.
+- We need a [clear project scope]{.underline}.
+
+**Model**: Representation of some aspect of the system being built.
+1. Textual
+2. Graphical
+3. Mathematical.
+
+**Why Model?**:
+- Learning
+- Reducing complexity (abstraction)
+- Communicating
+
+If you do all the modeling well, the implementation can be done super fast.
+- Main problems come from poor design.
+
+| Order Number | Customer | Date | Price | Shipment | etc. |
+|--------------|----------|------|-------|----------|------|
+| 1            | 482      |      |       |          |      |
+| 2            | 284      |      |       |          |      |
+| 3            | 294      |      |       |          |      |
+
+The order number is how we connect to the order subsystem.
+
+
