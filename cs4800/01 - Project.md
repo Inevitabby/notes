@@ -76,37 +76,3 @@ He will ask:
 
 There is always one more bug.
 
-**Software Engineering**: The application of a **systematic**, **quantifiable**, and **disciplined** approach to the development, operation, and maintenance of software.
-
-- Quantifiable: Measurable.
-- Disciplined: Guidelines & conventions.
-
-Software Development Life Cycle:
-1. Requirements Engineering
-2. Design
-3. Implementation (Writing Code)
-4. Verification (Testing)
-5. Maintenance.
-
-**Waterfall Model:**
-- You go through each step of the SDLC linearly and strictly, you can't go back.
-- Used for strict, mission-critical applications
-- Too inflexible for most real-world software development
-
-**Incremental Model:**
-- You can go back phases when necessary.
-	* No real cycle.
-- You aim to create a small working version of the project as early as possible.
-	* Each iteration is functional
-
-**Evolutionary Models**
-- You go through the full SDLC over-and-over.
-- You can't go back, but you can tweak things on the next spiral.
-
-**Formal Methods**
-- Using mathematical techniques to derive mathematical guarantees of correctness or at least high-levels of assurance, usually with automated tools.
-- Apple mostly in *design* and *verification* stages.
-
-Some problems are unsolvable, like verifying if an algorithm halts.
-
-
