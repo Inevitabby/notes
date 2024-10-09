@@ -86,3 +86,68 @@ public class C {
 
 **Builder**: Used to abstract the construction of a complex object.
 - Has a bunch of setter methods and a method to create an instance.
+
+## Structural/Behavior Patterns
+
+2. The these patterns, the problem is architecture.
+
+### Decorators Pattern: (Structural)
+
+Dynamically add functionality o a component by wrapping the core component with another component that adds the extra functionality.
+- e.g., You have a core item/widget/object, and you want to add features to it dynamically
+- e.g., adding code to a window v.s. modifying it: Window and scrollbar have common interface `DecoratedWindow`
+
+### Command Pattern: (Behavior Pattern)
+
+Decouple data from behavior by abstraction actions into a command interface.
+- A separate class encapsulates function calls on the data.
+
+**Example**:
+
+```
+public class Student {
+	
+}
+
+interface StudentCommand {
+	execute()
+}
+
+class AvgGpaCommand implements StudentCommand {
+	@override
+	public float execute() {
+		// implementation
+	}
+}
+
+class CommandProc {
+	Table commands
+	executeCommand(String comm) {
+		commands.get(comm.execute());
+	}
+	executeAll() {
+	}
+	addCommand(StudentCommand, String name)
+```
+
+
+### Adapter Pattern: (Structural)
+
+Pattern that allows changing one interface into another one, by wrapping the adapter.
+
+### Iterator Pattern: (Behavior)
+
+Pattern used on collections.
+
+```java
+public interface Iterator<E> {
+	E next();
+	boolean hasNext();
+}
+```
+
+### Visitor Pattern: (Behavior)
+
+Pattern used to implement the function applied to every element at a particular structure as it's traversed.
+
+
