@@ -38,12 +38,90 @@ title: "Software Engineering Notes in One Page"
 - You go through the full SDLC over-and-over.
 - You can't go back, but you can tweak things on the next cycle.
 
+## Formal Methods
+
 **Formal Methods**
 - Using mathematical techniques to derive mathematical guarantees of correctness or at least high-levels of assurance, usually with automated tools.
 - Apple mostly in *design* and *verification* stages.
 - Some problems are unsolvable, like verifying if an algorithm halts.
 
-# Design Principles: SOLID
+# AGILE
+
+## AGILE
+
+AGILE: An evolutionary software development process
+- Cross-collaboration between teams very important.
+	1. The teams are independent,
+	2. But everyone knows how to do everything (cross-functional)
+- Adaptable and flexible.
+- Early and continuous delivery.
+- Regular evaluation and tuning of process.
+- Simplicity
+
+> **Optimal Conditions for Application of AGILE:**
+> - Criticality is low—medium.
+> - Team of experienced independent individuals.
+> - Requirements change often.
+> - Small number of developments.
+
+## Extreme Programming (XP)
+
+**Extreme Programming:**
+- Frequent delivery in short cycles
+- Checkpoints at which requirements are evaluated.
+- Pair programming
+	* One driver, one passenger.
+- Unit testing
+
+## SCRUM
+
+**SCRUM:**
+- Roles:
+	1. Product Owner
+	2. SCRUM Master
+	3. Development Team
+- Frequent reviews
+- Planning:
+	* Timeboxed management
+	* Sprint planning meeting at the beginning
+	* Daily SCRUM meetings
+
+# Requirements Engineering
+
+**Requirements Engineering**: The part of the process where requirements are defined.
+
+1. Requirements Elicitation:
+	- Elicitation: Client tells you what they want
+	- Analysis: Negotiate, find use-case scenarios
+	- Modeling
+2. Requirements Specification:
+	- SRS
+		* Split into function and non-funcional
+3. Requirements Validation: Stakeholders approve the plan.
+4. Requirements Maintenance
+
+# Data Modeling
+
+# System Design
+
+## Structural Partitioning
+
+Design is partitioned along data and functional boundaries.
+- e.g., all these functions all work with the user profile, so we put it in the user manager, etc.
+
+## Modularity
+
+Components should be separate and have well-defined boundaries
+
+## Low-Coupling
+
+Different modules have minimal amount of dependencies
+
+## High Cohesion
+
+The stuff inside the modules should be interacting with each other as much as possible.
+
+# SOLID Principles
 
 **SOLID**: A set of software design principles that are about building scalable and maintainable software.
 1. **Single Responsibility Principle**:
