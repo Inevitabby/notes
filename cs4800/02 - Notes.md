@@ -127,11 +127,12 @@ The stuff inside the modules should be interacting with each other as much as po
 1. **Single Responsibility Principle**:
 	- Every component/function/module should be responsible for only one thing.
 2. **Open for Extension, Closed for Modification**:
-	- You should be able to add features in the future without modifying existing code.
+	- You should be able to add features in the future by adding code rather than modifying existing code.
 3. **Liskov Substitution Principle**:
 	- If you have a class A and a subtype B, you should be able to replace any instance of class A with class B and the system should behave exactly as behavior.
 		* This is about behavior, not syntax.
 		* e.g., if A has a function called product, don't override and change the behavior in B.
+	- aka: behavioral subtyping. Languages can only do syntactical subtyping.
 4. **Interface Segregation Principle**:
 	- Favor specific interfaces over general ones.
 		* e.g., breaking services into particular APIs
@@ -257,6 +258,7 @@ Pattern that allows changing one interface into another one, by wrapping the ada
 ### Iterator Pattern: (Behavior)
 
 Pattern used on collections.
+- Used to abstract the act of iterating through the contents.
 
 ```java
 public interface Iterator<E> {
