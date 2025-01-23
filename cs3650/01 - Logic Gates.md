@@ -90,7 +90,47 @@ XNOR: Exclusive NOR
 
 # Universal/Complete Gates
 
+NAND and NOR can create all the basic logic gates.
+
+<!--
 ## NAND
 
-1. NOT: Connect both inputs together to create a NOT gate.
-2. OR: Create two NOT gates out of NAND gates, run A, and B into their own NOT, and run that into a NAND.
+NOT
+
+OR
+
+AND
+
+NOR
+
+## NOR
+
+NOT
+
+AND
+
+OR
+
+NAND
+-->
+
+# Multiplexer (MUX)
+
+This MUX takes three inputs, a, b, and c. 
+- If c is 0, a will be outputted.
+- If c is 1, b will be outputted.
+
+```
+   ___
+a-|   |
+  |   |-
+b-|___|
+    |
+    c
+```
+
+$$
+c'a+cb
+$$
+
+We can make any basic logic gate with a MUX.
