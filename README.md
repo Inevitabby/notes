@@ -15,6 +15,7 @@
 ## Mathematics
 
 - [MAT1150: Calculus II](mat1150)
+- [STA2260: Statistics](sta2260)
 
 ## General Education
 
