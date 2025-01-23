@@ -69,6 +69,7 @@ title: "Logic Gates"
 # XOR & XNOR
 
 XOR: Exclusive OR
+- If number of 1's is odd, return 1.
 
 | A | B | Out |
 |---|---|-----|
@@ -78,6 +79,7 @@ XOR: Exclusive OR
 | 1 | 1 | 0   |
 
 XNOR: Exclusive NOR
+- If number of 1's is odd, return 0.
 
 | A | B | Out |
 |---|---|-----|
