@@ -49,16 +49,40 @@ $$
 
 ## Functions
 
+$$
+g(x) = 2x, \forall x \in Z \\
+D: Z \\
+T: \{ y | y \text{ is even} \}
+$$
+
 **Function**: Objects that sets up an input-output relationship.
 - *aka: Mapping*
+- Can be described as sets of tuples.
 - **Domain**: Set of function's possible inputs.
 - **Range**: Set of function's possible outputs 
 	* **Onto**: A function that uses all the elements of the range.
+	* **Target**: 
 
 $$
 f: D \to R \\
 \tiny\textit{Notation for saying $f$ has a domain $D$ and range $R$}
 $$
+
+> **Example**: Functions are sets of mappings
+> 
+> | D   | T    |
+> |-----|------|
+> | $A_1$ | Lily |
+> | $A_2$ | Max  |
+> | $A_2$ | Max  |
+> 
+> $$
+> \{
+> 	(A_1, Lily),
+> 	(A_2, Max),
+> 	(A_3, Max),
+> \}
+> $$
 
 **Arguments**: A function's $k$-tuple input.
 - **$k$-ary function**: Function with $k$ arguments.
@@ -81,6 +105,28 @@ $$
 > 1. $R$ is reflexive if for every $x$, $xRx$
 > 2. $R$ is symmetric if for every $x$, $xRy$ implies $yRx$
 > 3. $R$ is reflexive if for every $x$, $y$, and $z$, $xRx$ and $yRx$ implies $xRz$
+
+<!--
+Take the Cartesian product of the domain and target.
+
+$$
+D \times T =
+\{
+	(d,t) | (d \in D ) \land (t \in T )
+\}
+$$
+
+If $|D| = 2$ and $|T| = 3$, the resulting set will have $2 \times 3 = 6$ elements.
+- This is the product rule. (see: counting rules from discrete
+
+$$
+| D \times T | = | D | \times | T |
+$$
+
+$$
+R : D \to T \subseteq D \times T
+$$
+-->
 
 ## Graphs
 
@@ -127,8 +173,14 @@ $$
 \tiny\textit{An example alphabet}
 $$
 
-**String over an Alphabet**: A finite sequence of symbols from that alphabet.
+**String over an Alphabet**: A finite [sequence]{.underline} of symbols from that alphabet.
 - *e.g., If $\Sigma_1 = \{ \texttt{ U, W } \}$, then $\texttt{UWU}$ is a string over $\Sigma_1$*
+
+> **Note**: Strings are tuples.
+> 
+> $$
+> \texttt{MARIO} = (M, A, R, I, O)
+> $$
 
 More on Strings:
 - **Length** ($|w|$): The number of symbols a string over $\Sigma$ contains.
@@ -180,6 +232,40 @@ All Boolean operations can be rewritten in terms of AND and NOT operations.
 > - $P \land (Q \lor R) = (P \land Q) \lor (P \land R)$
 > - $P \lor (Q \land R) = (P \lor Q) \land (P \lor R)$
 
+> **In-Class Whiteboard**: Reviewing logic
+> 
+> 
+> | $p$ | $q$ | $p \to q$ | $q \to p$ | $p' \to q'$ | $q' \to p'$ |
+> |-----|-----|-----------|-----------|-------------|-------------|
+> | F   | F   | T         | T         | T           | T           |
+> | F   | T   | T         | F         | F           | T           |
+> | T   | F   | F         | T         | T           | F           |
+> | T   | T   | T         | T         | T           | T           |
+> 
+> - *Remember: If $p$ is false, we assume $p \to q$ to be true.*
+>
+> Observations:
+> - These are functions, and functions are sets of tuples.
+> - $p \to q = q' \to p'$: Contrapositive is logically equivalent to the original condition.
+> - The converse $q \to p$ is not equivalent to the original.
+> - The inverse $p' \to q'$ is equivalent to the converse.
+> 
+> > Sub-Question: Why are there four rows?
+> > 
+> > $q$ and $p$ are sets of true and false.
+> > 
+> > $$
+> > q,p \in B = \{F, T\}
+> > $$
+> > 
+> > The possible outputs is $| B^2 | = 2^2 = 4$
+
 # Definitions, Theorems, and Proofs
 
 # Types of Proofs
+
+> In this course we'll need to know proof by contradiction.
+
+# 1/27/25
+
+
