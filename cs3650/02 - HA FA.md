@@ -4,8 +4,10 @@ title: "Half Adder & Full Adder"
 
 # Half Adder
 
+![](.images/doodle_12.png)
+
 **Half Adder**: Digital logic circuit that performs binary addition of two single-bit binary numbers.
-- Has two inputs, $A$ and $B$, and outputs SUM and CARRY. SUM is the least-significant bit of the result, and CARRY is the most-significant bit of the result.
+- Has two inputs, $A$ and $B$, and outputs SUM (LSBit) and CARRY (MSBit).
 - Can be implemented with basic gates like XOR and AND gates.
 
 ## Creating a Half Adder
@@ -56,6 +58,8 @@ $$
 > **Note**: Remember to think of the logic gates as minimum and maximum functions!
 
 # Full Adder
+
+![](.images/doodle_18.png)
 
 **Full Adder**: Like a half adder, except it adds 3 bits instead of 2 bits.
 
@@ -135,37 +139,98 @@ $$
 - Carry functions like a **majority function**
 
 > **Majority Function**: A 2/3 of the bits must be 1 to output 1.
+> ![](.images/doodle_19.png)
 > - AB + AC + BC
 
 # Positional Value
 
 In a positional system, the value of a digit is the digit $\times$ place value. The total value is the sum of these products.
 
-# Ripple Adder
+# Ripple Carry Adder
 
-To denote positional value in binary, we can use HA and FA to chain the carry-bit.
+To denote positional value in binary, we can chain the carry-bit into another addition procedure.
 
-$$
-\begin{align*}
-	& a_1 a_2 a_3 \\
-	+ & b_1 b_2 b_3 \\
-\end{align*}
-$$
 
-**Steps for added two three-bit numbers**:
-1. $a_3 + b_3$ are added by a HA. The carry bit is carried over to the next calculation ($c_0$).
-2. $a_2 + b_2 + c_0$ is done by a FA. The carry bit goes to the next calculation ($c_1$)
-3. $a_1 + b_1 + c_1$ is done by a FA. The carry bit is the MSBit.
+![](.images/doodle_20.png)
 
-> **Variation on HA**: You could also do step 1 with a FA, with the third input set to zero. Why? Because this design can be easily cascaded into another adder.
-> - e.g., you can create a 6bit adder by connecting two 3bit adders, a 9bit adder using three 3bit adders, etc.
+<center>
+*a 3-bit RCA (a + b)*
+</center>
 
-<!--
-# On 2's Complement
 
-> Relevant Notes: [CS2640 - Two's Complement](https://inevitabby.gitlab.io/notes/public/cs2640/03%20-%20Binary%20Operations%20and%20Sign.html#b.-twos-complement)
+**Step-by-step addition of two 3-bit numbers**:
+1. $a_0 + b_0$ are added by the rightmost FA. The carry bit ($c_0$) is carried over to the next calculation.
+2. $a_1 + b_1 + c_0$ is done by the middle FA. The carry bit ($c_1$) goes to the next calculation
+3. $a_2 + b_2 + c_1$ is done by the leftmost FA. The carry bit is the MSBit.
+
+> **Variation with HA**: You could also do step 1 with a HA to save electricity and improve speed, but using a FA makes the design cascadeable.
+> - *e.g., you can create a 6-bit adder by connecting two 3-bit adders; or a 9-bit adder using three 3-bit adders, etc.*
+
+## Variation: Subtractor
+
+> Recall: To get the two's complement (negative) of a binary number, you need to apply `NOT` to every bit and do `+1`
+
+
+![](.images/doodle_22.png)
+
+<center>
+*We can `NOT` b and put 1 into the first FA to do a + (-b)*
+</center>
+
+## Example: Thinking Backwards
+
+This is an incrementer:
+
+![](.images/doodle_23.png)
+
+<center>
+(a+1)
+</center>
+
+> Q: What if we want to do (a-1)?
 > 
-> - *tl;dr two's complement is how we make negative numbers, and two's complement numbers play nice with addition.*
+> A: We just find $a + (-1)$ (add the two's complement of $1$ to $a$.
+> 
+> Let's find the two's complement of a 3-bit representation of 1 to find pattern.
+> 
+> $$
+> 001_2 = 1_{10}
+> $$
+> 
+> 1. `NOT`
+> 
+> $$
+> (001_2)' = 110_2
+> $$
+> 
+> 2. `+1`
+> 
+> $$
+> \begin{align*}
+>  &110 \\
+> +&001 \\
+> =&111
+> \end{align*}
+> $$
+> 
+> Thus, $111_2 = -1_{10}$
+> 
+> > **Note**: Alternatively, we could've used the shortcut of flipping all bits left of the rightmost `1` bit ([CS2640 - Two's Complement](https://inevitabby.gitlab.io/notes/cs2640/03%20-%20Binary%20Operations%20and%20Sign.html#b.-twos-complement)). 
 
-We know that the two's complement of a number is `NOT` on every bit, then `+1`. Why does this work? Because `A + (-B) = A - B` (???????????)
--->
+Thus, a decrementer looks like this:
+
+![](.images/doodle_24.png)
+
+## Example: Adder and Subtractor Combo
+
+To combine the adder and subtractor, we'll need to use this property of XOR:
+
+![](.images/doodle_25.png)
+
+<center>
+*XOR can be a buffer or a NOT gate*
+</center>
+
+Using this switch technique, we can toggle between adding A+B and adding A+(-B).
+
+![](.images/doodle_26.png)

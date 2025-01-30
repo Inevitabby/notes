@@ -4,6 +4,8 @@ title: "Logic Gates"
 
 # Buffer
 
+![](.images/doodle_00.png)
+
 **Buffer**: Anything you put in, you get out.
 - Normally used to amplify something.
 
@@ -15,17 +17,21 @@ title: "Logic Gates"
 
 # NOT (Inverter)
 
+![](.images/doodle_01.png)
+
+**NOT**: Flip the signal.
+
 | In | Out |
 |----|-----|
 | 0  | 1   |
 | 1  | 0   |
 
-**NOT**: Flip the signal.
-
 # AND & OR
 
+![](.images/doodle_02.png)
+
 **AND**: If both are 1, return 1; otherwise return 0.
-- The minimum of inputs.
+- Returns the [minimum]{.underline} of inputs.
 
 | A | B | Out |
 |---|---|-----|
@@ -34,8 +40,10 @@ title: "Logic Gates"
 | 1 | 0 | 0   |
 | 1 | 1 | 1   |
 
+![](.images/doodle_03.png)
+
 **OR**: Inclusive OR
-- The maximum of inputs.
+- Returns the [maximum]{.underline} of inputs.
 
 | A | B | Out |
 |---|---|-----|
@@ -46,8 +54,9 @@ title: "Logic Gates"
 
 # NAND & NOR
 
+![](.images/doodle_04.png)
+
 **NAND**: NOT AND
-- You can create all basic gates out of NAND.
 
 | A | B | Out |
 |---|---|-----|
@@ -56,8 +65,9 @@ title: "Logic Gates"
 | 1 | 0 | 1   |
 | 1 | 1 | 0   |
 
+![](.images/doodle_05.png)
+
 **NOR**: NOT OR
-- You can create all basic gates out of NOR.
 
 | A | B | Out |
 |---|---|-----|
@@ -68,7 +78,9 @@ title: "Logic Gates"
 
 # XOR & XNOR
 
-XOR: Exclusive OR
+![](.images/doodle_06.png)
+
+**XOR**: Exclusive OR
 - If number of 1's is odd, return 1.
 
 | A | B | Out |
@@ -78,7 +90,9 @@ XOR: Exclusive OR
 | 1 | 0 | 1   |
 | 1 | 1 | 0   |
 
-XNOR: Exclusive NOR
+![](.images/doodle_07.png)
+
+**XNOR**: Exclusive NOR
 - If number of 1's is odd, return 0.
 
 | A | B | Out |
@@ -92,45 +106,78 @@ XNOR: Exclusive NOR
 
 NAND and NOR can create all the basic logic gates.
 
-<!--
 ## NAND
 
-NOT
+**NOT**:
 
-OR
+![](.images/doodle_08.png)
 
-AND
+![](.images/doodle_09.png)
 
-NOR
+**OR**:
+
+![](.images/doodle_10.png)
+
+**AND**:
+
+![](.images/doodle_11.png)
 
 ## NOR
 
-NOT
+**NOT**:
 
-AND
+**AND**:
 
-OR
+**OR**:
 
-NAND
--->
+**NAND**:
 
 # Multiplexer (MUX)
+
+![](.images/doodle_13.png)
 
 This MUX takes three inputs, a, b, and c. 
 - If c is 0, a will be outputted.
 - If c is 1, b will be outputted.
-
-```
-   ___
-a-|   |
-  |   |-
-b-|___|
-    |
-    c
-```
 
 $$
 c'a+cb
 $$
 
 We can make any basic logic gate with a MUX.
+
+## Example: Creating a MUX
+
+Suppose we want to configure a MUX to give this truth table:
+
+| a | b | out |
+|---|---|-----|
+| 0 | 0 | 1   |
+| 0 | 1 | 1   |
+| 1 | 0 | 0   |
+| 1 | 1 | 1   |
+
+We want to split the table into two states first. 
+- For this example, $a=0$ and $a=1$ is a good split.
+
+| a | b | out |
+|---|---|-----|
+| 0 | 0 | 1   |
+| 0 | 1 | 1   |
+
+| a | b | out |
+|---|---|-----|
+| 1 | 0 | 0   |
+| 1 | 1 | 1   |
+
+Observation: We can immediately see that when $a=0$, **out** is always 1, so we can draw a partial MUX like this:
+
+![](.images/doodle_14.png)
+
+Observation: Looking at the other truth table, we can see that **out** is always $b$ when $a=1$, so we can draw a partial MUX like this:
+
+![](.images/doodle_15.png)
+
+Putting it all together, the final MUX is this:
+
+![](.images/doodle_16.png)
