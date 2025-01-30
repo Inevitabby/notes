@@ -266,6 +266,4 @@ All Boolean operations can be rewritten in terms of AND and NOT operations.
 
 > In this course we'll need to know proof by contradiction.
 
-# 1/27/25
-
 
