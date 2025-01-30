@@ -68,6 +68,9 @@ $endif$
       code {
         filter: brightness(1.2);
       }
+      img[src^="doodle_"] {
+        filter: invert(1);
+      }
     }
     html {
       color: var(--text-color);
@@ -150,6 +153,11 @@ $endif$
     #toggleNavbar {
       display: none;
     }
+    img {
+      width: 42%;
+      display: block;
+      margin: 0 auto;
+    }
     /* Mobile */
     @media (max-width: 1280px) {
       #TOC {
@@ -174,6 +182,9 @@ $endif$
       }
       blockquote {
         margin: 1em 0 1em 0em;
+      }
+      img {
+        width: 69%;
       }
     }
     /* Big Windows */
