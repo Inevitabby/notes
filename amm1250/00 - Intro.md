@@ -81,9 +81,51 @@ Panethnicity
 
 # Culture
 
-Norms
-Folkway
+**Culture**: Shared meanings, rituals, norms, and traditions among the members of a society.
+- *Passed down* from generation to generation
+- A distinctive and *learned* mode of living
+- Continuously *interacting* and responding to environmental stimuli.
+- Both material and non-material.
 
-More
+> **Examples of Material v.s. Non-Material**:
+> 
+> 1. Material Culture:
+> 	- Monuments
+> 	- Coin
+> 	- Food
+> 	- National Flag
+> 	- Temple
+> 	- Shopping Mall
+> 	- Weapon
+> 2. Non-Material:
+> 	- Social Organization
+> 	- Language
+> 	- Customs and Traditions
+> 	- Religion
+> 	- Literature
+> 	- Forms of Government
+> 	- Economic Systems
 
-Taboo
+# Cultural Norms
+
+**Norms**: Unwritten rules of [acceptable and unacceptable behavior]{.underline} in a culture.
+- **Enacted Norms**: Explicit rues
+	* *e.g., green light means "go"*
+- **Crescive Norms**: Learned and practiced by members of a social unit, but [may not be readily recognized]{.underline} by nonmembers.
+	* **Conventions**: Norms regarding the conduct of everyday life.
+	* **Customs**: Practices handed down from the past, slow to change.
+
+## Levels of Norms
+
+| Name     | Scope                                  | Sanction of Violations   |
+|----------|----------------------------------------|--------------------------|
+| Folkways | Daily routines in practice             | None                     |
+| Mores    | Defines moral behavior                 | Disapproval              |
+| Taboos   | Defines strict prohibition of behavior | Expulsion from the group |
+| Laws     | Formally inscribes norms               | Police                   |
+
+> **Examples**
+> - I drink coffee and have pancakes for breakfast every day: Folkway
+> - Gossiping about people: More
+> - You shall not say slurs in public: Taboo
+> - Not paying taxes and/or killing someone: Laws
