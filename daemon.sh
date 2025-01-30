@@ -41,6 +41,11 @@ function convert {
 		do
 			((i=i%N)); ((i++==0)) && wait # Limit number of parallel processes
 			convert_markdown "${INPUT_FILE}" "${INPUT_DIR}"
+			if [ -d "${INPUT_DIR}/.images" ]; then # Copy images if present
+				OUTPUT_DIR="./public/${INPUT_DIR}"
+				mkdir -p "${OUTPUT_DIR}"
+				cp -r "${INPUT_DIR}/.images" "${OUTPUT_DIR}/"
+			fi
 		done
 	done
 	# Convert special files
