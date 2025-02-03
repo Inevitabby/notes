@@ -134,11 +134,20 @@ NAND and NOR can create all the basic logic gates.
 
 # Multiplexer (MUX)
 
+**MUX**: Functions like a switchboard.
+
+## 2:1
+
 ![](.images/doodle_13.png)
 
 This MUX takes three inputs, a, b, and c. 
 - If c is 0, a will be outputted.
 - If c is 1, b will be outputted.
+
+| c | out |
+|---|-----|
+| 0 | a   |
+| 1 | b   |
 
 $$
 c'a+cb
@@ -146,7 +155,7 @@ $$
 
 We can make any basic logic gate with a MUX.
 
-## Example: Creating a MUX
+## Example: Creating Logic Gate with a 2:1 MUX
 
 Suppose we want to configure a MUX to give this truth table:
 
@@ -181,3 +190,33 @@ Observation: Looking at the other truth table, we can see that **out** is always
 Putting it all together, the final MUX is this:
 
 ![](.images/doodle_16.png)
+
+## 4:1
+
+TODO draw a 4:1 MUX
+
+This MUX takes six inputs, a, b, c, d, x, and y
+
+| x | y | out |
+|---|---|-----|
+| 0 | 0 | a   |
+| 0 | 1 | b   |
+| 1 | 0 | c   |
+| 1 | 1 | d   |
+
+### When and How to Use
+
+## 8:1
+
+TODO draw a 8:1 MUX
+
+| x | y | z | out |
+|---|---|---|-----|
+| 0 | 0 | 0 | a   |
+| 0 | 0 | 1 | b   |
+| 0 | 1 | 0 | c   |
+| 0 | 1 | 1 | d   |
+| 1 | 0 | 0 | e   |
+| 1 | 0 | 1 | f   |
+| 1 | 1 | 0 | g   |
+| 1 | 1 | 1 | h   |
