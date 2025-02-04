@@ -45,15 +45,6 @@ function convert {
 				OUTPUT_DIR="./public/${INPUT_DIR}"
 				mkdir -p "${OUTPUT_DIR}"
 				cp -r "${INPUT_DIR}/.images" "${OUTPUT_DIR}/"
-				# Special Case: Make doodles even smaller
-				for img in "${OUTPUT_DIR}/.images"/doodle_*.png; do
-					if [ ! -f "$img" ]; then # Only process regular files
-						break
-					fi
-					convert "$img" -depth 1 -colors 2 -strip -define png:compression-level=9 "$img.tmp"
-					pngcrush -q "$img.tmp" "$img"
-					rm "$img.tmp"
-				done
 			fi
 		done
 	done
