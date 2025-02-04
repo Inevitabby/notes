@@ -323,4 +323,6 @@ Using this switch technique, we can toggle between adding A+B and adding A+(-B).
 | 1 | 1 | 0 | 0     | 0   |
 | 1 | 1 | 1 | 0     | 1   |
 
-> **Note**: We can't represent FA+ + because we can't represent $4_10$ with 2 bits.
+> **Note**: You can't make FA+ or FA++ because there aren't enough bits to represent $4_{ 10 }$
+
+> **Note**: You can't make FA- we can't represent -1_{10} and 2_{10} without mixing the signed and unsigned numbers (the meaning of the MSBit becomes vague).
