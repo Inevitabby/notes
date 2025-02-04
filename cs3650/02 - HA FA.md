@@ -281,7 +281,7 @@ Using this switch technique, we can toggle between adding A+B and adding A+(-B).
 | 1 | 0 | 0 | 0 |
 | 1 | 1 | 0 | 1 |
 
-## Half Adder Minus Minus (HA--)
+## Half Adder Minus Minus (HA- -)
 
 ![](.images/doodle_29.png)
 <center>
@@ -289,7 +289,7 @@ Using this switch technique, we can toggle between adding A+B and adding A+(-B).
 *S=AB'+A'B=A XOR B*
 </center>
 
-**Half Adder Minus**: Like a half adder, except it does A+B-2 rather than A+B.
+**Half Adder Minus Minus**: Like a half adder, except it does A+B-2 rather than A+B.
 - Can be implemented with NAND and XOR.
 
 | A | B | C | S |
@@ -299,6 +299,28 @@ Using this switch technique, we can toggle between adding A+B and adding A+(-B).
 | 1 | 0 | 1 | 1 |
 | 1 | 1 | 0 | 0 |
 
-## Full Adder Minus Minus (FA--)
+## Full Adder Minus Minus (FA- -)
 
+![](.images/doodle_17.png)
+<center>
+*Carry = (AB + AC + BC)'*; 
+*Sum = A XOR B XOR C = A'B'C + A'BC' + AB'C' + ABC*
+</center>
 
+**Fall Adder Minus Minus**: Like a full adder, except it does A+B+C-2 rather than A+B+C.
+- Can be implemented with Minority Gate and XOR.
+
+> **Note**: A minority gate is just the NOT of a majority gate.
+
+| A | B | C | Carry | Sum |
+|---|---|---|-------|-----|
+| 0 | 0 | 0 | 1     | 0   |
+| 0 | 0 | 1 | 1     | 1   |
+| 0 | 1 | 0 | 1     | 1   |
+| 0 | 1 | 1 | 0     | 0   |
+| 1 | 0 | 0 | 1     | 1   |
+| 1 | 0 | 1 | 0     | 0   |
+| 1 | 1 | 0 | 0     | 0   |
+| 1 | 1 | 1 | 0     | 1   |
+
+> **Note**: We can't represent FA+ + because we can't represent $4_10$ with 2 bits.
