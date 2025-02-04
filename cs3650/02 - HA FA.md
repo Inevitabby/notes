@@ -2,9 +2,13 @@
 title: "Half Adder & Full Adder"
 ---
 
-# Half Adder
+# Half Adder (HA)
 
 ![](.images/doodle_12.png)
+<center>
+*C = AB*
+*S = AB' + A'B = A XOR B*
+</center>
 
 **Half Adder**: Digital logic circuit that performs binary addition of two single-bit binary numbers.
 - Has two inputs, $A$ and $B$, and outputs SUM (LSBit) and CARRY (MSBit).
@@ -57,9 +61,13 @@ $$
 
 > **Note**: Remember to think of the logic gates as minimum and maximum functions!
 
-# Full Adder
+# Full Adder (FA)
 
 ![](.images/doodle_18.png)
+<center>
+*C=AB+AC+BC=Majority Gate*
+*S=A XOR B XOR C=A'B'C + A'BC' + AB'C'*
+</center>
 
 **Full Adder**: Like a half adder, except it adds 3 bits instead of 2 bits.
 
@@ -234,3 +242,63 @@ To combine the adder and subtractor, we'll need to use this property of XOR:
 Using this switch technique, we can toggle between adding A+B and adding A+(-B).
 
 ![](.images/doodle_26.png)
+
+# Variations of HA and FA
+
+## Half Adder Plus (HA+)
+
+![](.images/doodle_27.png)
+<center>
+*C=A+B*
+*S=AB+A'B'=A XNOR B*
+</center>
+
+**Half Adder Plus**: Like a half adder, except it does A+B+1 rather than A+B.
+- Can be implemented with OR and XNOR.
+
+| A | B | C | S |
+|---|---|---|---|
+| 0 | 0 | 0 | 1 |
+| 0 | 1 | 1 | 0 |
+| 1 | 0 | 1 | 0 |
+| 1 | 1 | 1 | 1 |
+
+## Half Adder Minus (HA-)
+
+![](.images/doodle_28.png)
+<center>
+*C=(A+B)'*
+*S=AB+A'B'=A XNOR B*
+</center>
+
+**Half Adder Minus**: Like a half adder, except it does A+B-1 rather than A+B.
+- Can be implemented with NOR and XNOR.
+
+| A | B | C | S |
+|---|---|---|---|
+| 0 | 0 | 1 | 1 |
+| 0 | 1 | 0 | 0 |
+| 1 | 0 | 0 | 0 |
+| 1 | 1 | 0 | 1 |
+
+## Half Adder Minus Minus (HA--)
+
+![](.images/doodle_29.png)
+<center>
+*C=(AB)'*
+*S=AB'+A'B=A XOR B*
+</center>
+
+**Half Adder Minus**: Like a half adder, except it does A+B-2 rather than A+B.
+- Can be implemented with NAND and XOR.
+
+| A | B | C | S |
+|---|---|---|---|
+| 0 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 1 |
+| 1 | 0 | 1 | 1 |
+| 1 | 1 | 0 | 0 |
+
+## Full Adder Minus Minus (FA--)
+
+
