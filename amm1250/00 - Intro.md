@@ -129,3 +129,108 @@ Panethnicity
 > - Gossiping about people: More
 > - You shall not say slurs in public: Taboo
 > - Not paying taxes and/or killing someone: Laws
+
+# Consumer Research Design
+
+**Primary Research**: We gather the data ourselves.
+- Exploratory Research: We have a theory we want to prove.
+- Descriptive Research
+- Casual Research
+
+**Secondary Research**: We analyze existing data.
+- Internal Sources
+- External Sources
+
+# Interview
+
+Types & Examples of Interviews:
+1. Structured: Researchers ask the same questions and the same blueprint for responses.
+	- e.g., demographic interview
+2. Semi-Structured: Researchers ask predetermined questions and unplanned questions.
+	- e.g., job interview
+3. Unstructured: No questions are predetermined.
+	- e.g., discovery interview
+
+**Focus Group Interview**: Small groups of research participants (5—10) interact with interview and one another.
+- Sales figures and polling were popular in the 90s, but focus groups were a qualitative research form.
+	* Rather than providing definite numbers, focus groups provide deep understanding of consumer habits.
+- e.g., Focus groups led to the creation of the Barbie doll, revealed that women have lots of influence over what car families buy, etc.
+
+**Questionnaire & Survey**: Cheap and easy way to get larger database.
+- You may not reach potential customers only doing email blasts.
+
+**Longitudinal v.s. Cross-Sectional**:
+- Longitudinal: Track responses of the same sample to detect changes over time.
+- Cross-Sectional: Examine different samples at one point in time.
+
+**Experiment**: Test hypotheses by experimentation.
+
+**Surveys Used to Study the US**:
+- Employment: Current Population Survey
+- Crime: National Crime Victimization Survey
+- Health: National Health Interview Survey
+- Election: American National Election Studies
+
+# Consumer Research
+
+## Market Segmentation
+
+**Demographic**
+- age
+- years of education
+- income
+- family size
+- gender
+- race
+- marital status
+
+**Geographic**
+- rural/urban
+- climate
+- radius
+- neighborhood
+- nearby resources and amenities
+
+**Psychographic**
+- activities
+- interests and opinions
+- personality attitudes
+
+**Behavioral**
+- purchasing history
+- usage habits
+- brand loyalty
+- purchase reasoning
+
+## Model of Consumer Behavior
+
+$$
+\text{Marketing and Other Stimuli} \to
+\text{Buyer's Black Box} \to
+\text{Buyer's Response
+$$
+
+We want to unravel the buyer's black box.
+
+## Factors Influencing Consumer Behavior
+
+1. Consumer Culture
+	- *My friends have it...*
+2. Psychological Core
+	- *I have the time...*
+3. Decision-Making
+	- *I'm willing to buy this*
+
+## Decision-Making Process
+
+1. Need Recognition
+	- My fridge sucks
+2. Search for Information
+	- Looking online
+3. Evaluation of Alternatives
+	- Comparing models
+4. Purchase Decision
+	- Buying the thing
+5. Post-Purchase Evaluation
+	- Did it work?
+
