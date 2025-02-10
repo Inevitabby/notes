@@ -9,6 +9,7 @@
 - [CS2600: Systems Programming](cs2600)
 - [CS2400: Data Structures and Advanced Programming](cs2400)
 - [CS2640: Computer Organization and Assembly Programming](cs2640)
+- [CS3110: Formal Languages and Automata](cs3110)
 - [CS3650: Computer Architecture](cs3650)
 - [CS4800: Software Engineering](cs4800)
 
