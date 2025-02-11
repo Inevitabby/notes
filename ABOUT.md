@@ -25,15 +25,11 @@ This website exists for two reasons:
 
 Are all sunk costs fallacies?
 
-It feels incredibly wasteful to have my notes bitrot into nothingness after spending so much time and effort on them, so I spend more time and effort on preserving them.
+It feels incredibly wasteful to have my notes rot into nothingness after spending so much time and effort on them, so I spend more time and effort on preserving them. At the bare minimum, it's good review for myself.
 
 **Open Knowledge**
 
-Good student resources aren't a natural feature of the landscape in academia, they need real people and community backing them.
-
-It's easy to fall into instrumentalism (e.g., "nobody will benefit", "this is a waste of time"), but that only rationalizes inaction and alienation.
-
-The exemplary route is better. "If I don't, someone won't" is weaker than "if I do, someone might".
+Despite drowning in information, a lot of academic knowledge is locked-up behind textbooks, semester-long subscriptions, and increasing cost-per-credit hours—
 
 $$
 \frac{
@@ -48,6 +44,9 @@ $$
 	\text{Ends}
 }
 $$
+
+
+—I hope that you'll be inspired to not only preserve, but share your knowledge, too.
 
 # Workflow & Architecture
 
@@ -69,7 +68,6 @@ When I want to upload my note(s) to [this GitLab repository](https://gitlab.com/
 |-phl2020
 |--etc...
 ```
-- *Note: Folders need to be added to the `DIRECTORIES` array in `daemon.sh` to actually get processed into HTML* 
 
 ## B. Conversion
 
@@ -79,20 +77,20 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 > 1. **Running**: Any Markdown files that are edited get converted into HTML.
 > 
 > > - Script starts in this state.
-> > - Uses hashes to detect file edits. Selectivity means CPU doesn't get maxed-out reconverting files, so conversions are faster.
+> > - Uses hashes to detect file edits.
 > 
-> 2. **Cleanup**: *All* files are converted and `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
+> 2. **Cleanup**: *All* files are converted. `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
 > 
 > > - Script enters this state when being killed (`CTRL+C`)
 > > - Converting everything allows changes outside of Markdown edits to propagate (e.g., edits to `template.html`)
 > 
 > **Note**: `daemon.sh` can also be run in oneshot mode with `./daemon.sh -o`, where it just does the cleanup process.
 
-**Tools**
+**Tools Used**
 
+- [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): GitLab lets you host static websites from Git repositories on GitLab.
 - [`pandoc`](https://pandoc.org): Universal document converter. Used to convert Markdown to HTML.
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
-- [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): GitLab lets you host static websites from Git repositories on GitLab.
 - [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
 - [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plain text.
 	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to turn all embedded PlantUML into embedded SVGs. 
@@ -104,4 +102,3 @@ app-text/pandoc
 sys-apps/gawk
 media-gfx/plantuml
 ```
-
