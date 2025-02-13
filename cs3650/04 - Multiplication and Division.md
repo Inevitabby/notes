@@ -59,4 +59,33 @@ This is also known as partial product summation, and it requires a lot of additi
 
 # Dot Matrix Representation
 
+# Binary Division
 
+## A. Repeated Subtraction (Long Division)
+
+Easy and slow.
+
+## B. Division using Multiplication
+
+Very efficient.
+
+Let $M$ and $d$ be two numbers.
+
+$$
+\frac{M}{d} = \frac{0.M}{0.d}, y = 1 - 0.d \to 0.d = 1 - y
+$$
+
+Base Formula:
+
+$$
+  \frac{0.M}{0.d} &= \frac{0.M}{1 - y}
+$$
+
+Now, we can multiply numerator and denominator by $(1+y)$ repeatedly, the more repetitions, the more accurate the approximation will be
+
+$$
+\begin{align*}
+  \frac{0.M}{1 - y} &= \frac{0.M (1 + y)}{(1-y)(1+y)} = \frac{0.M (1 + y)}{1 - y^2} \\
+  &= \frac{0.M (1+y)(1+y^2)}{(1-y^2)(1+y^2)} = \frac{0.M (y)(1+y^2)}{(1-y^4)}
+\end{align*}
+$$
