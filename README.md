@@ -22,7 +22,6 @@
 
 - [PHL2020: Critical Thinking](phl2020)
 - [PLS2010: Introduction to American Government](pls2010)
-- [EWS1401: Introduction to Ethnic Studies](ews1401)
 
 ## Self-Study
 
