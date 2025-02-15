@@ -26,3 +26,4 @@
 ## Self-Study
 
 - [CS50: Introduction to Computer Science](cs50)
+- [🏳️‍⚧️ :3 🏳️‍⚧️](trans)
