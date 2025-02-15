@@ -234,3 +234,99 @@ We want to unravel the buyer's black box.
 5. Post-Purchase Evaluation
 	- Did it work?
 
+# How Age Cohorts Impact Consumption
+
+## Market Segmentation
+
+- Age
+- Marital Status
+- Stage in Family Life CYcle
+
+## Age and Consumer Identity
+
+Consumers undergo predictable changes in their values, lifestyles, and consumption patterns as they age.
+- Marketing is targeted at specific age groups.
+
+Ranges:
+- Children: 0—14
+- Teen: 13—19
+- Adults: 18—34
+- Seniors: 65+
+
+### Age Cohort
+
+**Age Cohort**: Set of people born in the same short interval.
+- Consumers in the same age cohort experience the same economic, social, political, and environmental events.
+
+> **Zeitgeist**: The spirit of the times.
+> - e.g., "The free love of the 1960s"
+
+## Generations
+
+A generation typically spans 15—18 years.
+- We use big events to divide generations.
+
+Discuss: Find one person from our given generation. 
+
+Current Facts:
+- Right now, Generation X are the dominant generation in the US
+- Baby Boomers are fading.
+
+The Silent Generation (1928 - 1945): 
+- Influences
+	* Polticial instability, civil rights movement
+	* Great Depressions, WWII
+- Work: Work is a must
+- Career: Slow and Steady
+
+Baby Boomers (1946 - 1964):
+- Influences
+	* Postwar prosperity, TV
+	* Moon landing, watergate, Vietnam
+- Work: Work is expected
+- Career: Upward mobility.
+- Prefer shop to store
+
+Generation X (1965 - 1980):
+- Influences
+	* MTV, Nintendo, PC
+	* Shaky economic times, Great Recession
+- Work: Work is expected
+- Career: Upward mobility
+- Viewing online content on laptops
+
+Generation Y (1981 - 1996):
+- Influences
+	* Digital and mobile technology, social media
+	* Great Recession
+- Work: Work is a means to an end
+- Career: Switch path frequently and fast.
+- Purchase based on photos
+
+Generation Z (1997 - 2012):
+- Influences
+	* Economic downturn
+	* Covid-19
+- Work: Work is consistently evolving
+- Career: Career multi-taskers.
+- Short online attention spans.
+
+Generation Alpha (2013 - 2025):
+- Influences
+	* COVID-19, AI
+	* to be seen.
+- Work: ???
+- Career: ???
+
+## Consumption by Age Segmentation
+
+Youth Market: Often represents rebellion
+
+Senior Market: Retired
+
+
+## Generation Research
+
+- Boundaries are imprecise, not scientifically defined.
+- Labels can lead to stereotypes.
+- Conventional views of generations are skewed towards the experience of the upper middle class.
