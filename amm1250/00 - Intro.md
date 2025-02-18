@@ -330,3 +330,18 @@ Senior Market: Retired
 - Boundaries are imprecise, not scientifically defined.
 - Labels can lead to stereotypes.
 - Conventional views of generations are skewed towards the experience of the upper middle class.
+
+# Sex and Gender
+
+Sex: Biological
+
+Gender: Socially constructed
+
+## Sex Ratio
+
+**Sex Ratio**: Ratio between males and females in a society.
+- Natural sex ratio at birth is slightly biased towards males (103:106)
+
+> **Random Life Expectancy Facts**:
+> - Infant and child mortality rates higher for boys.
+> - Higher life expectancy at birth for infant girls.
