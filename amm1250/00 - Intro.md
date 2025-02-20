@@ -345,3 +345,85 @@ Gender: Socially constructed
 > **Random Life Expectancy Facts**:
 > - Infant and child mortality rates higher for boys.
 > - Higher life expectancy at birth for infant girls.
+
+## Gender Identity
+
+**Sex Orientation**: A during pattern of emotional, romantic, and/or sexual attraction to people of a particular gender.
+- Formed as teens or young adults.
+- e.g., hetero, bisexual, homosexual, pansexual
+
+**Gender Identity**: Person's psychological sense of their gender
+- Formed by age 3
+- e.g., cis, trans, non-binary, gender-fluid
+
+## Gender Differences
+
+- Biological: Biology created gender roles, makeup, and gender stereotypes.
+- Evolutionary: Evolution creates gender differences somehow.
+- Cultural: Culture creates gender differences
+- Religious: God decided what masculine and feminine roles are.
+- Social Role Theory: Widely-shared gender stereotypes develop from the gender divisor of labor that characterises a society.
+
+## Gender Roles
+
+Social Construction of Gender: Gender roles are socially constructed. Differences are created or exaggerated.
+
+**Sexism**: Ideology that one sex is superior to the other.
+
+**Gender Stereotypes**: Widely held believe or generalization about the behaviors and characteristics attributed to women and men.
+- *e.g., women are caretakers, men don't cry, etc.*
+
+**Glass Ceiling**: Invisible barrier that blocks promotion of a qualified individual due to gender, race, or ethnicity.
+
+## Gender Pronouns
+
+**Gender Pronouns**: Terms people choose to refer to themselves that reflect their gender identity.
+
+**Gender Neutral (Inclusive) Pronoun**: A pronoun that doesn't associate a gender with the individual being referred to.
+
+**Bias-Free Language for Gender**:
+
+| Problematic  | Preferred           |
+|--------------|---------------------|
+| Man          | People              |
+| Mankind      | Human Beings        |
+| Manpower     | Work Force          |
+| He or she    | They                |
+| His or her   | Their               |
+| Mothering    | Parenting/Nurturing |
+| Housewife    | Homemaker           |
+| Waitress     | Server              |
+| Salesmanship | Selling ability     |
+
+> Key Points: Don't imply only mothers care for children or people in a role are of a particular gender.
+
+## Feminist Movement
+
+First-Wave: 
+
+Second Wave:
+
+Third Wave:
+- Women of all races, classes, and cultures.
+- Financial, social, and cultural inequalities
+- Individualism and diversity, abolishing gender-role stereotypes
+
+Fourth Wave: 
+- Justice against assault and harassment.
+- Equal pay for equal work.
+- Bodily autonomy
+
+## Gender Gap
+
+Women are underrepresented in every section of society.
+- Politics
+- Corporate America
+- Education
+- Marketplace
+
+The reference person is a White male in his 30s who weighs 155 lbs.
+- Pianos assume a hand span of 22.9 cm for men for octaves.
+	* (For women would be 20.3 cm)
+- Female car crash test dummies weren't required until 2011
+- Temperature regulation in office buildings is set for 155 lb men.
+- Voice recognition works best for males.
