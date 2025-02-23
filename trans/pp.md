@@ -22,9 +22,27 @@ Click on a state to search for virtual health centers that offer HRT.
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    const stateNames = {
+        AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California", 
+        CO: "Colorado", CT: "Connecticut", DE: "Delaware", FL: "Florida", GA: "Georgia", 
+        HI: "Hawaii", ID: "Idaho", IL: "Illinois", IN: "Indiana", IA: "Iowa", 
+        KS: "Kansas", KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland", 
+        MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi", 
+        MO: "Missouri", MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", 
+        NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina", 
+        ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", 
+        RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota", TN: "Tennessee", 
+        TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", 
+        WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming"
+    };
+
     document.querySelector("svg").addEventListener("click", ({ target }) => {
         const path = target.closest("path[id^='US-']");
-        if (path) window.open(`https:\/\/cse.google.com/cse?cx=52dca5193d0024f1a&q="${path.id.replace("US-", "")}"`);
+        if (path) {
+            const stateCode = path.id.replace("US-", "");
+            const stateName = stateNames[stateCode] || stateCode;
+            window.open(`https:\/\/cse.google.com/cse?cx=52dca5193d0024f1a&q="${stateName}"`);
+        }
     });
 });
 </script>
@@ -254,61 +272,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
 If the map isn't working, you can also use these direct links for every state. 
 
-- [Alabama (AL)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="AL")
-- [Alaska (AK)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="AK")
-- [Arizona (AZ)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="AZ")
-- [Arkansas (AR)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="AR")
-- [California (CA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="CA")
-- [Colorado (CO)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="CO")
-- [Connecticut (CT)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="CT")
-- [Delaware (DE)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="DE")
-- [Florida (FL)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="FL")
-- [Georgia (GA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="GA")
-- [Hawaii (HI)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="HI")
-- [Idaho (ID)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="ID")
-- [Illinois (IL)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="IL")
-- [Indiana (IN)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="IN")
-- [Iowa (IA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="IA")
-- [Kansas (KS)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="KS")
-- [Kentucky (KY)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="KY")
-- [Louisiana (LA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="LA")
-- [Maine (ME)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="ME")
-- [Maryland (MD)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MD")
-- [Massachusetts (MA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MA")
-- [Michigan (MI)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MI")
-- [Minnesota (MN)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MN")
-- [Mississippi (MS)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MS")
-- [Missouri (MO)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MO")
-- [Montana (MT)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="MT")
-- [Nebraska (NE)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NE")
-- [Nevada (NV)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NV")
-- [New Hampshire (NH)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NH")
-- [New Jersey (NJ)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NJ")
-- [New Mexico (NM)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NM")
-- [New York (NY)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NY")
-- [North Carolina (NC)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="NC")
-- [North Dakota (ND)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="ND")
-- [Ohio (OH)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="OH")
-- [Oklahoma (OK)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="OK")
-- [Oregon (OR)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="OR")
-- [Pennsylvania (PA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="PA")
-- [Rhode Island (RI)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="RI")
-- [South Carolina (SC)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="SC")
-- [South Dakota (SD)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="SD")
-- [Tennessee (TN)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="TN")
-- [Texas (TX)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="TX")
-- [Utah (UT)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="UT")
-- [Vermont (VT)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="VT")
-- [Virginia (VA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="VA")
-- [Washington (WA)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="WA")
-- [West Virginia (WV)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="WV")
-- [Wisconsin (WI)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="WI")
-- [Wyoming (WY)](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="WY")
+- [Alabama](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Alabama")
+- [Alaska](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Alaska")
+- [Arizona](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Arizona")
+- [Arkansas](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Arkansas")
+- [California](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="California")
+- [Colorado](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Colorado")
+- [Connecticut](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Connecticut")
+- [Delaware](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Delaware")
+- [Florida](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Florida")
+- [Georgia](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Georgia")
+- [Hawaii](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Hawaii")
+- [Idaho](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Idaho")
+- [Illinois](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Illinois")
+- [Indiana](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Indiana")
+- [Iowa](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Iowa")
+- [Kansas](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Kansas")
+- [Kentucky](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Kentucky")
+- [Louisiana](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Louisiana")
+- [Maine](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Maine")
+- [Maryland](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Maryland")
+- [Massachusetts](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Massachusetts")
+- [Michigan](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Michigan")
+- [Minnesota](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Minnesota")
+- [Mississippi](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Mississippi")
+- [Missouri](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Missouri")
+- [Montana](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Montana")
+- [Nebraska](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Nebraska")
+- [Nevada](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Nevada")
+- [New Hampshire](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="New%20Hampshire")
+- [New Jersey](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="New%20Jersey")
+- [New Mexico](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="New%20Mexico")
+- [New York](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="New%20York")
+- [North Carolina](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="North%20Carolina")
+- [North Dakota](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="North%20Dakota")
+- [Ohio](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Ohio")
+- [Oklahoma](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Oklahoma")
+- [Oregon](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Oregon")
+- [Pennsylvania](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Pennsylvania")
+- [Rhode Island](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Rhode%20Island")
+- [South Carolina](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="South%20Carolina")
+- [South Dakota](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="South%20Dakota")
+- [Tennessee](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Tennessee")
+- [Texas](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Texas")
+- [Utah](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Utah")
+- [Vermont](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Vermont")
+- [Virginia](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Virginia")
+- [Washington](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Washington")
+- [West Virginia](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="West%20Virginia")
+- [Wisconsin](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Wisconsin")
+- [Wyoming](https://cse.google.com/cse?cx=52dca5193d0024f1a&q="Wyoming")
 
 # Programmed Query
 
 The custom query being used by the programmed Google search Engine is:
 
 ```
-"<YOUR_STATE>" site:plannedparenthood.org ("Virtual Hormone Therapy" OR "Virtual Visit for Gender-Affirming Care")
+"<YOUR_STATE>"
+site:plannedparenthood.org/health-center
+(
+   ("Virtual Hormone Therapy" OR "Virtual Visit for Gender-Affirming Care")
+      OR
+   (
+      "Gender-affirming hormone therapy prescriptions available via telehealth"
+         OR
+      "gender affirming care, you can call or book online"
+   )
+)
 ```
