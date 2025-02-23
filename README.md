@@ -26,4 +26,9 @@
 ## Self-Study
 
 - [CS50: Introduction to Computer Science](cs50)
-- [🏳️‍⚧️ :3 🏳️‍⚧️](trans)
+
+## Queer
+
+- [Conversation with a Registered Nurse](trans/rn.html)
+- [Voice Feminization](trans/voice.html)
+- [Planned Parenthood Virtual Health Center Search](trans/pp.html)

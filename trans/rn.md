@@ -6,7 +6,7 @@ title: "Conversation with a Registered Nurse"
 
 These are snippets of a short verbal conversation I had in 2024 with a registered nurse, mainly about HRT for transgender women.
 
-This is an unprofessional, firsthand account of a conversation about [one person's]{.underline} knowledge; **this not medical advice**.
+This is an unprofessional, firsthand account of a conversation about [one person's]{.underline} knowledge; **this is not medical advice**.
 
 > **On Format**: My additions and comments are indicated via footnotes.
 

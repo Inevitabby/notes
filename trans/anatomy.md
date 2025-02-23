@@ -2,7 +2,7 @@
 title: "Anatomy and Physiology of Sound"
 ---
 
-# The Estill Model
+# Estill Model Overview
 
 **Power-Source-Filter Model of Voice**:
 1. **Power**: Breath involving the lungs, ribs, diaphragm, and abdominal muscles to propel the breath into the vocal tract.
@@ -13,10 +13,8 @@ title: "Anatomy and Physiology of Sound"
 	- *System: Resonance and amplification*
 
 ![](.images/doodle_00.png)
-> **On the Voice Model**: This model of voice is known as the Estill model, which lacks online info because it's used in a proprietary voice training program.
-> - A more common voice model used in voice science is the **source-filter theory**, which describes vocal sound as a combination of source and filter.
 
-## Power
+# Power
 
 We *breathe in* and *speak out*.
 - More power into breath results in a less "clean" and efficient vocal note.
@@ -32,8 +30,20 @@ Breathing engages the intercostal muscles between the ribs and your abdomen—
 > * Diaphragm raises
 > * Rib cage contracts
 
-—so it is important to move you abdomen and chest correctly, e.g.,
+—so it is important to move you abdomen and chest correctly:
 
-- Tightness/inflexibility in your abdomen will cause tightness in the larynx.
+1. Your belly should expand and move forward a little on the in-breath.[^fn1]
+	* Tightness in your abdomen causes tightness in the larynx and voice.
+2. Abdominal muscles should *support* the out-breath. 
+	* Strong/weak pressure impacts the larynx and voice.
+
+[^fn1]: My friend says her drama teacher described this as: "Imagine breathing inwards to inflate a pool noodle around your waist"
+
+# Source
+
+The outward breath goes from the lungs up the trachea and into the larynx.
+
+The true vocal folds of the larynx act as a valve and draw together, fluttering rapidly and vibrating the air to make sound.
+- The vibrating folds themselves also add their own "harmonic" frequencies to the voice.
 
 
