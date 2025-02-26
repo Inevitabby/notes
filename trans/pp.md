@@ -16,9 +16,9 @@ header-includes:
 
 # Map
 
-Click on a state to search for virtual health centers that offer HRT.
+Click on a state to search for facilities that offer telehealth HRT.
 
-> Note: Not all states have telehealth centers that offer hormone therapy.
+> Note: You can click on "Virtual Health Center ONLY" (below the search bar) to refine the search to *only* show Virtual Health Centers.
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
