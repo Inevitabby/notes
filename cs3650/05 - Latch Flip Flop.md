@@ -37,18 +37,119 @@ When $S=R=0$, the circuit acts as a memory cell and keeps its previous state.
 > - if a NAND gets a `0`, it *must* output `1`
 > - et cetera.
 
-## Flip-Flop
+## D Latch
 
-> If the circuit uses a clock, we call it a flip-flop.
+Used to capture (latch) the logic level present on the Data line.
 
-**High Level Sensitive Flip Flop (Set-Reset Flip-Flop**): 
+![](.images/doodle_32.png)
+
+| D | Q | Q' |
+|---|---|----|
+| 0 | 0 | 1  |
+| 1 | 1 | 0  |
+
+# Flip-Flop
+
+## High and Low Level
+
+If the circuit uses a clock, we call it a flip-flop, otherwise it is a switch.
+
+**High v.s. Low Level**: A high-level flip flop only responds to input when the clock is a high voltage, a low-level flip flop only responds when it's low voltage.
+
+**High Level Triggered RS-Flip Flop**: 
 
 ![](.images/doodle_30.png)
 
+| R | S | C | Q      | Q'     |
+|---|---|---|--------|--------|
+| 0 | 0 | 0 | MEMORY | MEMORY |
+| 0 | 1 | 0 | MEMORY | MEMORY |
+| 1 | 0 | 0 | MEMORY | MEMORY |
+| 1 | 1 | 0 | MEMORY | MEMORY |
+| 0 | 0 | 1 | MEMORY | MEMORY |
+| 0 | 1 | 1 | 1      | 0      |
+| 1 | 0 | 1 | 0      | 1      |
+| 1 | 1 | 1 | 0      | 0      |
 
-**Low Level Sensitive Flip Flop (Set-Reset Flip-Flop**): 
+**Low Level Triggered RS-Flip Flop**: 
 
+![](.images/doodle_33.png)
 
-# D Latch
+| R | S | C | Q      | Q'     |
+|---|---|---|--------|--------|
+| 0 | 0 | 0 | MEMORY | MEMORY |
+| 0 | 1 | 0 | 1      | 0      |
+| 1 | 0 | 0 | 0      | 1      |
+| 1 | 1 | 0 | 0      | 0      |
+| 0 | 0 | 1 | MEMORY | MEMORY |
+| 0 | 1 | 1 | MEMORY | MEMORY |
+| 1 | 0 | 1 | MEMORY | MEMORY |
+| 1 | 1 | 1 | MEMORY | MEMORY |
 
+**High Level Triggered D-Flip Flop**:
+
+![](.images/doodle_34.png)
+
+| D | C | Q      | Q'     |
+|---|---|--------|--------|
+| 0 | 0 | MEMORY | MEMORY |
+| 1 | 0 | MEMORY | MEMORY |
+| 0 | 1 | 0      | 1      |
+| 1 | 1 | 1      | 0      |
+
+**Low Level Triggered D-Flip Flop**:
+
+- Just flip the clock signal.
+
+| D | C | Q      | Q'     |
+|---|---|--------|--------|
+| 0 | 0 | 0      | 1      |
+| 1 | 0 | 1      | 0      |
+| 0 | 1 | MEMORY | MEMORY |
+| 1 | 1 | MEMORY | MEMORY |
+
+## Edge Triggered
+
+**Rising v.s. Falling Edge Triggered**: Triggers on the edge of the clock pulse (when it's going from 0 $\to$ 1 (rising) or 1 $\to$ 0 (falling)).
+
+**Rising Edge Triggered SR Flip Flop**:
+
+![](.images/doodle_35.png)
+
+**Falling Edge Triggered SR Flip Flop**:
+
+- NOT the above clock values.
+
+**Rising Edge Triggered D Flip Flop**:
+
+![](.images/doodle_37.png)
+
+**Falling Edge Triggered D Flip Flop**:
+
+![](.images/doodle_36.png)
+
+## JK Flip-Flop
+
+Operates on sequential logic, output depends not only on current inputs, but the previous state as well.
+- Like a SR Flip Flop, with the difference being that when J=K=1, Q will toggle.
+
+| J | K | C | Q      | Q'     |
+|---|---|---|--------|--------|
+| 0 | 0 | 0 | MEMORY | MEMORY |
+| 0 | 1 | 0 | MEMORY | MEMORY |
+| 1 | 0 | 0 | MEMORY | MEMORY |
+| 1 | 1 | 0 | MEMORY | MEMORY |
+| 0 | 0 | 1 | MEMORY | MEMORY |
+| 0 | 1 | 1 | 1      | 0      |
+| 1 | 0 | 1 | 0      | 1      |
+| 1 | 1 | 1 | T      | T      |
+
+## T Flip-Flop
+
+If T=0, Q will be toggled. If T=0, Q will be memory.
+
+| T | Q      | Q'     |
+|---|--------|--------|
+| 0 | MEMORY | MEMORY |
+| 1 | T      | T      |
 
