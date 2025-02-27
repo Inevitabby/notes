@@ -128,7 +128,22 @@ If the circuit uses a clock, we call it a flip-flop, otherwise it is a switch.
 
 ![](.images/doodle_36.png)
 
+
+## T Flip-Flop
+
+If T=0, Q will be toggled. If T=0, Q will be memory.
+
+| T | Q      | Q'     |
+|---|--------|--------|
+| 0 | MEMORY | MEMORY |
+| 1 | Q'     | Q      |
+
+> T flip-flops aren't manufactured in the real world, we just use JK flip-flops.
+
 ## JK Flip-Flop
+
+> *"JK doesn't stand for Jack-Kilby"*
+> *— The professor*
 
 Operates on sequential logic, output depends not only on current inputs, but the previous state as well.
 - Like a SR Flip Flop, with the difference being that when J=K=1, Q will toggle.
@@ -142,14 +157,5 @@ Operates on sequential logic, output depends not only on current inputs, but the
 | 0 | 0 | 1 | MEMORY | MEMORY |
 | 0 | 1 | 1 | 1      | 0      |
 | 1 | 0 | 1 | 0      | 1      |
-| 1 | 1 | 1 | T      | T      |
-
-## T Flip-Flop
-
-If T=0, Q will be toggled. If T=0, Q will be memory.
-
-| T | Q      | Q'     |
-|---|--------|--------|
-| 0 | MEMORY | MEMORY |
-| 1 | T      | T      |
+| 1 | 1 | 1 | Q'     | Q      |
 
