@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage[paperwidth=5in, paperheight=3in, margin=0.1in]{geometry}
+\usepackage{amsmath}
+
+\begin{document}
+
+\noindent
+\begin{minipage}{0.1\textwidth}
+    \begin{align*}
+        \text{rel. freq} &= \frac{\text{freq}}{n} \\
+        k &= \sqrt{n} \\
+        w &= \frac{\text{max - min}}{k} \\
+        \text{density} &= \frac{\text{rel. freq}}{w} \\
+        \text{mean}: \bar x &= \frac{\text{sum of all obs.}}{n} \\
+        P_k \textit{(prcntl)} &= x_{\frac{kn}{100}} \\
+        \text{IQR} &= Q_3 - Q_1 \\
+        \text{Var}: s^2 &= \frac{1}{n-1} \left\{ \sum_{i=1}^n x_i^2 - n \bar x \right\} \\
+        \text{SD}: s^2 &= \sqrt{s}
+    \end{align*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \begin{align*}
+        P(E) &= \frac{\text{\# $E$ occured}}{\text{\# $S$ occured}} \\
+        &\tiny\textit{(given all outcomes in S are equally likely)} \\
+        P(A \cup B) &= P(A) + P(B) - P(A \cap B) \\
+        \text{Disjoint}&: P(A \cap B) = 0 \\
+        \text{Indpndnt}&: P(A \cap B) = P(A) P(B) \\
+        P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+        P(A \cap B) &= P(A|B)P(B) \lor P(B|A)P(A) \\
+        P(A) &= P(A|B)P(B) + P(A|\bar B)P(\bar B) \\
+        P(B|A) &= \frac{P(B \cap A)}{P(A)} = \frac{P(A|B)P(B)}{P(A)}
+    \end{align*}
+\end{minipage}
+
+\end{document}
