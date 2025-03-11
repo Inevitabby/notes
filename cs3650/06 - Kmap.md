@@ -189,4 +189,133 @@ title: "K-Map"
 > | c'd  | 0    | 1   | 1  | 1   |
 > | cd   | 1    | 1   | 1  | 0   |
 > | cd'  | 0    | 1   | 0  | 1   |
+>
+> ???:
+> 
+> |      | a'b' | a'b | ab | ab' |
+> |------|------|-----|----|-----|
+> | c'd' | 1    | 0   | 0  | 1   |
+> | c'd  | 0    | 0   | 0  | 0   |
+> | cd   | 0    | 0   | 0  | 0   |
+> | cd'  | 1    | 0   | 0  | 1   |
+> 
+> Q: What is this?
+> A: b'd'
 
+# Don't Care (x)
+
+**"Don't care"**: An unknown value in a multi-valued logic system.
+- As we're trying to create groups of variables in our K-maps, we can strategically set them to create nicer groups.
+
+> **Examples**:
+> 
+> Q: What should we set X to?
+> 
+> |    | a' | a |
+> |----|----|---|
+> | b' | 1  | 1 |
+> | b  | 1  | X |
+> 
+> A: 1
+> 
+> Q: What should we set X to?
+> 
+> |    | a'b' | a'b | ab | ab' |
+> |----|------|-----|----|-----|
+> | c' | 1    | X   | 1  | 0   |
+> | c  | 0    | 1   | 0  | 1   |
+> 
+> A: 0
+
+## Example: SR-Flip-Flop
+
+This is the truth table of a SR-Flip-Flop
+
+| S | R | $Q^+$ |
+|---|---|-----|
+| 0 | 0 | Q   |
+| 0 | 1 | 0   |
+| 1 | 0 | 1   |
+
+Now let's construct a truth table for going from one value to another
+
+| $Q \to Q^+$ | S | R |
+|-------------|---|---|
+| $0 \to 0$     | 0 | 0 |
+|             | 0 | 1 |
+|             | 0 | X |
+| $0 \to 1$     | 1 | 0 |
+|             | 1 | 0 |
+|             | 1 | 0 |
+| $1 \to 0$     | 0 | 1 |
+|             | 0 | 1 |
+|             | 0 | 1 |
+| $1 \to 1$     | 0 | 0 |
+|             | 1 | 0 |
+|             | X | 0 |
+
+## Example: D-Flip Flop
+
+This is the truth table of a D-Flip-Flop
+
+| D | $Q^+$ |
+|---|-------|
+| 0 | 0     |
+| 1 | 1     |
+
+Now let's construct a truth table for going from one value to another
+
+| $Q \to Q^+$ | D |
+|-------------|---|
+| $0 \to 0$     | 0 |
+| $0 \to 1$     | 1 |
+| $1 \to 0$     | 0 |
+| $1 \to 1$     | 1 |
+
+## Example: T-Flip Flop
+
+This is the truth table of a T-Flip-Flop
+
+| T | $Q^+$ |
+|---|-------|
+| 0 | Q     |
+| 1 | Q'    |
+
+Now let's construct a truth table for going from one value to another
+
+| $Q \to Q^+$ | T |
+|-------------|---|
+| $0 \to 0$     | 0 |
+| $0 \to 1$     | 1 |
+| $1 \to 0$     | 1 |
+| $1 \to 1$     | 0 |
+
+## Example: JK-Flip-Flop
+
+This is the truth table of a JK-Flip-Flop
+
+| J | K | $Q^+$ |
+|---|---|-------|
+| 0 | 0 | Q     |
+| 0 | 1 | 0     |
+| 1 | 0 | 1     |
+| 1 | 1 | Q'    |
+
+Now let's construct a truth table for going from one value to another
+
+| $Q \to Q^+$ | J | K |
+|-------------|---|---|
+| $0 \to 0$   | 0 | 0 |
+|             | 0 | 1 |
+|             | 0 | X |
+| $0 \to 1$   | 1 | 0 |
+|             | 1 | 1 |
+|             | 1 | X |
+| $1 \to 0$   | 0 | 1 |
+|             | 1 | 1 |
+|             | X | 1 |
+| $1 \to 1$   | 0 | 0 |
+|             | 1 | 0 |
+|             | X | 0 |
+
+As we can see, JK-flip-flop has a lot of don't cares, which means there's lot of choices to make in design.
