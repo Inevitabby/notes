@@ -133,3 +133,5 @@ Observations:
 
 - J = T
 - K = T
+
+![](.images/doodle_44.png)
