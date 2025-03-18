@@ -427,3 +427,34 @@ The reference person is a White male in his 30s who weighs 155 lbs.
 - Female car crash test dummies weren't required until 2011
 - Temperature regulation in office buildings is set for 155 lb men.
 - Voice recognition works best for males.
+
+# Inclusive Marketing
+
+**Marketing**: Business practice that involves identifying, predicting, and meeting customer needs.
+
+Segments:
+- Demographics: Age, gender, education, income, etc.
+	* e.g., show ads for dog collars to dogowners
+- Geographic: Location
+	* e.g., selling ski products to northern regions
+- Behavior: Buying approach
+	* e.g., loyalty system
+- Psychographic: Personality, lifestyle, values
+	* e.g., 
+
+Targeted Marketing:
+- Increased personalization, at the cost of privacy and price discrimination.
+
+# Consumer Choice
+
+**Consumer Choice**: Consumer sovereignty is a myth because the freedom of choice is limited. 
+
+- The market system doesn't resolve consumer grievances very easily.
+- Consumer interest is underrepresented in government compared to seller interest.
+
+**Consumer v.s. Public Interest**:
+- Ethical Consumption vs. Affordable Consumption
+- Consumer Rights v.s. Consumer Needs
+
+**Eight Important Consumer Rights**:
+
