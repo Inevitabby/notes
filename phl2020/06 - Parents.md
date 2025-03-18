@@ -1,3 +1,7 @@
+---
+title: "Parents"
+---
+
 # Three Kinds of Loving and Attentive Parents
 
 1. **Authoritarian**: "I make the rules, you'll follow them or face consequences."

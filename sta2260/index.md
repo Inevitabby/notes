@@ -2,8 +2,4 @@
 
 The following are my class notes for Probability and Statistics for Computer Scientists and Engineers.
 
-- [Introduction](01.html)
-- [Descriptive Statistics](02.html)
-- [Probability](03.html)
-- [Discrete Random Variables](04.html)
-- [Continuous Random Variables](05.html)
+{{AUTOTOC}}

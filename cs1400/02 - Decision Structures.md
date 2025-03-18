@@ -1,3 +1,7 @@
+---
+title: "Decision Structures"
+---
+
 # The `if` Statement
 
 Decides whether or not a section of code executes.

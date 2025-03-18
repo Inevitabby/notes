@@ -1,3 +1,7 @@
+---
+title: "Propositional Logic"
+---
+
 # Propositional Logic
 
 **Propositional Logic**: Deriving a logical conclusion by combining many propositions and using formal logic: Hence, determining the truth of arguments.

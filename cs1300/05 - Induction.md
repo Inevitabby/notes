@@ -1,3 +1,7 @@
+---
+title: "Induction"
+---
+
 # Induction
 
 ## Theory

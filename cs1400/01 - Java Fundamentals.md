@@ -1,4 +1,6 @@
-# Java Fundamentals
+---
+title: "Java Fundamentals"
+---
 
 # Parts of a Java Program
 

@@ -1,3 +1,7 @@
+---
+title: "Emotions of Logic"
+---
+
 # Introduction
 
 > **False Dichotomy**: You can either be logical or emotional.

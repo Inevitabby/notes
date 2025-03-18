@@ -1,3 +1,7 @@
+---
+title: "Combinatorics"
+---
+
 # Counting
 
 > **Goal**: Find out ow many members are present in a finite set.

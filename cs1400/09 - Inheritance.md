@@ -1,3 +1,7 @@
+---
+title: "Inheritance"
+---
+
 # Generalization vs. Specialization
 
 Real-life objects are typically specialized versions of general objects.

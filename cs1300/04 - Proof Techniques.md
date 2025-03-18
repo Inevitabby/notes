@@ -1,3 +1,7 @@
+---
+title: "Proof Techniques"
+---
+
 # Informal Proof Techniques
 
 In the real world, we mix English and mathematical statements to do proofs.

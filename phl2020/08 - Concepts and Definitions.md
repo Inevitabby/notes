@@ -1,3 +1,7 @@
+---
+title: "Concepts and Definitions"
+---
+
 # Definitions
 
 **Definition**: A short statement that tells the essential nature of a reference/concept.

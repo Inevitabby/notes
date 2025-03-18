@@ -1,3 +1,7 @@
+---
+title: "How the Mind Works"
+---
+
 # Basic Points on How the Mind Works
 
 - **Philosophy**: Trying to be more scientific and objective about everyday life.

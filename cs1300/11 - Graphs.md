@@ -1,3 +1,7 @@
+---
+title: "Graphs"
+---
+
 # Definitions of a Graph
 
 **Informal Definition of a Graph**: A graph is a nonempty set of *nodes* (vertices) and a set of *arcs* (edges) such that arc connects two nodes.

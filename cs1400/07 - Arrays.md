@@ -1,3 +1,7 @@
+---
+title: "Arrays"
+---
+
 # Intro to Arrays
 
 **Array**: List of data elements

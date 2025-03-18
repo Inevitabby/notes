@@ -1,3 +1,7 @@
+---
+title: "Relations"
+---
+
 # The Job Market
 
 People laid off post-Covid are now competing with fresh graduates.

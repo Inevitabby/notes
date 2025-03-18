@@ -1,3 +1,7 @@
+---
+title: "Quiz 1 Review"
+---
+
 # Quick Review
 
 **Principles of How the Human Mind Works**:

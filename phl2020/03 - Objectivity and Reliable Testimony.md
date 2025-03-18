@@ -1,3 +1,7 @@
+---
+title: "Objectivity and Reliable Testimony"
+---
+
 # To What Extent is Objectivity Possible?
 
 - If objectivity is impossible, then we know nothing about the world

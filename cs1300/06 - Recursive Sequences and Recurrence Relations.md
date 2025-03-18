@@ -1,3 +1,7 @@
+---
+title: "Recursion"
+---
+
 # Recursive Sequences
 
 **Sequence**: An ordered list.

@@ -1,3 +1,7 @@
+---
+title: "Set Theory"
+---
+
 # Set Theory Basics
 
 **Set**: A collection of distinct objects (elements).

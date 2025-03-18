@@ -1,3 +1,7 @@
+---
+title: "Argument"
+---
+
 # Argument
 
 **Argument**: An attempt to give evidence that an idea is true.

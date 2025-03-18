@@ -1,3 +1,7 @@
+---
+title: "Fallacies"
+---
+
 # Fallacy
 
 **Fallacy**: A counterfeit argument. 

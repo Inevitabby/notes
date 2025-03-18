@@ -1,3 +1,7 @@
+---
+title: "Methods"
+---
+
 # Why Write Methods?
 
 1. Break a problem into small manageable pieces.

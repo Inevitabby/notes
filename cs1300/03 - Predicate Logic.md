@@ -1,3 +1,7 @@
+---
+title: "Predicate Logic"
+---
+
 # Predicate Logic
 
 # Variables in Logic

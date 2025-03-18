@@ -1,3 +1,7 @@
+---
+title: "Classes"
+---
+
 # Objects and Classes
 
 An object exists in memory and performs a specific task

@@ -1,3 +1,7 @@
+---
+title: "Search and Sort"
+---
+
 # Search Algorithms
 
 **Searching**: Processor of finding a target element within a group of items called the search pool.

@@ -1,3 +1,7 @@
+---
+title: "Recursion"
+---
+
 # Introduction to Recursion
 
 **Recursion**: Using the same computation repeatedly until a problem is solved.

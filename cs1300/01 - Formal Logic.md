@@ -1,3 +1,7 @@
+---
+title: "Formal Logic"
+---
+
 # Formal Logic
 
 **Formal Logic**: The study of reasoning, specifically whether something is true or false.
