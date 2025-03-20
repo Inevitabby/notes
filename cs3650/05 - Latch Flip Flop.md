@@ -150,10 +150,7 @@ Operates on sequential logic, output depends not only on current inputs, but the
 
 | J | K | C | Q      | Q'     |
 |---|---|---|--------|--------|
-| 0 | 0 | 0 | MEMORY | MEMORY |
-| 0 | 1 | 0 | MEMORY | MEMORY |
-| 1 | 0 | 0 | MEMORY | MEMORY |
-| 1 | 1 | 0 | MEMORY | MEMORY |
+| X | X | 0 | MEMORY | MEMORY |
 | 0 | 0 | 1 | MEMORY | MEMORY |
 | 0 | 1 | 1 | 1      | 0      |
 | 1 | 0 | 1 | 0      | 1      |
