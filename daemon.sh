@@ -2,7 +2,7 @@
 cd "$(dirname "$0")" || exit
 DIRECTORIES=("cs1300" "cs1400" "cs2400" "cs2600" "cs2640" "cs50" "phl2020" "mat1150" "pls2010" "mips" "ffmpeg" "sta2260" "cs3560" "cs4800" "cs3650" "cs3110" "amm1250" "trans")
 N=32 # Number of parallel Pandoc processes
-BASE_PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet --template template.html --lua-filter=.util/autotoc.lua --lua-filter=.util/plantuml.lua"
+BASE_PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highlight-style=pygments --wrap=preserve --standalone --quiet --template template.html --lua-filter=.util/metadata_fixer.lua --lua-filter=.util/autotoc.lua --lua-filter=.util/plantuml.lua"
 STYLE_FILE="style.min.css"
 RUNNING=true
 source .util/convert_markdown.sh
@@ -49,7 +49,7 @@ function convert {
 		done
 	done
 	# Convert special files
-	(pandoc -i "README.md" ${BASE_PANDOC_ARGS} | awk -f ".util/minify.awk") > "public/index.html" &
+	(pandoc -i "README.md" -M title="Academic Notes" -M noheader="true" ${BASE_PANDOC_ARGS} | awk -f ".util/minify.awk") > "public/index.html" &
 	(pandoc -i "ABOUT.md" ${BASE_PANDOC_ARGS} --toc | awk -f ".util/minify.awk") > "public/about.html" &
 	# Wait for all subprocesses to finish
 	wait
