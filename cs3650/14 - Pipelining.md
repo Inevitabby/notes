@@ -174,3 +174,55 @@ At E2, we see the instruction wants to use R1, but the R1 that was just modified
 Better Solutions: Instead of dealing with writing R1 just to read R1, you can short circuit R1 in the ALU to make the result immediately available before WB1.
 
 ![HOTWIRE](.images/doodle_69.png)
+
+# More on Limits
+
+So far we've been dealing with stable $\tau$ 
+
+But, what if a step takes $2\tau$?
+
+| F      | D      | E       | WB     |
+|--------|--------|---------|--------|
+| $\tau$ | $\tau$ | $2\tau$ | $\tau$ |
+
+- As we can see on E, the clock frequency gets divided by two.
+
+Why not just increase $k$ (pipelining)?
+- Because remember, we need registers between every modules, which introduces a slowdown of about 10%.
+
+# Assorted Questions
+
+> Q: What is the physical limit of pipelining?
+> A: If the stage delay is more than 10 times of the delay of the latch.
+
+
+> Q: How to we fix the following:
+> 
+> So far we've been dealing with stable $\tau$ 
+> 
+> But, what if a step takes $2\tau$?
+> 
+> | F      | D      | E       | WB     |
+> |--------|--------|---------|--------|
+> | $\tau$ | $\tau$ | $2\tau$ | $\tau$ |
+> 
+> - Because of E, the clock frequency gets divided by two.
+> 
+> A: Divide the execution part by two.
+> 
+> | F      | D      | $E_1$  | $E_2$  | WB |
+> |--------|--------|--------|--------|----|
+> | $\tau$ | $\tau$ | $\tau$ | $\tau$ |    |
+
+> Q: Okay, so what if in some cases, we don't need $E_2$?
+> - e.g., `ADD R1, R2, R3` might be really fast; but `Load R1, Memory1` might take 2x longer.
+> 
+> A: "You are using a perfect pipeling, and thus everything will be the same"
+
+> Q: Why can we never have the ideal speedup?
+> 
+> A: Because of instruction dependency. Recall these two conflicts:
+1. The `load` example uses the bus while F3 wants to run.
+2. Doing R1 <- R2 + R3 followed by R4 <- R1 + R5 and having to account for R1 not being available.
+
+
