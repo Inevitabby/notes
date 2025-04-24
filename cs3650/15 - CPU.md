@@ -85,3 +85,22 @@ Fetch: During the fetch cycle, the CPU retrieves the instruction from memory.
 2. Access register to read parameters.
 
 # How to Speed Up Computers
+
+## Superscaling
+
+Until now, we've been using specialized modules for fetching, decoding, executing, and writeback.
+
+Now, suppose we instead get 4 modules who can do all operations.
+
+| F1 | D1 | E1 | WB1 |     |
+|----|----|----|-----|-----|
+| F2 | D2 | E2 | WB2 |     |
+| F3 | D3 | E3 | WB3 |     |
+| F4 | D4 | E4 | WB4 |     |
+|    | F5 | D5 | E5  | WB5 |
+|    | F6 | D6 | E6  | WB6 |
+|    | F7 | D7 | E7  | WB7 |
+|    | F8 | D8 | E8  | WB8 |
+
+Limitation: Instruction dependency. You can't write a program where all the instructions aren't related.
+
