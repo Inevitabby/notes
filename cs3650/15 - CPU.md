@@ -194,4 +194,3 @@ The technology of the cache and the CPU must be the same.
 	* Technically, the CPU can be larger than the cache, but it'll be a waste of money.
 		+ e.g., 1nm CPU and 0.5 nm cache is valid, but wasteful.
 
-
