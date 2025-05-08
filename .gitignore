@@ -3,6 +3,6 @@ public/
 .md5sums/
 
 # LaTeX stuff
-.aux
-.dvi
-.log
+*.aux
+*.dvi
+*.log
