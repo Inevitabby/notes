@@ -8,9 +8,6 @@ source .util/convert_markdown.sh
 source .util/clean.sh
 # Files in here get hosted
 mkdir -p "public"
-# Copy style files
-cp ".util/style.css" "public/" -u
-cp ".util/default.css" "public/" -u
 # Cleanup output files on exit
 stty -echo
 function cleanup() {
@@ -29,7 +26,9 @@ function cleanup() {
 		done
 	done
 	wait
-	# TODO Minify style files
+	# Minify output files
+	minify --inplace --recursive ./public
+	minify --bundle --recursive .util/styles -o ./public/style.css
  	exit
 }
 trap "cleanup" SIGINT
@@ -49,9 +48,9 @@ function convert {
 		done
 	done
 	# Convert special files
-	ARGS+="${BASE_PANDOC_ARGS} --css default.css --css style.css"
-	(pandoc -i "README.md" -M title="Academic Notes" -M noheader="true" ${ARGS} | awk -f ".util/minify.awk") > "public/index.html" &
-	(pandoc -i "ABOUT.md" ${ARGS} --toc | awk -f ".util/minify.awk") > "public/about.html" &
+	ARGS+="${BASE_PANDOC_ARGS} --css style.css"
+	(pandoc -i "README.md" -M title="Academic Notes" -M noheader="true" ${ARGS}) > "public/index.html" &
+	(pandoc -i "ABOUT.md" ${ARGS} --toc) > "public/about.html" &
 	# Wait for all subprocesses to finish
 	wait
 }

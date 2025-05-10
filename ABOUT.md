@@ -91,7 +91,7 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 - [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/): GitLab lets you host static websites from Git repositories on GitLab.
 - [`pandoc`](https://pandoc.org): Universal document converter. Used to convert Markdown to HTML.
 	* A modified version of the [template.html](https://github.com/jgm/pandoc-templates/) file Pandoc uses to convert Markdown to HTML is used to easily plug in new CSS, JS, and HTML without fiddling with Pandoc options.
-- [`awk`](https://en.wikipedia.org/wiki/AWK): Used for the crackpot HTML minifier.
+- [`minify`](https://github.com/tdewolff/minify): Used for minification and CSS bundling.
 - [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plain text.
 	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to turn all embedded PlantUML into embedded SVGs. 
 
@@ -101,4 +101,5 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 app-text/pandoc
 sys-apps/gawk
 media-gfx/plantuml
+https://github.com/tdewolff/minify (no ebuild :()
 ```
