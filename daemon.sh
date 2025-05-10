@@ -7,8 +7,8 @@ RUNNING=true
 source .util/convert_markdown.sh
 source .util/clean.sh
 # Copy style files
-cp ".util/style.css" "public/" -u
-cp ".util/default.css" "public/" -u
+cp ".util/style.css" "public/style.css" -u
+cp ".util/default.css" "public/default.css" -u
 # Cleanup output files on exit
 stty -echo
 function cleanup() {
