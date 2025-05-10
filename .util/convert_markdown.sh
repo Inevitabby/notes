@@ -20,6 +20,9 @@ function convert_markdown {
 	# Create output directory
 	OUTPUT_DIR="public/${INPUT_DIR}"
 	mkdir -p "${OUTPUT_DIR}"
+	# Calculate relative path to public/*.css
+	RELATIVE_PATH=$(printf '../%.0s' ${INPUT_DIR//[^\/]/})
+	PANDOC_ARGS+=" --css ${RELATIVE_PATH}default.css --css ${RELATIVE_PATH}style.css"
 	# Convert Markdown to minified HTML
 	(pandoc -i "${INPUT_FILE}" ${PANDOC_ARGS} | awk -f ".util/minify.awk") > "${OUTPUT_DIR}/${OUTPUT_FILE}" &
 }
