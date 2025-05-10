@@ -6,9 +6,11 @@ BASE_PANDOC_ARGS="-f markdown+lists_without_preceding_blankline --katex --highli
 RUNNING=true
 source .util/convert_markdown.sh
 source .util/clean.sh
+# Files in here get hosted
+mkdir -p "public"
 # Copy style files
-cp ".util/style.css" "public/style.css" -u
-cp ".util/default.css" "public/default.css" -u
+cp ".util/style.css" "public/" -u
+cp ".util/default.css" "public/" -u
 # Cleanup output files on exit
 stty -echo
 function cleanup() {
