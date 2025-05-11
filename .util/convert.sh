@@ -1,0 +1,45 @@
+source .util/convert_markdown.sh
+
+DIRECTORIES=("cs1300" "cs1400" "cs2400" "cs2600" "cs2640" "cs50" "phl2020" "mat1150" "pls2010" "ffmpeg" "sta2260" "cs3560" "cs4800" "cs3650" "cs3110" "trans")
+FIRST_RUN=true
+BASE_ARGS="-f markdown+lists_without_preceding_blankline \
+	--katex \
+	--wrap=preserve \
+	--standalone \
+	--quiet \
+	--template .util/template.html \
+	-M document-css=false \
+	--lua-filter=.util/metadata_fixer.lua \
+	--lua-filter=.util/autotoc.lua \
+	--lua-filter=.util/plantuml.lua"
+
+# Convert Markdown to minified HTML
+function convert {
+	if [ "$FIRST_RUN" = "true" ]; then
+		FIRST_RUN=false
+		mkdir -p "public"
+		printf "Bundling CSS"
+		minify --bundle --recursive .util/styles -o ./public/style.css
+	fi
+
+	# Convert notes
+	for INPUT_DIR in "${DIRECTORIES[@]}"; do
+		for INPUT_FILE in "${INPUT_DIR}/"*.md
+		do
+			# Limit number of parallel processes (n=32)
+			((i=i%32)); ((i++==0)) && wait 
+			convert_markdown "${INPUT_FILE}" "${INPUT_DIR}"
+			 # Copy images if present
+			if [ -d "${INPUT_DIR}/.images" ]; then
+				OUTPUT_DIR="./public/${INPUT_DIR}"
+				mkdir -p "${OUTPUT_DIR}"
+				cp -r "${INPUT_DIR}/.images" "${OUTPUT_DIR}/"
+			fi
+		done
+	done
+	# Convert special files
+	convert_markdown "README.md" "/"
+	convert_markdown "ABOUT.md" "/"
+	wait
+}
+
