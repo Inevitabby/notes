@@ -30,8 +30,11 @@ function convert_markdown {
 	OUTPUT_DIR="public/${INPUT_DIR}"
 	mkdir -p "${OUTPUT_DIR}"
 
-	# Convert Markdown to HTML
+	# Set Pandoc arguments
+	[ "$INPUT_FILE" = "README.md" ] && ARGS+=" -M title=Notes -M noheader=true" # Special Case: Manually set README.md title
 	ARGS="${BASE_ARGS} ${ARGS}"
+
+	# Convert Markdown to HTML
 	pandoc -i "${INPUT_FILE}" ${ARGS} | minify --type html --quiet --output "${OUTPUT_DIR}/${OUTPUT_FILE}" &
 }
 
