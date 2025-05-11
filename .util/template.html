@@ -86,27 +86,32 @@ $endif$
         </p>
       </footer>
   $endif$
-  <script>
-      // Toggle the navbar (Table of Contents)
-      function toggleNavbar() {
-        const TOC = document.querySelector('#TOC');
-        TOC.style.display = TOC.style.display === "none" ? "block" : "none";
-      }
-      // Don't add anchor links to the history
-      let isFirstAnchorClick = false;
-      document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
-        anchor.addEventListener("click", function (event) {
-          event.preventDefault();
-          const TARGET_HREF = anchor.getAttribute('href');
-          history.replaceState(null, null, TARGET_HREF);
-          window.location.href = TARGET_HREF;
-          if (!isFirstAnchorClick) {
+  $if(toc)$
+    <script>
+        // Toggle showing/hiding the table of contents (navbar)
+        function toggleNavbar() {
+          const TOC = document.querySelector('#TOC');
+          TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+        }
+
+        // Don't add anchor links to the history
+        let isFirstAnchorClick = false;
+        document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
+          anchor.addEventListener("click", function (event) {
+            // Navigate to anchor
+            event.preventDefault();
+            const TARGET_HREF = anchor.getAttribute('href');
+            history.replaceState(null, null, TARGET_HREF);
+            window.location.href = TARGET_HREF;
+
             // Push anchorless version of page into history
-            history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
-            isFirstAnchorClick = true;
-          }
+            if (!isFirstAnchorClick) {
+              history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
+              isFirstAnchorClick = true;
+            }
+          });
         });
-      });
-  </script>
+    </script>
+  $endif$
 </body>
 </html>
