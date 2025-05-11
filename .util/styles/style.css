@@ -1,3 +1,6 @@
+/**
+ * Light and Dark Mode
+ */
 :root {
 	--text-color: #1a1a1a;
 	--background-color: #fdfdfd;
@@ -19,40 +22,41 @@
 	--svg-green: #ADD1B2;
 	--svg-purple: #B4A7E5;
 }
-@media (prefers-color-scheme: dark) {
-	:root {
-		--text-color: #cdd6f4;
-		--background-color: #1e1e2e;
-		--blockquote-border-color: #6c7086;
-		--blockquote-text-color: #a6adc8;
-		--details-background-color: #11111b;
-		--hr-color: #bac2de;
-		--link-color: #cba6f7;
-		--table-border-color: #bac2de;
-		--th-border-color: #bac2de;
-		--TOC-background-color: #1e1e2e;
-		--TOC-border-color: #6c7086;
-		--TOC-item-border-color: #6c7086;
-		--TOC-text-color: #bac2de;
-		--TOC-hover-background-color: #313244;
-		--toggleNavbar-color: #bac2de;
-		--toggleNavbar-background-color: #1e1e2e;
-		--toggleNavbar-border-color: #6c7086;
-		--svg-green: purple;
-		--svg-purple: green;
-	}
-	code span.kw { color: #a6e3a1; } 
-	code span.im { color: #94e2d5; }
-	code span.im { color: #a6e3a1; }
-	code span.dt { color: #f38ba8; }
-	code span.fu { color: #89b4fa; }
-	code {
-		filter: brightness(1.2);
-	}
-	img[src^=".images/doodle_"] {
-		filter: invert(1);
-	}
+.dark {
+	--text-color: #cdd6f4;
+	--background-color: #1e1e2e;
+	--blockquote-border-color: #6c7086;
+	--blockquote-text-color: #a6adc8;
+	--details-background-color: #11111b;
+	--hr-color: #bac2de;
+	--link-color: #cba6f7;
+	--table-border-color: #bac2de;
+	--th-border-color: #bac2de;
+	--TOC-background-color: #1e1e2e;
+	--TOC-border-color: #6c7086;
+	--TOC-item-border-color: #6c7086;
+	--TOC-text-color: #bac2de;
+	--TOC-hover-background-color: #313244;
+	--toggleNavbar-color: #bac2de;
+	--toggleNavbar-background-color: #1e1e2e;
+	--toggleNavbar-border-color: #6c7086;
+	--svg-green: purple;
+	--svg-purple: green;
 }
+.dark code span.kw { color: #a6e3a1; } 
+.dark code span.im { color: #94e2d5; }
+.dark code span.im { color: #a6e3a1; }
+.dark code span.dt { color: #f38ba8; }
+.dark code span.fu { color: #89b4fa; }
+.dark code {
+	filter: brightness(1.2);
+}
+.dark img[src^=".images/doodle_"] {
+	filter: invert(1);
+}
+/**
+ * 
+ */
 html {
 	color: var(--text-color);
 	background-color: var(--background-color);

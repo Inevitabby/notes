@@ -83,11 +83,13 @@ $endif$
       <footer>
         <p>
           <i><a href="https://inevitabby.gitlab.io/notes/ABOUT.html">About</a></i>
+          <br />
+          <i><a href="javascript:void(0)" onclick="toggleDarkMode()">Toggle Theme</a></i>
         </p>
       </footer>
   $endif$
-  $if(toc)$
     <script>
+        $if(toc)$
         // Toggle showing/hiding the table of contents (navbar)
         function toggleNavbar() {
           const TOC = document.querySelector('#TOC');
@@ -111,7 +113,18 @@ $endif$
             }
           });
         });
+        $endif$
+
+        // Initialize theme
+        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+        // Toggle theme
+        function toggleDarkMode() {
+          const root = document.documentElement;
+          const isDark = root.classList.toggle('dark');
+          localStorage.theme = isDark ? 'dark' : 'light';
+        }
     </script>
-  $endif$
 </body>
 </html>
