@@ -3,6 +3,7 @@
 	--background-color: #fdfdfd;
 	--blockquote-border-color: #e6e6e6;
 	--blockquote-text-color: #606060;
+	--details-background-color: #dce0e8;
 	--hr-color: #1a1a1a;
 	--link-color: #1a1a1a;
 	--table-border-color: #1a1a1a;
@@ -24,6 +25,7 @@
 		--background-color: #1e1e2e;
 		--blockquote-border-color: #6c7086;
 		--blockquote-text-color: #a6adc8;
+		--details-background-color: #11111b;
 		--hr-color: #bac2de;
 		--link-color: #cba6f7;
 		--table-border-color: #bac2de;
@@ -96,6 +98,17 @@ figure figcaption {
 	font-style: italic;
 	color: var(--blockquote-text-color);
 	margin-top: 0.5em;
+}
+details {
+	padding: 0 1em;
+	border-radius: 0.25em;
+	transition: padding 0.3s ease;
+	overflow: hidden;
+}
+details[open] {
+	background-color: var(--details-background-color);
+	padding: 1em;
+	margin-bottom: 1em;
 }
 th {
 	border-top-color: var(--th-border-color);
