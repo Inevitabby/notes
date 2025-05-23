@@ -1,5 +1,26 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
+
+DIRECTORIES=(
+    "cs1300"
+    "cs1400"
+    "cs2400"
+    "cs2600"
+    "cs2640"
+    "cs3110"
+    "cs3560"
+    "cs3650"
+    "cs4800"
+    "cs50"
+    "ffmpeg"
+    "mat1150"
+    "phl2020"
+    "pls2010"
+    "sta2260"
+    "trans"
+    "rust"
+)
+
 source .util/convert.sh
 source .util/cleanup.sh
 

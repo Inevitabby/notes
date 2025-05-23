@@ -1,6 +1,5 @@
 source .util/convert_markdown.sh
 
-DIRECTORIES=("cs1300" "cs1400" "cs2400" "cs2600" "cs2640" "cs50" "phl2020" "mat1150" "pls2010" "ffmpeg" "sta2260" "cs3560" "cs4800" "cs3650" "cs3110" "trans")
 FIRST_RUN=true
 BASE_ARGS="-f markdown+lists_without_preceding_blankline \
 	--katex \

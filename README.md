@@ -25,6 +25,7 @@
 
 ## Self-Study
 
+- [Rust](rust)
 - [CS50: Introduction to Computer Science](cs50)
 
 ## Queer
