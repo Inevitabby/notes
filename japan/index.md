@@ -1,0 +1,5 @@
+# Japanese
+
+# Topics
+
+{{AUTOTOC}}

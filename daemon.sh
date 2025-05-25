@@ -19,6 +19,7 @@ DIRECTORIES=(
     "sta2260"
     "trans"
     "rust"
+    "japan"
 )
 
 source .util/convert.sh

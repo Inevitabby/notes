@@ -27,6 +27,7 @@
 
 - [Rust](rust)
 - [CS50: Introduction to Computer Science](cs50)
+- [Japanese](japan)
 
 ## Queer
 
