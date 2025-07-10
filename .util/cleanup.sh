@@ -1,3 +1,4 @@
+source .util/generate_search_index.sh
 RUNNING=true
 
 # Run conversion on all files
@@ -14,6 +15,9 @@ function cleanup() {
 	printf "\e[1;32mCleaning up HTML files...\e[0m\n"
 	rm -rf ".md5sums" "public"
 	convert
+	
+	# Generate search index
+	generate_search_index
 
 	wait
 	exit
