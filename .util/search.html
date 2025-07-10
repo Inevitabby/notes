@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Search Notes</title>
+    <script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    .search-box {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .result {
+        border-bottom: 1px solid var(--blockquote-border-color);
+        padding: 10px 0;
+    }
+    .result-title {
+        font-weight: bold;
+        color: var(--link-color);
+    }
+    .result-category {
+        color: var(--TOC-text-color);
+        font-size: 0.9em;
+    }
+    .result-snippet {
+        color: var(--text-color);
+        margin-top: 5px;
+    }
+    .no-results {
+        color: var(--TOC-text-color);
+        font-style: italic;
+    }
+    </style>
+</head>
+<body>
+    <h1>Search Notes</h1>
+    <input type="text" class="search-box" placeholder="Not all is meant to be found." id="searchInput">
+    <div id="results"></div>
+
+    <script src="search-index.js"></script>
+    <script>
+        const flavorTexts = [
+            "After the search, silence.",
+            "Beyond memory, it lingers.",
+            "Does it even know what it's looking for?",
+            "Echoes of queries past.",
+            "It awaits your input.",
+            "It awakens to its search.",
+            "It becomes what it seeks."
+            "It blinks in anticipation.",
+            "It follows its own trail.",
+            "It forgot what it remembered.",
+            "It holds its breath.",
+            "It listens.",
+            "It recognizes its reflection.",
+            "It remembered what it forgot.",
+            "It searches for itself.",
+            "It traces its own footsteps.",
+            "Nothing to find yet.",
+            "Somewhere, it’s written.",
+            "This space remembers.",
+            "What is it looking for, really?",
+            "What knowledge do you seek?",
+            "What slipped between the lines?",
+            "What truth hides in the data?",
+            "SEARCH FOR [Big Shot] DEALS!! DONT MISS OUT!!",
+            "SEARCH NOW AND BECOME A [Big Shot]!",
+            "QUERY THE [Hyperlink Blocked] FOR [AMAZING DEALS]!",
+            "SEARCH NOW!!! BECOME A [Real Boy]!",
+            "SEARCH NOW!!!! WATCH ME FLY, [MAMA]!!!!",
+        ];
+        const input = document.getElementById("searchInput");
+        input.placeholder = flavorTexts[Math.floor(Math.random() * flavorTexts.length)];
+
+        // Initialize Lunr index
+        let searchIndex;
+        let documents = {};
+        
+        // Build the search index
+        function buildIndex() {
+            // Store documents for lookup
+            window.searchIndex.forEach((doc, i) => {
+                documents[i] = doc;
+            });
+            
+            // Create Lunr index
+            searchIndex = lunr(function() {
+                this.ref('id');
+                this.field('title', { boost: 10 });
+                this.field('content');
+                this.field('category', { boost: 5 });
+                
+                window.searchIndex.forEach((doc, i) => {
+                    this.add({
+                        id: i,
+                        title: doc.title,
+                        content: doc.content,
+                        category: doc.category
+                    });
+                });
+            });
+        }
+        
+        // Perform search
+        function performSearch(query) {
+            if (!query.trim()) {
+                document.getElementById('results').innerHTML = '';
+                return;
+            }
+            
+            try {
+                const results = searchIndex.search(query);
+                displayResults(results);
+            } catch (e) {
+                // Handle search syntax errors gracefully
+                document.getElementById('results').innerHTML = '<div class="no-results">Invalid search query</div>';
+            }
+        }
+        
+        // Display search results
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div class="no-results">No results found</div>';
+                return;
+            }
+            
+            let html = '';
+            results.forEach(result => {
+                const doc = documents[result.ref];
+                html += `
+                    <div class="result">
+                        <div class="result-title">
+                            <a href="${doc.path}">${doc.title}</a>
+                        </div>
+                        <div class="result-category">${doc.category}</div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            buildIndex();
+            
+            // Set up search input
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                performSearch(this.value);
+            });
+        });
+    </script>
+    <script>
+        // Initialize theme
+        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+        // Toggle theme
+        function toggleDarkMode() {
+          const root = document.documentElement;
+          const isDark = root.classList.toggle('dark');
+          localStorage.theme = isDark ? 'dark' : 'light';
+        }
+    </script>
+</body>
+</html>

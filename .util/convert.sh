@@ -1,4 +1,5 @@
 source .util/convert_markdown.sh
+source .util/generate_search_index.sh
 
 FIRST_RUN=true
 BASE_ARGS="-f markdown+lists_without_preceding_blankline \
@@ -19,6 +20,8 @@ function convert {
 		mkdir -p "public"
 		printf "Bundling CSS"
 		minify --bundle --recursive .util/styles -o ./public/style.css
+		printf "Minifying search.html"
+		minify "./.util/search.html" -o "./public/"
 	fi
 
 	# Convert notes
@@ -40,5 +43,7 @@ function convert {
 	convert_markdown "README.md" "/"
 	convert_markdown "ABOUT.md" "/"
 	wait
+	
+	# Generate search index after all files are converted
+	generate_search_index
 }
-
