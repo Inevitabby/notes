@@ -7,10 +7,15 @@
 - [CS1300: Discrete Structures](cs1300)
 - [CS1400: Introduction to Programming and Problem Solving](cs1400)
 - [CS2600: Systems Programming](cs2600)
+- [CS2610: Intro to Cybersecurity and Network Communications](cs2610)
 - [CS2400: Data Structures and Advanced Programming](cs2400)
 - [CS2640: Computer Organization and Assembly Programming](cs2640)
+- [CS3010: Numerical Methods and Computing](cs3010)
 - [CS3110: Formal Languages and Automata](cs3110)
+- [CS3310: Design and Analysis of Algorithms](cs3310)
 - [CS3650: Computer Architecture](cs3650)
+- [CS4080: Concepts of Programming Languages](cs4080)
+- [CS4310: Operating Systems](cs4310)
 - [CS4800: Software Engineering](cs4800)
 
 ## Mathematics
