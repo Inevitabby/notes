@@ -1,0 +1,61 @@
+/**
+ * Light Color Scheme
+ */
+:root {
+	--text-color: #1a1a1a;
+	--background-color: #fdfdfd;
+	--blockquote-border-color: #e6e6e6;
+	--blockquote-text-color: #606060;
+	--details-background-color: #dce0e8;
+	--hr-color: #1a1a1a;
+	--link-color: #2563eb;
+	--table-border-color: #1a1a1a;
+	--th-border-color: #1a1a1a;
+	--TOC-background-color: #f0f0f0;
+	--TOC-border-color: #ccc;
+	--TOC-item-border-color: #ddd;
+	--TOC-text-color: #333;
+	--TOC-hover-background-color: #ddd;
+	--toggleNavbar-color: #1a1a1a;
+	--toggleNavbar-background-color: #f0f0f0;
+	--toggleNavbar-border-color: #ccc;
+	--svg-green: #ADD1B2;
+	--svg-purple: #B4A7E5;
+}
+/**
+ * Dark Color Scheme
+ */
+.dark {
+	--text-color: #cdd6f4;
+	--background-color: #1e1e2e;
+	--blockquote-border-color: #6c7086;
+	--blockquote-text-color: #a6adc8;
+	--details-background-color: #11111b;
+	--hr-color: #bac2de;
+	--link-color: #74c7ec;
+	--table-border-color: #bac2de;
+	--th-border-color: #bac2de;
+	--TOC-background-color: #1e1e2e;
+	--TOC-border-color: #6c7086;
+	--TOC-item-border-color: #6c7086;
+	--TOC-text-color: #bac2de;
+	--TOC-hover-background-color: #313244;
+	--toggleNavbar-color: #bac2de;
+	--toggleNavbar-background-color: #1e1e2e;
+	--toggleNavbar-border-color: #6c7086;
+	--svg-green: purple;
+	--svg-purple: green;
+}
+/** (Some additional color tweaks for dark scheme) */
+.dark code span.kw { color: #a6e3a1; } 
+.dark code span.im { color: #94e2d5; }
+.dark code span.im { color: #a6e3a1; }
+.dark code span.dt { color: #f38ba8; }
+.dark code span.fu { color: #89b4fa; }
+.dark code {
+	filter: brightness(1.2);
+}
+.dark img[src^=".images/doodle_"] {
+	filter: invert(1);
+}
+

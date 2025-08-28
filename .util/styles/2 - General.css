@@ -1,0 +1,60 @@
+/**
+ * General
+ */
+html {
+	color: var(--text-color);
+	background-color: var(--background-color);
+	scroll-behavior: smooth;
+	line-height: 1.5;
+	font-family: Georgia, serif;
+	font-size: 20px;
+}
+body {
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+header {
+	margin-bottom: 2em;
+}
+footer {
+	text-align: center;
+	position: relative;
+	bottom: 0;
+	margin-bottom: 1em;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: calc(80% - 30px);
+}
+footer p {
+	margin: 0;
+}
+blockquote {
+	border-left-color: var(--blockquote-border-color);
+	color: var(--blockquote-text-color);
+}
+hr {
+	background-color: var(--hr-color);
+}
+a, a:visited {
+	color: var(--link-color);
+}
+table {
+	border-top-color: var(--table-border-color);
+	border-bottom-color: var(--table-border-color);
+	margin-left: auto;
+	margin-right: auto;
+}
+figure figcaption {
+	text-align: center;
+	font-style: italic;
+	color: var(--blockquote-text-color);
+	margin-top: 0.5em;
+}
+th {
+	border-top-color: var(--th-border-color);
+}
+img {
+	width: 42%;
+	display: block;
+	margin: 0 auto;
+}

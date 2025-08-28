@@ -1,0 +1,44 @@
+/**
+ * Table of Contents / Navbar
+ */
+#TOC {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 200px;
+	height: 100%;
+	background-color: var(--TOC-background-color);
+	overflow-y: auto;
+	border-left: 1px solid var(--TOC-border-color);
+	display: block;
+	counter-reset: toc-counter;
+	z-index: 1;
+}
+#TOC > .incremental {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#TOC > .incremental li {
+	margin: 0;
+	padding: 8px;
+	border-bottom: 1px solid var(--TOC-item-border-color);
+	counter-increment: toc-counter;
+}
+#TOC > .incremental li a {
+	text-decoration: none;
+	color: var(--TOC-text-color);
+	display: block;
+}
+#TOC > .incremental li a:hover {
+	background-color: var(--TOC-hover-background-color);
+}
+#TOC > .incremental li::before {
+	content: counter(toc-counter, upper-roman) ". ";
+	font-weight: bold;
+	margin-right: 4px;
+}
+#toggleNavbar {
+	display: none;
+}
+

@@ -1,0 +1,23 @@
+/**
+ * Details
+ */
+details {
+	padding: 0 1em;
+	border-radius: 0.1em;
+	transition: padding 0.3s ease;
+	overflow: hidden;
+}
+details > summary {
+	cursor: pointer;
+}
+details > summary:hover {
+	text-decoration: underline;
+	color: var(--link-color);
+}
+details[open] {
+	background-color: var(--details-background-color);
+	padding: 0.75em;
+	padding-bottom: 0;
+	margin-bottom: 0.75em;
+}
+

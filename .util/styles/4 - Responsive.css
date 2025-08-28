@@ -1,0 +1,46 @@
+/**
+ * Mobile Tweaks
+ */
+@media (max-width: 1280px) {
+	#TOC {
+		display: none;
+	}
+	#toggleNavbar {
+		display: block;
+		position: fixed;
+		top: 10px;
+		right: 10px;
+		z-index: 2;
+		background-color: var(--toggleNavbar-background-color);
+		color: var(--text-color);
+		border: 1px solid var(--toggleNavbar-border-color);
+		padding: 5px 10px;
+		cursor: pointer;
+	}
+	span.math.display {
+		overflow-x: scroll;
+		white-space: nowrap;
+		display: block;
+	}
+	blockquote {
+		margin: 1em 0 1em 0em;
+	}
+	img {
+		width: 69%;
+	}
+}
+
+/*
+ * Widescreen Tweaks
+ */
+@media (min-width: 1980px) {
+	body {
+		max-width: 40em;
+	}
+}
+@media (min-width: 2160px) {
+	body {
+		max-width: 45em;
+	}
+}
+
