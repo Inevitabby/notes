@@ -10,6 +10,7 @@ BASE_ARGS="-f markdown+lists_without_preceding_blankline \
 	-M document-css=false \
 	--lua-filter=.util/metadata_fixer.lua \
 	--lua-filter=.util/autotoc.lua \
+	--lua-filter=.util/example-detailer.lua \
 	--lua-filter=.util/plantuml.lua"
 
 # Convert Markdown to minified HTML
