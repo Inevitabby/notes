@@ -1,4 +1,5 @@
 local first_header = nil
+local did_promotion = nil
 -- Get first top-level header
 function Header(el)
   if el.level == 1 and not first_header then
@@ -13,13 +14,14 @@ function Meta(meta)
   if not meta.title and first_header then
     meta.title = pandoc.MetaString(first_header)
     meta.noheader = pandoc.MetaString("true")
+    did_promotion = true
   end
   return meta
 end
 -- Promote the first top-level Header to h1.title if it's the meta.title
 function Pandoc(doc)
-  -- Exit if no meta.title
-  if not doc.meta.title then
+  -- Exit if no meta.title or promotion
+  if not doc.meta.title or not did_promotion then
     return nil
   end
   -- Get meta.title
