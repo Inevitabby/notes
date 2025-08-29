@@ -2,8 +2,6 @@
 title: "Predicate Logic"
 ---
 
-# Predicate Logic
-
 # Variables in Logic
 
 > Problem Statement: How do you translate "For every integer $x$, $x>0$"?
