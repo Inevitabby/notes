@@ -19,12 +19,14 @@ function convert {
 	if [ "$FIRST_RUN" = "true" ]; then
 		FIRST_RUN=false
 		mkdir -p "public"
-		printf "Bundling CSS"
+		printf "Bundling CSS \n"
 		minify --bundle --recursive .util/styles -o ./public/style.css
-		printf "Minifying/copying search.html and lunr.js"
+		printf "Minifying/copying search.html and lunr.js \n"
 		minify "./.util/search.html" -o "./public/"
 		cp "./.util/lunr.min.js" "./public/"
 		minify "./.util/search.js" -o "./public/"
+		printf "Copying robots.txt \n"
+		cp "./.util/robots.txt" "./public/"
 	fi
 
 	# Convert notes

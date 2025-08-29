@@ -1,4 +1,5 @@
 source .util/generate_search_index.sh
+source .util/generate_sitemap.sh
 RUNNING=true
 
 # Run conversion on all files
@@ -16,8 +17,9 @@ function cleanup() {
 	rm -rf ".md5sums" "public"
 	convert
 	
-	# Generate search index
+	# Generate search index and sitemap
 	generate_search_index
+	generate_sitemap
 
 	wait
 	exit
