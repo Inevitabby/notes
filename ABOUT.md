@@ -1,8 +1,8 @@
 ---
 is_about_page: true
+title: "About"
 ---
 
-<h1 id="about" class="title">About</h1>
 <center>
 	<h5><a href="https://gitlab.com/inevitabby/notes/">Link to Repository</a></h5>
 </center>

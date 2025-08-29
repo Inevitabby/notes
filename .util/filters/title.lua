@@ -9,9 +9,14 @@ end
 function Meta(meta)
   local current_file_name = PANDOC_STATE.input_files[1]
     and PANDOC_STATE.input_files[1]:match("([^/]+)$")
-  if current_file_name == "index.md" and not meta.title and first_header then
+  -- Use top-level header if meta.title unavailable
+  if not meta.title and first_header then
     meta.title = pandoc.MetaString(first_header)
     meta.noheader = pandoc.MetaString("true")
   end
+  -- Special Case: index.md
+  -- if current_file_name == "index.md" then
+  --   meta.noheader = pandoc.MetaString("true")
+  -- end
   return meta
 end

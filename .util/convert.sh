@@ -8,7 +8,8 @@ BASE_ARGS="-f markdown+lists_without_preceding_blankline \
 	--quiet \
 	--template .util/template.html \
 	-M document-css=false \
-	--lua-filter=.util/filters/metadata_fixer.lua \
+	--lua-filter=.util/filters/breadcrumbs.lua \
+	--lua-filter=.util/filters/title.lua \
 	--lua-filter=.util/filters/autotoc.lua \
 	--lua-filter=.util/filters/example-detailer.lua \
 	--lua-filter=.util/filters/plantuml.lua"
