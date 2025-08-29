@@ -1,35 +1,12 @@
 const flavorTexts = [
-	"After the search, silence.",
-	"Beyond memory, it lingers.",
-	"Does it even know what it's looking for?",
-	"Echoes of queries past.",
-	"It awaits your input.",
-	"It awakens to its search.",
-	"It becomes what it seeks.",
-	"It blinks in anticipation.",
-	"It follows its own trail.",
-	"It forgot what it remembered.",
-	"It holds its breath.",
-	"It listens.",
-	"It recognizes its reflection.",
-	"It remembered what it forgot.",
-	"It searches for itself.",
-	"It traces its own footsteps.",
-	"Nothing to find yet.",
-	"Somewhere, it's written.",
-	"This space remembers.",
-	"What is it looking for, really?",
-	"What knowledge do you seek?",
-	"What slipped between the lines?",
-	"What truth hides in the data?",
 	"SEARCH FOR [Big Shot] DEALS!! DONT MISS OUT!!",
 	"SEARCH NOW AND BECOME A [Big Shot]!",
-	"QUERY THE [Hyperlink Blocked] FOR [AMAZING DEALS]!",
-	"SEARCH NOW!!! BECOME A [Real Boy]!",
-	"SEARCH NOW!!!! WATCH ME FLY, [MAMA]!!!!",
+	"SEARCH NOW!!! BECOME A [Big Shot]!",
 ];
 const input = document.getElementById("searchInput");
-input.placeholder = flavorTexts[Math.floor(Math.random() * flavorTexts.length)];
+if (Math.random() < 0.05) {
+	input.placeholder = flavorTexts[Math.floor(Math.random() * flavorTexts.length)];
+}
 
 // Initialize Lunr index
 let searchIndex;
