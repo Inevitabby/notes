@@ -46,7 +46,8 @@ To perform tasks, we use programs (lists of instructions and data), which are st
 
 > **Note**: In the real world, the BIU is accessible only to the control unit, and the IR and PC are only indirectly accessible through instructions.
 
-> **Example**: Typical Operating Steps:
+> **Example**: Typical Operating Steps
+> 
 > $$
 > 	\text{Program Execution: } \\
 > 	\text{Secondary Storage $\to$ Main Memory $\to$ CPU Registers $\to$ Execution}
