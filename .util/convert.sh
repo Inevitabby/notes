@@ -7,12 +7,14 @@ BASE_ARGS="-f markdown+lists_without_preceding_blankline \
 	--standalone \
 	--quiet \
 	--template .util/template.html \
-	-M document-css=false \
-	--lua-filter=.util/filters/breadcrumbs.lua \
-	--lua-filter=.util/filters/title.lua \
-	--lua-filter=.util/filters/autotoc.lua \
-	--lua-filter=.util/filters/example-detailer.lua \
-	--lua-filter=.util/filters/plantuml.lua"
+	-M document-css=false"
+
+# Add Lua filters to Pandoc arguments
+for filter in .util/filters/*.lua; do
+	if [ -f "$filter" ]; then
+		BASE_ARGS="$BASE_ARGS --lua-filter=$filter"
+	fi
+done
 
 # Convert Markdown to minified HTML
 function convert {
