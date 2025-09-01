@@ -94,42 +94,68 @@ $endif$
       </footer>
   $endif$
     <script>
-        $if(toc)$
-        // Toggle showing/hiding the table of contents (navbar)
-        function toggleNavbar() {
-          const TOC = document.querySelector('#TOC');
-          TOC.style.display = TOC.style.display === "none" ? "block" : "none";
-        }
+    // === Table of Contents (Navbar) ===
+    $if(toc)$
+    // Toggle showing/hiding the table of contents (navbar)
+    function toggleNavbar() {
+      const TOC = document.querySelector('#TOC');
+      TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+    }
 
-        // Don't add anchor links to the history
-        let isFirstAnchorClick = false;
-        document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
-          anchor.addEventListener("click", function (event) {
-            // Navigate to anchor
-            event.preventDefault();
-            const TARGET_HREF = anchor.getAttribute('href');
-            history.replaceState(null, null, TARGET_HREF);
-            window.location.href = TARGET_HREF;
+    // Don't add anchor links to the history
+    let isFirstAnchorClick = false;
+    document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
+      anchor.addEventListener("click", function (event) {
+        // Navigate to anchor
+        event.preventDefault();
+        const TARGET_HREF = anchor.getAttribute('href');
+        history.replaceState(null, null, TARGET_HREF);
+        window.location.href = TARGET_HREF;
 
-            // Push anchorless version of page into history
-            if (!isFirstAnchorClick) {
-              history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
-              isFirstAnchorClick = true;
-            }
-          });
-        });
-        $endif$
+        // Push anchorless version of page into history
+        if (!isFirstAnchorClick) {
+          history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
+          isFirstAnchorClick = true;
+        }
+      });
+    });
+    $endif$
 
-        // Initialize theme
-        if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
+    // === Color Scheme Toggle ===
+
+    // Initialize theme
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    // Toggle theme
+    function toggleDarkMode() {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      localStorage.theme = isDark ? 'dark' : 'light';
+    }
+
+    // === Printer Tweak: Open <details> ===
+
+    const detailsList = document.querySelectorAll("details");
+    const detailsState = new Map();
+
+    // Store the state and open all <details>
+    window.addEventListener("beforeprint", () => {
+      detailsList.forEach(detail => {
+        detailsState.set(detail, detail.open);
+        detail.open = true;
+      });
+    });
+
+    // Restore original state
+    window.addEventListener("afterprint", () => {
+      detailsList.forEach(detail => {
+        if (detailsState.has(detail)) {
+          detail.open = detailsState.get(detail);
         }
-        // Toggle theme
-        function toggleDarkMode() {
-          const root = document.documentElement;
-          const isDark = root.classList.toggle('dark');
-          localStorage.theme = isDark ? 'dark' : 'light';
-        }
+      });
+      detailsState.clear();
+    });
     </script>
 </body>
 </html>

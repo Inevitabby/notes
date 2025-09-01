@@ -44,3 +44,32 @@
 	}
 }
 
+/*
+ * Printer Tweaks
+ */
+@media print {
+	#toggleNavbar, footer {
+		display: none
+	}
+	details[open] {
+		border: 1px solid black;
+	}
+	body {
+		padding: 0;
+		max-width: 100%;
+	}
+	/** Printer-Friendly Colors */
+	:root {
+		--text-color: black;
+		--background-color: white;
+		--blockquote-border-color: grey;
+		--blockquote-text-color: black;
+		--details-background-color: grey;
+		--hr-color: black;
+		--link-color: blue;
+		--table-border-color: black;
+		--th-border-color: black;
+		--svg-green: green;
+		--svg-purple: purple;
+	}
+}
