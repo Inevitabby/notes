@@ -22,6 +22,7 @@ local KATEX_MAPPINGS = {
   ["->"] = "rightarrow",  ["<-"] = "leftarrow",
   ["<="] = "le",          [">="] = "ge",
   ["<"] = "lt",           [">"] = "gt",
+  ["!="] = "ne",
   ["-"] = "text{$-$}",    ["+"] = "text{$+$}" -- TRANSCENDENT DUCT TAPE: Get regular-sized symbols instead the tiny ones
 }
 
