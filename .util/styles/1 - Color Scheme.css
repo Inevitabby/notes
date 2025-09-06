@@ -46,12 +46,15 @@
 	--svg-green: purple;
 	--svg-purple: green;
 }
-/** (Some additional color tweaks for dark scheme) */
-.dark code span.kw { color: #a6e3a1; } 
-.dark code span.im { color: #94e2d5; }
-.dark code span.im { color: #a6e3a1; }
-.dark code span.dt { color: #f38ba8; }
-.dark code span.fu { color: #89b4fa; }
+/** (Targeted Pygment overrides for dark scheme) */
+.dark span.kw { color: #a6e3a1; } /* keywords */
+.dark span.im { color: #94e2d5; } /* import */
+.dark span.dv { color: #a6e3a1; } /* decval */
+.dark span.dt { color: #f38ba8; } /* data type */
+.dark span.fu { color: #89b4fa; } /* function */
+.dark span.va { color: #74c7ec; } /* variable */
+.dark span.op { color: #bac2de; } /* operator */
+.dark span.co { color: #94e2d5; } /* comment */
 .dark code {
 	filter: brightness(1.2);
 }
