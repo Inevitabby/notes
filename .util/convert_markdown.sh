@@ -5,8 +5,10 @@ function convert_markdown {
 	INPUT_FILE=$1
 	INPUT_DIR=$2
 
-	# Skip unchanged files
-	check_hash "${INPUT_FILE}" "${INPUT_DIR}" && return
+	# Skip unchanged files (if in daemon mode)
+	if [[ "$RUNNING" == "true" ]]; then
+		check_hash "${INPUT_FILE}" "${INPUT_DIR}" && return
+	fi
 
 	# Console feedback
 	printf " - Converting: %s\n" "${INPUT_FILE}"

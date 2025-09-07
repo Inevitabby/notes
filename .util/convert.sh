@@ -35,8 +35,8 @@ function convert {
 	for INPUT_DIR in "${DIRECTORIES[@]}"; do
 		for INPUT_FILE in "${INPUT_DIR}/"*.md
 		do
-			# Limit number of parallel processes (n=32)
-			((i=i%32)); ((i++==0)) && wait 
+			# Limit number of parallel processes (n=256)
+			((i=i%256)); ((i++==0)) && wait 
 			convert_markdown "${INPUT_FILE}" "${INPUT_DIR}"
 			 # Copy images if present
 			if [ -d "${INPUT_DIR}/.images" ]; then
