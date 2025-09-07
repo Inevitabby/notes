@@ -23,7 +23,7 @@ local KATEX_MAPPINGS = {
   ["<="] = "le",          [">="] = "ge",
   ["<"] = "lt",           [">"] = "gt",
   ["!="] = "ne",
-  ["-"] = "text{$-$}",    ["+"] = "text{$+$}" -- TRANSCENDENT DUCT TAPE: Get regular-sized symbols instead the tiny ones
+  ["*"] = "large{*}",          ["-"] = "text{$-$}",    ["+"] = "text{$+$}"
 }
 
 -- Insert raw HTML to a table
