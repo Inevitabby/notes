@@ -6,7 +6,8 @@ local KEYWORDS = {
   "if", "then", "else",
   "do", "to", "for", "while",
   "and", "or", "not",
-  "return"
+  "function",
+  "end", "return"
 }
 
 -- These are normal-ed
