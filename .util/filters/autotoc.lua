@@ -1,3 +1,11 @@
+local existing_links = {}
+
+-- Collect all existing links in the document
+function Link(elem)
+  existing_links[elem.target] = true
+  return elem
+end
+
 -- Returns file's meta.title or first top-level header
 local function getFileTitle(file)
   local handle = io.open(file, "r")
@@ -27,9 +35,11 @@ local function generateTOC()
       local title = getFileTitle(dir .. file) or file
       local url = file:gsub("%.md$", ".html")
       -- Create a link for the file with the title as the link text
-      table.insert(toc_entries, pandoc.Plain {
-        pandoc.Link(pandoc.Str(title), url)
-      })
+      if not existing_links[url] then -- (skip links that already exist)
+        table.insert(toc_entries, pandoc.Plain {
+          pandoc.Link(pandoc.Str(title), url)
+        })
+      end
     end
   end
   p:close()
