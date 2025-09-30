@@ -21,7 +21,7 @@
 - [MAT1150: Calculus II](mat1150)
 - [STA2260: Statistics](sta2260)
 
-## General Education
+## Liberal Arts
 
 - [PHL2020: Critical Thinking](phl2020)
 - [PLS2010: Introduction to American Government](pls2010)
