@@ -1,4 +1,4 @@
-source .util/check_hash.sh
+source .util/check_mtime.sh
 
 # Convert a Markdown file to minified HTML
 function convert_markdown {
@@ -7,7 +7,7 @@ function convert_markdown {
 
 	# Skip unchanged files (if in daemon mode)
 	if [[ "$RUNNING" == "true" ]]; then
-		check_hash "${INPUT_FILE}" "${INPUT_DIR}" && return
+		check_mtime "${INPUT_FILE}" "${INPUT_DIR}" && return
 	fi
 
 	# Console feedback

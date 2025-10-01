@@ -14,7 +14,7 @@ function cleanup() {
 
 	# Convert all notes from scratch
 	printf "\e[1;32mCleaning up HTML files...\e[0m\n"
-	rm -rf ".md5sums" "public"
+	rm -rf "public"
 	convert
 	
 	# Generate search index and sitemap
