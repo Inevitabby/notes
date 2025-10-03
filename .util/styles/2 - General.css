@@ -6,7 +6,7 @@ html {
 	background-color: var(--background-color);
 	scroll-behavior: smooth;
 	line-height: 1.5;
-	font-family: Georgia, serif;
+	font-family: "Spectral", Georgia, serif;
 	font-size: 20px;
 }
 body {
