@@ -16,8 +16,8 @@
 ## Ch 3. Brute Force
 
 - [Brute Force](06.html)
-- [Brute Force: Graph](07.html)
-- [Brute Force: Closest-Pair Problem](08.html)
+- [Graph](07.html)
+- [Closest-Pair Problem](08.html)
 
 ## Ch 4. Decrease and Conquer
 
