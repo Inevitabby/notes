@@ -4,14 +4,15 @@ source .util/check_mtime.sh
 function convert_markdown {
 	INPUT_FILE=$1
 	INPUT_DIR=$2
+	MTIME_DIR=$3
 
-	# Skip unchanged files (if in daemon mode)
+	# Skip unchanged files
 	if [[ "$RUNNING" == "true" ]]; then
-		check_mtime "${INPUT_FILE}" "${INPUT_DIR}" && return
+		check_mtime "${INPUT_FILE}" "${MTIME_DIR}" && return
 	fi
 
 	# Console feedback
-	printf " - Converting: %s\n" "${INPUT_FILE}"
+	flock "$LOG_LOCKFILE" printf " - Converting: %s\n" "${INPUT_FILE}"
 
 	# Derive output filename (by stripping extension from input file and appending .html)
 	OUTPUT_FILE=$(basename -- "${INPUT_FILE}")
@@ -37,6 +38,6 @@ function convert_markdown {
 	ARGS="${BASE_ARGS} ${ARGS}"
 
 	# Convert Markdown to HTML
-	pandoc -i "${INPUT_FILE}" ${ARGS} | minify --type html --quiet --output "${OUTPUT_DIR}/${OUTPUT_FILE}" &
+	pandoc -i "${INPUT_FILE}" ${ARGS} < /dev/null | minify --type html --quiet --output "${OUTPUT_DIR}/${OUTPUT_FILE}"
 }
-
+export -f convert_markdown

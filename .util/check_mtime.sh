@@ -1,7 +1,6 @@
 function check_mtime {
     INPUT_FILE="${1}"
-    OUTPUT_DIR="${2}"
-    MTIME_DIR="/dev/shm/.mtimes/${OUTPUT_DIR}" && mkdir -p "${MTIME_DIR}"
+    MTIME_DIR="${2}"
     MTIME_FILE="${MTIME_DIR}/$(basename -- "${INPUT_FILE}").mtime"
     
     if [ ! -f "$MTIME_FILE" ] || [ "$INPUT_FILE" -nt "$MTIME_FILE" ]; then
@@ -11,3 +10,4 @@ function check_mtime {
         return 0  # File unchanged
     fi
 }
+export -f check_mtime
