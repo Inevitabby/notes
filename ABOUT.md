@@ -73,7 +73,7 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 
 1. **Running**: Any Markdown files that are edited get converted into HTML.
       - Script starts in this state.
-	- Uses hashes to detect file edits.
+	- Uses mtime to detect file edits.
 
 2. **Cleanup**: *All* files are converted. `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
       - Script enters this state when being killed (`CTRL+C`)
@@ -94,8 +94,10 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 
 **Gentoo Dependencies**
 
+- `app-shells/bash`
 - `app-text/pandoc`
 - `media-gfx/plantuml`
+- `dev-libs/libxml2`
 - `sys-apps/gawk`[^fn1]
 - https://github.com/tdewolff/minify[^fn2]
 
