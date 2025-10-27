@@ -15,6 +15,7 @@ title: Stack ADT
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class stack {
 	+push(newEntry : T) : void
 	+pop(): T                

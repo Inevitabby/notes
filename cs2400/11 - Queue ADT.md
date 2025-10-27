@@ -22,6 +22,7 @@ title: "Queue and Deque ADT"
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class queue {
 	+enqueue(newEntry : T) : void
 	+dequeue(): T

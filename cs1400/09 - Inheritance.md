@@ -134,6 +134,7 @@ Third access specification: `protected`
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class BankAccount {
 	#score : double
 	+setScore(s : double) : void
@@ -150,6 +151,7 @@ If you don't provide an access specifier for a class member, the member is given
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class BankAccount {
 	~score : double
 	+setScore(s : double) : void

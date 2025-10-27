@@ -11,6 +11,7 @@ aka: Partially-filled array.
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class ArrayBag implements BagInterface {
 -bag : T[]
 -numberOfEntries : integer

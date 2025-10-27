@@ -13,6 +13,7 @@ title: Dictionary ADT
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class Dictionary {
 +add(K : key, V: value) : V
 +remove(K : key) : V
@@ -67,6 +68,7 @@ class Dictionary {
 > 
 > ```plantuml
 > @startuml
+> skinparam backgroundColor transparent
 > class TelephoneDirectory {
 > 	-phonebook
 > 	+readFile(data)

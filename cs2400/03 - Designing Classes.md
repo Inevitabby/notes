@@ -163,6 +163,7 @@ Display Course Schedule
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class CourseSchedule {
 	+courseCount
 	+courseList

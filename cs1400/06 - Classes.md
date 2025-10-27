@@ -44,6 +44,7 @@ Unified Modeling Language (UML): Set of standard diagrams for graphically depict
 General Structure:
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class ClassName {
 	Fields
 	Methods()
@@ -54,6 +55,7 @@ class ClassName {
 For our `Rectangle` example:
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class Rectangle {
 	-length : double
 	-width : double
@@ -183,6 +185,7 @@ Constructors don't have their return type listed.
 For our `Rectangle` example:
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class Rectangle {
 	-length : double
 	-width : double
@@ -268,6 +271,7 @@ Here's a class that demonstrates overloaded methods and constructors.
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class BankAccount {
 	-balance : double
 	+BankAccount()
@@ -449,6 +453,7 @@ public void finalize()
 Example UML Diagram:
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class BankAccount {
 	-balance : double
 	-assignedManager : Manager

@@ -34,6 +34,7 @@ title: List ADT
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 class List {
 	+add(newEntry)
 	+add(newPosition, newEntry) 

@@ -102,6 +102,7 @@ $$
 
 ```plantuml
 @startuml
+skinparam backgroundColor transparent
 interface BagInterface{
 	+getCurrentSize() : integer
 	+isEmpty() : boolean
