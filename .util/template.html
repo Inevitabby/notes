@@ -9,7 +9,11 @@
   <!-- Duct-Taped Meta Tags -->
   <link rel="icon" href="https://inevitabby.com/assets/favicon.ico" type="image/x-icon">
   <meta name="author" content="Inevitabby" />
+    <meta name="view-transition" content="same-origin" />
   <!-- Pandoc Template Meta Tags -->
+$if(canonical_url)$
+  <link rel="canonical" href="$canonical_url$" />
+$endif$
 $if(date-meta)$
   <meta name="dcterms.date" content="$date-meta$" />
 $endif$
