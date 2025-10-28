@@ -9,7 +9,7 @@
   <!-- Duct-Taped Meta Tags -->
   <link rel="icon" href="https://inevitabby.com/assets/favicon.ico" type="image/x-icon">
   <meta name="author" content="Inevitabby" />
-    <meta name="view-transition" content="same-origin" />
+  <meta name="view-transition" content="same-origin" />
   <!-- Pandoc Template Meta Tags -->
 $if(canonical_url)$
   <link rel="canonical" href="$canonical_url$" />
@@ -84,86 +84,99 @@ $endif$
     $include-after$
   $endfor$
   $if(is_about_page)$
-      <footer>
-        <p>
-          <i><a href="https://inevitabby.gitlab.io/notes/">Return</a></i>
-        </p>
-      </footer>
+    <footer>
+      <p>
+        <i><a href="https://inevitabby.gitlab.io/notes/">Return</a></i>
+      </p>
+    </footer>
   $else$
-      <footer>
-        <p>
-          <i><a href="https://inevitabby.gitlab.io/notes/ABOUT.html">About</a></i>
-          <br />
-          <i><a href="https://inevitabby.gitlab.io/notes/search.html">Search</a></i>
-          <br />
-          <i><a href="javascript:void(0)" onclick="toggleDarkMode()">Toggle Theme</a></i>
-        </p>
-      </footer>
+    <footer>
+      <p>
+        <i><a href="https://inevitabby.gitlab.io/notes/ABOUT.html">About</a></i>
+        <br />
+        <i><a href="https://inevitabby.gitlab.io/notes/search.html">Search</a></i>
+        <br />
+        <i><a href="javascript:void(0)" onclick="toggleDarkMode()">Toggle Theme</a></i>
+      </p>
+    </footer>
   $endif$
-    <script>
-    // === Table of Contents (Navbar) ===
-    $if(toc)$
-    // Toggle showing/hiding the table of contents (navbar)
-    function toggleNavbar() {
-      const TOC = document.querySelector('#TOC');
-      const currentDisplay = window.getComputedStyle(TOC).display;
-      TOC.style.display = currentDisplay === "none" ? "block" : "none";
-    }
+  <script>
+  // === Table of Contents (Navbar) ===
+  $if(toc)$
+  // Toggle showing/hiding the table of contents (navbar)
+  function toggleNavbar() {
+    const TOC = document.querySelector('#TOC');
+    const currentDisplay = window.getComputedStyle(TOC).display;
+    TOC.style.display = currentDisplay === "none" ? "block" : "none";
+  }
 
-    // Don't add anchor links to the history
-    let isFirstAnchorClick = false;
-    document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
-      anchor.addEventListener("click", function (event) {
-        // Navigate to anchor
-        event.preventDefault();
-        const TARGET_HREF = anchor.getAttribute('href');
-        history.replaceState(null, null, TARGET_HREF);
-        window.location.href = TARGET_HREF;
+  // Don't add anchor links to the history
+  let isFirstAnchorClick = false;
+  document.querySelectorAll("a[href^=\"#\"]").forEach(function (anchor) {
+    anchor.addEventListener("click", function (event) {
+      // Navigate to anchor
+      event.preventDefault();
+      const TARGET_HREF = anchor.getAttribute('href');
+      history.replaceState(null, null, TARGET_HREF);
+      window.location.href = TARGET_HREF;
 
-        // Push anchorless version of page into history
-        if (!isFirstAnchorClick) {
-          history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
-          isFirstAnchorClick = true;
-        }
-      });
+      // Push anchorless version of page into history
+      if (!isFirstAnchorClick) {
+        history.pushState({ originalUrl: window.location.href }, document.title, window.location.href);
+        isFirstAnchorClick = true;
+      }
     });
-    $endif$
+  });
+  $endif$
 
-    // === Color Scheme Toggle ===
+  // === Color Scheme Toggle ===
 
-    // Initialize theme
-    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-    // Toggle theme
-    function toggleDarkMode() {
-      const root = document.documentElement;
-      const isDark = root.classList.toggle('dark');
-      localStorage.theme = isDark ? 'dark' : 'light';
-    }
+  // Initialize theme
+  if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+  // Toggle theme
+  function toggleDarkMode() {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle('dark');
+    localStorage.theme = isDark ? 'dark' : 'light';
+  }
 
-    // === Printer Tweak: Open <details> ===
+  // === Printer Tweak: Open <details> ===
 
-    const detailsList = document.querySelectorAll("details");
-    const detailsState = new Map();
+  const detailsList = document.querySelectorAll("details");
+  const detailsState = new Map();
 
-    // Store the state and open all <details>
-    window.addEventListener("beforeprint", () => {
-      detailsList.forEach(detail => {
-        detailsState.set(detail, detail.open);
-        detail.open = true;
-      });
+  // Store the state and open all <details>
+  window.addEventListener("beforeprint", () => {
+    detailsList.forEach(detail => {
+      detailsState.set(detail, detail.open);
+      detail.open = true;
     });
+  });
 
-    // Restore original state
-    window.addEventListener("afterprint", () => {
-      detailsList.forEach(detail => {
-        if (detailsState.has(detail)) {
-          detail.open = detailsState.get(detail);
-        }
-      });
-      detailsState.clear();
+  // Restore original state
+  window.addEventListener("afterprint", () => {
+    detailsList.forEach(detail => {
+      if (detailsState.has(detail)) {
+        detail.open = detailsState.get(detail);
+      }
     });
-    </script>
+    detailsState.clear();
+  });
+  </script>
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "source": "document",
+        "where": {
+          "selector_matches": "a[href^="/"]"
+        },
+        "eagerness": "eager"
+      }
+    ]
+  }
+  </script>
 </body>
 </html>

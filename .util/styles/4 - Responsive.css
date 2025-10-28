@@ -1,4 +1,17 @@
 /**
+ * View Transitions
+ */
+@view-transition {
+	navigation: auto;
+}
+html {
+	view-transition-name: none;
+}
+body {
+	view-transition-name: root;
+	background-color: transparent;
+}
+/**
  * Mobile Tweaks
  */
 @media (max-width: 1280px) {
