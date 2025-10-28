@@ -106,7 +106,8 @@ $endif$
     // Toggle showing/hiding the table of contents (navbar)
     function toggleNavbar() {
       const TOC = document.querySelector('#TOC');
-      TOC.style.display = TOC.style.display === "none" ? "block" : "none";
+      const currentDisplay = window.getComputedStyle(TOC).display;
+      TOC.style.display = currentDisplay === "none" ? "block" : "none";
     }
 
     // Don't add anchor links to the history
