@@ -1,3 +1,6 @@
+-- BUG: Annihilates KaTeX embedded in the <summary>
+-- TODO Fix this
+
 -- Convert Example Blockquotes to HTML details blocks
 function BlockQuote(block)
   -- === I. Check if starts with "**Example**:" ===
