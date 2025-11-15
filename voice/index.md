@@ -13,4 +13,5 @@ These are my notes on *The Voice Book for Trans and Non Binary People* by Matthe
 
 3. [The Vocal Workout](workout.html)
 4. [A. Preliminaries](workout-a.html)
+4. [B. Pitch](workout-b.html)
 

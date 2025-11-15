@@ -18,13 +18,14 @@ DIRECTORIES=(
     "cs4800"
     "cs50"
     "ffmpeg"
+    "japan"
     "mat1150"
     "phl2020"
     "pls2010"
+    "rust"
     "sta2260"
     "trans"
-    "rust"
-    "japan"
+    "voice"
 )
 
 source .util/convert.sh

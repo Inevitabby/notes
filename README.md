@@ -35,5 +35,5 @@
 ## Queer
 
 - [Conversation with a Registered Nurse](trans/rn.html)
-- [Voice Feminization](trans/voice.html)
+- [Voice Feminization](voice)
 - [Planned Parenthood Telehealth HRT Search](trans/pp.html)
