@@ -6,12 +6,11 @@ These are my notes on *The Voice Book for Trans and Non Binary People* by Matthe
 
 # Introduction
 
-1. [Introduction](intro.html)
-2. [Anatomy and Physiology of Sound](anatomy.html)
+1. [Introduction](00 - intro.html)
+2. [Anatomy and Physiology of Sound](01 - anatomy.html)
 
 # Exercises
 
-3. [The Vocal Workout](workout.html)
-4. [A. Preliminaries](workout-a.html)
-4. [B. Pitch](workout-b.html)
-
+3. [The Vocal Workout](02 - workout.html)
+4. [A. Preliminaries](03 - workout-a.html)
+4. [B. Pitch](04 - workout-b.html)
