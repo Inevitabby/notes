@@ -74,82 +74,71 @@ title: "B. Pitch"
 // Retrieved 2025-11-15, License - CC BY-SA 4.0
 
 // Create Web Audio API Context
-var audioCtx = false;
+var context = false;
 function createContext() {
-	audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-	audioCtx.volume = 0.42;
+	context = new(window.AudioContext || window.webkitAudioContext)();
 }
 
 // Play note
+let currOsc = null;
 function play(frequency) {
-	if (audioCtx == false) createContext();
-	var gainNode = audioCtx.createGain();
-	var oscillator = audioCtx.createOscillator();
-	gainNode.gain.value = 0.42;
-	oscillator.type = "sine";
-	oscillator.frequency.value = frequency;
+	if (!context) createContext();
+	if (currOsc) currOsc.stop();
 
-	oscillator.connect(gainNode);
-	gainNode.connect(audioCtx.destination);
+	const osc = context.createOscillator();
+	const gain = context.createGain();
 
-	oscillator.start();
-	setTimeout(
-		function() {
-		oscillator.stop();
-	}, 1500);
+	osc.frequency.value = frequency;
+	osc.connect(gain).connect(context.destination);
+
+	gain.gain.setValueAtTime(0, context.currentTime);
+	gain.gain.setTargetAtTime(0.42, context.currentTime, 0.02);
+
+	osc.start();
+	currOsc = osc;
+
+	setTimeout(() => {
+		gain.gain.setTargetAtTime(0, context.currentTime, 0.1);
+		setTimeout(() => osc.stop(), 200);
+		currOsc = null;
+	}, 1250);
 }
 
 // Make Hz clickable
 const regex = /\b(\d+)Hz\b/g;
-const nodeFilter = {
-	acceptNode(node) {
-		if (node.parentElement.tagName === "SCRIPT" || 
-				node.parentElement.tagName === "STYLE") {
-			return NodeFilter.FILTER_REJECT;
-		}
-		return NodeFilter.FILTER_ACCEPT;
-	}
-};
-let walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, nodeFilter, false);
-let nodesToProcess = [];
-while (walker.nextNode()) {
-	nodesToProcess.push(walker.currentNode);
-}
-for (let node of nodesToProcess) {
+const walker = document.createTreeWalker(
+	document.body,
+	NodeFilter.SHOW_TEXT,
+	node => node.parentElement.matches("script, style") 
+		? NodeFilter.FILTER_REJECT 
+		: NodeFilter.FILTER_ACCEPT
+);
+const nodesToProcess = [];
+while (walker.nextNode()) nodesToProcess.push(walker.currentNode);
+for (const node of nodesToProcess) {
 	const text = node.nodeValue;
 	if (!regex.test(text)) continue;
-	regex.lastIndex = 0; 
+	regex.lastIndex = 0;
 	const fragment = document.createDocumentFragment();
 	let lastIndex = 0;
 	let match;
-	while ((match = regex.exec(text)) !== null) {
-		const frequency = match[1];
-		const fullMatch = match[0];
-		const beforeText = text.substring(lastIndex, match.index);
-		if (beforeText) {
-			fragment.appendChild(document.createTextNode(beforeText));
-		}
-		let link = document.createElement("a");
-		link.href = "#";
-		link.textContent = fullMatch;
-		link.style.cursor = "pointer";
-		link.style.textDecoration = "underline";
-		link.style.textDecorationStyle = "dotted";
-
-		link.onclick = (e) => {
-			e.preventDefault();
-			play(parseInt(frequency, 10));
-		};
-
-		fragment.appendChild(link);
+	while ((match = regex.exec(text))) {
+		const [fullMatch, frequency] = match;
+		if (match.index > lastIndex) fragment.append(text.substring(lastIndex, match.index));
+		const link = Object.assign(document.createElement("a"), {
+			href: "#",
+			textContent: fullMatch,
+			onclick: e => (e.preventDefault(), play(+frequency))
+		});
+		Object.assign(link.style, {
+			cursor: "pointer",
+			textDecoration: "underline",
+			textDecorationStyle: "dotted"
+		});
+		fragment.append(link);
 		lastIndex = regex.lastIndex;
 	}
-
-	const afterText = text.substring(lastIndex);
-	if (afterText) {
-		fragment.appendChild(document.createTextNode(afterText));
-	}
-
+	if (lastIndex < text.length) fragment.append(text.substring(lastIndex));
 	node.parentNode.replaceChild(fragment, node);
 }
 </script>
