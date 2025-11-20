@@ -38,9 +38,9 @@ $$
 }
 $$
 
-## 3. It's Cool
+## 3. It's Fun
 
-If you're a nerd.
+It's fun to do personal librarianship and have the right information in the right place. I like how the continuous improvement of this project allows me to reflect on my learning and myself, rather than just forgetting it all.
 
 # Workflow & Architecture
 
@@ -65,22 +65,21 @@ When I want to upload my note(s) to [this GitLab repository](https://gitlab.com/
 
 ## B. Conversion
 
-The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wrapper for `pandoc` that does parallel processing and selective processing.
+The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wrapper for `pandoc` that does parallel and selective processing.
 
-<details><summary>**More Info for Nerds**</summary>
-
-`daemon.sh` has two states:
-
-1. **Running**: Any Markdown files that are edited get converted into HTML.
-      - Script starts in this state.
-	- Uses mtime to detect file edits.
-
-2. **Cleanup**: *All* files are converted. `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
-      - Script enters this state when being killed (`CTRL+C`)
-	- Converting everything allows changes outside of Markdown edits to propagate (e.g., edits to `template.html`)
-
-> **Note**: `daemon.sh` can also be run in oneshot mode with `./daemon.sh -o`, where it just does the cleanup process.
-</details>
+> **Aside**: Additional info
+> 
+> `daemon.sh` has two states:
+> 
+> 1. **Running**: Any Markdown files that are edited get converted into HTML.
+>       - Script starts in this state.
+> 	- Uses mtime to detect file edits.
+> 
+> 2. **Cleanup**: *All* files are converted. `<style>` tags are replaced with a `<link>` pointing to a shared `style.min.css`.
+>       - Script enters this state when being killed (`CTRL+C`)
+> 	- Converting everything allows changes outside of Markdown edits to propagate (e.g., edits to `template.html`)
+> 
+> > **Note** — `daemon.sh` can also be run in oneshot mode with `./daemon.sh -o`, where it just does the cleanup process.
 
 **Tools Used**
 
@@ -91,6 +90,7 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 - [`minify`](https://github.com/tdewolff/minify): Minification and (especially) CSS bundling.
 - [`PlantUML`](https://plantuml.com/): Tool to create diagrams from plaintext.
 	* A simple Lua filter ([`plantuml.lua`](https://gitlab.com/inevitabby/notes/-/blob/pages/.util/plantuml.lua?ref_type=heads)) is used to turn all embedded PlantUML into embedded SVGs. 
+- [`Lunr.js`](https://github.com/olivernn/lunr.js): Client-side search library (for [Search Notes](https://notes.inevitabby.com/search.html) page)
 
 **Gentoo Dependencies**
 
@@ -98,11 +98,9 @@ The `daemon.sh` script can be run with `./daemon.sh`, and it's essentially a wra
 - `app-text/pandoc`
 - `media-gfx/plantuml`
 - `dev-libs/libxml2`
-- `sys-apps/gawk`[^fn1]
+- `sys-apps/gawk`
 - https://github.com/tdewolff/minify[^fn2]
 
-All of this is defined in the CI config, though I have to install these dependencies on my own devices.
+> **Aside** — All of these dependencies are defined in the CI config, I just have to install these dependencies on my personal devices because I don't feel like maintaining an ebuild.
 
-[^fn1]: *If your system somehow lacks it.*
-
-[^fn2]: *Since `minify` isn't in the Portage tree yet, I just built it from source and added ~/go/bin to my $PATH.*
+[^fn2]: *Since `minify` isn't in the Portage tree, I just built it from source and added ~/go/bin to my $PATH.*
