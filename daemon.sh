@@ -22,6 +22,7 @@ DIRECTORIES=(
     "mat1150"
     "phl2020"
     "pls2010"
+    "pokemmo"
     "rust"
     "sta2260"
     "trans"
