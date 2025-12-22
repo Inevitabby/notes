@@ -41,10 +41,10 @@ ffmpeg -v quiet -i "$DOWNLOAD_FILE" -filter:a "speechnorm=e=6.25:r=0.00001:l=1" 
 Here is a tool to automatically trim silent portions of a video: [@WyattBlue/auto-editor](https://github.com/WyattBlue/auto-editor) (just install it into a Python virtual environment), and here is how to apply it:
 
 ```bash
-${HOME}/Scripts/venv/bin/auto-editor "$NORMALIZED_FILE" --output "${NAME}.mp4" --ffmpeg-location "/usr/bin/ffmpeg" --no-open
+${HOME}/Scripts/venv/bin/auto-editor "$NORMALIZED_FILE" --output "${NAME}.mp4" --no-open
 ```
 
-If you need to download a download-protected Kaltura video[^fn3] to do all of this, you're going to want to use [yt-dlp](https://github.com/yt-dlp/yt-dlp), it should be on your package manager.
+If you need to download a Kaltura video[^fn3] to do all of this, you're going to want to use [yt-dlp](https://github.com/yt-dlp/yt-dlp), it should be on your package manager.
 
 Here's how to download a Kaltura video:
 ```bash
@@ -65,39 +65,52 @@ DOWNLOAD_FILE="downloads/$NAME.mp4"
 NORMALIZED_FILE="downloads/$NAME-norm.mp4"
 # Download video
 if [ ! -f "$DOWNLOAD_FILE" ]; then
-	echo "Downloading ${NAME}..."
-	mkdir -p "downloads"
-	yt-dlp "$URL" --output "$DOWNLOAD_FILE"
+    echo "Downloading ${NAME}..."
+    mkdir -p "downloads"
+    yt-dlp "$URL" --output "$DOWNLOAD_FILE"
 fi
 # Apply moderate and slow speech normalization (https://ffmpeg.org/ffmpeg-all.html#Examples-73)
 if [ ! -f "$NORMALIZED_FILE" ]; then
-	echo "Normalizing ${NAME}..."
-	ffmpeg -v quiet -i "$DOWNLOAD_FILE" -filter:a "speechnorm=e=6.25:r=0.00001:l=1" "$NORMALIZED_FILE"
+    echo "Normalizing ${NAME}..."
+    ffmpeg -v quiet -i "$DOWNLOAD_FILE" -filter:a "speechnorm=e=6.25:r=0.00001:l=1" "$NORMALIZED_FILE"
 fi
 # Apply auto-editor
-echo "Applying auto-editor to ${NAME}..."
-${HOME}/Scripts/venv/bin/auto-editor "$NORMALIZED_FILE" --output "${NAME}.mp4" --ffmpeg-location "/usr/bin/ffmpeg" --no-open
+if [ ! -f "${NAME}.mp4" ]; then
+    echo "Applying auto-editor to ${NAME}..."
+    auto-editor "$NORMALIZED_FILE" --output "${NAME}.mp4" --no-open --quiet
+fi
 ```
 —And then run it like so: `./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 06"`{.bash}.
 
-Or, you could do it in batch and in parallel:
+Or, you could do it in batch and with a wrapper for parallelization and niceness:
 
 ```bash
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 01 - Introduction" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 02 - History" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 03 - Philosophy" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 04 - OS" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 05 - Commands" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 06 - Files" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 06 - Vi and Emacs Editors I" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 07 - Vi and Emacs Editors II" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 08 - Pipes and Filters" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 09 - Regular Expressions" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 10 - Grep" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 11 - Sed" &
-./download.sh "https://cdnapi.kaltura.com/p/BLAHBLAHBLAH" "Lecture 12 - Awk" &
+MAX_JOBS=8 
+count=0
+function dl {
+    nice -n 19 ionice -c 3 ./download.sh "$1" "$2" &
+    # Limit number of parallel processes
+    ((count++))
+    if (( count >= MAX_JOBS )); then
+        wait -n
+        ((count--))
+    fi
+}
+dl "https://cdnapi.kaltura.com/p/e6dce" "Lecture 01 - Introduction" &
+dl "https://cdnapi.kaltura.com/p/20ce3" "Lecture 02 - History" &
+dl "https://cdnapi.kaltura.com/p/74e19" "Lecture 03 - Philosophy" &
+dl "https://cdnapi.kaltura.com/p/3703e" "Lecture 04 - OS" &
+dl "https://cdnapi.kaltura.com/p/43c24" "Lecture 05 - Commands" &
+dl "https://cdnapi.kaltura.com/p/61edc" "Lecture 06 - Files" &
+dl "https://cdnapi.kaltura.com/p/86742" "Lecture 06 - Vi and Emacs Editors I" &
+dl "https://cdnapi.kaltura.com/p/d8445" "Lecture 07 - Vi and Emacs Editors II" &
+dl "https://cdnapi.kaltura.com/p/e82ca" "Lecture 08 - Pipes and Filters" &
+dl "https://cdnapi.kaltura.com/p/de9e4" "Lecture 09 - Regular Expressions" &
+dl "https://cdnapi.kaltura.com/p/87898" "Lecture 10 - Grep" &
+dl "https://cdnapi.kaltura.com/p/796d0" "Lecture 11 - Sed" &
+dl "https://cdnapi.kaltura.com/p/d679e" "Lecture 12 - Awk" &
 wait
 ```
 
