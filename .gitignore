@@ -5,4 +5,7 @@ public/
 # LaTeX stuff
 *.aux
 *.dvi
+*.fdb_latexmk
+*.fls
 *.log
+*.xdv
