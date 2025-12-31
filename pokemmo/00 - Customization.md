@@ -21,6 +21,12 @@ title: "Client Customization"
 ## Utility
 
 - Strings: [SupersStrings!](https://forums.pokemmo.com/index.php?/topic/188112-supersstrings/)
+- Weakness Chart: [Bullseye Injector](https://github.com/UncleTyrone/Bullseye-Injector)
+
+> **Aside**: [**IMPORTANT**] — Bullseye Injector Scaling Fix
+> 
+> In `./sprites/battlesprites/table-summary-scale.txt`:
+> - Replace all instances of `2.70` with `1.75`
 
 > **Aside**: What is a String mod?
 > 
@@ -47,18 +53,27 @@ title: "Client Customization"
 > ```
 > [$8632] / +50%[$12948] / +75%[$15106] / +100%[$17264]
 > 
-> Yammy: So, you finally made it... That's right, the real gym leader was me all along! Here is come!<confirm>
+> Yammy: So, you finally made it... That's right, the real gym leader was me all along! Here I come!<confirm>
 > ```
+
+> **Aside**: What is Bullseye?
+> 
+> Bullseye is a sprite mod that modifies every single Pokemon sprite to have some symbols next to it that display its type weaknesses.
+> 
+> This is useful if you can't remember type weaknesses, and in certain situations (e.g., double battles) the vanilla UI won't tell you whether a move is effective.
 
 # Keybinds
 
+## Control
+
+Key A: `<Spacebar>`
+
 ## Overworld Hotbar
 
-- `t`: Teleport
-- `m`: Town Map
-- `<Spacebar>`: Bike
-- `f`: Super Rod
-- `s`: Sweet Scent
+| Hotbar Position |     1     |  2  |  3   |   4   |    5    |    6     |    7     |     8     |      9      |
+|-----------------|:---------:|:---:|:----:|:-----:|:-------:|:--------:|:--------:|:---------:|:-----------:|
+| Keybind         |    `1`    | `2` | `L`  |  `R`  |   `Z`   |   `M`    |   `T`    |    `F`    |     `S`     |
+| Item            | Sprayduck |     | Lure | Repel | Bicycle | Town Map | Teleport | Super Rod | Sweet Scent |
 
 > **Aside**: More Explanation
 > 
@@ -66,13 +81,14 @@ title: "Client Customization"
 > - Town Map: Just the map. Click on a town to Fly there.
 > - Bike: Lets you move through the overworld faster.
 > - Super Rod: Lets you fish for Pokemon.
-> - Sweet Scent: Summons hordes, extremely useful for [XP / EV Training](https://forums.pokemmo.com/index.php?/topic/77490-simple-ev-training-leveling-guide-using-horde/).
+> - Sweet Scent: Summons hordes, used for [XP / EV Training](https://forums.pokemmo.com/index.php?/topic/77490-simple-ev-training-leveling-guide-using-horde/).
 
 ## Battle Hotbar
 
-- `1`: Pokeball
-- `2`: Great Ball
-- `3`: Ultra Ball
+| Hotbar Position |     1      |     2      |     3      |     4     |     5     |
+|-----------------|:----------:|:----------:|:----------:|:---------:|:---------:|
+| Keybind         |    `1`     |    `2`     |    `L`     |    `R`    |    `Z`    |
+| Item            | Great Ball | Ultra Ball | Quick Ball | Dusk Ball | Poké Ball |
 
 ## Movement
 
