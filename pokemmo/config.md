@@ -11,20 +11,20 @@ img[src$=".gif"] { width: 100% }
 
 ## Aesthetic
 
-- Theme: [Catppuccin Mocha PC Theme](https://github.com/WusialaMMO/catppuccin-pc-theme-pokemmo)
+<!-- - Theme: [Catppuccin Mocha PC Theme](https://github.com/WusialaMMO/catppuccin-pc-theme-pokemmo) -->
 - Followers: [Complete PokeMMO Follower Sprites](https://forums.pokemmo.com/index.php?/topic/138391-complete-pokemmo-follower-sprites-updated-and-fixed-version-legendary-and-forms-included/)
 - Music: [PokeMMO Music Remastered](https://forums.pokemmo.com/index.php?/topic/150396-mod-pokemmo-music-remastered-complete-music-overhaul/)
 
-> **Aside**: Catppuccin Installation
-> 
-> Catppuccin is available via GitHub and can be cloned directly into the mod folder like:
-> 
-> ```bash
-> cd ~/.var/app/com.pokemmo.PokeMMO/data/pokemmo-client-live/data/mods/
-> git clone "https://github.com/WusialaMMO/catppuccin-pc-theme-pokemmo" --depth 1
-> ```
-> 
-> > *Assuming installed via Flatpak*
+<!-- **Aside**: Catppuccin Installation -->
+<!---->
+<!-- Catppuccin is available via GitHub and can be cloned directly into the mod folder like: -->
+<!---->
+<!-- ```bash -->
+<!-- cd ~/.var/app/com.pokemmo.PokeMMO/data/pokemmo-client-live/data/mods/ -->
+<!-- git clone "https://github.com/WusialaMMO/catppuccin-pc-theme-pokemmo" --depth 1 -->
+<!-- ``` -->
+<!---->
+<!-- > *Assuming installed via Flatpak* -->
 
 ## Utility
 

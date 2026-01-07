@@ -1,8 +1,10 @@
 ---
-title: "Important Links"
+title: "My Bookmarks"
 ---
 
-This document is extremely incomplete.
+This document is extremely incomplete and fragmented, but it attempts to bookmark forum posts and tools I think are useful to store.
+
+Hopefully I can create a more useful reference in the future.
 
 # Frequent Reference
 - [Tiny Curated Rematch Guide](https://forums.pokemmo.com/index.php?/topic/148798-1-hour-trainer-rerun-guide/)
@@ -24,3 +26,7 @@ This document is extremely incomplete.
 # Pokedex
 
 - [PokeMMOHub Pokedex](https://pokemmohub.com/tools/pokedex/)
+
+# Client Modification
+
+- [Theme editing basics](https://forums.pokemmo.com/index.php?/topic/182179-theme-editing-basics/)
