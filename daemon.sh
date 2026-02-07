@@ -20,6 +20,7 @@ DIRECTORIES=(
     "ffmpeg"
     "japan"
     "mat1150"
+    "misc"
     "phl2020"
     "pls2010"
     "pokemmo"
