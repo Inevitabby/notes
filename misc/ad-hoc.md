@@ -9,7 +9,9 @@ These should be sorted into appropriate actual note whenever I make them them, b
 Flutter run with hot reload on-edit from a separate terminal.
 
 ```bash
-(trap 'kill 0' SIGINT; flutter run & PID=$!; find lib/ -name "*.dart" | entr -p kill -USR1 $PID)
+(trap 'kill 0' SIGINT; flutter run & PID=$!; \
+	find lib/ -name "*.dart" | \
+	entr -p kill -USR1 $PID)
 ```
 
 > **Aside**: Rather than write a this-or-that integration signals-on-whatever, this Just Works.
@@ -19,7 +21,11 @@ Flutter run with hot reload on-edit from a separate terminal.
 Launch emulator headlessly, wait for boot sequence, and connect with scrcpy.
 
 ```bash
-(trap 'kill -9 0' SIGINT EXIT; "${ANDROID_SDK}/emulator/emulator" -avd Pixel_9 -no-window & adb wait-for-device; adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'; scrcpy -m 1024 --max-fps 30)
+(trap 'kill -9 0' SIGINT EXIT; \
+	"${ANDROID_SDK}/emulator/emulator" -avd Pixel_9 -no-window & \
+	adb wait-for-device; \
+	adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'; \
+	scrcpy -m 1024 --max-fps 30)
 ```
 
 > **Aside**: You'll lose a lot of features (e.g., toolbar, hotkeys, decent performance), but the window won't fight your WM anymore.
@@ -40,6 +46,6 @@ ls script.lsp | entr -c sbcl --script /_
 
 # DS Lite AP & Backup
 
-https://github.com/Inevitabby/DS-OTA-Backup
-
-https://github.com/Inevitabby/DS-Lite-Private-AP
+Moved to monolithic scripts:
+- [https://github.com/Inevitabby/DS-OTA-Backup](https://github.com/Inevitabby/DS-OTA-Backup)
+- [https://github.com/Inevitabby/DS-Lite-Private-AP](https://github.com/Inevitabby/DS-Lite-Private-AP)
