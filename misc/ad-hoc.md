@@ -4,9 +4,13 @@ title: "Ad Hoc Bash One-Liners"
 
 These should be sorted into appropriate actual note whenever I make them them, but until then, I'm just throwing them here.
 
-# Flutter Hot Reload
+# Flutter Hot Reload/Restart
 
 Flutter run with hot reload on-edit from a separate terminal.
+
+**1. App State-Preserving**
+
+Hot reload with:
 
 ```bash
 (trap 'kill 0' SIGINT; flutter run & PID=$!; \
@@ -14,7 +18,16 @@ Flutter run with hot reload on-edit from a separate terminal.
 	entr -p kill -USR1 $PID)
 ```
 
-> **Aside**: Rather than write a this-or-that integration signals-on-whatever, this Just Works.
+**2. Full Hot Restart**
+
+Hot restart with:
+
+```bash
+(trap 'kill 0' SIGINT; mkfifo /tmp/flutter_cmd 2>/dev/null || true; \
+    cat /tmp/flutter_cmd | flutter run & PID=$!; \
+    find lib/ -name "*.dart" | \
+    entr -p sh -c "echo r > /tmp/flutter_cmd")
+```
 
 # Android Emulator
 
