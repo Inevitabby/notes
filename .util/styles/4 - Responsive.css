@@ -41,6 +41,10 @@ body {
 	img {
 		width: 69%;
 	}
+	div.sourceCode:has(pre.sourceCode) {
+		padding: 0.5rem 0.5rem;
+		margin: 0.5rem 0;
+	}
 }
 
 /*

@@ -21,6 +21,7 @@
 	--toggleNavbar-border-color: #ccc;
 	--svg-green: #ADD1B2;
 	--svg-purple: #B4A7E5;
+	--code-background-color: #dce0e8;
 }
 /**
  * Dark Color Scheme
@@ -45,6 +46,7 @@
 	--toggleNavbar-border-color: #6c7086;
 	--svg-green: purple;
 	--svg-purple: green;
+	--code-background-color: #11111b;
 }
 /** (Targeted Pygment overrides for dark scheme) */
 .dark span.kw { color: #a6e3a1; } /* keywords */
@@ -56,7 +58,7 @@
 .dark span.op { color: #bac2de; } /* operator */
 .dark span.co { color: #94e2d5; } /* comment */
 .dark code {
-	filter: brightness(1.2);
+	filter: brightness(2);
 }
 .dark img[src^=".images/doodle_"] {
 	filter: invert(1);

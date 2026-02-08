@@ -1,0 +1,16 @@
+/**
+ * Code
+ */
+div.sourceCode:has(pre.sourceCode) {
+  background-color: var(--code-background-color);
+  outline: 1px solid var(--blockquote-text-color);
+  padding: 1rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0.1px;
+}
+pre.sourceCode {
+  overflow-x: auto;
+}
+code {
+  font-size: 80%;
+}
