@@ -2,46 +2,19 @@
 title: "Ad Hoc Bash One-Liners"
 ---
 
-These should be sorted into appropriate actual note whenever I make them them, but until then, I'm just throwing them here.
+These should be sorted into actual categories whenever I make them them, but until then, I'm just throwing them here.
 
-# Flutter Hot Reload/Restart
+# Slightly Hotter Flutter Hot Reload
 
-Flutter run with hot reload on-edit from a separate terminal.
+Flutter's hot reload is good, but it doesn't trigger on file-edits. *(For that, they rely on IDEs to provide their own signals whenever the user saves.)*
 
-**1. App State-Preserving**
-
-Hot reload with:
+This one-liner starts `flutter run` and triggers a hot reload whenever `entr` detects an update in `lib/*.dart` (so make sure you're running it in your git root)
 
 ```bash
 (trap 'kill 0' SIGINT; flutter run & PID=$!; \
 	find lib/ -name "*.dart" | \
 	entr -p kill -USR1 $PID)
 ```
-
-**2. Full Hot Restart**
-
-Hot restart with:
-
-```bash
-(trap 'kill 0' SIGINT; mkfifo /tmp/flutter_cmd 2>/dev/null || true; \
-    cat /tmp/flutter_cmd | flutter run & PID=$!; \
-    find lib/ -name "*.dart" | \
-    entr -p sh -c "echo r > /tmp/flutter_cmd")
-```
-
-# Android Emulator
-
-Launch emulator headlessly, wait for boot sequence, and connect with scrcpy.
-
-```bash
-(trap 'kill -9 0' SIGINT EXIT; \
-	"${ANDROID_SDK}/emulator/emulator" -avd Pixel_9 -no-window & \
-	adb wait-for-device; \
-	adb shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done'; \
-	scrcpy -m 1024 --max-fps 30)
-```
-
-> **Aside**: You'll lose a lot of features (e.g., toolbar, hotkeys, decent performance), but the window won't fight your WM anymore.
 
 # LISP
 
@@ -59,6 +32,15 @@ ls script.lsp | entr -c sbcl --script /_
 
 # DS Lite AP & Backup
 
-Moved to monolithic scripts:
+Moved to two monolithic scripts:
 - [https://github.com/Inevitabby/DS-OTA-Backup](https://github.com/Inevitabby/DS-OTA-Backup)
 - [https://github.com/Inevitabby/DS-Lite-Private-AP](https://github.com/Inevitabby/DS-Lite-Private-AP)
+
+I don't even keep the repos on my PC because these scripts are complete—
+
+```bash
+$ ls
+backups  DS_AP  lnxrouter  NDS_BACKUP
+```
+
+—I just have the scripts in a single folder for easy administration now.
