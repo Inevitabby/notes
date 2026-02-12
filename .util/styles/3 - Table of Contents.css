@@ -13,6 +13,7 @@
 	display: block;
 	counter-reset: toc-counter;
 	z-index: 1;
+	transition: background-color 200ms, border-left 200ms;
 }
 #TOC > .incremental {
 	list-style: none;
@@ -24,6 +25,7 @@
 	padding: 8px;
 	border-bottom: 1px solid var(--TOC-item-border-color);
 	counter-increment: toc-counter;
+	transition: border-bottom 200ms;
 }
 #TOC > .incremental li a {
 	text-decoration: none;
@@ -32,6 +34,7 @@
 }
 #TOC > .incremental li a:hover {
 	background-color: var(--TOC-hover-background-color);
+	transition: background-color 200ms;
 }
 #TOC > .incremental li::before {
 	content: counter(toc-counter, upper-roman) ". ";

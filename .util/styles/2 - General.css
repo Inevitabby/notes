@@ -8,20 +8,25 @@ html {
 	line-height: 1.5;
 	font-family: "Spectral", Georgia, serif;
 	font-size: 20px;
+	transition: color 200ms, background-color 200ms;
 }
 body {
 	color: var(--text-color);
 	background-color: var(--background-color);
+	transition: color 200ms, background-color 200ms;
 }
 hr {
 	background-color: var(--hr-color);
+	transition: background-color 200ms;
 }
 a, a:visited {
 	color: var(--link-color);
+	transition: color 200ms;
 }
 blockquote {
 	border-left-color: var(--blockquote-border-color);
 	color: var(--blockquote-text-color);
+	transition: border-left-color 200ms, color 200ms;
 }
 
 /**
@@ -51,15 +56,18 @@ table {
 	border-bottom-color: var(--table-border-color);
 	margin-left: auto;
 	margin-right: auto;
+	transition: border-top-color 200ms, border-bottom-color 200ms;
 }
 th {
 	border-top-color: var(--th-border-color);
+	transition: border-top-color 200ms;
 }
 figure figcaption {
 	text-align: center;
 	font-style: italic;
 	color: var(--blockquote-text-color);
 	margin-top: 0.5em;
+	transition: color 200ms;
 }
 img {
 	width: 42%;

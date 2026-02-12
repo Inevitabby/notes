@@ -13,4 +13,5 @@ nav#breadcrumbs a {
 }
 nav#breadcrumbs a:hover {
   color: var(--link-color);
+  transition: color 200ms;
 }
