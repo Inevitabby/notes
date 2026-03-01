@@ -1,0 +1,102 @@
+/* Calculations */
+
+:root {
+  --sidenote-gap: 2rem; 
+  --body-em-size: 18px;
+  --body-max-width: calc(36 * var(--body-em-size));
+}
+
+/* TODO apply this to actual def */
+@media (min-width: 1980px) {
+  /* body { max-width: 40em; } */
+  :root {
+    --body-max-width: calc(40 * var(--body-em-size));
+    --sidenote-gap: 1.5rem; 
+  }
+}
+@media (min-width: 2160px) {
+  /* body { max-width: 45em; } */
+  :root { 
+    --body-max-width: calc(45 * var(--body-em-size));
+    --sidenote-gap: 2rem; 
+  }
+}
+
+:root {
+  --body-padding: 100px;
+  --available-margin: calc(
+    (100vw - var(--body-max-width) - var(--body-padding)) / 2
+    - 200px
+    - var(--sidenote-gap)
+  );
+  --sidenote-width: clamp(250px, var(--available-margin), 500px);
+  --layout-gutter-width: calc(var(--sidenote-width) + var(--sidenote-gap));
+}
+
+/* Base Sidenote */
+
+.sidenote {
+  width: var(--sidenote-width);
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--blockquote-text-color);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: margin 200ms, width 200ms, padding 200ms;
+}
+
+.sidenote.left {
+  float: left;
+  clear: left;
+  margin-left: calc(-1 * var(--layout-gutter-width));
+  text-align: right;
+  padding-right: var(--sidenote-gap);
+}
+
+.sidenote.right {
+  float: right;
+  clear: right;
+  margin-right: calc(-1 * var(--layout-gutter-width) + 50px);
+  text-align: left;
+  padding-left: var(--sidenote-gap);
+  width: calc(var(--sidenote-width) - 50px); 
+}
+
+/* Fix indented alignment */
+/* TODO My numbers are still wrong, list-indent-width isn't enough??? */
+li .sidenote.left {
+  margin-left: calc(-1 * (var(--layout-gutter-width) + var(--list-indent-width)));
+}
+li li .sidenote.left {
+  margin-left: calc(-1 * (var(--layout-gutter-width) + (2 * var(--list-indent-width))));
+}
+li li li .sidenote.left {
+  margin-left: calc(-1 * (var(--layout-gutter-width) + (3 * var(--list-indent-width))));
+}
+
+/* Responsive */
+
+/* Single-Column on small screen */
+@media (max-width: 1600px) {
+  .sidenote.right {
+    float: left;
+    clear: left;
+    margin-left: calc(-1 * var(--layout-gutter-width));
+    margin-right: 0;
+    text-align: right;
+    padding-right: var(--sidenote-gap);
+    padding-left: 0;
+    width: var(--sidenote-width);
+  }
+  :root { --sidenote-gap: 1rem; }
+}
+
+/* Phones will benefit from a JS popup version (prob restyle these sidenotes; and worst-case we just default to hiding all sidenotes and display the bottom footnotes and use simple a href */
+
+/* TODO Mobile version here! */
+section#footnotes { display: none }
+@media (max-width: 1280px) {
+  .sidenote { display: none }
+  /* TODO toggle display of fallback notes here (need to tweak the filter first) */
+  section#footnotes { display: block }
+}

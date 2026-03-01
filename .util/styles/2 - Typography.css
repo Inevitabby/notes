@@ -1,6 +1,11 @@
 /**
  * Typography
  */
+
+:root {
+	--list-indent-width: 1.7em;
+}
+
 h1 {
 	text-align: right;
 	max-width: 40ch;
@@ -24,6 +29,12 @@ h1 { font-size: 2rem; line-height: 2rem; margin-top: 2.5rem; margin-bottom: 1rem
 h2 { font-size: 1.5rem; line-height: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
 h3 { font-size: 1.25rem; line-height: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
 h4, h5, h6 { font-size: 1.125rem; line-height: 1.125rem; margin-top: 1rem; margin-bottom: 0.5rem; }
+ol, ul {
+  padding-left: var(--list-indent-width);
+}
+blockquote {
+  margin: 1em 0 1em var(--list-indent-width);
+}
 
 /** Special Case: README title */
 h1.title#notes a {
