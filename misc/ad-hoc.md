@@ -30,6 +30,14 @@ ls script.lsp | entr -c sbcl --script /_
 > ls script.lsp | entr -c sbcl --dynamic-space-size 16 --script /_
 > ```
 
+> **Aside**: Clear Scrollback Buffer
+> 
+> If you find yourself getting lost in old backtraces by accident, clear scrollback history on reload, e.g.,
+> 
+> ```bash
+> ls script.lsp | entr sh -c 'printf "\033c\033[3J"; sbcl --dynamic-space-size 16 --script "$1"' _ /_
+> ```
+
 # DS Lite AP & Backup
 
 Moved to two monolithic scripts:
