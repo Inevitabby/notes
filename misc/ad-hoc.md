@@ -38,6 +38,14 @@ ls script.lsp | entr -c sbcl --script /_
 > ls script.lsp | entr sh -c 'printf "\033c\033[3J"; sbcl --dynamic-space-size 16 --script "$1"' _ /_
 > ```
 
+> **Aside**: Hiding Backtraces
+> 
+> If you don't want to see backtraces, you can intercept errors before they trigger the debugger, e.g.,
+> 
+> ```bash
+> ls script.lsp | entr sh -c 'printf "\033c\033[3J"; sbcl --dynamic-space-size 16 --noinform --eval "(setf sb-ext:*invoke-debugger-hook* (lambda (c h) (declare (ignore h)) (format *error-output* \"~&Error: ~A~%\" c) (sb-ext:exit :code 1)))" --script "$1"' _ /_
+> ```
+
 # DS Lite AP & Backup
 
 Moved to two monolithic scripts:
