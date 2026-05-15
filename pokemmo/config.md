@@ -31,11 +31,6 @@ img[src$=".gif"] { width: 100% }
 - Strings: [SupersStrings!](https://forums.pokemmo.com/index.php?/topic/188112-supersstrings/)
 - Weakness Chart: [Bullseye Injector](https://github.com/UncleTyrone/Bullseye-Injector)
 
-> **Aside**: [**IMPORTANT**] — Bullseye Injector Scaling Fix
-> 
-> In `./sprites/battlesprites/table-summary-scale.txt`:
-> - Replace all instances of `2.70` with `1.75`
-
 > **Aside**: What is a String mod?
 > 
 > All game text (strings) can be dumped to XML and customized. This can improve information density and readability.
@@ -50,6 +45,27 @@ img[src$=".gif"] { width: 100% }
 > Bullseye is a sprite mod that modifies every single Pokemon sprite to have some symbols next to it that display its type weaknesses.
 > 
 > This is useful if you can't remember type weaknesses, and in certain situations (e.g., double battles) the vanilla UI won't tell you whether a move is effective.
+
+> **Aside**: My Bullseye Tweaks
+> 
+> I did some lazy duct-tapey edits to Bullseye for personal taste.
+> 
+> 1. Smaller Sprites
+> 
+> ```bash
+> sed -i 's/2.70/1.7/g' "./sprites/battlesprites/table-summary-scale.txt"
+> ```
+> 
+> 2. Bigger Shinies
+> 
+> ```bash
+> for file in ./sprites/battlesprites/*-front-s.gif; do
+>   (height=$(magick identify -format "%h" "${file}[0]");
+>   magick "$file" -scale 200% -background none -gravity South -splice 0x"$height" "$file") &
+>   ((++i % 32 == 0)) && wait
+> done
+> ```
+> > **Reminder** — Mind your computer's specs! Also remember to use `/tmp/` to avoid disk bottleneck.
 
 # Input & Ergonomics
 

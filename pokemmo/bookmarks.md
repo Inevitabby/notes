@@ -30,3 +30,5 @@ Hopefully I can create a more useful reference in the future.
 # Client Modification
 
 - [Theme editing basics](https://forums.pokemmo.com/index.php?/topic/182179-theme-editing-basics/)
+
+> TODO Can Bullseye be rewritten as an overlay mod? i.e., in a way that doesn't eradicate the uniqueness of the best Pokemon (Spinda)
