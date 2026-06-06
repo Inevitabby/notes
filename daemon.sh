@@ -27,6 +27,7 @@ DIRECTORIES=(
     "phl2020"
     "pls2010"
     "pokemmo"
+    "python"
     "rust"
     "sta2260"
     "trans"

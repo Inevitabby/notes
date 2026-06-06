@@ -30,6 +30,7 @@
 ## Self-Study
 
 - [Rust](rust)
+- [Python](python)
 - [CS50: Introduction to Computer Science](cs50)
 - [Japanese](japan)
 
