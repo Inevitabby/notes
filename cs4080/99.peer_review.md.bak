@@ -1,0 +1,169 @@
+---
+title: "Misc: Peer Presentations"
+---
+
+# Collated "Lessons Learned"
+
+**1:**
+- NEVER say your language isn't for programmers / is supposed to make programming easier!
+- Keep slides on boring operations (e.g., standard arithmetic) short, don't read off a list of operations.
+	* Basically, only talk about interesting stuff.
+- Keep an eye on the time!
+
+**2:**
+- Professor will cook you if your example code can't be explained.
+      - LLM code will be cooked! **Be fast on my feet!**
+- **Make sure all code examples are explainable!!!!**
+
+**3:**
+- Have simple slides, have detailed notecards!
+- Don't say anything I can't understand!
+- A simple language explained well is superior to a complex language explained poorly.
+- **End with a big example at the end!**
+- Slides must be cohesively formatted!
+      - Use consistent font and theming!
+- Tie it back to the domain!
+
+**4:**
+- Don't fuck-up the start (design criteria).
+- Focus on the actually-interesting parts of the language. 
+- Have meaningful code comments!
+- Be able to answer light questions on limitations.
+      - If in doubt, **confidently make something up**.
+
+# Detailed Notes
+
+## 1. TableTop
+
+> **Professor Rating: Best**
+
+Problem Domain: Running a TTRPG is complicated.
+
+Record Keeping Duties:
+- Storylines
+- Chars
+- Encounters, World State
+- XP
+- Inventories
+- so on and so forth.
+
+"We want to simplify and streamline the organization of a game."
+
+**Philosophy**: Simplicity
+- Professor cringed hard at the line, "our users may not be programmers" (**DON'T SAY THIS!!! HE HAS SAID TO NOT SAY IT!!!**)
+
+Type system is very C-like and standard.
+- int, char, float, str, bool, strings
+
+Cool stuff: Lists & (Hash)Maps
+- Maps can't be arbitrarily constructed by users, this is used for game elements.
+
+Game Elements are: Basic game structure defined via theses.
+- e.g., WORLD STORY ENCOUNTER TASK ENEMY ENTITY etc.
+- Declarative
+- Control flow defined via attributes.
+	* No loops! *(cool)*
+
+**More on Attributes**: 
+- AFFLICATION, UPON, REWARD, GIVE
+- Within we have IF ELSE branches
+
+Arithmetic ops are very standard.
+- DIV / MULT / MOD / etc.
+- On this slide, the professor just told them to skip. (**KEEP OUR SLIDE ON BORING OPS SHORT!**)
+
+Subprograms: The interesting portion
+- No return
+- Arguments passed by reference.
+
+They then showed a detailed code example and walked through it, before running out of time.
+
+> **LESSONS LEARNED:**
+> - NEVER say your language isn't for programmers / is supposed to make programming easier!
+> - Keep slides on boring operations (e.g., standard arithmetic) short, don't read off a list of operations.
+> 	* Basically, only talk about interesting stuff.
+> - Keep an eye on the time!
+
+**Professor's Rating**: "This was a very good presentation, the example was perfect, the slides were very informative."
+
+## 2. BitCast
+
+> **Professor Rating: Okay**
+
+These guys ran through their Milestone document basically in chronological order.
+- Update: Nevermind, they basically just went into their language's key structs (which were interesting) and explained them.
+
+Four Key Structs:
+- Zones: Design topology. Can be nested.
+- Inventories: Map devices to names.
+	* e.g., Two devices can be linked to the `@cloud`.
+- Security Policies: Least priviledge and backups.
+	* Even lets you set failure-modes at a high level *(have the door fail closed, have the thermostat fail open, etc.)*
+- Behavior Policies: Constant, repeated, conditional checks.
+
+They rushed through the remaining slides on type system and scope and such.
+
+> **LESSONS LEARNED:**
+> - Professor will cook you if your example code can't be explained.
+>	- LLM code will be cooked! **Be fast on my feet!**
+> - **Make sure all code examples are explainable!!!!**
+
+**Professor's Rating**: "So, uh... I'm still bothered by the `Presence` thing. Because it's supposed to just be a-it's supposed to be the name of a device, and whatever function-right but is the device called Presence or is it a feature of your language? Seems like an object in the language or a library or class"
+
+## 3. Crossline
+
+> **Professor Rating: Poor**
+
+Rationale: Work with email servers.
+
+When going into Simplicity, Abstraction, Orthogonality, etc... **SAY LESS**
+- You **will** fuck up explaining one of these, just focus on what the design favors! Group 1 literally just like went over 1 or 2 things, they did NOT go over all seven!
+
+Their language is basically Java. I actually have no idea what their cool thing is?
+
+They have way too much text on their slides.
+- **SHOW LESS TEXT, SPEAK MORE**
+
+> **LESSONS LEARNED:**
+> - Have simple slides, have detailed notecards!
+> - Don't say anything I can't understand!
+> - A simple language explained well is superior to a complex language explained poorly.
+> - **End with a big example at the end!**
+> - Slides must be cohesively formatted!
+>	- Use consistent font and theming!
+> - Tie it back to the domain!
+
+ASIDE: **CAN WE OVERRIDE TASK NAMES???** (OVERLOADING)
+
+## 4. Planix
+
+> **Professor Rating: Okay**
+
+Their thing is like Planning I think, I wasn't looking up.
+
+Their design criteria is super expansive.
+- Professor cooked them for having bad explanations like the last group.
+- REMEMBER the tradeoffs/tension! 
+	- Remember, your core principles mustn't conflict!
+
+> **LESSONS LEARNED:**
+> - Don't fuck-up the start (design criteria).
+> - Focus on the actually-interesting parts of the language. 
+> - Have meaningful code comments!
+> - Be able to answer light questions on limitations.
+>	- If in doubt, **confidently make something up**.
+
+## 5. Greenlight
+
+## 6. GMScript
+
+Problem: Designs chess variants
+
+## 7. SiteScript
+
+Professor made them skip three slides :sob: :sob: :sob:
+
+All the slides were like syntax and such.
+
+
+## 8. VisLand
