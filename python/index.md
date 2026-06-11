@@ -483,3 +483,94 @@ print(obj.get_double_length())  # 6
 > - A `dict` or `tuple` works for ad hoc grouping.
 > - A `dataclass` (from `dataclasses`) auto-generates `__init__`, `__repr__`, and comparison methods from field annotations, with much less boilerplate.
 
+# Idiomatic Python & Anti-Patterns
+
+**Truthiness Evaluation**: Empty collections (lists, strings, dicts, sets) implicitly evaluate to `False`. Do not compare against empty literals or check length for emptiness.
+
+```python
+# Anti-pattern
+if stack == []:
+    pass
+if len(string) == 0:
+    pass
+
+# Idiomatic
+if not stack:
+    pass
+if not string:
+    pass
+
+```
+
+**Membership Testing**: Use the `in` operator to check for elements within collections (strings, lists, sets, dictionary keys) instead of chained equality checks. When checking dictionary membership, omit `.keys()`.
+
+```python
+# Anti-pattern
+if c == '(' or c == '[' or c == '{':
+    pass
+if key in my_map.keys():
+    pass
+
+# Idiomatic
+if c in "([{":
+    pass
+if key in my_map:  # Default dictionary membership checks keys
+    pass
+
+```
+
+<!--
+> **Aside**: `if char in string` is idiomatic?
+> 
+> String membership testing is implemented in C (just runs a sequential scan to check the characters) and the string is a constant created a compile time; so it's actually fine.
+-->
+
+**Simplifying Boolean Returns**: Return the evaluated boolean expression directly rather than using explicit `if/else` blocks to return `True` or `False`.
+
+```python
+# Anti-pattern
+if not stack:
+    return True
+else:
+    return False
+
+# Idiomatic
+return not stack
+
+```
+
+<!-- YES, POINT AND LAUGH -->
+
+**Hash Maps for Relational Logic**: Replace sequential `if/elif` logic with a dictionary lookup. This is heavily utilized for pairing logic (e.g., matching brackets, tracking complement values in Two Sum, state transitions). It flattens control flow and maintains O(1) lookup.
+
+```python
+# Anti-pattern
+if open_char == '(' and close_char != ')': 
+    return False
+elif open_char == '[' and close_char != ']': 
+    return False
+
+# Idiomatic
+mapping = {
+    '(': ')',
+    '[': ']'
+}
+if mapping.get(open_char) != close_char: 
+    return False
+
+```
+
+**Default Dictionary Values**: Use `dict.get(key, default)` to safely retrieve values without raising a `KeyError` if the key does not exist.
+
+```python
+# Anti-pattern
+if char in frequency_map:
+    frequency_map[char] += 1
+else:
+    frequency_map[char] = 1
+
+# Idiomatic
+frequency_map[char] = frequency_map.get(char, 0) + 1
+
+```
+
