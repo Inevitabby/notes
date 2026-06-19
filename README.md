@@ -1,7 +1,7 @@
-<h1 id="notes" class="title"><a href="https://inevitabby.gitlab.io/notes">Academic Notes</a></h1>
+<h1 id="notes" class="title"><a href="https://inevitabby.gitlab.io/notes">Inevitabby's Notes</a></h1>
 
 ## Computer Science
-
+- [CS50: Introduction to Computer Science](cs50)
 - [CS1300: Discrete Structures](cs1300)
 - [CS1400: Introduction to Programming and Problem Solving](cs1400)
 - [CS2600: Systems Programming](cs2600)
@@ -16,26 +16,30 @@
 - [CS4310: Operating Systems](cs4310)
 - [CS4800: Software Engineering](cs4800)
 
-## Mathematics
+## Programming Languages
+- [Rust](rust)
+- [Python](python)
 
+## Mathematics
 - [MAT1150: Calculus II](mat1150)
 - [STA2260: Statistics](sta2260)
 
-## Liberal Arts
-
+## Humanities & Social Sciences
 - [PHL2020: Critical Thinking](phl2020)
 - [PLS2010: Introduction to American Government](pls2010)
 - [HST4433: Nonviolence in the Modern World](hst4433)
+- [Fascism](fascism)
 
-## Self-Study
-
-- [Rust](rust)
-- [Python](python)
-- [CS50: Introduction to Computer Science](cs50)
+## Natural Languages
 - [Japanese](japan)
 
-## Queer
+## Career Development
+- [Mastering the Software Engineering Interview](interview)
 
+## Queer
 - [Conversation with a Registered Nurse](trans/rn.html)
 - [Voice Feminization](voice)
 - [Planned Parenthood Telehealth HRT Search](trans/pp.html)
+
+## Miscellaneous
+- [Misc.](misc)
