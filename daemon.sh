@@ -21,6 +21,7 @@ DIRECTORIES=(
     "fascism"
     "ffmpeg"
     "hst4433"
+    "interview"
     "japan"
     "mat1150"
     "misc"
