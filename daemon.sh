@@ -19,7 +19,6 @@ DIRECTORIES=(
     "cs4800"
     "cs50"
     "fascism"
-    "ffmpeg"
     "hst4433"
     "interview"
     "japan"
