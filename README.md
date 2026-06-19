@@ -13,6 +13,7 @@
 - [CS3310: Design and Analysis of Algorithms](cs3310)
 - [CS3650: Computer Architecture](cs3650)
 - [CS4080: Concepts of Programming Languages](cs4080)
+- [CS4200: Artificial Intelligence](cs4200)
 - [CS4310: Operating Systems](cs4310)
 - [CS4800: Software Engineering](cs4800)
 
