@@ -39,6 +39,15 @@ $endif$
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+
+  <script>
+    // === Color Scheme ===
+
+    // Initialize theme
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 <body>
   $for(include-before)$
@@ -129,12 +138,8 @@ $endif$
   });
   $endif$
 
-  // === Color Scheme Toggle ===
+  // === Color Scheme ===
 
-  // Initialize theme
-  if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
   // Toggle theme
   function toggleDarkMode() {
     const root = document.documentElement;
