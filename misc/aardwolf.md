@@ -17,7 +17,7 @@ title: "Aardwolf"
     *   **`train <stat>`**: Train an individual stat.
 *   **`raceinfo`**: Show training costs modifiers for your race.
 
-> [Video: Basic Training With Claire](https//aardwolf.com/wiki/index.php/Videos/BasicTrainingWithClaire)
+> [Video: Basic Training With Claire](https://aardwold.com/wiki/index.php/Videos/BasicTrainingWithClaire)
 
 # Skill and Spell Training
 
