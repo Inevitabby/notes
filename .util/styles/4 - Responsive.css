@@ -65,7 +65,7 @@ body {
  * Printer Tweaks
  */
 @media print {
-	#toggleNavbar, footer {
+	#toggleNavbar, footer, .copy {
 		display: none
 	}
 	details[open] {

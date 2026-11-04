@@ -15,3 +15,30 @@ pre.sourceCode {
 code {
   font-size: 80%;
 }
+
+/**
+ * Copy Button
+ */
+.copyable {
+  position: relative;
+}
+.copy {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-family: Monospace;
+  font-size: 0.7rem;
+  color: var(--blockquote-text-color);
+  background-color: var(--code-background-color);
+  border: 1px solid var(--blockquote-text-color);
+  padding: 0 0.4rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.copyable:hover .copy, .copy:focus-visible {
+  opacity: 1;
+}
+@media (hover: none) {
+  .copy { opacity: 1; }
+}

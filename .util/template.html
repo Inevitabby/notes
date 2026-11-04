@@ -36,6 +36,7 @@ $if(mathjax)$
 $endif$
   $math$
 $endif$
+  <noscript><style>.copy { display: none }</style></noscript>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -148,6 +149,20 @@ $endif$
     const root = document.documentElement;
     const isDark = root.classList.toggle('dark');
     localStorage.theme = isDark ? 'dark' : 'light';
+  }
+
+  // === Code Copy ===
+
+  // Copy a code block's original text (or, outside secure contexts, the rendered block)
+  function copyCode(button) {
+    const copied = () => {
+      button.textContent = 'Copied';
+      setTimeout(() => button.textContent = 'Copy', 2000);
+    };
+    if (navigator.clipboard) return navigator.clipboard.writeText(button.dataset.code).then(copied);
+    getSelection().selectAllChildren(button.nextElementSibling);
+    if (document.execCommand('copy')) copied();
+    getSelection().removeAllRanges();
   }
 
   // === Printer Tweak: Open <details> ===
