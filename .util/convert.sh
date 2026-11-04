@@ -2,7 +2,7 @@ source .util/convert_markdown.sh
 
 export INITIALIZE=true
 export BASE_ARGS="-f markdown+lists_without_preceding_blankline \
-	--math-method=katex \
+	--katex \
 	--wrap=preserve \
 	--standalone \
 	--quiet \
