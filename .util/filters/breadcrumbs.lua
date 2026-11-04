@@ -39,6 +39,44 @@ function get_title_from_file(file_path)
   return nil
 end
 
+-- Render inlines/blocks as an HTML string
+local function to_html(blocks)
+  return pandoc.write(pandoc.Pandoc(blocks), "html")
+end
+
+-- List a course's notes as {file, title, url}:
+--  index.md's links first (keeping their order and labels), then unlisted notes by filename
+local function get_course_notes(dir)
+  local notes, files, exists, listed = {}, {}, {}, {}
+  for _, file in ipairs(pandoc.system.list_directory(dir)) do
+    if file:match("%.md$") and file ~= "index.md" then
+      table.insert(files, file)
+      exists[file] = true
+    end
+  end
+  table.sort(files)
+  --  I. Linked notes
+  local index = io.open(dir .. "/index.md", "r")
+  if index then
+    pandoc.read(index:read("*all"), "markdown"):walk({ Link = function(link)
+      local file = (link.target:gsub("%%20", " ")):match("^([^/:#]+)%.html$")
+      file = file and file .. ".md"
+      if file and exists[file] and not listed[file] then
+        listed[file] = true
+        table.insert(notes, { file = file, title = pandoc.utils.stringify(link.content), url = link.target })
+      end
+    end })
+    index:close()
+  end
+  --  II. Unlisted notes
+  for _, file in ipairs(files) do
+    if not listed[file] then
+      table.insert(notes, { file = file, title = get_title_from_file(dir .. "/" .. file) or file, url = (file:gsub("%.md$", ".html")) })
+    end
+  end
+  return notes
+end
+
 -- Generate breadcrumbs
 function Meta(meta)
   local current_file_path = PANDOC_STATE.input_files[1]
@@ -74,7 +112,23 @@ function Meta(meta)
       local intermediate_title = get_title_from_file(intermediate_index_path) or path_parts[1]
 
       table.insert(nav_content, ' > <a href="index.html">' .. intermediate_title .. '</a>')
-      table.insert(nav_content, ' > ' .. current_title)
+
+      -- Sibling notes: dropdown in the current crumb, plus previous/next links
+      local notes, current = get_course_notes(path_parts[1]), 1
+      for i, note in ipairs(notes) do
+        if note.file == current_file_name then current = i end
+      end
+      local items = {}
+      for i, note in ipairs(notes) do
+        items[i] = { pandoc.Plain(i == current and pandoc.Strong(note.title) or pandoc.Link(note.title, note.url)) }
+      end
+      table.insert(nav_content, ' > <details><summary>' .. current_title .. '</summary>' .. to_html({ pandoc.BulletList(items) }) .. '</details>')
+
+      local prev, next, links = notes[current - 1], notes[current + 1], {}
+      if prev then table.insert(links, pandoc.Link("← " .. prev.title, prev.url, "", { rel = "prev" })) end
+      table.insert(links, pandoc.Link("↑ Index", "index.html"))
+      if next then table.insert(links, pandoc.Link(next.title .. " →", next.url, "", { rel = "next" })) end
+      meta.pagination = pandoc.MetaBlocks({ pandoc.RawBlock("html", '<nav id="pagination">' .. to_html({ pandoc.Plain(links) }) .. '</nav>') })
     end
   end
   table.insert(nav_content, '</nav>') -- Closer
