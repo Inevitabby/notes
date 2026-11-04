@@ -15,6 +15,7 @@ DIRECTORIES=(
     "cs3650"
     "cs4080"
     "cs4200"
+    "cs4310"
     "cs4350"
     "cs4800"
     "cs50"
