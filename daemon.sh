@@ -2,6 +2,7 @@
 cd "$(dirname "$0")" || exit
 
 DIRECTORIES=(
+    "com2280"
     "cs1300"
     "cs1400"
     "cs2400"
