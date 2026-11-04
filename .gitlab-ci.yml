@@ -20,35 +20,23 @@ build:
       - public
     expire_in: 2w
 
-# Every internal link, image, and stylesheet should resolve to a real file
-test:links:
+test:
   stage: test
   image:
     name: lycheeverse/lychee:0.24.2-alpine
     entrypoint: [""]
+    docker:
+      user: root
   needs: [build]
-  variables:
-    GIT_STRATEGY: none
-  script:
-    - lychee --offline --no-progress --index-files index.html --root-dir "$CI_PROJECT_DIR/public" 'public/**/*.html'
-
-# Build should have a homepage and a well-formed sitemap
-test:smoke:
-  stage: test
-  image: alpine:latest
-  needs: [build]
-  variables:
-    GIT_STRATEGY: none
   before_script:
     - apk add --no-cache libxml2-utils
   script:
-    - test -s public/index.html
-    - xmllint --noout public/sitemap.xml
+    - sh .util/test.sh
 
 pages:
   stage: deploy
   image: alpine:latest
-  needs: [build, test:links, test:smoke]
+  needs: [build, test]
   variables:
     GIT_STRATEGY: none
   script:
