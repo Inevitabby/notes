@@ -17,7 +17,7 @@ title: "Aardwolf"
     *   **`train <stat>`**: Train an individual stat.
 *   **`raceinfo`**: Show training costs modifiers for your race.
 
-> [Video: Basic Training With Claire](www.aardwolf.com/wiki/index.php/Videos/BasicTrainingWithClaire)
+> [Video: Basic Training With Claire](https//aardwolf.com/wiki/index.php/Videos/BasicTrainingWithClaire)
 
 # Skill and Spell Training
 
@@ -34,7 +34,7 @@ title: "Aardwolf"
 
 > **Note:** When using `showspell`, do not put a trailing space after the spell name.
 >
-> [Video: Skills And Spells Training With Vorth](www.aardwolf.com/wiki/index.php/Videos/SkillsAndSpellsTrainingWithVorth)
+> [Video: Skills And Spells Training With Vorth](https://aardwold.com/wiki/index.php/Videos/SkillsAndSpellsTrainingWithVorth)
 
 # Hunting and Combat Training
 
@@ -51,7 +51,7 @@ title: "Aardwolf"
 
 > **Further Reading:** Helpfiles for experience, alignment, prompt, autogold, autosac, autoloot, config.
 >
-> [Video: Hunting And Combat Training With Commander Dahr](www.aardwolf.com/wiki/index.php/Videos/HuntingAndCombatTrainingWithCommanderDahr)
+> [Video: Hunting And Combat Training With Commander Dahr](https://aardwold.com/wiki/index.php/Videos/HuntingAndCombatTrainingWithCommanderDahr)
 
 # Healing and Death
 
@@ -65,7 +65,7 @@ title: "Aardwolf"
 
 > **Further Reading:** Helpfiles for fast healing, refresh, vitality.
 >
-> [Video: Health Training With Nurse Orcron](www.aardwolf.com/wiki/index.php/Videos/HealthTrainingWithNurseOrcron)
+> [Video: Health Training With Nurse Orcron](https://aardwold.com/wiki/index.php/Videos/HealthTrainingWithNurseOrcron)
 
 ## Hunger, Thirst, and Sleep
 
