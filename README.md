@@ -37,6 +37,7 @@
 
 ## Career Development
 - [Mastering the Software Engineering Interview](interview)
+- [CompTIA Security+ V7](secplus)
 
 ## Queer
 - [Conversation with a Registered Nurse](trans/rn.html)

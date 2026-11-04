@@ -31,6 +31,7 @@ DIRECTORIES=(
     "pokemmo"
     "python"
     "rust"
+    "secplus"
     "sta2260"
     "trans"
     "voice"
