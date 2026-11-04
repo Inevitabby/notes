@@ -1,7 +1,6 @@
 <h1 id="notes" class="title"><a href="https://inevitabby.gitlab.io/notes">Inevitabby's Notes</a></h1>
 
 ## Computer Science
-- [CS50: Introduction to Computer Science](cs50)
 - [CS1300: Discrete Structures](cs1300)
 - [CS1400: Introduction to Programming and Problem Solving](cs1400)
 - [CS2600: Systems Programming](cs2600)
@@ -32,15 +31,11 @@
 - [HST4433: Nonviolence in the Modern World](hst4433)
 - [Fascism](fascism)
 
-## Natural Languages
-- [Japanese](japan)
-
 ## Career Development
 - [Mastering the Software Engineering Interview](interview)
 - [CompTIA Security+ V7](secplus)
 
 ## Queer
-- [Conversation with a Registered Nurse](trans/rn.html)
 - [Voice Feminization](voice)
 - [Planned Parenthood Telehealth HRT Search](trans/pp.html)
 
