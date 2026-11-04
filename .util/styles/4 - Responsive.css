@@ -11,6 +11,26 @@ body {
 	view-transition-name: root;
 	background-color: transparent;
 }
+/** Persistent elements morph in place instead of fading with the page */
+nav#breadcrumbs { view-transition-name: breadcrumbs; }
+h1.title { view-transition-name: title; }
+#TOC { view-transition-name: toc; }
+::view-transition-old(title), ::view-transition-new(title) {
+	height: 100%;
+	object-fit: none;
+	object-position: top;
+}
+@keyframes rise-in {
+	from { opacity: 0; transform: translateY(0.25rem); }
+}
+::view-transition-new(root) {
+	animation: 200ms ease-out both rise-in;
+}
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) {
+		animation: none !important;
+	}
+}
 /**
  * Mobile Tweaks
  */
