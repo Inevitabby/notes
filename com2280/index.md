@@ -1,4 +1,4 @@
-# Understanding and Uprating Image
+# Understanding & Appreciating Image
 
 # Topics
 

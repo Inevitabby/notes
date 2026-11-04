@@ -26,6 +26,7 @@
 - [STA2260: Statistics](sta2260)
 
 ## Humanities & Social Sciences
+- [Understanding & Appreciating Image](com2280)
 - [PHL2020: Critical Thinking](phl2020)
 - [PLS2010: Introduction to American Government](pls2010)
 - [HST4433: Nonviolence in the Modern World](hst4433)
