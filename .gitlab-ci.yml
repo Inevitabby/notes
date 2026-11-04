@@ -1,13 +1,51 @@
-image: alpine:latest
-before_script:
-  - apk add --no-cache openjdk8 plantuml bash gawk pandoc imagemagick minify libxml2 libxml2-utils
-pages:
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache openjdk8 plantuml bash gawk pandoc imagemagick minify libxml2 libxml2-utils
   script:
     - ./daemon.sh -o
   artifacts:
     paths:
       - public
     expire_in: 2w
+
+# Every internal link, image, and stylesheet should resolve to a real file
+test:links:
+  stage: test
+  image:
+    name: lycheeverse/lychee:0.24.2-alpine
+    entrypoint: [""]
+  needs: [build]
+  script:
+    - lychee --offline --no-progress --index-files index.html --root-dir "$CI_PROJECT_DIR/public" 'public/**/*.html'
+
+# Build should have a homepage and a well-formed sitemap
+test:smoke:
+  stage: test
+  image: alpine:latest
+  needs: [build]
+  before_script:
+    - apk add --no-cache libxml2-utils
+  script:
+    - test -s public/index.html
+    - xmllint --noout public/sitemap.xml
+
+pages:
+  stage: deploy
+  image: alpine:latest
+  needs: [build, test:links, test:smoke]
+  script:
+    - echo "Deploying public/ to GitLab Pages"
+  artifacts:
+    paths:
+      - public
   rules:
-    # This ensures that only pushes to the default branch will trigger a pages deploy
+    # (ensures that only pushes to the default branch will trigger a pages deploy)
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
