@@ -110,7 +110,6 @@ else
 **Nested `if` Statement:** An `if` statement inside another if statement (single or block, doesn't matter)
 - Executed only if the outer `if` statement is true.
 
-![](.images/nested-if-flow.png)
 ```java
 if (coldOutside)
 {
