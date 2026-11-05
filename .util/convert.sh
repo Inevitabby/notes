@@ -48,10 +48,19 @@ function convert {
 			((i=i%256)); ((i++==0)) && wait 
 			convert_markdown "${INPUT_FILE}" "${INPUT_DIR}" "${MTIME_DIR}" &
 		done
-		# 2. Copy images
-		if [ -d "${INPUT_DIR}/.images" ]; then
-			cp -r "${INPUT_DIR}/.images" "${OUTPUT_DIR}/"
-		fi
+		# 2. Optimize images
+		mkdir -p "${OUTPUT_DIR}/.images"
+		for IMAGE in "${INPUT_DIR}/.images/"*; do
+			OUTPUT_IMAGE="${OUTPUT_DIR}/.images/$(basename "${IMAGE%.*}").webp"
+			case "${IMAGE}" in
+				*.png) OPTIONS="-define webp:lossless=true" ;;
+				*.jpg|*.gif) OPTIONS="-quality 75 -resize 1200x1200>" ;;
+				*) [ -f "${IMAGE}" ] && cp "${IMAGE}" "${OUTPUT_DIR}/.images/"; continue ;;
+			esac
+			# Guard: Skip already-converted
+			[ "${IMAGE}" -nt "${OUTPUT_IMAGE}" ] || continue
+			magick "${IMAGE}" -quiet -strip ${OPTIONS} "${OUTPUT_IMAGE}"
+		done
 	done
 	# Convert special files
 	convert_markdown "README.md" "/" "/tmp/.mtimes//" &
