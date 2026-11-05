@@ -18,7 +18,7 @@ build:
   artifacts:
     paths:
       - public
-    expire_in: 2w
+    expire_in: 1w
 
 test:
   stage: test
@@ -44,6 +44,7 @@ pages:
   artifacts:
     paths:
       - public
+    expire_in: 1d
   rules:
     # (ensures that only pushes to the default branch will trigger a pages deploy)
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
